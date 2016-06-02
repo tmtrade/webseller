@@ -5,7 +5,6 @@
  * 多库操作、异构数据库操作
  */
 
-require('tm.table.config.php');
 require('usercentre.table.config.php');
 require('tradenew.table.config.php');
 require('trademarkonline.table.config.php');
