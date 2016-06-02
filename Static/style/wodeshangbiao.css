@@ -1,0 +1,16 @@
+.chofn-flex{
+}
+.monitorTip .monitorTip_table{
+    min-width: 440px;
+}
+.monitorTip1 .ul-input-submit{
+    display: inline-block;
+    width: 145px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+}
+.monitorTip1 .ul-input-submit button{
+    font-size: 14px;
+}

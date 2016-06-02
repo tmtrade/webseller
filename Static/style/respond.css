@@ -1,0 +1,22 @@
+/* media */
+
+
+@media only screen and (min-width: 1px) and (max-width: 1180px){
+    .mj-header{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    .mj-content{
+        width: 1180px;
+        margin: 0 auto;
+        padding-bottom: 30px;
+    }
+    .mj-footer{
+        width: 1180px;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+}

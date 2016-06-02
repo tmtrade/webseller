@@ -1,0 +1,68 @@
+.mj-contCenter{
+    padding: 135px 0 230px;
+    background: #fff;
+}
+.mj-contmain{
+   width: 540px;
+    margin: 0 auto;
+}
+.mj-contcT{}
+.mj-contcT label{
+    display: inline-block;
+    float: left;
+    padding-right: 20px;
+}
+.mj-contcT p{
+    padding: 15px 0 10px;
+    font-size: 20px;
+    color: #444;
+}
+.mj-contcT span{
+    font-size: 12px;
+    color: #999;
+}
+
+.mj-apply ul{
+    width: 307px;
+    margin: 30px 0 0 20px;
+}
+.mj-apply li {
+    margin-bottom: 15px;
+}
+.mj-apply li label {
+    display: inline-block;
+    margin-right: 15px;
+    width: 60px;
+    font-size: 12px;
+    color: #444;
+    text-align: right;
+    vertical-align: middle;
+}
+.mj-apply li input{
+    padding-left: 15px;
+    width: 211px;
+    height: 34px;
+    border: solid 1px #abadb3;
+    line-height: 34px\9;
+    outline: none;
+}
+.mj-apply li a{
+    display: inline-block;
+    margin: 10px 0 0 10px;
+    width: 106px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    font-size: 14px;
+    border-radius: 2px;
+}
+.mj-confirmBtn {
+    background: #ff6700;
+    color: #fff;
+    border: solid 1px #ff6700;
+}
+.mj-returnBtn {
+    background: #fff;
+    color: #444;
+    border: solid 1px #e1dedd;
+}

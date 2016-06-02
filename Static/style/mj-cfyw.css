@@ -1,0 +1,148 @@
+.mj-content{
+    background: #f5f5f5;
+    padding-top: 22px;
+    clear: both;
+}
+.mj-content_title{
+    padding-bottom: 14px;
+}
+.mj-content_title span{
+    font-size: 12px;
+    color: #666;
+}
+.mj-content_title span em{
+    color: #b7b7b7;
+}
+.mj-content_title a{
+    color: #666;
+}
+.mj-mainCon{
+
+}
+
+
+.mj-mybRight{
+    padding: 0 30px 20px;
+    width: 825px;
+    height: 766px;
+    background: #fff;
+}
+.mj-padaT{
+    padding: 40px 0 10px 0;
+    font-size: 16px;
+    color: #666;
+    border-bottom: solid 1px #e0e0e0;
+}
+
+.mj-znTable{
+    width: 100%;
+}
+.mj-znTable thead tr{
+    background: #f5f5f5;
+}
+.mj-znTable tbody td{
+    border-bottom: solid 1px #ececec;
+}
+.mj-znTable tbody td em{
+    display: inline-block;
+    max-width: 154px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+.mj-znTable td{
+    padding: 20px 0 20px 20px;
+    font-size: 12px;
+    color: #444;
+}
+.mj-znTable tbody td a{
+    color: #357fcc;
+}
+.mj-znTable td input{
+    vertical-align: middle;
+}
+
+.mj-znBottom{
+    margin-top: 18px;
+}
+
+.mj-inputDate{
+    padding: 20px 0;
+}
+.mj-inputDate input{
+    float: left;
+    margin-right: 10px;
+    padding-left: 15px;
+    width: 315px;
+    height: 33px;
+    border: solid 1px #dadada;
+    outline: none;
+    line-height: 33px\9;
+}
+
+.mj-selectBox {
+    width: 123px;
+    height: 33px;
+    line-height: 33px;
+    border: 1px solid #dadada;
+    text-align: center;
+    background: url(img/mj-img6.png) no-repeat 105px center;
+    position: relative;
+}
+.mj-selectText {
+    cursor: pointer;
+    display: block;
+    padding-left: 0;
+    width: 100%;
+    color: #888;
+    overflow: hidden;
+}
+.son_ul {
+    padding-left: 0;
+    width: 123px;
+    max-height: 145px;
+    position: absolute;
+    left: -1px;
+    top: 34px;
+    border: solid 1px #dadada;
+    border-top: none;
+    background: #fff;
+    z-index: 5;
+    overflow-y: auto;
+}
+.son_ul li {
+    display: block;
+    line-height: 25px;
+    width: 123px;
+    margin-bottom: 0;
+    cursor: pointer;
+    color: #888;
+}
+.son_ul li:hover {
+    background: #fc6f28;
+    color: #fff;
+}
+.mj-datesCon{
+    margin-left: 10px;
+}
+.mj-datesCon>em{
+    margin-top: 7px;
+    padding: 0 5px;
+    font-size: 12px;
+    color: #444;
+    vertical-align: middle;
+}
+.mj-searchL{
+    display: inline-block;
+    margin-left: 10px;
+    width: 55px;
+    height: 35px;
+    background: #fc7d28;
+    line-height: 35px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    vertical-align: middle;
+}

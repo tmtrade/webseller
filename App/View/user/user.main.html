@@ -1,0 +1,375 @@
+<? require(ViewDir.'/public/header.html'); ?> 
+<!--main content start-->
+<section id="main-content">
+  <header class="tab-head">
+    <ul class="nav nav-tabs">
+      <li class="active"> <a href="/user/main/">基本信息</a> </li>
+      <li></li>
+    </ul>
+  </header>
+  <div class="row info_div">
+    <div class="col-xs-6">
+      <aside class="profile-nav alt green-border">
+        <section class="panel">
+          <div class="user-heading alt green-bg"> <a href="#"> <img alt="" src="<?=StaticDir?>workspace/img/profile-avatar.jpg"> </a>
+            <h1><?=$data['firstname']?></h1>
+            <?php
+            $logstr = $data['loginNum'] <= 1 ? '首次登录' : '上次登录';
+            ?>
+            <p><span class="fl"><?=$logstr?>：</span><span class="fl"><? echo date('Y-m-d H:i:s',$data['lastDate']);?></span>
+                <font class="pull-right">
+                	<button class="btn btn-success btn-sm" type="button" onclick="window.location='/user/changePwd/'">修改密码>></button>
+                </font>
+            </p>
+          </div>
+          <div class="table-responsive">
+            <table class="table table-hover info_tab_text">
+              <tr>
+                <td class="tab_txthg"><p><i class="icon-user"></i> 姓名</p>
+					<p><i class="icon-eye-open"></i> 昵称</p>
+					<p><i class="icon-paperclip"></i> 性别</p>
+					<p><i class="icon-heart"></i> 关注类型</p>
+				</td>
+                <td class="tab_txthg"><p><?=$data['name']?>&nbsp;</p>
+					<p><?=$data['nickname']?>&nbsp;</p>
+					<p><? if($data['sex']==0){echo '女士';}else{echo '先生';}?>&nbsp;</p>
+					<p><?	$follow		= C('FOLLOW');
+						$datafollow = explode(',', $data['follow']);
+						foreach($follow as $k=> $one){
+							if( !empty($datafollow) && in_array($k, $datafollow)){ echo $one . " ";}
+						}
+					?>&nbsp;</p>
+				</td>
+				<td><button class="btn btn-success btn-sm" style="margin-top:8px;" type="button"  data-toggle="modal" data-target="#batch-wechat">修改</button></td>
+              </tr>
+              <tr>
+                <td><i class=" icon-mobile-phone"></i> 手机号码</td>
+                <td><? if($data['isMobile'] != 1){ echo '手机未绑定';}else{ echo $data['mobile_hide'];} ?></td>
+                <td><a class="btn btn-danger btn-sm" href="/user/changePhone/"><? if($data['isMobile'] != 1){ echo '绑定';}else{ echo '修改';} ?></a></td>
+              </tr>
+              <tr>
+                <td><i class="icon-envelope"></i> 邮箱账号</td>
+                <td><? if($data['isEmail'] != 1){ echo '邮箱未绑定';}else{ echo $data['email_hide'];} ?></td>
+                <td><a class="btn btn-danger btn-sm" href="/user/changeEmail/"><? if($data['isEmail'] != 1){ echo '绑定';}else{ echo '修改';} ?></a></td>
+              </tr>
+              <tr>
+              	<?php
+                        if($isbinding==1){
+                        	$bdingstr = encrypt($weixin['info']['nickname']);
+                            $bdingstr2 = '<button type="submit" id="jbinding" class="btn btn-success btn-sm"  data-toggle="modal" data-target="#batch-remove">解绑</button>';
+                        }else{
+                        	$bdingstr = '未绑定';
+                            $bdingstr2 = '<button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#batch-wxwechat">绑定</button>';
+                        }
+                 ?>
+                <td><i class="icon-comments"></i> 微信账号</td>
+                <td><?=$bdingstr?></td>
+                <td>
+                	<?=$bdingstr2?>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </div>
+  
+  <!--main content end--> 
+</section>
+</section>
+
+<!-- Modal -->
+<div class="modal fade" id="batch-wechat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true"><img src="<?=StaticDir?>workspace/img/close.gif"/></button></div>
+      <div class="modal-body">
+        <div class="modal-center">
+		    <h3>用户信息</h3>
+		    <table class="table info_tab_text">
+              <tr>
+                <td class="tab_txthg" align='left' width="40%"><p><i class="icon-user"></i> 姓名</p>
+					<p class="text-left;"><i class="icon-eye-open"></i> 昵称</p>
+					<p><i class="icon-paperclip"></i> 性别</p>
+					<p class="text-left;"><i class="icon-heart"></i> 关注类型</p>
+				</td>
+                <td class="tab_txthg"  align='left'>
+					<p><input type="text" class="form-control input-sm" id="name" name="name" value="<?=$data['name']?>" maxlength="15"/></p>
+					<p><input type="text" class="form-control input-sm" id="nickname" name="nickname" value="<?=$data['nickname']?>" maxlength="15"/></p>
+					<p><label class="radio-inline"><input type="radio"  id="mr" name="sex" value="1" <? if($data['sex']==1){echo 'checked="checked" ';} ?> />先生</label>
+                        <label class="radio-inline"><input type="radio"  id="ms" name="sex" value="0" <? if($data['sex']==0){echo 'checked="checked" ';} ?> />女士</label>
+					</p>
+					<p><?
+					$follow		= C('FOLLOW');
+						$datafollow = explode(',', $data['follow']);
+						foreach($follow as $k=> $one){
+							echo '<label class="checkbox-inline"><input type="checkbox" name="follow" value="'.$k.'"';
+							if(!empty($datafollow) && in_array($k, $datafollow)){ echo ' checked="checked"'; }
+							echo '/>'.$one.'</label>';
+						}
+						?>
+					</p>
+				</td>
+              </tr>
+		    </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success mj-confirmBtn">确认</button>
+        <button type="button" class="btn btn-gray" data-dismiss="modal" >取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="batch-wxwechat" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header"><button type="button" style="margin-top:0;" class="close" data-dismiss="modal" aria-hidden="true"><img src="<?=StaticDir?>workspace/img/close.gif"/></button></div>
+      <div class="modal-body">
+        <div class="modal-center">
+          <h3>扫描二维码</h3>
+          <p class="info_wximg"><img src="<?=$weixin['info']['ticket']?>" width="90" height="90"/> </p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-gray" data-dismiss="modal">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="batch-remove" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+	    <div class="modal-header">
+	      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+	        <img src="<?=StaticDir?>workspace/img/close.gif"/>
+	      </button>
+	      <h4 class="modal-title">解绑微信账号</h4>
+		</div>
+      <div class="modal-body">
+        <div class="modal-center">
+          <h3><img src="<?=StaticDir?>workspace/img/modal-icon1.gif" /> 确定要解绑微信吗？ </h3>
+          <p>解绑后将无法用微信接收状态提醒、官文信息等通知</p>
+          <p class="red" id="delpname"></p>
+        </div>
+      </div>
+      <div class="modal-footer border-top">
+        <button type="button" class="btn btn-success" id="okbing">确认</button>
+        <button type="button" class="btn btn-gray" data-dismiss="modal" id="nobing">取消</button>
+        <p class="text-center gray jbsuccess" style="padding-top: 20px; color:#F00; font-size:20px; display:none">解绑成功</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+$(document).ready(function(){
+	$('#okbing').click(function(){
+		unbundlingWeiXin(1,1);
+	});
+	/*
+	var ok1=false;
+	var ok2=false;
+	// 验证姓名
+	$('input[name="username"]').blur(function(){
+		if($(this).val().length >= 2 && $(this).val().length <=10 && $(this).val()!=''){
+			$(this).parent(".col-xs-8").next(".col-xs-1").children("i").css("display","block");
+			$(".modal-form .tips1").show();
+			$(".modal-form .tips2").hide();
+			ok1=true;
+		}else{
+			$(this).parent(".col-xs-8").next(".col-xs-1").children("i").css("display","none");
+			$(".modal-form .tips1").hide();
+			$(".modal-form .tips2").text("姓名长度为2-10位").show();
+		}
+	});
+	$('input[name="usertel"]').blur(function(){
+		var isMobile=/^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; //手机号码验证规则
+		var phone = $('input[name="usertel"]').val();
+		if(!isMobile.test(phone)){
+			$(this).parent(".col-xs-8").next(".col-xs-1").children("i").css("display","none");
+			$(".modal-form .tips1").hide();
+			$(".modal-form .tips2").text("请输入正确的手机号码").show();
+		} else{
+			$(this).parent(".col-xs-8").next(".col-xs-1").children("i").css("display","block");
+			$(".modal-form .tips1").show();
+			$(".modal-form .tips2").hide();
+			ok2=true;
+		}
+	});
+	//提交按钮,所有验证通过方可提交
+	$('.submit').click(function(){
+		if(ok1 && ok2){
+			$('.form').submit();
+		}else{
+			return false;
+		}
+	});*/
+	$(".mj-confirmBtn").click(function(){
+		var _name = $.trim($('#name').val());
+		var _nickname = $.trim($('#nickname').val());
+		
+		if(_name == '' || _name.length < 2 || _name.length >15 ){
+			layter_msg('姓名请输入2-15个字符！' , 0, '');
+			return false;
+		}
+		if(_nickname != '' && (_nickname.length < 2 || _nickname.length >15) ){
+			layter_msg('昵称请输入2-15个字符！' , 0, '');
+			return false;
+		}
+
+		var str="";
+		$("[name='follow']:checked").each(function(){
+			str += $(this).val()+",";
+		})
+		sexVal = $('input[name="sex"]:checked').val();
+		$.ajax({
+			type : 'POST',
+			dataType : 'html',
+			url: '/user/main/',
+			data : {'nickname':$('#nickname').val(), 'name' : $('#name').val(),'sex' : sexVal,'follow' : str},
+			success : function(data){
+				if(data == 1){
+					layter_msg('修改成功！' , 0, '');
+					$('#batch-wechat').modal('hide');
+					setTimeout(function(){
+						window.location = '/user/main/';	
+					},1000);
+				}else{
+					layter_msg('修改失败！' , 0, '');
+				//setTimeout('location.reload()', 3000);
+				}
+					
+			},
+			error: function(){
+					layter_msg('网络错误，请稍后再试！' , 0, '');
+			}
+
+		})
+	});
+	//刷新页面，防止显示编辑后未保存的信息
+	$('#batch-wechat').on('hidden.bs.modal', function () {
+		window.location = '/user/main/';
+	})
+});
+//解绑
+function unbundlingWeiXin(codeid,wxcode){
+	$.ajax({
+		type	: "post",
+		url		: "/user/unbundlingWeiXin/",
+		async	: true,
+		data	: {'codeid':codeid,'wxcode':wxcode},
+		dataType: "json",
+		beforeSend : function(){
+			$('#okbing,#nobing').attr('disabled',true);
+		},
+		error: function(){
+			layter_msg('网络错误，请稍后再试！' , 0, '');
+			$('#okbing,#nobing').attr('disabled',false);
+		},
+		success	: function(data){
+			if(data.code==1){
+				$('.jbsuccess').show();
+				setTimeout(function(){
+					$('#okbing,#nobing').attr('disabled',false);
+					$('#batch-remove').modal('hide');
+					window.location = '/user/main/';
+				},2000);
+			}else{
+				layter_msg(data.msg , 0, '');
+			}
+		}
+	});
+}
+
+</script> 
+<?php
+if($isbinding==0){
+?>
+<script language="javascript">
+$(document).ready(function(e) {
+    isScan();
+});
+var timeout = 1800;
+function getTimeString(){
+	var i = Math.floor(timeout / 60);
+	var s = timeout % 60;
+	var timeString = '';
+	if(i > 0){
+		timeString += "<b class=red>" + i + "</b>分钟";
+	}
+	timeString += "<b class=red>" + s + "</b>秒";
+	$("#timeout").html(timeString);
+	timeout--;
+	if(timeout == 0){
+		$("#timeout").html('二维码已过期，正在刷新页面...');
+		window.location = '/?mod=my&func=info&action=info&opera=weixin&1800';
+	}else{
+		setTimeout('getTimeString();', 1000);
+	}
+}
+function isScan(){
+	$.ajax({
+		url 	: '/user/isBangDing/',
+		cache 	: false,
+		type  	: 'POST',
+		dataType : 'json',
+		success : function(json){
+			if(json != '' && json != null){
+				console.log(json.wxid);
+				if(json.wxid == 1){
+					//console.log(json.wxid);
+					window.location = '/user/main/';
+					return false;
+				}
+			}
+			setTimeout('isScan();', 1000);
+		},
+		error : function(msg){
+			setTimeout('isScan();', 1000);
+		}
+	});
+}
+</script>
+<?php
+}else{
+?>
+<script language="javascript">
+$(document).ready(function(e) {
+    $('.unbang').click(function(){
+		sendWeiXinCode();
+	});
+});
+var isSendCode = true;
+//发送验证码
+function sendWeiXinCode(){
+	if( isSendCode == false ){
+		return false;	
+	}
+	if(confirm('你确定要解绑微信？')){
+		$.ajax({
+			type	: "post",
+			url		: "/user/sendWeiXinCode/",
+			async	: true,
+			dataType: "json",
+			success	: function(data){
+				if(data.code == 1){
+					window.location = '/user/changeweixin/';
+					isSendCode = false;
+				}else{
+					alert(data.msg);	
+				}
+			}
+		});
+	}
+}
+ 
+</script>
+<?php
+}
+?>
+
+<? require(ViewDir.'/public/footer.html'); ?>

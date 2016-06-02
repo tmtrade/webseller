@@ -1,0 +1,68 @@
+*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;text-decoration:none;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "新宋体";}
+
+/* tabbox */
+.tabbox{width:100%;position:relative; top:0; height:100%;}
+.nav-list{height:175px;overflow:hidden;}
+.nav-list li{height:198px;float:left;width:175px; margin:0 12px;padding:0;}
+.nav-0 a,.nav-1 a,.nav-2 a{color:#000;}
+.nav-0{background:url(../images/mmm_011.png) no-repeat center #3e87cd;background-size:contain;}
+.nav-1{background:url(../images/mmm_022.png) no-repeat center #3e87cd;background-size:contain;}
+.nav-2{background:url(../images/mmm_033.png) no-repeat center #3e87cd;background-size:contain;}
+.nav-3{background:url(../images/mmm_044.png) no-repeat center #3e87cd;background-size:contain;}
+.nav-4{background:url(../images/mmm_055.png) no-repeat center #3e87cd;background-size:contain;}
+.nav-cus-0{background:url(../images/mmm_01.png) no-repeat center #fff;background-size:contain;}
+.nav-cus-1{background:url(../images/mmm_02.png) no-repeat center #fff;background-size:contain;}
+.nav-cus-2{background:url(../images/mmm_03.png) no-repeat center #fff;background-size:contain;}
+.nav-cus-3{background:url(../images/mmm_04.png) no-repeat center #fff;background-size:contain;}
+.nav-cus-4{background:url(../images/mmm_05.png) no-repeat center #fff;background-size:contain;}
+.home_four_limg{float:left;margin-left:40px;width:400px;}
+.home_fimgda{width:380px; height:245px;}
+.home_fimgda2{width:330px; height:274px;}
+.home_tabNav{position:absolute; top:30%;}
+.home_tabNav .home_four_txt{font-size:14px; font-weight:bold; margin-top:110px;}
+.home_width{width:1100px; margin:0 auto;position:relative; height:100%;}
+@media screen and (max-width: 1500px) {
+.home_four_limg{float:left;margin-left:40px;width:340px;}
+.home_fimgda{width:300px; height:165px;}
+.home_fimgda2{width:280px; height:224px;}
+.nav-list li{height:180px;float:left;width:157px; margin:0 12px;padding:0;}
+.home_tabNav .home_four_txt{font-size:14px; font-weight:bold; margin-top:90px;}
+.home_tabNav{position:absolute; top:30%; width: 905px; left: 50%; margin-left: -452px;}
+.home_width{width:100%; margin:0 auto;position:relative; height:100%; top:5%;}
+} 
+.nav-0 a,.nav-1 a,.nav-2 a,.nav-3 a,.nav-4 a{font-family:"微软雅黑";color:#fff;}
+.nav-cus-0 a,.nav-cus-1 a,.nav-cus-2 a,.nav-cus-3 a,.nav-cus-4 a{color:#3e87cd;}
+.contant{height:35%;width:1088px;overflow:hidden;position:absolute; top:50%; left:10%;}
+.inner{width:5500px;height:35%;position:relative;}
+.contant-con{padding-top:20px;float:left;width:1088px;}
+.contant-left{width:290px;float:left;padding:3px 10px 10px 15px;}
+.contant-left-top{border-bottom:1px solid #d1d1d0;padding-bottom:7px;width:290px;} 
+.con-news{color:#444;font-weight:normal;background:url(../images/new-icon.jpg) no-repeat 5px;padding-left:32px;} 
+.con-news a{font-family:"宋体";color:#444;font-size:12px;}
+.contant-left-bottom{width:290px;}
+.contant-left-bottom ul{padding-top:8px;}
+.contant-left-bottom ul li{line-height:26px;height:26px;background:url(../images/ft-icon.jpg) no-repeat 10px;padding-left:20px;}
+.contant-left-bottom ul li span{color:#666;}
+.contant-center{width:290px;float:left;padding:0 10px 10px 20px;}
+.contant-right{width:290px;float:left;padding:0 10px 10px 20px;}
+.contant-center-top ul li{float:left;}
+.contant-center-top ul li:hover{}
+.contant-center-top ul li a:hover{font-weight:bold;color:#444;}
+.contant-center-top ul {height:26px;}
+.contant-center-top{ width:290px;border-bottom:1px solid #d1d1d0;height:25px;}
+.tabs{position:relative;float:left;}
+.hightbg .moving_bg{border-left:1px solid #ccc;border-right:1px solid #ccc;border-top:2px solid #d52b30;height:24px;_height:25px;padding:0;position:absolute;z-index:190;width:68px;background:#fff;left:0;}
+.hightbg .tab_item{ float:left;width:70px;text-align:center; font:12px/31px "宋体",\5b8b\4f53,arial; z-index:200;position:relative;cursor:pointer;color:#444;height:26px;line-height:26px;}
+.hightbg .bg_or02{border-top:2px solid #f4854b;}
+.hightbg .bg_or01{border-top:2px solid #009de0;}
+.wid290{width:290px;}
+.hei226{height:226px;}
+.xiaoxi{text-align:right;}
+.ullist_dott{width:290px;float:left;}
+.ullist_dott span{color:#444;height:25px;overflow:hidden;}
+.ullist_dott li a{color:#444;font-size:12px;}
+.slide_content{overflow:hidden;position:relative;_position:inherit;}
+.tabslider{width:5000px;}
+.tabslider ul{float:left;}

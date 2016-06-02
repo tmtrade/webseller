@@ -1,0 +1,517 @@
+.mj-content{
+    background: #f5f5f5;
+    padding-top: 22px;
+    clear: both;
+}
+.mj-content_title{
+    padding-bottom: 14px;
+}
+.mj-content_title span{
+    font-size: 12px;
+    color: #666;
+}
+.mj-content_title span em{
+    color: #b7b7b7;
+}
+.mj-content_title a{
+    color: #666;
+}
+.mj-mainCon{
+
+}
+
+
+.mj-mybRight{
+    width: 815px;
+    background: #fff;
+    padding: 30px 35px 30px;
+}
+
+/* 我的商标 切换标题 */
+.trademark_tab{
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #efefef;
+    margin-bottom: 17px;
+}
+.trademark_tab a{
+    display: inline-block;
+    padding: 0 15px;
+    color: #666;
+    font-size: 16px;
+}
+.trademark_tab a b{
+    color: #ff6700;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+.trademark_tab a.cur{
+    color: #ff6700;
+}
+/* 我的商标 条件选择 */
+.trademark_st{
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 15px;
+}
+.trademark_stTip{
+    padding-bottom: 45px;
+}
+.trademark_select{
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+.trademark_select .trademark_select_tit{
+    float: left;
+    width: 80px;
+    color: #444444;
+    margin-top: 4px;
+}
+.trademark_select .trademark_select_item{
+    width: 660px;
+    margin-left: 77px;
+}
+.trademark_select .trademark_select_item1{
+    height: 28px;
+    overflow: hidden;
+}
+.trademark_select .trademark_select_item a{
+    display: inline-block;
+    padding: 4px 15px;
+    margin-bottom: 5px;
+    color: #686868;
+}
+.trademark_select .trademark_select_item a b{
+    font-weight: 400;
+    color: #ffa37d;
+}
+.trademark_select .trademark_select_item .cur{
+    color: #fff;
+    background: #ff6700;
+}
+.trademark_select .trademark_select_item .cur b{
+    color: #fff;
+}
+.trademark_select .trademark_select_mag{
+    position: absolute;
+    z-index: 1;
+    right: 65px;
+    top: 3px;
+    color: #357fcc;
+    text-decoration: underline;
+}
+.trademark_select .trademark_select_more{
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    top: 3px;
+    color: #666666;
+    background: url("img/l-6.png") no-repeat right center;
+    padding-right: 13px;
+}
+.trademark_select .trademark_select_up{
+    background: url("img/l-30.png") no-repeat right center;
+}
+.trademark_select .trademark_select_tip{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: -35px;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    padding: 3px 10px;
+    color: #a9a9a9;
+}
+.trademark_select .trademark_select_tip img{
+    position: absolute;
+    z-index: 1;
+    top: -12px;
+    left: 20px;
+}
+.trademark_select1 .trademark_select_tit{
+    color: #999999;
+}
+.trademark_select1 .trademark_select_item a{
+    color: #999999;
+}
+.mj-ddlist{
+    padding-left: 67px;
+    width: 635px;
+}
+.mj-ddlist a{
+    display: inline-block;
+    margin: 0 5px 5px 0;
+    padding: 5px 10px;
+    color: #444;
+    font-size: 12px;
+}
+.mj-ddlist a em{
+    color: #ff6700;
+}
+.mj-ddlist a.on{
+    background: #ff6700;
+    color: #fff;
+    border-radius: 2px;
+}
+.mj-ddlist a.on em{
+    color: #fff;
+}
+.mj-ddlist a.mj_aclik{
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 7px 5px;
+}
+.mj-ddlist a.on .uj_icon1 {
+    background-image: url("slice/uj-icon1_1.png");
+}
+.mj-ddlist a.on .uj_icon3 {
+    background-image: url("slice/uj-icon1_2.png");
+}
+.mj-ddrBen{
+    position: absolute;
+    right: 60px;
+    top: 7px;
+}
+.mj-ddrBen a{
+    text-decoration: underline;
+    color: #357fcc;
+}
+
+.mj-categoryTip{
+    position: absolute;
+    top: 33px;
+    background: #fff;
+    padding: 4px 5px;
+    font-size: 12px;
+    color: #999;
+    border: solid 1px #e7e7e7;
+    z-index: 2;
+}
+.mj-categoryTip i{
+    position: absolute;
+    top: -7px;
+    left: 20px;
+}
+
+.mj-mybconTop{
+    padding: 15px 0;
+}
+
+.mj-sorting{
+    display: inline-block;
+    margin-right: 10px;
+    width: 113px;
+    height: 33px;
+    line-height: 33px;
+    background: #fff;
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    border: solid 1px #ddd;
+}
+.mj-sorting:hover {
+    color: #fc7d28;
+}
+.mj-mtsL{}
+.mj-mtsL input{
+    padding-left: 15px;
+    width: 177px;
+    height: 33px;
+    border: solid 1px #dadada;
+    line-height: 33px\9;
+    outline: none;
+    vertical-align: middle;
+}
+.mj-mtsL label{
+    display: inline-block;
+    margin-left: -5px;
+    width: 45px;
+    height: 35px;
+    background: #fc7d28;
+    line-height: 35px;
+    text-align: center;
+    font-size: 16px;
+    color: #fff;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.mj-mtsR{}
+.mj-mtsR span{
+    padding-right: 10px;
+    font-size: 12px;
+    color: #666;
+}
+.mj-mtsR span em{
+    color: #ff6700;
+}
+.mj-mtsR label{
+    display: inline-block;
+    width: 78px;
+    height: 28px;
+    line-height: 28px;
+    background: #fff;
+    font-size: 12px;
+    color: #357fcc;
+    text-align: center;
+    border: solid 1px #91bbff;
+    cursor: pointer;
+}
+.mj-mybconBul{
+    border-top: solid 1px #ececec;
+}
+.mj-mybconBul li{
+    position: relative;
+    padding: 17px 20px 17px 0;
+    border-bottom: solid 1px #ececec;
+}
+.mj-logoimg{
+    float: left;
+    position: relative;
+    margin-right: 20px;
+    display: inline-block;
+    width: 150px;
+    height: 92px;
+    background: #fff;
+    text-align: center;
+    line-height: 92px;
+    border: solid 1px #d6d6d6;
+}
+.mj-logoimg img{
+    max-width: 150px;
+    max-height: 87px;
+    vertical-align: middle;
+}
+.mj-logoimg label{
+    position: absolute;
+    display: block;
+    width: 55px;
+    height: 21px;
+    top: -1px;
+    left: -1px;
+    background: url(img/mj-img1.png) no-repeat;
+}
+.mj-logoimg label.newimg{
+    background: url(img/mj-img1s.png) no-repeat;
+}
+.mj-mbulC{
+    width: 364px;
+}
+.mj-mbulC p{
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #444;
+}
+.mj-mbulC p b{
+    /*padding-right: 30px;*/
+    font-size: 17px;
+    font-weight: normal;
+}
+.mj-mbulC p b i{
+    cursor: pointer;
+}
+.mj-mbulC span{
+    font-size: 12px;
+    color: #999;
+}
+.mj-mybsellBen{
+    width: 170px;
+    text-align: center;
+}
+.mj-mybsellBen label{
+    display: inline-block;
+    width: 90px;
+    height: 33px;
+    margin: 15px 0 13px;
+    background: #f6faff;
+    line-height: 33px;
+    font-size: 12px;
+    color: #357fcc;
+    text-align: center;
+    border: solid 1px #91bbff;
+    cursor: pointer;
+}
+.mj-mybsellBen a{
+    margin-top: 40px;
+    display: block;
+    font-size: 12px;
+    color: #357fcc;
+    text-decoration: underline;
+}
+.mj-detailsLink{
+    position: absolute;
+    right: 0;
+    top: 55px;
+    font-size: 12px;
+    color: #999;
+}
+
+/*关注弹框*/
+.mj-focusModel{
+    position: relative;
+    width: 565px;
+    padding: 50px;
+}
+.mj-focusModel h3{
+    font-size: 24px;
+    color: #666;
+    font-weight: normal;
+}
+.mj-focusModel h3 strong{
+    color: #ff6700;
+    font-weight: normal;
+}
+.mj-focusModel dl{
+    padding: 40px 0;
+}
+.mj-focusModel dd{
+    padding-bottom: 10px;
+    font-size: 12px;
+    color: #444;
+}
+.mj-focmBtn{
+    text-align: center;
+}
+.mj-focmBtn a{
+    display: inline-block;
+    margin-right: 10px;
+    width: 88px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    font-size: 14px;
+    border-radius: 2px;
+}
+.mj-focmBtn a.mj-focConfirm{
+    background: #ff6700;
+    color: #fff;
+    border: solid 1px  #ff6700;
+}
+.mj-focmBtn a.mj-focCancel{
+    background: #fff;
+    color: #444;
+    border: solid 1px #efeeed;
+}
+
+.mj-check{
+    padding: 30px 0 25px;
+    text-align: center;
+}
+.mj-check span{
+    margin-right: 35px;
+    display: inline-block;
+}
+.mj-check input{
+    vertical-align: middle;
+}
+.mj-check label{
+    padding-left: 8px;
+    font-size: 12px;
+    color: #444;
+    vertical-align: middle;
+}
+
+.mj-focusModel ul{
+    margin-left: 20px;
+}
+.mj-focusModel li{
+    margin-bottom: 13px;
+    font-size: 12px;
+    color: #444;
+}
+.mj-focusModel li label{
+    display: inline-block;
+    width: 60px;
+    margin-right: 20px;
+    text-align: right;
+    vertical-align: middle;
+}
+.mj-focusModel li label em{
+    color: #ff6700;
+}
+.mj-focusModel li .mj-focConfirm{
+    display: inline-block;
+    margin-left: 83px;
+    width: 148px;
+    height: 35px;
+    background: #ff6700;
+    color: #fff;
+    text-align: center;
+    line-height: 35px;
+    font-size: 16px;
+    border-radius: 2px;
+}
+.mj-focusModel li input{
+    padding-left: 15px;
+    width: 278px;
+    height: 35px;
+    border: solid 1px #abadb3;
+    outline: none;
+    line-height: 35px\9;
+}
+.mj-focusModel li span{
+    padding-left: 10px;
+}
+.mj-fouSpan{
+    position: relative;
+    top: 20px;
+    display: block;
+    margin-bottom: 20px;
+    width: 565px;
+    height: 1px;
+    background: #ddd;
+}
+.mj-fouSpan i{
+    position: absolute;
+    top: -7px;
+    left: 50px;
+}
+.mj-fouTips{
+    padding-top: 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+}
+.mj-fouTips a{
+    color: #ff6700;
+}
+
+/*提交成功弹框*/
+.mj-buSuc{
+    display: none;
+    position: relative;
+    padding: 70px 120px;
+    background: #fff;
+    border-radius: 3px;
+}
+.mj-buSuc_con{
+    margin: 70px auto;
+    width: 365px;
+    height: 85px;
+}
+.mj-buSuc_con label{
+    display: inline-block;
+    float: left;
+    margin-right: 30px;
+    height: 75px;
+}
+.mj-busR{}
+.mj-busR b{
+    font-size: 24px;
+    color: #666;
+    font-weight: normal;
+}
+.mj-busR p{
+    font-size: 12px;
+    color: #444;
+    line-height: 25px;
+}
+.mj-busR p em{
+    color: #ff6700;
+}
+/*.layui-layer{
+    width: auto;!important;
+}*/
+/*提交成功弹框 end*/

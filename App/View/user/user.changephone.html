@@ -1,0 +1,217 @@
+<? require(ViewDir.'/public/header.html'); ?> 
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper">
+    <section class="panel">
+      <header class="panel-heading"> <span class="float-left">手机设置</span>
+		<ul class="breadcrumb float-right">
+			<li><a href="javascript:history.go(-1);">返回</a></li>
+		</ul>
+	  </header>
+      <section class="wrapper wrapper tab-container">
+        <div class="row" style="height:100%; min-height:550px;" id="password_div" >
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="form-box to_buy">
+                <form class="form-inline">
+                  <div class="phone-form">
+			        <div class="progressbar" >
+						<ul>
+							<li class="succeed">
+				                <i class="dian"></i>
+				                <span class="xian"></span>
+				                <div class="text">
+				                  <p>认证新手机</p>
+				                </div>
+				              </li>
+				              <li class="fail">
+				                <i class="dian"></i>
+				                <span class="xian"></span>
+				                <div class="text">
+				                  <p>绑定成功</p>
+				                </div>
+				              </li>
+						</ul>
+					</div>
+		              <p>新手机</p>
+		              <div class="row">
+		                <div class="col-xs-12">
+		                	<input type="text"  id="phone" name="phone" class="form-control" placeholder="" style="width: 100%">
+		                </div>
+		              </div>
+		              <font class="red" id="mess_phone" ></font>
+		              <p>验证码</p>
+		              <div class="row">
+		                <div class="col-xs-12">
+		                  <div class="row">
+		                    <div class="col-xs-6">
+		                    	<input type="text"  id="mj-inputYz" class="form-control btn-block">
+		                    	
+		                    </div>
+		                    <div class="col-xs-6 text-right">
+								<input type="button" id="dl_fsmm" class="btn btn-danger btn-block" value="获取验证码" />
+		                    		
+		                    </div>
+		                  </div>
+		                  <font class="red" id="mess_code"></font>
+		                </div>
+		              </div>
+		              <div class="row">
+		                <div class="col-xs-12">
+		                  <p>
+		                    <a href="javascript:;" id="submitOk" class="btn btn-success btn-block">确认提交</a>
+		                  </p>
+		                </div>
+		              </div>
+		        	</div>
+                </form>
+              </header>
+            </section>
+          </div>
+        </div>
+
+        <div class="row" style="height:100%; min-height:550px;display:none;" id="success_div">
+          <div class="modal-body">
+            <ul class="list-inline ">
+              <li><img src="<?=StaticDir?>workspace/img/up_pwdcg.png"/></li>
+              <li>
+                <h3 style="color:#60c531;">恭喜电话修改成功 </h3>
+                <p>今后将使用新电话来登录系统，请牢记</p>
+                <a href="/user/main/" class="btn btn-primary">返回</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
+    </section>
+  </section>
+  <!--main content end--> 
+</section>
+
+<script type="text/javascript">
+    $(function(){
+        //手机号验证
+        //var reg = /^0?(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+        var reg = /(^1[3|4|5|7|8][0-9]{9}$)/;
+		var yz1 = false;
+        $("#phone").blur(function () {
+			checkPhone();
+        });
+        //验证码
+        $("#mj-inputYz").blur(function () {
+			checkCode();
+        });
+		
+
+    });
+	//给手机发送验证码
+	$("#dl_fsmm").click(function(){
+		_phone  = $("#phone").val();
+		if($('#dl_fsmm').css("color") =='rgb(51, 51, 51)'){
+			return false;
+		}
+        $.ajax({
+            type: "post",
+            url: "/user/sendRegCode/",
+            data: {m:_phone},
+            dataType: "json",
+			async: true,
+            success: function(data){
+                if (data.code == 1){
+					$('#dl_fsmm').removeClass('btn-danger');
+					time(document.getElementById("dl_fsmm"));
+                }else if (data.code == 2){
+					layter_msg('请输入正确的手机号码', 0, '');
+                }else if (data.code == 3){
+					layter_msg('该号码已经存在，请重新输入', 0, '');
+                }else{
+					layter_msg('发送失败', 0, '');
+                }
+            }
+		});
+
+	})
+
+	//提交按钮判断
+	$('#submitOk').click(function(){
+		che1 = checkPhone();
+		che2 = checkCode();
+		if(!che1 || !che2){ return false; }
+		$.ajax({
+            type: "post",
+            url: "/user/checkCode/",
+			async: true,
+            data: {m: $('#phone').val(), v:$("#mj-inputYz").val()},
+            dataType: "json",
+            success: function(data){
+                if (data.code == 2 || data.code == 3){
+					$('#mess_code').html(data.mess);
+                }else{
+					$('#success_div').show().siblings().hide()
+                }
+            }
+		});
+	})
+
+	//发送验证码倒计时
+	var wait=60;
+	function time(o) 
+	{
+        if (wait == 0) {
+            o.removeAttribute("disabled");           
+            o.value="获取验证码";
+            wait = 60;
+			$('#dl_fsmm').addClass('btn-danger');
+        } else {
+            o.setAttribute("disabled", true);
+            o.value= wait+"s后重新发送";
+            wait--;
+            setTimeout(function() {
+                time(o)
+            },
+            1000)
+        }
+    }
+
+	//判断手机输入框
+	function checkPhone()
+	{
+		//var reg = /0?(13|14|15|18)[0-9]{9}/;
+		var reg = /(^1[3|4|5|7|8][0-9]{9}$)/;
+		var yz1 = false;
+		var cont1 = $('#phone').val();
+		$("#mess-phone").html('');
+		var rest = reg.test(cont1);
+		if (cont1=="") {
+			yz1 = false;
+			$("#mess_phone").html('请输入手机号码');
+		} else if(rest){
+			$("#mess_phone").html('<i class="icon-ok text-success"></i>');
+			yz1 = true;
+		} else{
+			yz1 = false;
+			$("#mess_phone").html('请输入正确的手机号码！');
+		}
+		return yz1;
+	}
+	//判断验证码输入框
+	function checkCode()
+	{
+		var yz1 = false;
+		var cont2 = $("#mj-inputYz").val();
+		$("#mess-code").html('');
+		if (cont2=="") {
+			yz1 = false;
+			$("#mess_code").html('请输入验证码！');
+		}else if(cont2.length != 4){
+			yz1 = false;
+			$("#mess_code").html('请输入正确验证码！');
+		}else{
+			$("#mess_code").html('<i class="icon-ok text-success"></i>');
+			yz1 = true;
+		}
+		return yz1;
+	}
+
+</script>
+<? require(ViewDir.'/public/footer.html'); ?>

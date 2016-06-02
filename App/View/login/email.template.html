@@ -1,0 +1,61 @@
+<style type="text/css">
+.mj-content{background: #f1f1f1;min-height: 650px;padding-bottom: 50px;}
+.mj-center{padding-top: 40px;width: 750px;margin: 0 auto;}
+.mj-center>p{padding-bottom: 12px;font-size: 12px;color: #999;text-align: right;}
+.mj-cenT{width: 750px;min-height: 497px;background: #fff;}
+.mj-cenT_text{padding: 58px 60px 0;}
+.mj-textTop{margin-bottom: 20px;font-size: 12px;color: #861414;font-weight: bold;}
+.mj-textC,.mj-moBspan{font-size: 12px;color: #666;}
+.mj-textC strong{font-size: 21px;color: #861414;}
+.mj-textC em{color: #861414;}
+.mj-textB{display: block;padding: 25px 0 10px;font-size: 12px;color: #333;}
+.mj-tLink{font-size: 12px;color: #0068b7;width: 570px;display: block;}
+.mj-mbottom{padding: 54px 0 15px;}
+.mj-mbottom label{display: inline-block;width: 242px;border-bottom: dashed 1px #ccc;vertical-align: middle;}
+.mj-mbottom span{display: inline-block;padding: 0 14px;font-size: 12px;color: #999;}
+.mj-mBimg{}
+.mj-mBimg_left{display: inline-block;margin-right: 15px;}
+.mj-mBimg_right{}
+.mj-mBimg_right i{display: block;font-size: 16px;color: #f86f0c;font-weight: bold;}
+.mj-mBimg_right strong{padding: 12px 0;display: block;font-size: 12px;color: #666;}
+.mj-mBimg_right strong em{color: #0068b7;}
+.mj-moBspan{margin-top: 50px;display: block;text-align: right;}
+.f-clearfix:after {clear: both;display: block;height: 0;font-size: 0;content: ".";visibility: hidden;}
+.f-clearfix{zoom: 1;}
+.fl{float: left;}
+.fr{float: right;}
+</style>
+<div class="mj-content">
+    <div class="mj-center">
+        <p>如非本人操作，请忽略此邮件，由此给您带来的不便请谅解！</p>
+        <div class="mj-cenT">
+            <div class="mj-cenT_text">
+                <p class="mj-textTop">尊敬的 {$email} ，你好！</p>
+
+                <!--邮件绑定提示-->
+                <p class="mj-textC">感谢你使用商标管家，你正在进行密码找回，本次请求的验证码为：<strong>{$password}</strong></p>
+                <!--邮件更换提示-->
+                <!--<p class="mj-textC">感谢你使用商标管家，你正在进行邮箱更换，本次请求的验证码为：<strong>123456</strong></p>-->
+                <!--邮件密码重置提示-->
+                <!--<p class="mj-textC">感谢你使用商标管家，你正在进行密码重置，本次请求的验证码为：<strong>123456</strong></p>-->
+                <!--邮件注册提示-->
+                <!--<p class="mj-textC">感谢你注册商标管家，本次请求的验证码为：<strong>123456</strong></p>-->
+
+                <div class="mj-mbottom">
+                    <label></label>
+                    <span>系统邮件，请勿回复</span>
+                    <label></label>
+                </div>
+                <div class="mj-mBimg f-clearfix">
+                    <span class="mj-mBimg_left fl"><img src="<?=USER_CENTRE.StaticDir?>style/img/mj-img8.jpg" alt=""/></span>
+                    <div class="mj-mBimg_right">
+                        <i>快，扫我！</i>
+                        <strong><< 下一次的<em>商标状态</em>你将在手机微信里收到</strong>
+                        <p class="mj-textC">如有疑问，请致电您的专属顾问或拨打热线：<em>4006-899-852</em>。</p>
+                    </div>
+                    <span class="mj-moBspan">商标管家团队 衷心敬上！</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,634 @@
+.mj-right{
+    width: 948px;
+}
+.mj-right_main{
+    margin-bottom: 10px;
+    min-height: 590px;
+    background: #fff;
+    border: solid 1px #e5edf2;
+}
+.secTitle{
+    position: relative;
+    padding-left: 30px;
+    font-size: 20px;
+    height: 58px;
+    line-height: 58px;
+    color: #515567;
+    font-weight: normal;
+    border-bottom: solid 1px #e5edf2;
+}
+.mj-setUp{
+    padding: 0 60px;
+}
+.mj-setUp li{
+    padding: 30px 0;
+    position: relative;
+    border-bottom: solid 1px #e5edf2;
+}
+.mj-setUp li .mj-setLeft{}
+.mj-setUp li .mj-setLeft i{
+    float: left;
+}
+.mj-serText{
+    margin-left: 85px;
+    padding-top: 10px;
+}
+.mj-serText p{
+    font-size: 16px;
+}
+.mj-serText p.cob{
+    color: #515567;
+}
+.mj-serText p.cog{
+    color: #0fce9f;
+}
+.mj-serText p.cor{
+    color: #eb5152;
+}
+.mj-serText span{
+    font-size: 12px;
+    color: #94969e;
+}
+.mj-setUp li>a{
+    position: absolute;
+    width: 108px;
+    height: 38px;
+    right: 0;
+    top: 40px;
+    background: #f3f7fa;
+    text-align: center;
+    line-height: 38px;
+    font-size: 14px;
+    color: #007ece;
+    border: solid 1px #c7dcea;
+}
+.mj-setUp li>label{
+    position: absolute;
+    top: 15px;
+    right: 0;
+}
+
+/*修改密码*/
+.secTitle label{
+    position: absolute;
+    width: 68px;
+    height: 58px;
+    right: 0;
+    top: 0;
+    text-align: center;
+    border-left: solid 1px #e5edf2;
+    cursor: pointer;
+}
+.mj-chaPaw{
+    padding: 45px 0 0 60px;
+}
+.mj-chaPaw li{
+    position: relative;
+    margin-bottom: 15px;
+}
+.mj-chaPaw li label{
+    display: block;
+    padding-bottom: 5px;
+    font-size: 16px;
+    color: #515567;
+}
+.mj-liInput{
+    position: relative;
+    margin-right: 10px;
+    padding-left: 13px;
+    width: 402px;
+    height: 48px;
+    line-height: 48px;
+    border: solid 1px #ddd;
+}
+.mj-inpuV{
+    line-height: 38px;
+    color: #bbb;
+    font-size: 12px;
+}
+.mj-liInput input{
+    position: absolute;
+    left: 13px;
+    height: 48px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAABBCAYAAAAt36+DAAAACXBI…BqVQqlUqlUqlUKpVKpVKpVCqVSqVSqVQq/TB9AAAA//8DAG4xA3+Ev9g4AAAAAElFTkSuQmCC');
+    line-height: 48px\9;
+    width: 402px;
+    vertical-align: middle;
+    z-index: 2;
+    border: none;
+    outline: none;
+}
+
+.mj-liInput input.mj-textPas{
+    position: absolute;
+    top: 0;
+}
+
+
+.Ptip{
+    position: absolute;
+    top: 40px;
+    left: 435px;
+}
+.mj-inputTip1{
+    font-size: 14px;
+}
+.mj-chaPaw li p.cog{
+    color: #0fce9f;
+}
+.mj-chaPaw li p.cor{
+    color: #eb5152;
+}
+.hidP{
+    position: absolute;
+    font-size: 14px;
+    color: #007ece;
+    top: 0;
+    left: 362px;
+    cursor: pointer;
+}
+.mj-chaPaw li>a{
+    margin-top: 5px;
+    display: inline-block;
+    width: 140px;
+    height: 48px;
+    background: #596081;
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    line-height: 48px;
+    border-radius: 2px;
+}
+
+/*邮箱设置*/
+.mj-steps{
+    position: relative;
+    margin: 58px 0 0 278px;
+    width: 240px;
+    border-top: solid 1px #e5edf2;
+}
+.mj-steps .mj-val,.mj-steps .mj-bin{
+    position: absolute;
+    width: 75px;
+    text-align: center;
+}
+.mj-val{
+    top: -20px;
+    left: -15px;
+}
+.mj-bin{
+    top: -20px;
+    right: -20px;
+}
+.mj-steps p{
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+}
+.mj-steps .mj-val p{
+    background: #ff9d1f;
+}
+.mj-steps .mj-bin p{
+    background: #dddddd;
+}
+.mj-val span{
+    font-size: 14px;
+    color: #ff9d1f;
+}
+.mj-bin span{
+    font-size: 14px;
+    color: #94969e;
+}
+.emInput{
+    margin-top: 70px;
+}
+div.resetW{
+    width: 105px;
+    float: left;
+}
+div.resetW input{
+    width: 105px;
+}
+.mj-chaPaw li label.mj-labtn{
+    display: inline-block;
+    padding-bottom: 0;
+    width: 138px;
+    height: 48px;
+    background: #f3f7fa;
+    text-align: center;
+    line-height: 48px;
+    font-size: 16px;
+    color: #007ece;
+    border: solid 1px #c7dcea;
+    cursor: pointer;
+}
+.emTips{
+    display: inline-block;
+    margin-left: 8px;
+    width: 298px;
+    height: 48px;
+    background: #f7f7f7;
+    text-align: center;
+    line-height: 48px;
+    font-size: 16px;
+    color: #94969e;
+    border: solid 1px #e3e3e3;
+}
+.mj-emLink{
+   margin-left: 20px;
+}
+.mj-emLink a{
+    font-size: 14px;
+    color: #007ece;
+}
+
+
+
+/*个人信息*/
+.mj-perTop{
+    position: relative;
+}
+.mj-perTop .mj-ltImg{
+    position: absolute;
+    top: 40px;
+    left: 60px;
+}
+.mj-perInr{
+    margin: 40px 40px 0;
+    padding-left: 208px;
+}
+.ulBgc{
+    padding-top: 40px;
+    height: 160px;
+    background: #f3f7fa;
+    border: solid 1px #e5edf2;
+}
+.mj-perInr li{
+    font-size: 14px;
+}
+.mj-perInr li label{
+    display: inline-block;
+    width: 70px;
+    margin-right: 15px;
+    text-align: right;
+    color: #94969e;
+}
+.mj-perInr li span{
+    color: #515567;
+}
+.mj-perInr li span.resetCg{
+    color: #0fce9f;
+}
+.mj-perInr li span.resetCr{
+    color: #0fce9f;
+}
+.limb20 li{
+    margin-bottom: 15px;
+}
+.limb10 li{
+    margin-bottom: 10px;
+}
+.mj-perInr li .mj-chaS{
+    padding-left: 65px;
+    font-size: 14px;
+    color: #007ece;
+}
+.mj-changeBtn{
+    display: block;
+    margin-left: 82px;
+    width: 130px;
+    height: 50px;
+    background: #3794cf;
+    text-align: center;
+    line-height: 50px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 2px;
+}
+.bacg{
+    background: #0fce9f;
+}
+
+.mj-perInr li .inpText{
+    padding-left: 15px;
+    width: 400px;
+    height: 48px;
+    border: solid 1px #ddd;
+    line-height: 48px\9;
+    outline: none;
+}
+.mj-perInr li input{
+    vertical-align: middle;
+}
+.mj-perInr li label.resetLa{
+    width: 35px;
+    color: #515567;
+    vertical-align: middle;
+}
+.mr20{
+    display: inline-block;
+    margin: 5px 20px 5px 10px;
+}
+
+/*我的申请人*/
+.sh68{
+    height: 68px;
+    line-height: 68px;
+}
+.rzBtn{
+    display: block;
+    position: absolute;
+    right: 30px;
+    top: 15px;
+    width: 108px;
+    height: 38px;
+    background: #f3f7fa;
+    text-align: center;
+    line-height: 38px;
+    font-size: 14px;
+    color: #007ece;
+    border: solid 1px #c7dcea;
+    border-radius: 2px;
+}
+.mj-applicantTab{
+    width: 100%;
+}
+.mj-applicantTab thead tr{
+    background: #f3f7fa;
+}
+.mj-applicantTab td{
+    height: 48px;
+    line-height: 48px;
+    padding-left: 30px;
+    font-size: 14px;
+    color: #515567;
+    border-bottom: solid 1px #e5edf2;
+}
+.remr{
+    margin-right: 15px;
+}
+.mj-applicantTab td a{
+    color: #007ece;
+}
+.mj-applicantTab td em{
+    color: #eb5152;
+    cursor: pointer;
+}
+.mj-addAppl{
+    padding-top: 30px;
+    text-align: center;
+}
+.mj-addAppl a{
+    display: inline-block;
+    width: 340px;
+    height: 40px;
+    background: #596081;
+    text-align: center;
+    line-height: 40px;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 2px;
+}
+.mj-applicantList{
+    margin: 40px 0 40px 40px;
+    width: 858px;
+    min-height: 400px;
+    background: #f7f7f7;
+    border: solid 1px #e2e3e4;
+}
+.mj-alTop{
+    padding: 45px 0 0 38px;
+}
+.mj-alTop p{
+    padding-bottom: 8px;
+    font-size: 16px;
+    color: #515567;
+}
+.mj-alTop span{
+    margin-right: 20px;
+}
+.mj-alTop label{
+    margin-left: 5px;
+    font-size: 14px;
+    color: #515567;
+    cursor: pointer;
+}
+.mj-alTop input{
+    vertical-align: middle;
+}
+.mj-applicTab{
+    padding-left: 38px;
+}
+.mj-applicTab ul{
+    margin-top: 10px;
+}
+
+
+/*认证申请人*/
+.mj-cerAmain{
+    padding: 60px 0 0 60px;
+}
+.mj-cerAmain select{
+    padding-left: 15px;
+    width: 584px;
+    height: 48px;
+    font-size: 14px;
+    color: #515567;
+    border: solid 1px #ddd;
+    outline: none;
+}
+
+.mj-addFiles{
+    margin-top: 30px;
+}
+.mj-addfLeft{
+    margin-right: 40px;
+}
+.mj-addfLeft label{
+    display: block;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
+    background: #efefef;
+    text-align: center;
+    line-height: 200px;
+}
+.mj-addfLeft label img{
+    max-width: 200px;
+    max-height: 200px;
+    vertical-align: middle;
+}
+.mj-addfRight{
+
+}
+.mj-addfRight span{
+    font-size: 12px;
+    color: #94969e;
+}
+.mj-addfRight p{
+    padding: 35px 0 30px;
+    font-size: 12px;
+    color: #ff9d1f;
+}
+.mj-addfRight a{
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    background: #ff9d1f;
+    color: #fff;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 2px;
+    font-size: 16px;
+}
+
+/*消息中心*/
+.resCh input{
+    margin-right: 10px;
+    vertical-align: middle;
+}
+.mj-applicantTab td a.restCoy{
+    color: #515567;
+}
+.resCh td span{
+    color: #94969e;
+}
+.mj-mesBottom{
+    padding: 20px 0 0 30px;
+}
+.mj-botBtns{
+    width: 235px;
+}
+.mj-botBtns a{
+    display: inline-block;
+    width: 108px;
+    height: 38px;
+    background: #fff;
+    font-size: 14px;
+    color: #007ece;
+    text-align: center;
+    line-height: 38px;
+    border-radius: 2px;
+    border: solid 1px #e5edf2;
+}
+.mj-botBtns a:hover{
+    background: #f3f7fa;
+    border: solid 1px #c7dcea;
+}
+.mj-mesBottom .mj-pageCon{
+    float: right;
+    margin-top: 0;
+}
+
+.detCon{
+    padding: 60px 0 0 60px;
+    font-size: 14px;
+}
+.detCon p{
+    padding-bottom: 20px;
+    color: #515567;
+    line-height: 25px;
+}
+.detCon span{
+    color: #94969e;
+}
+
+/*****************重置密码******************/
+
+.mj-steps-reset{
+    position: relative;
+    margin: 58px 0 0 208px;
+    width: 400px;
+    border-top: solid 1px #e5edf2;
+	height:80px;
+}
+.mj-steps-reset div{
+    position: absolute;
+    width: 75px;
+    text-align: center;
+    top: -20px;
+}
+
+.mj-steps-reset p{
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 50%;
+    background: #dddddd;
+}
+.mj-steps-reset span{
+	color: #94969e;
+    font-size: 14px;
+}
+
+.mj-chaPaw .Ptip{ top: 10px; }
+
+.mj-steps-reset .mj-yellow p{
+    background: #ff9d1f;
+	
+}
+.mj-steps-reset .mj-yellow span{
+	color: #ff9d1f;
+    font-size: 14px;
+}
+.mj-steps-reset .mj-val1{
+    left: -15px;
+}
+.mj-steps-reset .mj-val2{
+    left: 180px;
+}
+.mj-steps-reset .mj-val3{
+    left: 370px;
+}
+
+.mj-chaPaw .mj-select{
+	border:1px solid #ddd;
+	height:48px;
+	width: 280px;
+	padding-left:13px;
+}
+.mj-chaPaw .mj-select option{
+	height:32px;
+	padding-top:15px;
+	padding-left:13px;
+}
+
+.mj-chaPaw .mj-liradio {
+	font-size:14px; 
+	line-height:48px;
+	height:48px;
+	float:left;
+}
+.mj-chaPaw .mj-liradio label{
+	display:inline-block;
+	margin-right:40px;
+	font-size:16px;
+}
+
+.mj-resetPaw{
+	padding-left:190px;
+}
+
+.mj-resetPaw .mj-sucImg{
+	float:left;
+}
+.mj-resetPaw .mj-sucText{
+	float:left;
+	margin:20px 0 0 50px;
+	font-size:14px;
+}
+
+.mj-resetPaw .mj-sucText h2{
+	color:#ff9d1f;
+	font-size:18px;
+}
+ 

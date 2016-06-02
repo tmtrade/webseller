@@ -1,0 +1,78 @@
+/*header*/
+.mj-header{
+    width: 100%;
+    height: 60px;
+    background: #3a3e54;
+    overflow: hidden;
+}
+.mj-navLeft{
+    margin-left: 210px;
+    width: 330px;
+}
+.mj-navLeft li{
+    width: 110px;
+    float: left;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+}
+.mj-navLeft li a{
+    display: block;
+    height: 60px;
+    font-size: 18px;
+    color: #75788b;
+}
+.mj-navLeft li.on a{
+    background: #474b5f;
+    color: #fff;
+}
+
+
+
+.mj-navRight{
+    margin: 10px 65px 0 0;
+}
+.mj-navRight li{
+    float: left;
+    margin-left: 15px;
+}
+.mj-navRight li label{
+    display: block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+}
+.mj-navRight li label img{
+    max-width: 40px;
+    max-height: 40px;
+    vertical-align: middle;
+}
+.mj-navRight li p{
+    font-size: 16px;
+    color: #fff;
+}
+.link1{
+    font-size: 12px;
+    color: #ffff9f;
+}
+
+
+.mj-menu{
+    padding: 12px 0;
+    font-size: 14px;
+}
+.mj-menu a{
+    color: #515567;
+}
+.mj-menu em{
+    padding: 0 5px;
+    color: #515567;
+}
+.mj-menu em.coy{
+    color: #94969e;
+}
+.mj-menu span{
+    color: #94969e;
+}
+

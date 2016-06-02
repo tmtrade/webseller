@@ -1,0 +1,300 @@
+<? require(ViewDir.'/header.html'); ?>
+<script language="javascript" src="<?=StaticDir?>/script/register.js"></script>
+<style type="text/css">
+.resetsteps2,.resetsteps3{
+	display:none;
+}
+.mj-labtnsb{
+	color: rgb(51, 51, 51); 
+	background-color: rgb(221, 221, 221);
+	display: inline-block;
+    padding-bottom: 0;
+    width: 138px;
+    height: 48px;
+    text-align: center;
+    line-height: 48px;
+    font-size: 16px;
+    border: solid 1px #c7dcea;
+    cursor: pointer;
+}
+.mj-chaPaw .Ptip{
+	top:0px;
+}
+</style>
+<!--content start-->
+<div class="mj-content">
+    <div class="w1180 f-clearfix">
+		<? require(ViewDir.'/user/left.html'); ?>
+        <div class="mj-right fr">
+            <div class="mj-menu">
+                <a href="">我的账户</a><em>></em>
+                <a href="">安全中心</a><em class="coy">></em>
+                <span>重置密码</span>
+            </div>
+
+			<!--------------------第一步  开始----------------------->
+            <div class="mj-right_main f-clearfix resetsteps1">
+                <h4 class="secTitle">重置密码<label><i class="uj-icon uj-icon15"></i></label></h4>
+				 <div class="mj-steps-reset">
+                    <div class="mj-val1  mj-yellow">
+                        <p>1</p>
+                        <span>验证身份</span>
+                    </div>
+                    <div class="mj-val2 ">
+                        <p>2</p>
+                        <span>设置密码</span>
+                    </div>
+                    <div class="mj-val3 ">
+                        <p>3</p>
+                        <span>重置成功</span>
+                    </div>
+                </div>
+
+
+                <ul class="mj-chaPaw mj-resetPaw">
+					<li class="f-clearfix">
+                        <div class="mj-liradio">
+							<select class="mj-select" name="types">
+                            	<?php
+                                 if(!empty($userMobile)){
+                                ?>
+								<option value="1">发送至手机 : <?=$userMobile?></option>
+                                <?php
+                                }
+                                ?>
+                                <?php
+                                 if(!empty($userEmail)){
+                                ?>
+								<option value="2">发送至邮箱 : <?=$userEmail?></option>
+                                <?php
+                                }
+                                ?>
+							</select>
+							<!-- <label><input type="radio" class="mj-radios" name="choose" value="1" checked="checked"/> 发送至手机 </label>
+							<label><input type="radio" class="mj-radios"  name="choose" value="2"/> 发送至邮箱</label> -->
+							<label id="dl_fsmm" class="mj-labtn mj-sent">获取验证码</label>
+						</div>
+						<div id="mess_phone" class="pass_mess"></div>
+					</li>
+					<li class="f-clearfix">
+						<div class="mj-liInput resetW">
+							<span class="mj-inpuV">请输入验证码</span>
+							<input id="mj-inputYz" class="mj-textPas" type="text"  autocomplete="off">
+						</div>
+						<div id="mess_code" class="pass_mess"></div>
+					</li>
+                    <li><a href="javascript:;" class="substeps1">提交</a></li>
+                </ul>
+            </div>
+			<!--------------------第一步  结束----------------------->
+			
+			<!--------------------第二步  开始----------------------->
+            <div class="mj-right_main f-clearfix resetsteps2">
+                <h4 class="secTitle">重置密码<label><i class="uj-icon uj-icon15"></i></label></h4>
+				<div class="mj-steps-reset">
+                    <div class="mj-val1  mj-yellow">
+                        <p>1</p>
+                        <span>验证身份</span>
+                    </div>
+                    <div class="mj-val2 mj-yellow">
+                        <p>2</p>
+                        <span>设置密码</span>
+                    </div>
+                    <div class="mj-val3 ">
+                        <p>3</p>
+                        <span>重置成功</span>
+                    </div>
+                </div>
+                <ul class="mj-chaPaw mj-resetPaw">
+					<li>
+						<label>新密码：</label>
+							<div class="mj-liInput">
+								<input id="old" type="password" maxlength="30" name="old">
+							</div>
+						<div id="old_pass" class="pass_mess"></div>
+					</li>
+					<li>
+						<label>重复密码：</label>
+						<div class="mj-liInput">
+							<input id="usrName_popups" class="mj-textPas" type="password" maxlength="30">
+						</div>
+						<div id="new_pass" class="pass_mess"> </div>
+					</li>
+                    <li><a href="javascript:;" class="substeps2">提交</a></li>
+                </ul>
+            </div>
+			<!--------------------第二步  结束----------------------->
+
+
+			
+			<!--------------------第三步  开始----------------------->
+            <div class="mj-right_main f-clearfix resetsteps3">
+                <h4 class="secTitle">重置密码<label><i class="uj-icon uj-icon15"></i></label></h4>
+				<div class="mj-steps-reset">
+                    <div class="mj-val1  mj-yellow">
+                        <p>1</p>
+                        <span>验证身份</span>
+                    </div>
+                    <div class="mj-val2 mj-yellow">
+                        <p>2</p>
+                        <span>设置密码</span>
+                    </div>
+                    <div class="mj-val3 mj-yellow">
+                        <p>3</p>
+                        <span>重置成功</span>
+                    </div>
+                </div>
+				<div class="mj-chaPaw mj-resetPaw">
+					<div class="mj-sucCon">
+						<div class="mj-sucImg"><img src="<?=StaticDir?>style/img/img3.png" alt="" width="100"/></div>
+						<div class="mj-sucText">
+							<h2>重设密码成功！</h2>
+							<p><b id="daoshu">3</b>s 后自动跳转至<a href="/login/logout/">登录</a>页面</p>
+						</div>
+					</div>
+				</div>
+            </div>
+			<!--------------------第三步  结束----------------------->
+
+        </div>
+    </div>
+</div>
+<div style="background-color:#f3f7fa; height:30px;"></div>
+<!--content end-->
+<script language="javascript">
+$(document).ready(function(){
+	//验证验证码
+	$('.substeps1').click(function(){
+		isSendCode = $('#dl_fsmm').hasClass('mj-labtnsb');
+		if(!isSendCode){
+			textTip('mess_phone','请点击获取验证码',0);
+			return false;
+		}else{
+			textTip('mess_phone','',1);
+		}
+		yzCode = $('#mj-inputYz').val();
+		if(!yzCode){
+			textTip('mess_code','请输入验证码！',0);
+			return false;
+		}else{
+			textTip('mess_code','',1);
+		}
+		_account  = $(".mj-select").val();
+		$.ajax({
+            type	: "post",
+            url		: "/user/checkResetCode/",
+			async	: true,
+            data	: {m: _account, v:yzCode},
+            dataType: "json",
+            success	: function(data){
+				if( data.code == 1 ){
+					$('.resetsteps1').hide();
+					$('.resetsteps2').show();
+				}else{
+					textTip('mess_code',data.msg,0);
+				}
+            }
+		});
+	});
+	$('.substeps2').click(function(){
+		oldVal = $('#old').val();
+		newVal = $('#usrName_popups').val();
+		oldmsg = verifyPwd(oldVal);
+		if(oldmsg){
+			textTip('old_pass',oldmsg,0);
+			return false;
+		}else{
+			textTip('old_pass','',1);
+		}
+		newmsg = verifyPwd(newVal);
+		if(newmsg){
+			textTip('new_pass',newmsg,0);
+			return false;
+		}else{
+			textTip('new_pass','',1);
+		}
+		if( oldVal != newVal ){
+			textTip('new_pass','两次输入密码不一样',0);	
+			return false;
+		}else{
+			textTip('new_pass','',1);
+		}
+		upResetpwd(oldVal,newVal);
+	});
+	//发送验证码
+	$("#dl_fsmm").click(function(){
+		_account  = $(".mj-select").val();
+		if($('#dl_fsmm').hasClass("mj-sentsb")){
+			return false;
+		}
+        $.ajax({
+            type	: "post",
+            url		: "/user/sendResetCode/",
+            data	: {m:_account},
+            dataType: "json",
+			async	: true,
+            success	: function(data){
+                if (data.code == 1){
+                    $('#dl_fsmm').html('密码已发送');
+					$('#dl_fsmm').removeClass('mj-labtn').addClass('mj-labtnsb');
+                    timer(120, $("#dl_fsmm"), '发送密码');
+                }else if (data.code == 2){
+					layter_msg('请输入正确的手机号码', 0, '');
+                }else if (data.code == 3){
+					layter_msg('该号码已经存在，请重新输入', 0, '');
+                }else{
+					layter_msg('发送失败', 0, '');
+                }
+            }
+		});
+	})
+//发送验证码倒计时
+	function timer(count, obj, title)
+	{
+		 window.setTimeout (function () {
+			 count --;
+			 obj.text(count + "s后重新发送");
+			 if(count > -1){
+				 timer(count, obj, title);
+			 }else{
+				obj.text(title);
+				$('#dl_fsmm').css({"color":"#007ece",'background-color':'#f3f7fa'});
+			 }
+		 },1000);
+	}
+	function timer2(count, obj)
+	{
+		 window.setTimeout (function () {
+			 count --;
+			 obj.text(count);
+			 if(count > 0){
+				 timer2(count, obj);
+			 }else{
+				window.location = '/login/logout/';
+			 }
+		 },1000);
+	}
+
+	function upResetpwd(oldpwd,newpwd){
+		$.ajax({
+            type	: "post",
+            url		: "/user/upResetpwd/",
+            data	: {'om':oldpwd,'nm':newpwd},
+            dataType: "json",
+			async	: true,
+            success	: function(data){
+                if (data.code == 1){
+                    $('.resetsteps2').hide();
+					$('.resetsteps3').show();
+					timer2(3, $('#daoshu'));
+                }else{
+					layter_msg(data.msg, 0, '');
+                }
+            }
+		});	
+	}
+});
+</script>
+
+
+<? require(ViewDir.'/footer.html'); ?>

@@ -1,0 +1,43 @@
+<!-- js placed at the end of the document so the pages load faster --> 
+<script src="<?=StaticDir?>workspace/js/jquery.js"></script> 
+<script src="<?=StaticDir?>workspace/js/bootstrap.min.js"></script> 
+<!--common script for all pages--> 
+<script src="<?=StaticDir?>workspace/js/common-scripts.js"></script> 
+<script language="javascript" src="<?=StaticDir?>script/usernew.js"></script>
+<script language="javascript" src="<?=StaticDir?>workspace/js/lostpassword.js"></script>
+<script language="javascript" src="<?=StaticDir?>workspace/js/means.js"></script>
+<script language="javascript" src="<?=StaticDir?>script/backcallandtongji.js"></script>
+<!--logo start--> 
+    <a href="/" class="logo" ></a> 
+    <div class="sidebar-toggle-box">
+      <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+    </div>
+    <!--logo end-->
+    <div class="nav notify-row" id="top_menu"> 
+      <!--  notification start -->
+      <ul class="nav top-menu">
+        <!-- inbox dropdown start-->
+        <li id="header_inbox_bar" class="dropdown"> </li>
+        <!-- inbox dropdown end --> 
+        <!-- notification dropdown start-->
+        <li id="header_notification_bar" class="dropdown"> </li>
+        <!-- notification dropdown end -->
+        <li class="dropdown"> 
+          <ul class="dropdown-menu" style="border:none;">
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="top-nav ">
+      <ul class="nav pull-right top-menu">
+        <!-- user login dropdown start-->
+        <li class="dropdown counselors"> 
+            <a data-toggle="dropdown" class="dropdown-toggle counselor" href="#" onclick="consultation()">
+                <span class="username"><font size="1">我是你的顾问</font><br />
+                <font size="3">找TA帮忙</font></span>
+            </a>
+        </li>
+        <!-- user login dropdown end -->
+      </ul>
+    </div>

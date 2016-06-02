@@ -1,0 +1,124 @@
+<? require(ViewDir.'/header_old.html'); ?>
+<link rel="stylesheet" href="<?=StaticDir?>style/mj-registered.css"/>
+<link rel="stylesheet" href="<?=StaticDir?>style/secCenter.css"/>
+<?php
+if(!$isLogin){
+?>
+<!--注册-->
+<!--content start-->
+<div class="g-content g-login">
+    <div class="w1180 g-nal">
+        <div class="g-login_rg">
+            <ul class="f-clearfix">
+                <li class="g-mt">帐号登录</li>
+                <li>快捷登录</li>
+            </ul>
+
+            <div class="g-login-input">
+                <!-- 账号登录 start -->
+                <div class="g-toinput">
+                    <div class="g-toinput_ip1">
+                        <div class="g-toinput_ip1_p">
+                            <span>用户名</span>
+                            <i id="eTips" style="display: none">
+                                <img src="<?=StaticDir?>style/slice/mj-icon14.png" alt=""/>
+                                <span style="color:#eb5152">邮箱格式不正确</span>
+                            </i>
+                        </div>
+                        <div class="g-toinput_ip2_input">
+                            <span><img src="<?=StaticDir?>style/slice/mj-icon4.png" alt=""/></span>
+                            <input type="text" placeholder="请输入正确的邮箱 / 手机号码" id="uemail" value=""/>
+                        </div>
+                    </div>
+                    <div class="g-toinput_ip1 g-toinput_ip2">
+                        <div class="g-toinput_ip1_p">
+                            <span>密码</span>
+                            <i><img src="<?=StaticDir?>style/slice/mj-icon13.png" alt="" style="display:none"/></i>
+                        </div>
+                        <div class="g-toinput_ip2_input">
+                            <span><img src="<?=StaticDir?>style/slice/g-suo.png" alt=""/></span>
+                            <input type="password" id="upass" placeholder="请输入密码（6-20位数字，字母或符号）" maxlength="20"/>
+                        </div>
+                        <div class="g-toinput_tip">
+                            <span>
+                            	<input type="checkbox" name="accord" value="11" class="accord" id="accord"/>自动登录
+                            </span>
+                            <a href="/lostpassword/">忘记密码</a>
+                        </div>
+                        <div class="g-verify">
+                       	  <a href="javascript:;" ctype="e" class="g-ver_a1" id="logver1">登录</a>
+                          <a href="javascript:;" class="g-ver_a2" onClick="return register()">注册</a>
+                        </div>
+                        <a href="javascript:;" class="g-toinput_a" onClick="return register()">还没有账号，立即注册</a>
+                    </div>
+                </div>
+                <!-- 账号登录 end -->
+
+                <!-- 快捷登录 start -->
+                <div class="g-toinput" style="display: none;">
+                    <div class="g-toinput_ip1">
+                        <div class="g-toinput_ip1_p g-toinput_kj_p">
+                            <span>验证即注册，未注册将自动创建知友账号</span>
+                        </div>
+                        <div class="g-toinput_ip1_p">
+                            <span>手机号码</span>
+                            <i id="mTips" style="display: none">
+                                <img src="<?=StaticDir?>style/slice/mj-icon14.png" alt=""/>
+                                <span style="color:#eb5152">邮箱格式不正确</span>
+                            </i>
+                        </div>
+                        <div class="g-toinput_ip2_input">
+                            <span><img src="<?=StaticDir?>style/slice/g-pho.png" alt=""/></span>
+                            <input type="text" placeholder="请输入手机号码" id="umobile" maxlength="11" value=""/>
+                        </div>
+                    </div>
+                    <div class="g-toinput_ip1 g-toinput_ip2">
+                        <div class="g-toinput_ip1_p">
+                            <span>验证码</span>
+                        </div>
+                        <div class="g-toinput_ip2_input g-toinput_kj_ip2" style="margin-bottom:15px;">
+                            <span><img src="<?=StaticDir?>style/slice/g-dp.png" alt=""/></span>
+                            <input type="text" placeholder="请输入短信验证码" id="ucode" maxlength="4"/>
+                            <a href="javascript:;" id="getcode" style="font-size:12px">获取验证码</a>
+                        </div>
+                        <div class="g-toinput_tip g-toinput_kj_tip" style="display:none;">
+                            <span><input type="checkbox" name="automobile" />记住手机号码</span>
+                        </div>
+                        <div class="g-verify">
+                            <a href="javascript:;" class="g-ver_a1 g-ver_a3" id="logver2">登录</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 快捷登录 end -->
+            </div>
+        </div>
+    </div>
+</div>
+<!--content end-->
+<?php
+}else{
+?>
+<div class="mj-reCenter">
+    <div class="mj-reC_top">
+        <label></label>
+        <span>登录成功</span>
+        <label></label>
+    </div>
+    <ul>
+        
+    </ul>
+</div>
+<?php
+}
+?>
+<script type="text/javascript">
+    //登录切换
+    $(".g-login_rg ul>li").click(function(){
+        $(this).addClass("g-mt").siblings("li").removeClass("g-mt");
+        $('.g-login-input>div:eq('+$(this).index()+')').show().siblings().hide();
+    });
+	function register(){
+		window.location = '/register/index/';
+	}
+</script>
+<? require(ViewDir.'/footer_old.html'); ?>

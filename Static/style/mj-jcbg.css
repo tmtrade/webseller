@@ -1,0 +1,340 @@
+.mj-content{
+    background: #f5f5f5;
+    padding-top: 22px;
+    clear: both;
+}
+.mj-content_title{
+    padding-bottom: 14px;
+}
+.mj-content_title span{
+    font-size: 12px;
+    color: #666;
+}
+.mj-content_title span em{
+    color: #b7b7b7;
+}
+.mj-content_title a{
+    color: #666;
+}
+.mj-mainCon{
+
+}
+
+.mj-mybRight{
+    padding: 0 30px 20px;
+    width: 825px;
+    min-height: 766px;
+    background: #fff;
+}
+.mj-padaT{
+    font-size: 16px;
+    color: #666;
+}
+.mj-jcrTop{
+    padding: 40px 0 10px 0;
+    border-bottom: solid 1px #e0e0e0;
+}
+.mj-jcrTop label{
+    display: block;
+    float: right;
+    width: 50px;
+    height: 28px;
+    background: #f5f5f5;
+    text-align: center;
+    line-height: 28px;
+    font-size: 12px;
+    color: #357fcc;
+    border: solid 1px #eceae9;
+    cursor: pointer;
+}
+
+
+.mj-jcrImg{
+    position: relative;
+    height: 100px;
+    padding: 20px 0;
+    border-bottom: solid 1px #e0e0e0;
+}
+.mj-jcriL{
+    position: relative;
+    margin-right: 20px;
+    width: 164px;
+    height: 98px;
+}
+.mj-jcriL a{
+    display: table;
+    margin-left: 25px;
+    height: 98px;
+    text-align: center;
+    width: 138px;
+    position: relative;
+    z-index: 1;
+    border: solid 1px #ddd;
+}
+.mj-jcriL a span{
+    display: table-cell;
+    vertical-align: middle;
+}
+.mj-jcriL a img{
+    position: relative;
+    max-width: 138px;
+    max-height: 98px;
+    vertical-align: middle;
+    z-index: 1;
+}
+.mj-jcriL>span{
+    position: absolute;
+    display: block;
+    width: 25px;
+    padding: 8px 0;
+    background: #ff8e42;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+}
+.mj-jcrText{
+    margin-top: 10px;
+}
+.mj-jcrText p{
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #444;
+}
+.mj-jcrText p b{
+    padding-right: 30px;
+    font-size: 17px;
+    font-weight: normal;
+}
+.mj-jcrText p em{}
+.mj-jcrText span{
+    font-size: 12px;
+    color: #999;
+}
+.mj-dalable{
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 55px;
+    width: 104px;
+    height: 28px;
+    background: #fff;
+    color: #357fcc;
+    font-size: 12px;
+    text-align: center;
+    line-height: 28px;
+    border: solid 1px #91bbff;
+    cursor: pointer;
+}
+.mj-anLIst{
+    padding: 20px 0 5px 0;
+    border-bottom: solid 1px #e0e0e0;
+}
+.mj-anLIst dt{
+    line-height: 25px;
+    font-size: 12px;
+    color: #444;
+}
+.mj-anLIst dd{
+    margin: -24px 0 0 125px;
+}
+.mj-anLIst dd a{
+    display: inline-block;
+    margin: 0 15px 15px 0;
+    float: left;
+    width: 70px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    color: #444;
+    font-size: 12px;
+}
+.mj-anLIst dd a.on{
+    background: #ff6700;
+    color: #fff;
+    border-radius: 2px;
+}
+.mj-jcrBottom{}
+.mj-jcrbTitle{
+    margin: 18px 0;
+    font-size: 12px;
+    color: #999;
+}
+.mj-jcrTable{
+    width: 100%;
+}
+.mj-jcrTable td{
+    position: relative;
+    padding: 12px;
+    border: solid 1px #dfdfdf;
+}
+.mj-jcrTable thead tr{
+    background: #f5f5f5;
+}
+.mj-jcrTable td label{
+    display: inline-block;
+    width: 118px;
+    height: 78px;
+    text-align: center;
+    line-height: 78px;
+    border: solid 1px #dfdfdf;
+}
+.mj-jcrTable td label>img{
+    max-height: 78px;
+    max-width: 118px;
+    vertical-align: middle;
+}
+.mj-jcrTable td p{
+    width: 240px;
+}
+.mj-linktda{
+    position: absolute;
+    right: 20px;
+    bottom: 13px;
+    font-size: 12px;
+    color: #357fcc;
+    text-decoration: underline;
+}
+
+.mj-btext{
+    padding-bottom: 40px;
+    margin-top: 30px;
+    position: relative;
+    font-size: 12px;
+    color: #666;
+}
+.mj-btext p{
+    margin-top: 5px;
+}
+.mj-btext p em{
+    color: #ff6700;
+}
+.mj-consultingBtn{
+    position: absolute;
+    display: block;
+    right: 0;
+    top: 0;
+    width: 90px;
+    height: 30px;
+    background: #ff6700;
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 2px;
+}
+
+/*商标异议弹出层*/
+.mj-objectionM{
+    display: none;
+    position: relative;
+    padding: 0 25px;
+    width: 520px;
+    height: 460px;
+    background: #fff;
+}
+.mj-objectionM>h2{
+    padding: 30px 0;
+    font-size: 24px;
+    color: #666;
+    text-align: center;
+    font-weight: normal;
+}
+.mj-objectionM>h2 strong{
+    color: #ff6700;
+    font-weight: normal;
+}
+.mj-objectionM ul{
+    margin-left: 70px;
+}
+.mj-objectionM li{
+    margin-bottom: 15px;
+    font-size: 12px;
+    color: #444;
+}
+.mj-objectionM li label{
+    display: inline-block;
+    width: 48px;
+    text-align: right;
+    margin-right: 20px;
+    vertical-align: middle;
+}
+.mj-objectionM li input{
+    padding-left: 15px;
+    width: 280px;
+    height: 35px;
+    border: solid 1px #dcdcdc;
+    outline: none;
+    line-height: 35px\9;
+}
+.mj-objectionM li a{
+    display: block;
+    margin-left: 67px;
+    width: 147px;
+    height: 35px;
+    background: #ff6700;
+    text-align: center;
+    line-height: 35px;
+    color: #fff;
+    font-size: 16px;
+    border-radius: 3px;
+}
+.mj-objectionM>span{
+    position: relative;
+    top: 20px;
+    display: block;
+    width: 520px;
+    height: 1px;
+    background: #ddd;
+}
+.mj-objectionM>span i{
+    position: absolute;
+    top: -7px;
+    left: 50px;
+}
+.mj-objectionM>p{
+    margin-top: 40px;
+    font-size: 12px;
+    color: #999;
+    line-height: 25px;
+    text-align: center;
+}
+
+/*商标异议弹出层 end*/
+
+/*提交成功弹框*/
+.mj-buSuc{
+    display: none;
+    position: relative;
+    padding: 70px 120px;
+    background: #fff;
+    border-radius: 3px;
+}
+.mj-buSuc_con{
+    margin: 70px auto;
+    width: 355px;
+    height: 85px;
+}
+.mj-buSuc_con label{
+    display: inline-block;
+    float: left;
+    margin-right: 30px;
+    height: 75px;
+}
+.mj-busR{}
+.mj-busR b{
+    font-size: 24px;
+    color: #666;
+    font-weight: normal;
+}
+.mj-busR p{
+    font-size: 12px;
+    color: #444;
+    line-height: 25px;
+}
+.mj-busR p em{
+    color: #ff6700;
+}
+/*.layui-layer{
+    width: auto;!important;
+}*/
+/*提交成功弹框 end*/

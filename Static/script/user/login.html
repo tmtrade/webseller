@@ -1,0 +1,138 @@
+<!--登录弹出框-->
+<div class="chaofan-mj-loginM">
+    <span class="chaofan-mj-close chaofan-mj-close"></span>
+
+    <div class="chaofan-mj-logRight">
+        <div class="chaofan-mj-logR_top">
+            <span class="cur" id="chaofn_dl_account">账号登录</span>
+            <span class="" id="chaofn_dl_kaccount">快捷登录</span>
+        </div>
+        <input type="hidden" value="" id="favorite_tid"/>
+        <input type="hidden" value="" id="proposer_id"/>
+        <input type="hidden" value="" id="chaofan_js_code" />
+
+        <div class="chaofan-mj-logWay">
+            <ul class="chaofan-mj-logUl" style="display: block;">
+                <li>
+                    <span></span>
+
+                    <div class="chaofan-mj-form-wrapper">
+                        <span class="chaofan-mj-inpuV" id="chaofn_dl_uname">请输入邮箱或手机号</span>
+                        <input type="text" id="uemail" class="span-input">
+                    </div>
+                </li>
+                <li>
+                    <span></span>
+
+                    <div class="chaofan-mj-form-wrapper">
+                        <span class="chaofan-mj-inpuV" id="chaofn_dl_upass">请输入密码（6-20位数字，字母或符号）</span>
+                        <input type="password" id="upass" onkeydown="if(event.keyCode==13) checkEmailForm();" class="span-input"/>
+                        <!--<input type="text" id="usrName_input" style="display: none;width: 265px;"/>-->
+                        <!-- <i class="us-icon uj_icon9" id="mi-inputi"></i>-->
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" checked="checked" value="1" id="remindA"/>
+                    <label>自动登录</label>
+                    <a href="" class="chaofan-mj-loga" target="_blank" style="display:none">忘记密码</a>
+                </li>
+                <li class="tipShow">
+                    <div class="chaofan-ms-errorTips">
+                        <p id="eTips" style="display:none"><i class="chaofan-us-icon chaofan-us-icon19"></i>请填写邮箱或手机号</p>
+                    </div>
+                </li>
+                <li>
+                    <a href="javascript:;" ctype="e" class="chaofan-mj-logBtn">登录</a>
+                </li>
+                <li>
+                    <em class="chaofan-mj-emst" style="display:none">还没有账号，立即<a href="register" target="_blank">[注册]</a></em>
+                </li>
+            </ul>
+            <ul class="chaofan-mj-logUl" style="display: none;">
+                <li><em id="chaofn_dl_msg">验证即注册，未注册将自动创建账号</em></li>
+                <li>
+                    <span></span>
+
+                    <div class="chaofan-mj-form-wrapper">
+                        <span class="chaofan-mj-inpuV" id="chaofn_dl_mobile">请输入手机号码</span>
+
+                        <div class="chaofan-mj-inputPi">
+                            <input type="text" id="umobile" value="" class="span-input">
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <span></span>
+
+                    <div class="chaofan-mj-form-wrapper">
+                        <span class="chaofan-mj-inpuV" id="chaofn_dl_mcode">请输入手机验证码</span>
+
+                        <div class="chaofan-mj-inputPi">
+                            <input type="text" id="ucode" onkeydown="if(event.keyCode==13) checkMoblieForm();" class="span-input" maxlength="4">
+                        </div>
+                        <strong class="ms-sent" id="chaofan-ms-sent">获取验证码</strong>
+                        <!--<strong class="ms-sent" style="background: #e9e9e9;color:#666;cursor: default;">还剩60s 重发</strong>-->
+                    </div>
+                </li>
+                <li>
+                    <input type="checkbox" checked="checked" value="1" id="remindM"/>
+                    <label>记住手机号码</label>
+                </li>
+                <li>
+                    <div class="chaofan-ms-errorTips">
+                        <p id="mTips" style="display:none"><i class="chaofan-us-icon chaofan-us-icon19"></i>请填写邮箱或手机号</p>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="javascript:;" ctype="m" class="chaofan-mj-logBtn">登录</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        //登录弹出层
+        $(document).on('click', "#chaofan-mj-login", function(){
+			$('#favorite_tid').val('');
+			$('#proposer_id').val('');
+            layer.open({
+                type	: 1,
+                title	: false,
+                closeBtn: false,
+                skin	: 'ucyourclass',
+                offset	: ['32%', '32%'],
+                content	: $('.chaofan-mj-loginM')
+            });
+            $(".chaofan-mj-close").bind("click", function () {
+                layer.closeAll();
+            });
+        });
+        //登录方式切换
+        $(".chaofan-mj-logR_top span").click(function () {
+            $(this).addClass("cur").siblings().removeClass("cur");
+            $('.chaofan-mj-logWay>ul:eq(' + $(this).index() + ')').show().siblings().hide();
+        });
+
+		
+        $("input[type='text'],input[type='password']").each(function () {
+            var spanT = $(this).parent().parent().find($(".chaofan-mj-inpuV")).text();
+            $(this).focus(function () {
+                $(this).parent().parent().find($(".chaofan-mj-inpuV")).text("");
+            });
+			if ( $(this).val () != '') {
+                $(this).parent().parent().find($(".chaofan-mj-inpuV")).text("");
+            }
+            $(this).blur(function () {
+                if ($(this).val() === "") {
+					spanId = $(this).parent().parent().find($(".chaofan-mj-inpuV")).attr('id');
+					spanT  = setCopyKey(spanId);
+                    $(this).parent().parent().find($(".chaofan-mj-inpuV")).text(spanT);
+                } else {
+                    $(this).parent().parent().find($(".chaofan-mj-inpuV")).text("");
+                }
+            });
+        });
+	})
+</script>

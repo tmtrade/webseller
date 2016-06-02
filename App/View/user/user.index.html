@@ -1,0 +1,349 @@
+<? require(ViewDir.'/public/header.html'); ?>
+  <!--main content start-->
+  <section id="main-content">
+    <section class="wrapper"> 
+      <!-- page start--> 
+      <!-- top -->
+      <div class="row"> 
+        <!-- left -->
+        <div class="col-xs-6">
+          <p class="home_top_hed"> <span><i class="home_top_line"></i>基本信息</span> </p>
+          <aside class="profile-nav alt green-border">
+            <section class="panel">
+              <div class="user-heading alt" style="background:#6ccac9;"> <a href="#"> <img alt="" src="<?=StaticDir?>workspace/img/profile-avatar.jpg"> </a>
+                <h1><?=$nickname?></h1>
+                <p>
+                <?php
+                if(empty($userInfo['lasttime'])){
+                	$loginstr = "本次登录";
+                    $lasttime = $userInfo['lastDate'];
+                }else{
+                	$loginstr = "上次登录";
+                    $lasttime = $userInfo['lasttime'];
+                }
+                ?>
+                <span class="fl"><?=$loginstr?>：</span>
+                <span class="fl"><? echo date("Y-m-d H:i:s",$lasttime);?></span></p>
+              </div>
+              <ul class="nav nav-stacked home_tl_list">
+                <li><a><i><img src="<?=StaticDir?>workspace/images/home_05.png"/></i>
+                  <label>手机号码</label>
+				  <span class="pull-right"><? if($userInfo['mobile_hide'] ==''){ echo '无';}else{ echo $userInfo['mobile_hide'];} ?></span></a></li>
+                <li><a><i><img src="<?=StaticDir?>workspace/images/home_06.png"/></i>
+                  <label>邮箱号码</label>
+                  <span class="pull-right"><? if($userInfo['email_hide'] ==''){ echo '无';}else{ echo $userInfo['email_hide'];} ?></span></a></li>
+                <li><a><i><img src="<?=StaticDir?>workspace/images/home_07.png"/></i>
+                  <label>关注类型</label>
+                  <span class="pull-right">
+					<?	
+						if(empty($userInfo['follow'])){echo '无';}
+						else{
+							$follow		= C('FOLLOW');
+							$datafollow = explode(',', $userInfo['follow']);
+							foreach($follow as $k=> $one){
+								if( !empty($datafollow) && in_array($k, $datafollow)){ echo $one . " ";}
+							}
+						}
+					?>
+					</span></a></li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+        <!-- left over --> 
+        <!-- right -->
+        <div class="col-xs-6">
+          <p class="home_top_hed"> <span><i class="home_top_line"></i>知友工具</span> </p>
+          <aside class="profile-nav alt green-border">
+            <section class="panel">
+              <div class="home_ri_div">
+                <table>
+                  <tr>
+                    <td>
+                    	<a href="http://www.shansoo.com/" target="_blank">
+                    		<img src="<?=StaticDir?>workspace/images/home_08.png"/>商标查询
+                     	</a>
+                    </td>
+                    <td>
+                    	<a href="http://www.wanxiangyun.net/" target="_blank">
+                        	<img src="<?=StaticDir?>workspace/images/home_09.png"/>专利查询
+                        </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                    	<a href="http://jingling.yizhchan.com/" target="_blank">
+                        	<img src="<?=StaticDir?>workspace/images/home_010.png"/>商标检测
+                        </a>    
+                    </td>
+                    <td>
+                    	<a href="http://shansoo.com/help/index" target="_blank">
+                        	<img src="<?=StaticDir?>workspace/images/home_011.png"/>商标分类
+                        </a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                    	<a href="http://www.shansoo.com/notice/" target="_blank">
+                        	<img src="<?=StaticDir?>workspace/images/home_012.png"/>商标公告
+                        </a>
+                    </td>
+                    <td>
+                    	<a href="http://shansoo.com/International/index/?w=3" target="_blank">
+                        	<img src="<?=StaticDir?>workspace/images/home_013.png"/>国际商标
+                        </a>
+                    </td>
+                  </tr>
+                </table>
+              </div>
+            </section>
+          </aside>
+        </div>
+        <!-- right over--> 
+      </div>
+      <!-- top over--> 
+      <!-- center -->
+      <div class="row home_center">
+        <div class="col-xs-6">
+          <p class="home_top_hed"> <span><i class="home_top_line"></i>商品续展</span> </p>
+          <!--left-->
+          <aside class="profile-nav alt green-border">
+            <section class="panel">
+              <div class="home_ce_div">
+                <div class="fl home_ce_cont col-xs-4">
+                  <p>续展期商标</p>
+                  <p class="home_ce_round1">
+                    <a href="/mytrade/index/?status=10"><?=$deal['status10']?></a>
+                    个</p>
+                  <!-- <a class="home_ce_see" href="/mytrade/index/?status=10">查看</a> --></div>
+                <div class="fr home_ce_cont col-xs-4">
+                  <p>宽展期商标</p>
+                  <p class="home_ce_round2">
+                    <a href="/mytrade/index/?status=11"><?=$deal['status11']?></a>
+                    个</p>
+                  <!-- <a class="home_ce_see" href="/mytrade/index/?status=11">查看</a> --></div>
+              </div>
+            </section>
+          </aside>
+        </div>
+        <!--left over--> 
+        <!--right-->
+        <div class="col-xs-6">
+          <p class="home_top_hed"> <span><i class="home_top_line"></i>商品案件</span> </p>
+          <!--left-->
+          <aside class="profile-nav alt green-border">
+            <section class="panel">
+              <div class="home_ce_div">
+                <div class="fl home_ce_cont col-xs-4">
+                  <p>待处理的商标案件</p>
+                  <p class="home_ce_round3">
+                    <a href="/mytrade/business/"><?=$deal['deal']?></a>
+                    个</p>
+                  <!-- <a class="home_ce_see">查看</a> --> </div>
+                <div class="fr home_ce_cont col-xs-4">
+                  <p>已处理的商标案件</p>
+                  <p class="home_ce_round4">
+                    <a href="/mytrade/business/"><?=$deal['finish']?></a>
+                    个</p>
+                  <!-- <a class="home_ce_see">查看</a> --> </div>
+              </div>
+            </section>
+          </aside>
+        </div>
+        <!--right over--> 
+      </div>
+      <!-- center over--> 
+      <!-- footer -->
+      <div class="row home_footer " id="home_footer1">
+      <div class="col-xs-12" id="home_footer1">
+        <p class="home_top_hed"> <span><i class="home_top_line"></i>商标管理</span> </p>
+        <!-- table top -->
+		<? if($mytrade['total'] != 0){ ?>
+		<div class="col-xs-4">
+		<table class="table home_table table-responsive">
+          <thead>
+            <tr>
+              <td style="border-top: 2px solid #54b4ff;"><p>我的商标 </p>
+                单位（个）</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_dark"></i>商标总数 <span class="home_foot_text">（新增<?=$mytrade['new']?>个）</span></div><div class="fl"><?=$mytrade['total']?></div>
+                
+            </tr>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_green"></i>申请人 </div>
+                <div class="fl"><?=$mytrade['proposer']?></div></td>
+            </tr>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_orange"></i>申请中 </div>
+                <div class="fl"><?=$mytrade['status1']?></div></td>
+            </tr>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_purple"></i>已注册 </div>
+                <div class="fl"><?=$mytrade['status2']?></div></td>
+             
+            </tr>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_gray"></i>已无效 </div>
+                <div class="fl"><?=$mytrade['status3']?></div></td>
+            </tr>
+          </tbody>
+        </table>
+		</div>
+		<? } ?>
+		<? if($collect['total'] != 0){ ?>
+		<div class="col-xs-4">
+        <table class="table home_table table-responsive">
+          <thead>
+            <tr>
+              <td style="border-top: 2px solid #9d8eef;"><p>竞手商标 </p>
+                单位（个）</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_dark"></i>商标总数</div>
+                <div class="fl"><?=$collect['total']?></div></td>
+             
+            </tr>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_green"></i>申请中 </div>
+                <div class="fl"><?=$collect['status1']?></div></td>
+             
+            </tr>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_orange"></i>已注册 </div>
+                <div class="fl"><?=$collect['status2']?></div></td>
+             
+            </tr>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_purple"></i>已无效 </div>
+                <div class="fl"><?=$collect['status3']?></div></td>
+             
+            </tr>
+            <tr>
+              <td><div class="fl home_tab_name"><!-- <i class="home_icon home_icon_gray"></i>  --></div>
+                <div class="fl"></div></td>
+            
+            </tr>
+          </tbody>
+        </table>
+		</div>
+		<? } ?>
+		<? if($sale['total'] != 0){ ?>
+		<div class="col-xs-4">
+		<table class="table home_table table-responsive">
+          <thead>
+             <td style="border-top: 2px solid #6ccac9;"><p>交易收藏 </p>
+                单位（个）</td>
+          </thead>
+          <tbody>
+            <tr>
+               <td><div class="fl home_tab_name"><i class="home_icon home_icon_dark"></i>销售中+已下架</div>
+                <div class="fl"><?=$sale['online'] ?>+<?=$sale['other'] ?></div></td>
+            </tr>
+            <tr>
+              <td><div class="fl home_tab_name"><i class="home_icon home_icon_green"></i>5万以下 </div>
+                <div class="fl"><?=$sale['price2'] ?></div></td>
+            </tr>
+            <tr>
+             <td><div class="fl home_tab_name"><i class="home_icon home_icon_purple"></i>5-10万 </div>
+                <div class="fl"><?=$sale['price3'] ?></div></td>
+            <tr>
+               <td><div class="fl home_tab_name"><i class="home_icon home_icon_purple"></i>10万以上</div>
+                <div class="fl"><?=$sale['price4'] ?></div></td>
+            </tr>
+            <tr>
+               <td><div class="fl home_tab_name"><i class="home_icon home_icon_orange"></i>议价</div>
+                <div class="fl"><?=$sale['price1'] ?></div></td>
+            </tr>
+          </tbody>
+        </table>
+		</div>
+		<? } ?>
+		
+		<? if(!empty($want)){ ?>
+  		<div class="col-xs-4">
+          <table class="table home_table home_table2">
+            <thead>
+              <tr>
+                <td style="border-top: 2px solid #9d8eef;"><p>求购商标 </p>
+                  单位（个）</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="fl home_tab_name"><i class="home_icon home_icon_dark"></i>洽谈中 </div>
+                  <div class="fl"><?=empty($want['state1']) ? 0 : $want['state1']?></div></td>
+              </tr>
+              <tr>
+                <td><div class="fl home_tab_name"><i class="home_icon home_icon_green"></i>已匹配 </div>
+                  <div class="fl"><?=empty($want['state2']) ? 0 : $want['state2']?></div></td>
+              </tr>
+              <tr>
+                <td><div class="fl home_tab_name"><i class="home_icon home_icon_orange"></i>已成交/上报 </div>
+                  <div class="fl"><?=empty($want['state4']) ? 0 : $want['state4']?></div></td>
+                
+              </tr>
+              <tr>
+                <td><div class="fl home_tab_name"><i class="home_icon home_icon_purple"></i>转让中 </div>
+                  <div class="fl">0</div></td>
+              </tr>
+              <tr>
+                <td><div class="fl home_tab_name"><i class="home_icon home_icon_gray"></i>转让完成 </div>
+                  <div class="fl">0</div></td>
+              </tr>
+            </tbody>
+          </table>
+  		</div>
+		<? } ?>
+		<? if($contact['total'] != 0){ ?>
+  		<div class="col-xs-4">
+          <table class="table home_table home_table2">
+            <thead>
+              <tr>
+                <td style="border-top: 2px solid #f7a93a;"><p>出售商标 </p>
+                  单位（个）</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><div class="fl home_tab_name"><i class="home_icon home_icon_dark"></i>出售中 </div>
+                  <div class="fl"><?=$contact['total']?></div></td>
+              </tr>
+              <tr>
+                <td><div class="fl home_tab_name"><i class="home_icon home_icon_gray"></i>已删除</div>
+                  <div class="fl"><?=$contact['history']?></div></td>
+              </tr>
+              <tr><td><div class="fl home_tab_name"></div>
+                  <div class="fl"></div></td>
+                </tr>
+               <tr><td><div class="fl home_tab_name"></div>
+                  <div class="fl"></div></td>
+                </tr>
+  			   <tr><td><div class="fl home_tab_name"></div>
+                  <div class="fl"></div></td>
+                </tr>
+            </tbody>
+          </table>
+  		</div>
+		<? } ?>
+		</div>
+        <!-- table top over--> 
+      </div>
+      <!-- footer over--> 
+      <script>
+	  if($('#home_footer1').html().length < 300){
+		$('#home_footer1').hide()
+	  }
+
+	  </script>
+      <!-- page end--> 
+    </section>
+  </section>
+  <!--main content end--> 
+</section>
+</section>
+<? require(ViewDir.'/public/footer.html'); ?>

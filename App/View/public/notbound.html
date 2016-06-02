@@ -1,0 +1,32 @@
+<?php
+if(empty($userInfo['mobile'])){
+$requrl = $_SERVER['REQUEST_URI'];
+$urlArr = explode('/',$requrl);
+$urlArr = removeEmptyArray($urlArr);
+$string = $urlArr[2] == 'myinfo' ? '我的购买' : '我的出售';
+?>
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper">
+    <section class="panel">
+      <header class="panel-heading"> <span class="float-left"><?=$string?></span>
+        <ul class="breadcrumb float-right">
+          <li><a href="/user/index/">首页</a></li>
+        </ul>
+      </header>
+      <div class="panel-body">
+        <div class="nodata">
+          <div class="icon1">暂未绑定手机号码</div>
+          <p>绑定手机号码后可进行求购/出售操作</p>
+          <button type="button" class="btn btn-success" onclick="window.location='/user/changePhone/'">去绑定</button>
+        </div>
+      </div>
+    </section>
+  </section>
+  <!--main content end--> 
+</section>
+</section>
+<?php
+exit;
+}
+?>

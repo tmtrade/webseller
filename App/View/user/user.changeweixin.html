@@ -1,0 +1,175 @@
+<? require(ViewDir.'/header.html'); ?>
+<!--content start-->
+<div class="mj-content">
+    <div class="w1180 f-clearfix">
+<? require(ViewDir.'/user/left.html'); ?>
+		<style>
+        .Ptip{top:10px;}
+        .emTips{
+            cursor: pointer;
+        }
+        
+        .mj-steps .mj-binok p{
+            background: #ff9d1f;
+        }
+		.mj-binok span{
+			color:#ff9d1f;
+        }
+		.mj_wxcodew{
+			color:#007ece;
+			background-color:#f3f7fa;
+		}
+		.mj_wxcodef{
+			color:#94969e;
+			background-color:#f7f7f7;
+		}
+		.mj-inputTip1{
+			margin-top:33px;
+			margin-left:10px;
+			
+		}
+        </style>
+        <div class="mj-right fr">
+            <div class="mj-menu">
+                <a href="/user/main/">我的账户</a><em>></em>
+                <a href="">安全中心</a><em class="coy">></em>
+                <span>解绑微信</span>
+            </div>
+            <div class="mj-right_main f-clearfix">
+                <h4 class="secTitle">解绑微信<label><i class="uj-icon uj-icon15"></i></label></h4>
+                <div class="mj-steps">
+                    <div class="mj-val">
+                        <p>1</p>
+                        <span>身份认证</span>
+                    </div>
+                    <div class="mj-bin ">
+                        <p>2</p>
+                        <span>解绑成功</span>
+                    </div>
+                </div>
+                <ul class="mj-chaPaw emInput">
+
+                  <li class="f-clearfix">
+                        <label>验证码：</label>
+                        <div class="mj-liInput resetW">
+                            <span class="mj-inpuV">请输入验证吗</span>
+                            <input name="wxcode" type="text" id="mj-inputwxYz" maxlength="5"/>
+                      	</div>
+                        <div id="mess_wxcode" class='pass_mess'></div>
+                        <span class="emTips mj_wxcodew">点击发送验证码</span>
+                    </li>
+                    <li><a href="javascript:;" class="subwxcode">提交</a></li>
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!--content end-->
+
+
+<script type="text/javascript">
+var isSendCode = true;
+$(document).ready(function(e) {
+	$('.emTips').click(function(){
+		sendWeiXinCode();
+	});
+	$('.uj-icon15').click(function(){
+		window.location ='/user/security/';	
+	});
+
+});    
+
+//提交按钮判断
+$('.subwxcode').click(function(){
+	che1 	= checkCode();
+	if(!che1){ return false; }
+	wxcode	= $('#mj-inputwxYz').val();
+	$.ajax({
+		type	: "post",
+		url		: "/user/checkWeiXinCode/",
+		async	: true,
+		data	: {'wxcode':wxcode},
+		dataType: "json",
+		success	: function(data){
+			if(data.code == 1){
+				unbundlingWeiXin(data.id,data.mess);
+			}else{
+				textTip('mess_wxcode',data.mess,0);
+			}
+		}
+	});
+})
+//解绑
+function unbundlingWeiXin(codeid,wxcode){
+	$.ajax({
+		type	: "post",
+		url		: "/user/unbundlingWeiXin/",
+		async	: true,
+		data	: {'codeid':codeid,'wxcode':wxcode},
+		dataType: "json",
+		success	: function(data){
+			if(data.code==1){
+				$('.mj-bin').addClass('mj-binok');
+				$('.emInput').remove();
+				setTimeout(function(){
+					window.location = '/user/security/';
+				},2000);
+			}else{
+				textTip('mess_wxcode',data.msg,0);
+			}
+		}
+	});
+}
+//发送验证码倒计时
+function timer(count, obj, title)
+{
+	 window.setTimeout (function () {
+		 count --;
+		 obj.text('已发送'+count + "秒后可重新获取");
+		 if(count > -1){
+			 $('.emTips').removeClass('mj_wxcodew').addClass('mj_wxcodef');
+			 timer(count, obj, title);
+		 }else{
+			obj.text(title);
+			isSendCode = true;
+			$('.emTips').removeClass('mj_wxcodef').addClass('mj_wxcodew');
+		 }
+	 },1000);
+}
+
+//判断验证码输入框
+function checkCode()
+{
+	var cont2 = $("#mj-inputwxYz").val();
+	if (cont2=="") {
+		textTip('mess_wxcode','请输入验证码',0);
+		return false;
+	}else if(cont2.length != 4){
+		textTip('mess_wxcode','请输入正确验证码',0);
+		return false;
+	}
+	return true;
+}
+//发送验证码
+function sendWeiXinCode(){
+	if( isSendCode == false ){
+		return false;	
+	}
+	$.ajax({
+		type	: "post",
+		url		: "/user/sendWeiXinCode/",
+		async	: true,
+		dataType: "json",
+		success	: function(data){
+			if(data.code == 1){
+				timer(60, $(".emTips"), '点击发送验证码');
+				isSendCode = false;
+			}else{
+				textTip('mess_wxcode',data.msg,0);
+			}
+		}
+	});	
+}
+</script>
+<? require(ViewDir.'/footer.html'); ?>

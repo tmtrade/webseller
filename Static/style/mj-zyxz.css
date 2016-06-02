@@ -1,0 +1,100 @@
+.mj-content{
+    background: #f5f5f5;
+    padding-top: 22px;
+    clear: both;
+}
+.mj-content_title{
+    padding-bottom: 14px;
+}
+.mj-content_title span{
+    font-size: 12px;
+    color: #666;
+}
+.mj-content_title span em{
+    color: #b7b7b7;
+}
+.mj-content_title a{
+    color: #666;
+}
+.mj-mainCon{
+
+}
+
+.mj-mybRight{
+    padding: 39px 33px 30px;
+    min-height: 717px;
+    width: 818px;
+    background: #fff;
+}
+.mj-mybR_top{
+    padding-bottom: 8px;
+    font-size: 16px;
+    border-bottom: solid 1px #e0e0e0;
+}
+.mj-mybR_top p{
+    font-size: 16px;
+    color: #666;
+}
+
+.mj-hbcon{
+    padding-top: 20px;
+}
+.mj-hbBar{
+    margin-top: 10px;
+    padding: 0 15px 0 30px;
+    height: 40px;
+    background: #f5f5f5;
+    line-height: 40px;
+}
+.mj-hbBar:hover{
+    background: #fff5e5;
+}
+.mj-hbBar span{
+    font-size: 12px;
+    color: #444;
+}
+.mj-hbBar label{
+    display: none;
+    float: right;
+    font-size: 12px;
+    color: #444;
+    cursor: pointer;
+}
+.mj-hbBar:hover.mj-hbBar label{
+    display: block;
+}
+
+.mj-zrfb{
+    display: none;
+    padding: 10px 10px 10px;
+    border: solid 1px #ececec;
+}
+.mj-zrTb label{
+    display: inline-block;
+    float: right;
+    margin-right: 10px;
+    width: 80px;
+    height: 30px;
+    background: #f6faff;
+    text-align: center;
+    line-height: 30px;
+    color: #357fcc;
+    font-size: 12px;
+    border: solid 1px #b1c8e6;
+    cursor: pointer;
+}
+.mj-zrfb h2{
+    margin-bottom: 30px;
+    text-align: center;
+    font-size: 24px;
+    color: #444;
+    font-weight: normal;
+}
+.mj-zrfb p{
+    padding: 0 25px;
+    margin-bottom: 30px;
+    line-height: 25px;
+    font-size: 12px;
+    color: #444;
+}
+

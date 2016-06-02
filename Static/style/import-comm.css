@@ -1,0 +1,86 @@
+/* 引入公用样式 */
+@import url("mj-header.css");
+@import url("mj-footer.css");
+@import url("uj-icon.css");
+@import url("respond.css");
+@import url("left.css");
+@import url("modal.css");
+/* 注册 */
+@import url("g-register.css");
+/* 我的账户-我的顾问 */
+@import url("g-adviser.css");
+/* 登录 */
+@import url("g-login.css");
+/* 首页-登录前 */
+@import url("g-qlogin.css");
+/* 我的管理-我的购买 */
+@import url("g-buys.css");
+
+
+
+/* 引入全局清除默认浏览器样式 */
+@import url("normalize.css");
+/*重置body*/
+body{
+    font:12px / 1.5  'microsoft yahei', 'helvetica neue', 'hiragino sans gb', 'stheiti','\5FAE\8F6F\96C5\9ED1', 'tahoma';
+    /*
+      -webkit-font-smoothing 在win7 Safari 下面会触发属性导致字体模糊 设置 antialiased
+          none  禁用该属性
+          subpixel-antialiased  次像素抗锯齿（默认值
+          antialiased 抗锯齿（效果更明显）
+    */
+    -webkit-font-smoothing:antialiased;
+    text-rendering: optimizespeed;
+    margin: 0;
+}
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, textarea, p, blockquote, th, td, hr, button, article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    margin: 0;
+    padding: 0;
+}
+ol, ul {
+    list-style: none;
+}
+ins, a {
+    text-decoration: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+em{
+    font-style: normal;
+}
+
+
+/*清除浮动*/
+
+.f-clearfix:after {
+    clear: both;
+    display: block;
+    height: 0;
+    font-size: 0;
+    content: ".";
+    visibility: hidden;
+}
+.f-clearfix{
+    zoom: 1;
+}
+.f-hidden{
+    overflow: hidden;
+}
+.f-dn{
+    display: none;
+}
+
+.w1180{
+    width: 1180px;
+    margin: 0 auto;
+}
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+

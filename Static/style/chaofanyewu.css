@@ -1,0 +1,22 @@
+.chofn-flex_bar .ul-input-text{
+    float: left;
+    margin-right: 12px;
+    width: 290px;
+}
+.chofn-flex_bar .ul-select{
+    float: left;
+    width: 125px;
+    margin-right: 12px;
+}
+.chofn-flex_bar .fl{
+    margin-top: 8px;
+    margin-right: 12px;
+}
+.ul-input-submit{
+    width: 45px;
+    height: 35px;
+}
+.ul-input-submit button{
+    margin-top: 8px;
+    color: #fff;
+}

@@ -1,0 +1,114 @@
+@charset "utf-8";
+
+.g-header{
+    border-bottom:1px solid #dddddd;
+    height: 61px;
+    color: #515567;
+    padding-top: 39px;
+}
+.g-header h4{
+    font-size: 24px;
+    float: left;
+}
+.g-header p{
+    font-size: 14px;
+    float: right;
+}
+.g-header p a{
+    color: #007ece;
+}
+.g-content{
+    background: url("img/g-map.png") center 76px no-repeat;
+    background-size: 100%;
+    padding-top: 166px;
+    padding-bottom: 143px;
+}
+.g-nav h4{
+    font-size: 24px;
+    color: #515567;
+    font-weight: normal;
+    text-align: center;
+}
+.g-nav_input{
+    width: 418px;
+    margin: 24px auto;
+}
+.g-nav_input_in{
+    width: 418px;
+    height: 49px;
+    border: 1px solid #dddddd;
+    line-height: 49px;
+}
+.g-nav_input_in span{
+    width: 49px;
+    height: 49px;
+    float: left;
+    display: inline-block;
+    background: #f2f2f2 url(slice/mj-icon4.png) center center no-repeat;
+}
+.g-nav_input_p{
+    font-size: 16px;
+    margin: 15px 0 6px 0;
+    color: #515567;
+}
+.g-nav_input_in input{
+    width: 350px;
+    height: 49px;
+    padding-left:15px;
+    float:right;
+    font-size: 14px;
+    background: #fff;
+    border: 0 none;
+    line-height: 49px\9;
+}
+.g-nav_input_int{
+    position: relative;
+}
+.g-nav_input_int .g-nav_input_tip{
+    position: absolute;
+    right:-142px;
+    top:45px;
+    font-size: 14px;
+    color: #eb5152;
+}
+.g-nav_input_int .g-nav_input_tip img{
+    float: left;
+    margin-right:5px;
+}
+.g-nav_input_int .g-nav_input_tip2{
+    right: -44px;
+    top: 60px;
+}
+.g-nav_input_in2 span{
+    background: #f2f2f2 url(slice/g-suo.png) center center no-repeat;
+}
+.g-nav_input_a{
+    float: right;
+    color: #007ece;
+    font-size: 14px;
+    margin: 15px 0 6px 0;
+}
+.g-check input{
+    float: left;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+.g-check{
+    margin:20px 0;
+    font-size: 14px;
+    color: #515567;
+}
+.g-check a{
+    color: #007ece;
+}
+.g-button a{
+    color: #fff;
+    display: block;
+    width: 421px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius:3px;
+    background: #ff9d1f;
+    font-size: 16px;
+}

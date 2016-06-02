@@ -1,0 +1,29 @@
+<? require(ViewDir.'/public/header.html'); ?>
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper">
+  	<section class="panel">
+        <header class="panel-heading mc_top">
+            <span class="float-left">消息中心</span>
+            <form class="bs-example bs-example-form" role="form">
+			<div class="input-group mc_top_search">
+			<input type="text" class="form-control" id="search-key" placeholder="请输入关键字">
+			<span class="input-group-addon mc_top_bg" id="search-btn"><i class="icon-search"></i></span>
+			</div>
+			</form>
+        </header>
+		<div class="detCon">
+			<p><?=$data['message']?></p>
+			<span>接收时间：<? echo date('Y-m-d H:i:s',$data['created']) ?></span>
+		</div>
+    </section>
+  
+  </section>
+  <!--main content end--> 
+</section>
+<script type="text/javascript">
+$("#search-btn").click(function(){
+	location.href = '/message/index/?key='+$("#search-key").val();
+})
+</script>
+<? require(ViewDir.'/public/footer.html'); ?>

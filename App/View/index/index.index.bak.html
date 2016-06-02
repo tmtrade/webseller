@@ -1,0 +1,537 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+<title>首页专题</title>
+
+<link href="<?=StaticDir?>special/css/css.css" rel="stylesheet" type="text/css" />
+<link href="<?=StaticDir?>special/css/style.css" rel="stylesheet" type="text/css" />
+<style type="text/css">
+.field3::-moz-placeholder { font-size:12px } /* firefox 19+ */
+.field3:-ms-input-placeholder { font-size:12px } /* ie */
+
+/* webkit专用 */
+.field2::-webkit-input-placeholder { color:#00f; }
+.field3::-webkit-input-placeholder { font-size:10px }
+.field4::-webkit-input-placeholder { font-style:italic; text-decoration:overline; letter-spacing:3px; color:#999; }
+
+/* mozilla专用 */
+#field2::-moz-placeholder { color:#00f; }
+.field3::-moz-placeholder { font-size:12px }
+#field4::-moz-placeholder { font-style:italic; text-decoration:overline; letter-spacing:3px; color:#999; }
+</style>
+<script type="text/javascript" src="<?=StaticDir?>special/js/jquery-1.7.2.min.js" ></script>
+<script type="text/javascript" src="<?=StaticDir?>special/js/koala.min.1.5.js"></script>
+<script language="javascript" src="http://st.chofn.com/code.php"></script>
+
+<script src="<?=StaticDir?>script/usernew.js"></script>
+<!--[if lt IE 9]>
+<script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]--> 
+<script type="text/javascript">
+//弹出隐藏层
+function ShowDiv(show_div,bg_div){
+document.getElementById(show_div).style.display='block';
+document.getElementById(bg_div).style.display='block' ;
+var bgdiv = document.getElementById(bg_div);
+bgdiv.style.width = document.body.scrollWidth;
+//bgdiv.style.height = $(document).height();
+$("#"+bg_div).height($(document).height());
+};
+$(function(){
+	
+	$('.home_tc_bg').click(function(){
+		$('.home_tcform').hide();
+		$(this).hide();
+		$('.home_tcform2,.home_tc_bg2').show();
+	});
+	
+	$('.home_tc_bg2').click(function(){
+		$('.home_tcform2').hide();
+		$(this).hide();
+		$('.home_tcform,.home_tc_bg').show();
+	});
+	$(".home_top_ul li a").hover(function () {
+			$("a[class='home_active']").removeAttr("class");
+			$(this).addClass("home_active"); 
+		});
+	/***** 登录提示 *****/
+	 $("#username,#username2").focus(function(){
+              $(this).addClass("focus");
+              if($(this).val() ==this.defaultValue){  
+                  $(this).val("");           
+              } 
+        }).blur(function(){
+             $(this).removeClass("focus");
+             if ($(this).val() == '') {
+                $(this).val(this.defaultValue);
+             }
+        });
+		$('#send1').click(function(){
+			/*var user = $('#username').val();
+			var pwd = $('#pwdname').val();
+			if(user == "邮箱/手机号"){
+				$('#usertxt').html('请输入邮箱/手机号').addClass('usertxt');
+			}else if(pwd == ""){
+				$('#usertxt').html('请输入登录密码').addClass('usertxt');;
+			}else{
+				$('.homne_user').show();
+				$('.home_dl,.home_zc,.home_tcdiv').hide();
+				$('.home_float2').removeClass().addClass("home_float");
+			}*/
+		});
+		
+		$('#send2').click(function(){
+			/*var user = $('#username2').val();
+			var pwd = $('#pwdname2').val();
+			if(user == "手机号"){
+				$('#usertxt').html('请输入手机号').addClass('usertxt');;
+			}else if(pwd == ""){
+				$('#usertxt').html('请输入验证码').addClass('usertxt');;
+			}else{
+				$('.homne_user').show();
+				$('.home_dl,.home_zc,.home_tcdiv').hide();
+				$('.home_float2').removeClass().addClass("home_float");
+			}*/
+		});
+		
+		
+		
+		$('.home_dl').click(function(e){
+			e.stopPropagation();
+			$('.home_float').removeClass().addClass("home_float2");
+			$("#MyDiv").show();
+		});
+  	$('.home_gbbut').click(function(e){
+			e.stopPropagation();
+			$("#MyDiv").hide();
+			$('.home_float2').removeClass().addClass("home_float");
+		});
+  	$(".home_tccont").click(function(e) {
+        e.stopPropagation();
+    });
+  	$(document).click(function(){
+  			$("#MyDiv").hide();
+				$('.home_float2').removeClass().addClass("home_float");
+    });
+
+		$('.home_tc_bg').click(function(){
+			$('#usertxt').removeClass('usertxt').hide();
+		});
+		$('.home_tc_bg2').click(function(){
+			$('#usertxt').removeClass('usertxt').hide();
+		});
+		
+	$('input[name="username"]').focus(function(){
+		uname = $.trim($(this).val());
+		if(uname=='邮箱/手机号'){
+			$(this).val('');
+		}	
+	});
+	$('input[name="username"]').blur(function(){
+		uname = $.trim($(this).val());
+		if(uname==''){
+			//$(this).val('邮箱/手机号');
+		}	
+	});
+	
+	$('input[name="username2"]').focus(function(){
+		uname = $.trim($(this).val());
+		if(uname=='手机号'){
+			$(this).val('');
+		}	
+	});
+	$('input[name="username2"]').blur(function(){
+		uname = $.trim($(this).val());
+		if(uname==''){
+			//$(this).val('手机号');
+		}	
+	});
+
+	$(function(){
+		$('#asd').click(function(){
+			$('.home_r ul li').eq(3).click();
+			return false;
+		});
+	});
+	
+});
+</script>
+
+</head>
+<body>
+<!-- top -->
+<div class="home_float">
+	<div class="home_top">
+		<div class="fl"><a href="/user/index/"><img src="<?=StaticDir?>special/images/home_01.png" width="101" height="42"/></a></div>
+		<div class="home_top_ul">
+			<ul>
+				<li><a class="home_active2" href="/user/index/">首页</a></li>
+				<li><a href="javascript:void(0)" id="asd">工具</a></li>
+				<li class="home_topli"><a href="" onmouseover="mopen('m1')" onmouseout="trmall_mclosetime()">服务</a></li>
+				<div class="home_demo" id="m1" onmouseover="trmall_mcancelclosetime()" onmouseout="trmall_mclosetime()">
+					<div class="home_out"></div>
+					<div class="home_in"></div>
+					<div class="home_text">
+						<p><a href="http://r.chaofan.wang" target="_blank">商标服务</a></p>
+                        <p><a href="http://pt.chaofan.wang" target="_blank">专利服务</a></p>
+                        <p><a href="http://ls.chaofan.wang" target="_blank">权利案件</a></p>
+                        <p><a href="http://keji.chaofan.wang" target="_blank">创新科技</a></p>
+					</div>
+				</div>
+			</ul> 
+		</div>
+        <?php
+            $isblock = $isLogin == true ? 'display:block' :'';
+        ?>
+		<div class="fr homne_user" onmouseover="mopen('m2')" onmouseout="trmall_mclosetime()"  style="<?=$isblock?>">
+		<img src="<?=StaticDir?>special/images/home_02.png" width="28" height="29"/><span onclick="window.location='/user/index/'" style="cursor:pointer">个人中心</span>
+			<a class="homne_user_hidden" href="/login/logout/" id="m2" onmouseover="trmall_mcancelclosetime()" onmouseout="trmall_mclosetime()">退出</a>	
+		</div>   
+	</div>
+</div>
+<!-- top end-->
+<!-- left button -->
+<div class="home_r">
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+</div>
+<!-- left button end -->
+<div class="num_box">
+	<!-- one -->
+	<div class="num" id="num_0">
+			<div class="home_onediv">
+				<div class="home_one_fcont fl">
+					<div class="fl">
+					<img src="<?=StaticDir?>special/images/home_rw1.png"/>
+					</div>
+				</div>
+				<div class="home_one_cont fl">
+                	<img src="<?=StaticDir?>special/images/home_onet.png"/>
+                	<?php
+                    if(!$isLogin){
+                    ?>
+					<a class="home_dl" onclick="ShowDiv('MyDiv','fade')">登录</a>
+					<a class="home_zc" href="/register/">立即注册</a>
+                    <?php
+                    }
+                    ?> 
+				</div>
+			</div>
+	</div>
+	<!-- one end -->
+	<div class="clearfix"></div>
+	<!-- two -->
+ 	<div class="num" id="num_1">
+		<div class="tow_txt"><img src="<?=StaticDir?>special/images/ba_01.png"/></div>
+		<div class="home_one_fcont2 fl">
+			<div class="fl home_oneimgs">
+			<img src="<?=StaticDir?>special/images/home_rw2.png"/>
+			</div>
+			<div id="carousel_imgid">
+				<div id="carousel_id">  
+					<div class="carousel_fcon"><a  href="#"><img src="<?=StaticDir?>special/images/home_sj01.png"></a></div>
+					<div class="carousel_fcon"><a  href="#"><img src="<?=StaticDir?>special/images/home_sj02.png"></a></div>
+					<div class="carousel_fcon"><a  href="#"><img src="<?=StaticDir?>special/images/home_sj03.png"></a></div> 
+				</div>
+			</div>			
+		</div>			
+		<div class="home_towdiv">		
+			<div class="home_towlist">
+				<div class="fl">
+					<span><img src="<?=StaticDir?>special/images/home_one1.png" /></span>
+					<span>权利证据存永久档<br/>随时调用查证</span>				
+				</div>
+				<div class="fl">
+					<span><img src="<?=StaticDir?>special/images/home_one2.png" /></span>
+					<span>商标到期/无效/撤销/驳回<br/>当天提醒</span>				
+				</div>
+				<div class="fl">
+					<span><img src="<?=StaticDir?>special/images/home_one3.png" /></span>
+					<span>竞争监控<br/>避免发生近视商标伤害</span>				
+				</div>
+				<div class="fl">
+					<span><img src="<?=StaticDir?>special/images/home_one4.png" /></span>
+					<span>打击假冒商标<br/>保护商标品牌信誉 </span>				
+				</div>
+			</div>
+		</div>  
+	</div>
+	<!-- two end -->
+	<!-- three -->
+ 	<div class="num" id="num_2"> 
+		<div class="three_txt"><img src="<?=StaticDir?>special/images/ba_02.png"/></div>
+		<div class="home_threediv">
+			<div class="home_one_fcont3">
+				<div class="fl">
+				<img src="<?=StaticDir?>special/images/home_rw3.png" class="home_trw3"/>
+				</div>
+			</div>
+		</div>
+		<div class="home_towdiv">
+			<div class="home_towlist2">
+				<div class="fl">
+					<span><img src="<?=StaticDir?>special/images/home_tree1.png" width="44" height="41" /></span>
+					<span><font>商标许可/出售</font><br/>知友交易平台让闲置商标变现钱</span>				
+				</div>
+				<div class="fl">
+					<span><img src="<?=StaticDir?>special/images/home_tree2.png" width="44" height="41" /></span>
+					<span><font>产品渠道拓展</font><br/>提供商标产品推广更多营销渠道</span>				
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- three end-->
+	<!-- four -->
+	<div class="num" id="num_3">
+	<div class="four_txt"><img src="<?=StaticDir?>special/images/ba_03.png"/></div>
+		<div class="home_width">
+			<div class="tabbox">
+				<ul class="nav-list home_tabNav">
+					<li mid="0" class="nav-0 nav-cus-0"><span><a href="http://shansoo.com/" target="_blank">
+						<p class="home_four_txt">闪嗖</p>
+									<p>最快的商标检索系统</p>
+					</a></span></li>
+					<li mid="1" class="nav-1"><span><a href="http://wanxiang.chaofan.wang/" target="_blank">
+						<p class="home_four_txt">万象</p>
+								<p>国内最强专利检索工具</p>
+					</a></span></li>
+					<li mid="2" class="nav-2"><span><a href="http://jingling.yizhchan.com/" target="_blank">
+					<p class="home_four_txt">蝉精灵</p>
+								<p>国内唯一商标安全检测工具</p>
+					</a></span></li>
+					<li mid="3" class="nav-3"><span><a href="http://www.yizhchan.com/" target="_blank">
+					<p class="home_four_txt">一只蝉</p>
+								<p>商标专利安全交易平台</p>
+					</a></span></li>
+					<li mid="4" class="nav-4"><span><a href="http://z.chaofan.wang/" target="_blank">
+								<p class="home_four_txt">知库</p>
+									<p>知识百科全书</p>
+					</a></span></li>
+				</ul>
+
+	<div class="contant">
+		<div class="inner">
+			<div class="contant-con con_list home_four_more" mid="0">
+				<div class="home_four_limg"><img class="home_fimgda" src="<?=StaticDir?>special/images/home_qh01.png"/></div>
+				<div class="fl" style="margin-top:80px;">
+				<p class="home_four_p">第一个拥有<font>146</font>个国家的商标近似查询系统</p>
+				<a href="http://shansoo.com/" target="_blank">了解更多</a>
+				</div>
+			</div>
+
+			<div class="contant-con con_list home_four_more" mid="1">
+				<div class="home_four_limg"><img class="home_fimgda" src="<?=StaticDir?>special/images/home_qh02.png"/></div>
+					<div class="fl" style="margin-top:80px">
+					<p class="home_four_p">第一个拥有<font>102</font>个国家   <font>80,103,695</font> 件专利数据     <font>103,227,513</font> 份专利文献</p>
+					<a href="http://wanxiang.chaofan.wang/" target="_blank">了解更多</a>
+					</div>
+			</div>
+			<div class="contant-con con_list home_four_more" mid="2">
+				<div class="home_four_limg"><img class="home_fimgda" src="<?=StaticDir?>special/images/home_qh03.png"/></div>
+					<div class="fl home_cjl" style="margin-top:80px">
+						<div class="fl home_round">13</div>
+						<div class="fl home_rtxt">种风险核查机制</div>
+					</div>
+					<div class="fl home_cjl" style="margin-top:80px">
+						<div class="fl home_round">24</div>
+						<div class="fl home_rtxt">道检测机制</div>
+					</div>
+					<div class="fl home_cjl" style="margin-top:80px">
+						<div class="fl home_round">提供</div>
+						<div class="fl home_rtxt">专业商标体检报告</div>
+					</div>
+			</div>
+			<div class="contant-con con_list home_four_more" mid="3">
+				<div class="home_four_limg"><img class="home_fimgda2" src="<?=StaticDir?>special/images/home_qh04.png" /></div>
+					<div class="fl" style="margin-top:80px">
+					<p class="home_four_p">国内唯一独立签订《100%风险赔付协议》的知产交易平台</p>
+					<a href="http://www.yizhchan.com/" target="_blank">了解更多</a>
+					</div>
+			</div>
+			
+			<div class="contant-con con_list home_four_more" mid="4">
+				<div class="home_four_limg"><img class="home_fimgda" src="<?=StaticDir?>special/images/home_qh05.png"/></div>
+					<div class="fl" style="margin-top:80px">
+					<p class="home_four_p">阐述知产确权、保护、应用的方法流程及各种疑问</p>
+					<a>了解更多</a>
+					</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+				
+		</div>	
+			<!-- footer -->
+			<div class="home_footer">
+				<div class="home_footdiv">
+					<div class="fl home_foot_01">
+						<p class="home_foot_txt"><a>商标</a><a>专利</a><a>法律</a><a>版权</a><a>科技</a></p>
+						<p class="home_foot_txt2"><label>侵权投诉</label><label>意见反馈</label><label>举报不良信息</label><label><span>Copyright </span>©2002 - 2015 北京超凡知识产权代理有限公司</label></p>
+					</div>
+					<div class="fl home_foot_02">
+						<div class="fl"><img src="<?=StaticDir?>special/images/home_foot1.png" width="42" height="40" /></div>
+						<div class="fl">
+							<p class="home_color1">400-676-2003</p>
+							<p class="home_color2">7x24小时服务</p>
+						</div>
+					</div>
+					<div class="fl home_foot_02">
+						<div class="fl"><img src="<?=StaticDir?>special/images/home_foot2.png" width="42" height="40" /></div>
+						<div class="fl">
+							<p class="home_color1">使用帮助</p>
+							<p class="home_color2">7x24小时服务</p>
+						</div>
+					</div>
+					<div class="fr home_foot_03">
+						<div class="fl">
+							<p><b style="color:#fff;">加微信</b></p>
+							<img src="<?=StaticDir?>special/images/home_foot3.png" width="51" height="51" />
+							<p class="home_color2">紧急通知不延时</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- footer end-->		
+	</div>
+	<!-- four end -->
+</div>
+<!-- show div -->
+<div id="MyDiv" class="home_tcdiv">
+	<div class="home_tccont">
+		<div class="oreder_dftitle">
+		<p class="fr home_gbbut"></p>
+		</div>
+		<div id="usertxt"></div>
+		<div class="home_tcform">
+			<div class="home_tcdl">
+			<p class="home_tcdl_01">普通登录</p>
+			<p class="home_tc_bg">快捷登录</p>
+			</div>
+			<div class="homne_tc_user" style="margin-top:60px;">
+			<img src="<?=StaticDir?>special/images/home_tc1.png" width="43" height="38"/><!-- <input id="userNameId" type="text" value="" onfocus="if(this.value == '') this.value = ''" onblur="if(this.value =='') this.value = ''"/>	 -->
+			<input type="text" name="username" id="uemail" class="required user01 field3"  placeholder="请输入超凡账户/邮箱或手机号码"/>
+			</div>  
+			<div class="clearfix"></div>
+			<div class="homne_tc_user" style="margin-top:21px;">
+			<img src="<?=StaticDir?>special/images/home_tc2.png" width="43" height="38"/><input id="upass"  name="pwdname"  type="password" class="required user01" value="" 	placeholder="请输入密码"	/>		
+			</div> 
+			<a class="home_tc_dla"  id="send1"><input class="home_tc_dl" type="submit" value="点击登录"  id="logver1"  ctype="e"/></a>
+			<div class="fl"><a href="/lostpassword/">忘记密码？</a></div>
+			<div class="fr"><a href="/register/" style="color:#4e87e5;">免费注册</a></div>
+		</div>
+		<div class="home_tcform2">
+			<div class="home_tcdl">
+			<p class="home_tcdl_01">快捷登录</p>
+			<p class="home_tc_bg2">普通登录</p>
+			</div>
+			<div class="homne_tc_user" style="margin-top:60px;">
+			<img src="<?=StaticDir?>special/images/home_tc1.png" width="43" height="38"/>
+			<input type="text" name="username2" id="umobile" class="required user01" value="" placeholder="手机号"/>
+			</div>  
+			<div class="clearfix"></div>
+			<div class="homne_tc_user" style="margin-top:21px;">
+			<p>
+            <input id="ucode"  name="pwdname2" type="text" class="required user02" value="" maxlength="5"  placeholder="请输入验证码"/>
+            <a href="javascript:;" class="hqyzm" id="getcode">获取验证码</a>
+            </p>		
+			</div> 
+			<a class="home_tc_dla" id="send2"><input class="home_tc_dl" type="submit" value="点击登录"  id="logver2"/></a>
+			<div class="fl"><a href="/lostpassword/">忘记密码？</a></div>
+			<div class="fr"><a href="/register/" style="color:#4e87e5;">免费注册</a></div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- show div end-->
+<input type="hidden" value="0" class="ddw"/>
+<input type="hidden" value="0" class="ddw2"/>
+<script type="text/javascript" src="<?=StaticDir?>special/js/scroll.js" ></script> 
+<script type="text/javascript" src="<?=StaticDir?>special/js/jquery.mousewheel.js" ></script>
+<!-- <script type="text/javascript" src="js/jquery.tabslet.min.js"></script> -->
+<script type="text/javascript" src="<?=StaticDir?>special/js/tabbedContent.js"></script>
+<script type="text/javascript">
+var n_c_ser = 0;//设置初始值为0；
+function t_player(cur){
+	$('ul.nav-list > li').eq(n_c_ser).removeClass("nav-cus-"+n_c_ser);
+	if(cur==null){
+		n_c_ser = ++n_c_ser % 3;   //递加函数
+	}else{
+		n_c_ser = cur;
+	}
+	if(n_c_ser !=0 ){
+	}
+	
+	$('.inner').animate({marginLeft:(-1 * n_c_ser * 1100) + 'px'});//下面内容的动画效果左移动960px；
+
+	$('ul.nav-list > li').eq(n_c_ser).addClass("nav-cus-"+n_c_ser);
+}
+
+var n_t = setInterval('t_player()', 5000);//每隔5秒 执行一次
+
+$('ul.nav-list > li span').hover(function(){//当我鼠标悬浮上去的时候
+	var self = this;
+	clearInterval(n_t);   //清除动画
+	$('.inner').stop();
+	var mid = $(this).parent().index()
+	$('ul.nav-list > li').eq(n_c_ser).addClass("nav-cus-"+n_c_ser);
+	t_player(mid);
+},function(e){
+	n_t = setInterval('t_player()', 5000);//当鼠标离开的时候  继续执行上面循环的函数
+});
+</script>
+<script type="text/javascript">
+Qfast.add('widgets', { path: "<?=StaticDir?>special/js/terminator2.2.min.js", type: "js", requires: ['fx'] });  
+	Qfast(false, 'widgets', function () {
+		K.tabs({
+			id: 'carousel_imgid',  
+			conId: "carousel_id",    
+			tabTn:"a",
+			conCn: '.carousel_fcon',     
+			auto: 1,  
+			effect: 'fade',                         
+			interval: 5000   
+		}) 
+	}) 
+</script>	
+<script type="text/javascript">
+<!-- 服务 -->
+var timeout = 500;
+var trmall_closetimer = 0;
+var trmall_ddmenuitem = 0;
+function mopen(id)
+{	
+	trmall_mcancelclosetime();
+	if(trmall_ddmenuitem) trmall_ddmenuitem.style.visibility = 'hidden';
+
+	trmall_ddmenuitem = document.getElementById(id);
+	trmall_ddmenuitem.style.visibility = 'visible';
+
+}
+function mclose()
+{
+	if(trmall_ddmenuitem) trmall_ddmenuitem.style.visibility = 'hidden';
+}
+function trmall_mclosetime()
+{
+	trmall_closetimer = window.setTimeout(mclose, timeout);
+}
+function trmall_mcancelclosetime()
+{
+	if(trmall_closetimer)
+	{
+		window.clearTimeout(trmall_closetimer);
+		trmall_closetimer = null;
+	}
+}
+document.onclick = mclose; 
+<!-- 服务 over -->
+</script>
+</body>
+</html>

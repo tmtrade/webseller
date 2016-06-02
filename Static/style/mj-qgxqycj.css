@@ -1,0 +1,351 @@
+.mj-content{
+    background: #f5f5f5;
+    padding-top: 22px;
+    clear: both;
+}
+.mj-content_title{
+    padding-bottom: 14px;
+}
+.mj-content_title span{
+    font-size: 12px;
+    color: #666;
+}
+.mj-content_title span em{
+    color: #b7b7b7;
+}
+.mj-content_title a{
+    color: #666;
+}
+
+.mj-con-left{
+    padding-bottom: 170px;
+    width: 882px;
+    background: #fff;
+    border: solid 1px #efefef;
+}
+.mj-mainCon{
+    /*padding: 40px 35px 5px;
+    background: #fff;*/
+    padding-bottom: 30px\9;
+}
+.mj-mainCon_top{
+    padding-bottom: 10px;
+    border-bottom: solid 1px #e0e0e0;
+}
+.mj-mainCon_top strong{
+    font-size: 20px;
+    color: #444;
+    font-weight: normal;
+}
+.mj-mainCon_top a{
+    float: right;
+    display: inline-block;
+    width: 58px;
+    height: 28px;
+    line-height: 28px;
+    background: #f5f5f5;
+    font-size: 12px;
+    color: #357fcc;
+    text-align: center;
+    border: solid 1px #eceae9;
+}
+
+.mj-conTable{
+	border-collapse:separate;
+    padding: 25px 0;
+    width: 100%;
+}
+.mj-conTable tbody{}
+.mj-conTable tr{
+}
+.mj-conTable td{
+    padding: 14px 0;
+    font-size: 12px;
+    color: #444;
+    border: solid 1px #dfdfdf;
+}
+.mj-conTable td.odd{
+    text-align: right;
+    padding-right: 18px;
+    width: 20%;
+    background-color: #f5f5f5;
+}
+.mj-conTable td.even{
+    padding-left: 18px;
+    width: 80%;
+    /*width: 18.2%;*/
+}
+
+/*table*/
+.table{
+    margin-top: 38px;
+}
+.table thead tr {
+    background: #f5f5f5;
+}
+.table tbody tr td {
+     height: 52px;
+     padding-left: 20px;
+     text-align: left;
+     font-size: 12px;
+     color: #444;
+     width: auto;
+     border-bottom: solid 1px #ececec;
+ }
+.table tbody tr td a{
+    color: #357fcc;
+}
+.table thead tr td {
+    text-align: left;
+    height: 40px;
+    font-size: 12px;
+    color: #444;
+    padding: 0 20px;
+}
+
+/*table end*/
+
+/*流程*/
+.mj-mainCon_bottom{
+    /*padding: 0 33px 0;*/
+}
+.mj-process_title{
+    font-size: 16px;
+    color: #444;
+}
+.mj-process_title em{
+    padding-left: 16px;
+    font-size: 12px;
+    color: #ff6700;
+}
+.mj-process{}
+.mj-line{
+    position: relative;
+    display: inline-block;
+    width: 270px;
+    font-size: 12px;
+}
+.mj-line b{
+    display: inline-block;
+    padding: 18px 0 0 120px;
+    color:  #ff6700;
+    font-weight: normal;
+}
+.mj-line em{
+    display: inline-block;
+    width: 270px;
+    height: 1px;
+    background: #919191;
+}
+.mj-line label{
+    position: absolute;
+    left: 127px;
+    top: 4px;
+    display: block;
+    width: 18px;
+    height: 18px;
+    background: #ff6700;
+    border-radius: 50%;
+}
+.mj-dotted{
+    position: relative;
+    display: inline-block;
+    width: 270px;
+    text-align: center;
+}
+.mj-dotted em{
+    display: inline-block;
+    width: 270px;
+    /*border-bottom: solid 1px #919191;*/
+    border-bottom: dashed 1px #c2c2c2;
+}
+.mj-dotted label{
+    position: absolute;
+    left: 132px;
+    top: 10px;
+    display: block;
+    width: 6px;
+    height: 6px;
+    background: #919191;
+    border-radius: 50%;
+}
+.mj-dotted b{
+    display: inline-block;
+    padding-top: 20px;
+    font-size: 12px;
+    color:  #666;
+    font-weight: normal;
+}
+.mj-iImg3{
+    position: absolute;
+    display: block;
+    top: -37px;
+    left: 135px;
+    width: 180px;
+    height: 50px;
+    background: url(img/mj-img5.png) no-repeat;
+}
+/*流程end */
+.mj-gbdate {
+    padding: 10px 0 10px 79px;
+    border-bottom: solid 1px #ececec;
+}
+.mj-gbdbt{
+    margin-top: 35px;
+    border-top: solid 1px #ececec;
+}
+.mj-gbdate span {
+    display: inline-block;
+    height: 40px;
+    font-size: 14px;
+    color: #444;
+    vertical-align: middle;
+    line-height: 40px;
+}
+.mj-gbdate span em{
+    color: #ff6700;
+}
+.mj-spanBr{
+    padding-right: 103px;
+    border-right: dashed 1px #d5cead;
+}
+
+/*微信*/
+.mj-pwix{
+    margin: 40px auto;
+    width: 308px;
+    height: 128px;
+    background: #fff;
+    box-shadow: 0 0 15px #eaeaea;
+}
+.mj-pwix span{
+    padding: 19px 0 0 37px;
+    margin-right: 34px;
+}
+.mj-pwix_right{
+    padding-top: 25px;
+}
+.mj-pwix_right p{
+    font-size: 16px;
+    color: #333;
+}
+.mj-pwix_right em{
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+}
+.mj-pwix_right a{
+    display: inline-block;
+    margin-top: 12px;
+    width: 106px;
+    height: 26px;
+    background: #ff6700;
+    text-align: center;
+    line-height: 26px;
+    color: #fff;
+    font-size: 12px;
+    cursor: default;
+}
+
+
+.mj-con-right{
+    padding-bottom: 88px;
+    width: 198px;
+    background: #fff;
+    border: solid 1px #efefef;
+	min-height:710px;
+}
+.mj-cr-title{
+    padding:35px 0 15px;
+    margin: 0 22px;
+    font-size: 16px;
+    color: #444;
+    border-bottom: solid 1px #ececec;
+}
+
+.mj-con-right ul{
+    padding: 0 36px ;
+}
+.mj-con-right li{
+    margin: 18px 0;
+    width: 120px;
+    text-align: center;
+    border-bottom: solid 1px #ececec;
+}
+.mj-con-right li>span{
+    display: inline-block;
+    font-size: 11px;
+    color: #777;
+    padding-bottom: 18px;
+}
+.mj-mC_left {
+    position: relative;
+    margin:0 18px 13px 0;
+    width: 118px;
+    height: 78px;
+    background: #fff;
+    border: solid 1px #e3e3e3;
+}
+.mj-mC_left a {
+    display: table;
+    height: 78px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.mj-mC_left span {
+    display: table-cell;
+    vertical-align: middle;
+    display: inline-block\9;
+    width: 118px\9;
+    line-height: 78px\9;
+}
+.mj-mC_left img {
+    position: relative;
+    max-width: 115px;
+    max-height: 75px;
+    vertical-align: middle;
+    z-index: 1;
+}
+.mj-tip {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 60;
+}
+.mj-tip label {
+    display: inline-block;
+    width: 21px;
+    height: 21px;
+    border-radius: 2px;
+    text-align: center;
+    line-height: 21px;
+    color: #fff;
+    font-size: 12px;
+}
+.mj-tJing {
+    background: #ff8b3e;
+}
+.mj-tThe {
+    background: #ff6a6a;
+}
+.mj-tzhng {
+    background: #30ccc1;
+}
+.mj-tShow {
+    background: #a0adc0;
+}
+
+
+.mj-padaT {
+    border-bottom: 1px solid #e0e0e0;
+    color: #666;
+    font-size: 16px;
+    padding: 40px 0 10px;
+}
+.mj-mybRight {
+    background: #fff none repeat scroll 0 0;
+    padding: 0 30px 20px;
+    width: 825px;
+}

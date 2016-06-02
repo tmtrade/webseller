@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Mosaddek">
+<meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<link rel="shortcut icon" href="<?=StaticDir?>workspace/img/favicon.html">
+<title>商标服务-所有商标</title>
+
+<!-- Bootstrap core CSS -->
+<link href="<?=StaticDir?>workspace/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?=StaticDir?>workspace/css/bootstrap-reset.css" rel="stylesheet">
+<!--external css-->
+<link href="<?=StaticDir?>workspace/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<link href="<?=StaticDir?>workspace/css/style.css" rel="stylesheet">
+<link href="<?=StaticDir?>workspace/css/style-responsive.css" rel="stylesheet" />
+<link href="<?=StaticDir?>workspace/css/tablestyle.css" rel="stylesheet">
+<link href="<?=StaticDir?>workspace/css/list.css" rel="stylesheet">
+<!-- js placed at the end of the document so the pages load faster --> 
+<script src="<?=StaticDir?>workspace/js/jquery.js"></script> 
+<script src="<?=StaticDir?>workspace/js/jquery.customSelect.min.js" ></script>
+<script src="<?=StaticDir?>workspace/js/bootstrap.min.js"></script> 
+<!--common script for all pages--> 
+<script src="<?=StaticDir?>script/layer/layer.js"></script>
+
+<!--[if lte IE 8]> 
+<script> 
+   (function() {
+     if (! 
+     /*@cc_on!@*/
+     0) return;
+     var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+     var i= e.length;
+     while (i--){
+         document.createElement(e[i])
+     } 
+})() 
+</script>
+<![endif]-->
+</head>
+
+<body>
+<section id="container" class=""> 
+  <!--header start-->
+  <header class="header white-bg">
+    <!--logo start--> 
+    <a href="/user/index" class="logo" ></a> 
+    <div class="sidebar-toggle-box"><!-- data-original-title="Toggle Navigation" data-placement="right"  -->
+      <div class="icon-reorder tooltips"></div>
+    </div>
+    <!--logo end-->
+    <div class="nav notify-row" id="top_menu"> 
+      <!--  notification start -->
+      <ul class="nav top-menu">
+        <!-- inbox dropdown start-->
+        <li id="header_inbox_bar" class="dropdown"> 
+        	<a class="dropdown-toggle" href="/message/index/"> 
+            	
+            	<i class="icon-envelope-alt"></i> 
+                <?php
+                $badClass = $mcount = "";
+                if($messagecount>0){
+                	$badClass = "badge";
+                    $mcount   = $messagecount;
+                }
+                ?>
+                <span class="<?=$badClass?> bg-important" id="message-count"><?=$mcount?></span> 
+                
+            </a>
+        </li>
+        <!-- inbox dropdown end --> 
+        <!-- notification dropdown start-->
+        <!--<li id="header_notification_bar" class="dropdown"> <a class="dropdown-toggle" href="#"> <i class="icon-bell-alt"></i> <span class="badge bg-warning">7</span> </a></li>-->
+        <!-- notification dropdown end -->
+        <li class="dropdown"> <a data-toggle="dropdown" class="dropdown-toggle user" href="#"> <img alt="" width="29" height="29" src="<?=StaticDir?>workspace/img/chat-avatar2.jpg"> <span class="username"><?=$nickname?></span> <b class="caret"></b> </a>
+          <ul class="dropdown-menu" style="border:none;">
+            <li><a href="/login/logout/">退出登录</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="top-nav ">
+      <ul class="nav pull-right top-menu">
+      	<?php
+        	$count = count($staffInfo);
+            if( $count == 1 ){
+            	$clsss 	= 'counselor';
+                $none	= '';
+                foreach($staffInfo as $k => $v){
+                	$sname 	= $v['staff']['name'];//print_r($v);
+                    $mobile = !empty($v['staff']['mobile']) ? $v['staff']['mobile'] : '400-676-1007';
+                    $email  = !empty($v['staff']['email']) ? $v['staff']['email'] : '';
+                    $pic  	= !empty($v['staff']['pic']) ? $v['staff']['pic'] : '';
+                    $sid	= !empty($v['staff']['id']) ? $v['staff']['id'] : '0';
+                    $classu = '';
+                }
+            }else{
+            	$clsss 	= 'counselor_more';
+                $none	= 'display:none';
+                $mobile = $email = $pic = $sid = '';
+                $sname	= '找TA帮忙';
+                $classu = 'counselorsurl';
+            }
+        ?>
+        <!-- user login dropdown start-->
+        
+        <!-- user login dropdown end -->
+      </ul>
+    </div>
+  </header>
+  <!--header end--> 
+  <!--sidebar start-->
+  <aside>
+    <div id="sidebar"  class="nav-collapse "> 
+      <!-- sidebar menu start-->
+      <ul class="sidebar-menu">
+	  <? foreach ($ucmenu as $item){ ?>
+        <li class="sub-menu active"> <a href="javascript:;" class=""> <i class="<?=$item['icon']?>"></i> <span><?=$item['name']?></span> <span class="arrow"></span> </a>
+          <ul class="sub">
+			<? foreach($item['child'] as $child ){ ?>
+              <li class="<? if($current_url ==$child['url'] || in_array($current_url, $child['child'])){ echo 'active';}?>"><a href="<?=$child['url']?>"><?=$child['title']?></a></li>
+			  <? } ?>
+          </ul>
+        </li>
+		<? } ?>
+        <li class="sub-menu esc" style="display: none;"> <a href="/login/logout/" class=""> <i class="icon-remove-circle"></i> <span>退出登录</span></a>
+      </ul>
+	  <script>
+	  $(function(){
+		$('.sidebar-menu').find('li.active').eq(0).parent().parent().addClass('active');
+	  })
+	  </script>
+      <!-- sidebar menu end--> 
+    </div>
+  </aside>
+<!--sidebar end--> 
+<? require(ViewDir.'/public/assess.html'); ?>

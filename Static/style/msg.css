@@ -1,0 +1,101 @@
+/*提示成功*/
+.mj-right{
+    width: 948px;
+}
+.mj-right_main{
+    margin-bottom: 10px;
+    min-height: 590px;
+    background: #fff;
+    border: solid 1px #e5edf2;
+}
+.mj-sucCon{
+    padding: 100px 0 0 100px;
+}
+
+.mj-sucImg{
+    display: block;
+    float: left;
+}
+.mj-sucText,.mj-errorText{
+    margin-left: 200px;
+}
+.mj-sucText h2{
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: #0fce9f;
+}
+.mj-sucText p{
+    font-size: 14px;
+    color: #515567;
+    line-height: 25px;
+}
+.mj-sucText a{
+    margin-top: 25px;
+    display: block;
+    width: 138px;
+    height: 48px;
+    background: #f7f7f7;
+    font-size: 16px;
+    color: #515567;
+    text-align: center;
+    line-height: 48px;
+    border-radius: 2px;
+    border: solid 1px #e3e3e3;
+}
+
+/*提示错误*/
+
+.mj-errorText h2{
+    padding-bottom: 10px;
+    font-size: 24px;
+    color: #ff9d1f;
+}
+.mj-errorText h2 em{
+    color: #515567;
+}
+.mj-errorText p{
+    font-size: 14px;
+    color: #515567;
+    line-height: 25px;
+}
+.mj-inputList{
+    margin-top: 30px;
+}
+.mj-inputList li{
+    padding-bottom: 15px;
+}
+.mj-inputList li label{
+    display: block;
+    padding-bottom: 8px;
+    font-size: 16px;
+    color: #515567;
+}
+.mj-inputList li input{
+    padding-left: 15px;
+    width: 402px;
+    height: 48px;
+    border: solid 1px #ddd;
+    line-height: 48px\9;
+    outline: none;
+}
+.mj-inputList li a{
+    margin-top: 5px;
+    display: inline-block;
+    width: 138px;
+    height: 48px;
+    font-size: 16px;
+    text-align: center;
+    line-height: 48px;
+    border-radius: 2px;
+}
+.mj-inputList li a.mj-addBtn{
+    margin-right: 10px;
+    background: #596081;
+    color: #fff;
+    border: solid 1px #596081;
+}
+.mj-inputList li a.mj-retBtn{
+    background: #f7f7f7;
+    color: #515567;
+    border: solid 1px #e3e3e3;
+}

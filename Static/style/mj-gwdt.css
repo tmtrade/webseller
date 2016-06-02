@@ -1,0 +1,222 @@
+.mj-content{
+    background: #f5f5f5;
+    padding-top: 22px;
+    clear: both;
+}
+.mj-content_title{
+    padding-bottom: 14px;
+}
+.mj-content_title span{
+    font-size: 12px;
+    color: #666;
+}
+.mj-content_title span em{
+    color: #b7b7b7;
+}
+.mj-content_title a{
+    color: #666;
+}
+.mj-mainCon{
+
+}
+
+.mj-mybRight{
+    padding: 39px 33px 30px;
+    width: 818px;
+    background: #fff;
+}
+.mj-mybR_top{
+    padding-bottom: 8px;
+    font-size: 16px;
+    border-bottom: solid 1px #e0e0e0;
+}
+.mj-mybR_top p{
+    display: inline-block;
+    font-size: 16px;
+    color: #666;
+}
+.mj-mybR_top a{
+    margin-top: 5px;
+    float: right;
+    font-size: 12px;
+    color: #1893ff;
+}
+
+.mj-hbcon{
+    padding-top: 20px;
+}
+.mj-hbTop{
+    padding: 35px 30px;
+    background: #fffaf2;
+    border: solid 1px #e4e4e4;
+}
+.mj-hbTop label{
+    float: left;
+    display: block;
+    height: 65px;
+    margin-right: 65px;
+    width: 96px;
+    line-height: 65px;
+    padding: 0 65px 0 35px;
+}
+.mj-hbTop label img{
+    vertical-align: middle;
+}
+.mj-hbtR{}
+.mj-hbtR strong{
+    font-weight: normal;
+    font-size: 18px;
+    color: #ff6700;
+}
+.mj-hbtR p{
+    font-size: 12px;
+    color: #444;
+    line-height: 25px;
+}
+.mj-hbCenter{
+    margin:75px 0 90px ;
+}
+.mj-hbCenter>label{
+    float: left;
+    margin-right: 55px;
+}
+.mj-hbCenter .mj-htbcR{
+    padding-top: 15px;
+}
+.mj-htbcR>strong{
+    font-size: 18px;
+    color: #444;
+    font-weight: normal;
+}
+.mj-htbcR>p{
+    font-size: 12px;
+    color: #999;
+}
+.mj-btips{
+    margin-top: 35px;
+}
+.mj-tipCon{
+    margin-right: 30px;
+    width: 203px;
+}
+.mj-tipCon label{
+    font-size: 12px;
+    color: #ff6700;
+    border-bottom: solid 1px #ff6700;
+}
+.mj-tipCon p{
+    margin-top: 15px;
+    position: relative;
+    background: #fff;
+    padding: 15px;
+    font-size: 12px;
+    color: #444;
+    border: solid 1px #e4e4e4;
+}
+.mj-tipCon p i{
+    position: absolute;
+    top: -14px;
+    left: 11px;
+}
+.mr50{
+    margin-right: 50px;
+}
+.mj-hbBottom>label{
+    display: block;
+    padding-top: 30px;
+}
+.mj-hbBottom{
+    padding-bottom: 85px;
+    border-bottom: solid 1px #e4e4e4;
+}
+.mj-btnLink{
+    margin-top: 30px;
+    text-align: center;
+}
+.mj-btnLink a{
+    display: inline-block;
+    width: 290px;
+    height: 50px;
+    background: #fff4e1;
+    text-align: center;
+    line-height: 50px;
+    font-size: 18px;
+    color: #444;
+    border: solid 1px #e4e4e4;
+}
+
+
+/*¹ÙÎÄ¶¯Ì¬*/
+.mj-hbBar{
+    margin-top: 10px;
+    padding: 0 15px 0 30px;
+    height: 40px;
+    background: #f5f5f5;
+    line-height: 40px;
+}
+.mj-hbBar:hover{
+    background: #fff5e5;
+}
+.mj-hbBar span{
+    font-size: 12px;
+    color: #444;
+}
+.mj-hbBar label{
+    display: none;
+    float: right;
+    font-size: 12px;
+    color: #444;
+    cursor: pointer;
+}
+.mj-hbBar:hover.mj-hbBar label{
+    display: block;
+}
+
+
+.mj-dynamicList{
+    display: none;
+    padding: 15px 25px 0;
+    border: solid 1px #ececec;
+}
+.mj-dynamicList>p{
+    padding-bottom: 15px;
+    font-size: 14px;
+    color: #ff6700;
+}
+.mj-dynamicList table{
+    width: 100%;
+}
+.mj-dynamicList table td{
+    padding: 15px 0 15px 85px;
+    font-size: 12px;
+    color: #444;
+    border: solid 1px #ececec;
+}
+
+.mj-dynamicList thead tr{
+    background: #f5f5f5;
+}
+
+.mj-bwximg{
+    margin: 50px auto;
+    width: 300px;
+    padding: 30px 50px;
+    background: #fff;
+    box-shadow: 0 0 5px #ededed;
+}
+.mj-bwximg>label{
+    float: left;
+    padding-right: 17px;
+    display: inline-block;
+}
+.mj-bwR{
+    padding-top: 10px;
+    text-align: center;
+}
+.mj-bwR p{
+    font-size: 14px;
+    color: #444;
+}
+.mj-bwR p span{
+    color: #ff6801;
+}

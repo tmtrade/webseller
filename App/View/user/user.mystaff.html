@@ -1,0 +1,145 @@
+<? require(ViewDir.'/header.html'); ?>
+<!--content start-->
+<div class="mj-content">
+    <div class="w1180 f-clearfix">
+<? require(ViewDir.'/user/left.html'); ?>
+        <div class="mj-right fr">
+            <div class="mj-menu">
+                <a href="/user/main/">我的账户</a><em>></em>
+                <span>我的顾问</span>
+            </div>
+            
+            <?php
+            $staffInfo = count($staffInfo) > 0 ? $staffInfo : array(0=>array());
+            foreach( $staffInfo as $k => $staff ){
+            ?>
+            <div class="mj-manDet_main" style="float:left">
+               <h4 class="secTitle bgw seH70">我的顾问</h4>
+               <div class="g-client">
+                    <div class="g-client-top f-clearfix">
+                        <div class="g-client-top_left">
+                            <img src="<?=!empty($staff['staff']['pic']) ? $staff['staff']['pic'] : '/Static/style/img/g-mm.png';?>" alt="" width="60" height="60"/>
+                            <span><?=!empty($staff['staff']['name']) ? $staff['staff']['name'] : '无';?></span>
+                            <p>客服在线</p>
+                        </div>
+                        <div class="g-client-top_right">
+                        	<?php
+                            if(!empty($staff['staff']['name'])){
+                            ?>
+                            <a href="javascript:;" class="g-client-top_right_a" onclick="consultation()"><i><img src="<?=StaticDir?>style/slice/g-hy.png" alt=""/></i>咨询客服</a>
+                            <a href="javascript:;" class="g-client-top_right_a g-client-top_right_a1 delEm" data-sid="<?=!empty($staff['staff']['id']) ? $staff['staff']['id'] : '0';?>"><i><img
+                                    src="<?=StaticDir?>style/slice/g-xz.png" alt=""/></i>对TA评价</a>
+                             <?php
+                             }
+                             ?>       
+                        </div>
+                    </div>
+                   <div class="g-client-bottom">
+                       <div class="g-tel">
+                           <img src="/Static/style/slice/g-tel.png" alt=""/>
+                           <span>专属客服座机：</span>
+                           <p><?=!empty($staff['staff']['companytel']) ? $staff['staff']['companytel'] : '无';?></p>
+                       </div>
+                       <div class="g-tel">
+                           <img src="/Static/style/slice/g-tel.png" alt=""/>
+                           <span>专属客服手机：</span>
+                           <p><?=!empty($staff['staff']['mobile']) ? $staff['staff']['mobile'] : '无';?></p>
+                       </div>
+                       <div class="g-tel">
+                           <img src="/Static/style/slice/g-tel.png" alt=""/>
+                           <span>专属客服邮箱：</span>
+                           <p><?=!empty($staff['staff']['email']) ? $staff['staff']['email'] : '无';?></p>
+                       </div>
+					   
+                       <div class="g-tel">
+                           <img src="/Static/style/slice/g-tel.png" alt=""/>
+                           <span>性别：</span>
+                           <p><?=!empty($staff['staff']['sexname']) ? $staff['staff']['sexname'] : '无';?></p>
+                       </div>
+                       <div class="g-tel">
+                           <img src="/Static/style/slice/g-tel.png" alt=""/>
+                           <span>岗位：</span>
+                           <p><?=!empty($staff['staff']['jobs']) ? $staff['staff']['jobs'] : '无';?></p>
+                       </div>
+                   </div>
+               </div>
+            </div>
+            <?php
+            }
+            ?>
+            
+        </div>
+    </div>
+</div>
+<div style="background-color:#f3f7fa; height:30px;"></div>
+<!--content end-->
+<!--弹层 start-->
+<div class="g-adviser_tc">
+    <div class="g-adviser_tc_title">
+        <p>评价顾问</p>
+        <span class="mj-close"></span>
+    </div>
+    <div class="g-adviser_tc_nav">
+        <p>内容</p>
+        <input name="sid" type="hidden" value="0" class="sid" />
+        <textarea name="content" class="content" id="" cols="89" rows="8" placeholder="顾问很有亲和力，非常热情，服务周到，帮助我完成了急需解决的专业问题，非常感谢。"></textarea>
+        <span><input type="checkbox" name="istrade" class="istrade" /> 不满意，我要换顾问</span>
+        <a href="javascript:;" class="yjpost">提交</a>
+    </div>
+</div>
+<!--弹层 end-->
+
+
+<script type="text/javascript">
+    $(function(){
+        $(".delEm").click(function(){
+			sidVal = $(this).data('sid');
+			$('.sid').val(sidVal);
+            layer.open({
+                type	: 1,
+                title	: false,
+                closeBtn: false,
+                skin	: 'yourclass',
+                offset	: ['15%', '28%'],
+                content	: $('.g-adviser_tc')
+            });
+            $(".mj-close").click(function(){
+                layer.closeAll();
+				$('.sid').val(0);
+            });
+        });
+		var isPost = true;
+		$('.yjpost').click(function(){
+			if( isPost == false ){
+				return false;	
+			}
+			contentVal 	= $('.content').val();
+			istrade		= $('.istrade').attr('checked');
+			sid			= $('.sid').val();
+			if(!contentVal){
+				layter_msg('请输入评价内容');
+				return false;	
+			}
+			istradeVal	= istrade ? 1 : 0;
+			$.ajax({
+				 type		: "post",
+				 url		: "/user/myStaffSubmit/",
+				 dataType	: "json",
+				 data		: {"content" : contentVal,"istrade" : istradeVal,"sid" : sid},
+				 error		: function(msg){
+					layter_msg('系统繁忙请稍后在试');
+				 },
+				 success	: function(data){
+					isPost = false;
+					layter_msg(data.msg);
+					setTimeout(function(){
+						layer.closeAll();
+						$('.content').val('');
+						isPost = true;
+					},3000);
+				 }
+			});
+		});
+    });
+</script>
+<? require(ViewDir.'/footer.html'); ?>

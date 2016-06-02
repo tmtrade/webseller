@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="Mosaddek">
+<meta name="keyword" content="FlatLab, Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+<link rel="shortcut icon" href="img/favicon.html">
+<title>注册</title>
+
+<!-- Bootstrap core CSS -->
+<link href="<?=StaticDir?>workspace/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?=StaticDir?>workspace/css/bootstrap-reset.css" rel="stylesheet">
+<!--external css-->
+<link href="<?=StaticDir?>workspace/assets/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<!-- Custom styles for this template -->
+<link href="<?=StaticDir?>workspace/css/style.css" rel="stylesheet">
+<link href="<?=StaticDir?>workspace/css/style-responsive.css" rel="stylesheet" />
+<link href="<?=StaticDir?>workspace/css/tablestyle.css" rel="stylesheet">
+<!-- js placed at the end of the document so the pages load faster --> 
+<script src="<?=StaticDir?>workspace/js/jquery.js"></script> 
+<script src="<?=StaticDir?>workspace/js/means.js"></script>
+<script src="<?=StaticDir?>workspace/js/means.callback.js"></script>
+<script src="<?=StaticDir?>/script/user/script/tool.js"></script>
+<script src="<?=StaticDir?>workspace/js/register.js"></script>
+<script src="<?=StaticDir?>workspace/js/bootstrap.min.js"></script>
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+<!--[if lte IE 8]> 
+<script> 
+   (function() {
+     if (! 
+     /*@cc_on!@*/
+     0) return;
+     var e = "abbr, article, aside, audio, canvas, datalist, details, dialog, eventsource, figure, footer, header, hgroup, mark, menu, meter, nav, output, progress, section, time, video".split(', ');
+     var i= e.length;
+     while (i--){
+         document.createElement(e[i])
+     } 
+})() 
+</script>
+<![endif]-->
+</head>
+<style type="text/css">
+.btn-primarys{
+	background-color:#39b2a9;
+	color:#FFF;
+}
+</style>
+<body>
+<section id="container" class=""> 
+  <!--header start-->
+  <header class="header white-bg">
+    <!--logo start--> 
+    <a href="/" class="logo" ></a> 
+    <div class="sidebar-toggle-box">
+      <div data-original-title="Toggle Navigation" data-placement="right" class="icon-reorder tooltips"></div>
+    </div>
+    <!--logo end-->
+    <div class="nav notify-row" id="top_menu"> 
+      <!--  notification start -->
+      <ul class="nav top-menu">
+        <!-- inbox dropdown start-->
+        <li id="header_inbox_bar" class="dropdown"></li>
+        <!-- inbox dropdown end --> 
+        <!-- notification dropdown start-->
+        <li id="header_notification_bar" class="dropdown"></li>
+        <!-- notification dropdown end -->
+        <li class="dropdown">
+          <ul class="dropdown-menu" style="border:none;">
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <div class="top-nav ">
+      <ul class="nav pull-right top-menu">
+        <!-- user login dropdown start-->
+        <li class="dropdown counselors counselorsurl"> 
+       	 	<a data-toggle="dropdown" class="dropdown-toggle counselor_more" href="#" onclick="consultation()">
+                <span class="username">
+                    <font size="1">我是你的顾问</font><br />
+                    <font size="3">找TA帮忙</font>
+                </span>
+            </a>
+          <ul class="dropdown-menu" style="width:235px; display:none">
+            <li class="counselor-tell"><a href="#"><i class="icon-phone"></i>400-676-1007</a></li>
+            <li class="counselor-email"><a href="#"><i class="icon-envelope"></i>deccy.wan@chofn.com</a></li>
+            <li class="counselor-btn">
+                <button type="button" class="btn btn-success float-left">我要咨询</button> 
+                <button type="button" class="btn btn-primary float-left">评价TA</button>
+            </li>
+          </ul>
+        </li>
+        <!-- user login dropdown end -->
+      </ul>
+    </div>
+  </header>
+  <!--header end--> 
+  <!--main content start-->
+  <section class="wrapper main">
+
+    <div class="row">
+
+      <div class="col-xs-3">
+
+      </div>
+      <div class="col-xs-6">
+        <div class="phone-head"><span class="float-left">注册知友账户</span><span class="float-right"><a href="/">点击登录>></a></span></div>
+        <div class="phone-form code-form" style="max-width:570px;margin-top: 20px;">
+	      <div class="phone-center" style="margin-left:20%;">
+          <form>
+            <p>手机号码</p>
+            <div class="row">
+              <div class="col-xs-8" style="padding-right:0">
+                <input name="usertel" type="text" class="form-control" id="username" placeholder="" maxlength="12">
+              </div>
+              <div class="col-xs-4">
+                <p class="red" id="red1" style="display:none;">手机号不能为空</p>
+                <div class="icon5" style="display:none;"></div>
+              </div>
+            </div>
+            <p>密码</p>
+            <div class="row">
+              <div class="col-xs-8" style="padding-right:0">
+                <input name="userpwd" type="password" class="form-control" id="upass" placeholder="" maxlength="20">
+              </div>
+              <div class="col-xs-4">
+                <p class="red" id="red2" style="display:none;">密码错误</p>
+                <div class="icon5" style="display:none;"></div>
+              </div>
+            </div>
+            <p>验证码</p>
+            <div class="row">
+              <div class="col-xs-8">
+                <div class="row">
+                  <div class="col-xs-6" style="padding-right:0;">
+                    <input name="code" type="text" class="form-control" placeholder="" maxlength="5">
+                  </div>
+                  <div class="col-xs-6" style="padding-right:0">
+                  <button type="button" class="btn btn-block btn-primarys"  id="getcode" style="color:#FFF;">获取验证码</button>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <p class="red" id="red3" style="display:none;">验证码错误</p>
+                <div class="icon5" style="display:none;"></div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-8" style="padding-right:0">
+                <p>
+                  <button type="button" class="btn btn-success btn-block submit" id="reg">确认提交</button>
+                </p>
+              </div>
+              <div class="col-xs-4"></div>
+            </div>
+          </form>
+        </div>
+        </div>
+      </div>
+      <div class="col-xs-3"></div>
+    </div>
+  </section>
+  <!--main content end--> 
+</section>
+<!-- Modal -->
+
+<!--common script for all pages--> 
+<script>
+$(document).ready(function(){
+	var ok1=false;
+	var ok2=false;
+	$('input[name="usertel"]').blur(function(){
+		regVic(1);
+	});
+	// 输入密码
+	$('input[name="userpwd"]').blur(function(){
+		regVic(1);
+	});
+	
+	// 验证验证码
+	$('input[name="code"]').blur(function(){
+		regVic(1);
+	});
+	//提交按钮,所有验证通过方可提交
+});
+</script>
+<script>
+function regCountDown(count, obj){
+     setTimeout (function () {
+		count --;
+		obj.text(count + "秒后重新获取");
+		if(count > -1){
+			obj.removeClass('btn-primarys').addClass('btn-default');
+			regCountDown(count, obj);
+		}else{
+			isSendCode = true;
+			obj.removeClass('btn-default').addClass('btn-primarys');
+			obj.text('重新获取验证码');
+		}
+     },1000);
+}
+
+</script>
+<script language="javascript" src="<?=StaticDir?>script/backcallandtongji.js"></script>
+
+</body>
+</html>

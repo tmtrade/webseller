@@ -1,0 +1,159 @@
+<? require(ViewDir.'/public/header.html'); ?> 
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper">
+    <section class="panel">
+      <header class="panel-heading"> <span class="float-left">修改密码</span>
+		<ul class="breadcrumb float-right">
+			<li><a href="/user/main/">返回</a></li>
+		</ul>
+		</header>
+      <section class="wrapper wrapper tab-container">
+        <div class="row" style="height:100%; min-height:550px;" id="password_div" >
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="form-box to_buy">
+                <form class="form-inline">
+                  <div class="form-group form-inline">
+                    <p>
+                      <p>旧密码：</p>
+                      <input type="password"  name='old' id='old' class="form-control input-sm" placeholder="">
+                      <font class="red" id="old_pass"></font> </p>
+                    <p>
+                      <p>新密码：</p>
+                      <input type="text"  id="usrName_popups"  class="form-control input-sm" >
+                      <font class="red" id="new_pass"></font> <span class="showpwd">隐藏</span></p>
+                    <p><a href="javascript:;" id='changepwd' class="btn btn-success btn-sm btn-block" style="width: 153px;">确认提交</a></p>
+                  </div>
+                </form>
+              </header>
+            </section>
+          </div>
+        </div>
+
+        <div class="row" style="height:100%; min-height:550px;display:none;" id="success_div">
+          <div class="modal-body">
+            <ul class="list-inline ">
+              <li><img src="<?=StaticDir?>workspace/img/up_pwdcg.png"/></li>
+              <li>
+                <h3 style="color:#60c531;">恭喜密码修改成功 </h3>
+                <p>今后将使用新密码来登录系统，请牢记</p>
+                <a href="/user/main/" class="btn btn-primary">返回</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
+    </section>
+  </section>
+  <!--main content end--> 
+</section>
+<script type="text/javascript">
+    $(function(){
+        //手机号验证
+        var reg = /^0?(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+		var yz1 = false;
+        $("#phone").blur(function () {
+			checkPhone();
+        });
+        //验证码
+        $("#mj-inputYz").blur(function () {
+			checkCode();
+        });
+    });
+	var oldpass = false;
+	
+	$('#changepwd').click(function(){
+		oldmess	= checkOld($('#old'));
+		if(oldmess == false){ return false; }
+		pwd = checkPasswordHtml($('#usrName_popups'));
+		if(pwd == false){ return false; }
+		$.ajax({
+            type: "post",
+            url: "/user/updatePwd/",
+			async: true,
+            data: {'old': $('#old').val(),'new':$("#usrName_popups").val()},
+            dataType: "json",
+            success: function(data){
+                if (data.code == 1){
+					$('#success_div').show().siblings().hide()
+                }else{
+					$('#new_pass').html(data.mess);
+					return false;
+                }
+            }
+		});
+	})
+
+	//显示-隐藏
+	$(".showpwd").click(function(){
+		if($("#usrName_popups").prop("type") == 'text'){
+			$("#usrName_popups").prop("type","password");
+			$(this).text("显示");
+		}else{
+			$("#usrName_popups").prop("type","text");
+			$(this).text("隐藏");			
+		}
+	})
+	//验证密码
+	function checkPasswordHtml(obj){
+		passwordid = obj.val();
+		var pregSZ = /^[\0-9]+$/g;//数字
+		//var pregYW = /^[\a-zA-Z]+$/g;//英文
+		var pregZW = /[\u4E00-\u9FA5]+/;//中文
+		var pregKG = /\s+/g;//空格
+		_mess_obj	= $(obj).parent().parent().find('.pass_mess').eq(0).attr('id');
+		if(passwordid == ""){
+			$('#new_pass').html('密码不能为空');
+			return false;
+		}else if(pregKG.test(passwordid)){
+			$('#new_pass').html('密码不能有空格');
+			return false;
+		}else if(pregZW.test(passwordid)){
+			$('#new_pass').html('密码不能是中文');
+			return false;
+		}else if(pregSZ.test(passwordid)){
+			$('#new_pass').html('密码不能是纯数字');
+			return false;
+		}else if(passwordid.length>20 || passwordid.length<6){
+			$('#new_pass').html('请输入6~20位非纯数字的密码');
+			return false;
+		}else if($('#old').val() ==  passwordid){
+			$('#new_pass').html('新密码不能跟旧密码一样！');
+			return false; 
+		}else{
+			$('#new_pass').html('<i class="icon-ok text-success"></i>');
+			return true;
+		}	
+	}
+	function checkOld(obj){
+		if($(obj).val() == ''){
+			$('#old_pass').html( '密码不能为空' );
+			oldpass = false;
+			return false;
+		}
+		$.ajax({
+            type: "post",
+            url: "/user/checkPwd/",
+			async: true,
+            data: {'old': $('#old').val()},
+            dataType: "html",
+            success: function(data){
+                if (data == 1){
+					$('#old_pass').html( '<i class="icon-ok text-success"></i>' );
+					oldpass = true;
+                }else{
+					$('#old_pass').html( '密码有误' );
+					oldpass = false;
+                }
+            }
+		});
+	}
+	$('#usrName_popups').blur(function(){
+		checkPasswordHtml($(this));
+	})
+	$('#old').blur(function(){//旧密码失去焦点时，判断旧密码是否正确
+		checkOld($('#old'));
+	})
+</script>
+<? require(ViewDir.'/public/footer.html'); ?>

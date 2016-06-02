@@ -1,0 +1,840 @@
+/*------------------------------------*\
+                公用CSS
+\*------------------------------------*/
+/*!
+ * __chofn-business__        ............ 超凡业务
+ * __html_comm__     ............ 字体显示呈现样式
+ * __function__      ............ 功能区块
+ */
+.mj-Tnav_ul{
+    padding-top: 43px;
+}
+.ul-checkbox{
+    display: inline-block;
+    margin-right: 10px;
+    position: relative;
+    z-index: 1;
+    padding-left: 16px;
+}
+.ul-checkbox input{
+    position: absolute;
+    z-index: 1;
+    top: 3px;
+    left: 0;
+}
+.valignm{
+    display: inline-block;
+    vertical-align: middle;
+}
+/* 输入框 */
+.ul-input-text{
+    position: relative;
+    z-index: 1;
+    width: 200px;
+    height: 33px;
+    border: 1px solid #dadada;
+    border-top: 1px solid #abadb3;
+    padding: 0 10px;
+}
+.ul-input-text span{
+    position: absolute;
+    z-index: 1;
+    line-height: 33px;
+    color: #838383;
+}
+.ul-input-text input{
+    outline: none;
+    display: block;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+    top: 8px;
+    right: 0;
+    border: 0;
+    background: url(' ');
+}
+.mj-tdSl{
+    height: 35px;
+    margin-left: 10px;
+    text-align: center;
+    outline: none;
+}
+
+/* 下拉select */
+.ul-select{
+    height: 33px;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #dadada;
+    border-top: 1px solid #abadb3;
+    cursor: pointer;
+}
+.ul-select .ul-select_icon{
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    top: 14px;
+}
+.ul-select .ul-select_tit{
+    display: block;
+    line-height: 33px;
+    color: #838383;
+    width: 85%;
+    text-align: center;
+}
+.ul-select .ul-select_box{
+    position: absolute;
+    width: 100%;
+    left: -1px;
+    top: 33px;
+    background: #fff;
+    border: 1px solid #dadada;
+    visibility: hidden;
+}
+.ul-select .ul-select_box span{
+    display: block;
+    line-height: 30px;
+    padding: 0 10px;
+    color: #444;
+}
+.ul-select1 input{
+    border: 0;
+    background: none;
+    outline: none;
+    opacity: 0;
+    position: absolute;
+    top: 17px;
+    left: 0;
+}
+
+/* 提交按钮 */
+.ul-input-submit{
+    float: left;
+    background: #ff6700;
+    text-align: center;
+    cursor: pointer;
+}
+.ul-input-submit input,
+.ul-input-submit button{
+    border: 0;
+    background: none;
+    outline: none;
+    display: inline-block;
+}
+
+.chofn-flex{
+    float: right;
+    width: 815px;
+    background: #fff;
+    padding: 30px 35px 30px;
+}
+/* 标题 */
+.chofn-flex .chofn-flex_h1{
+    font-size: 20px;
+    color: #444444;
+    margin: 0;
+    font-weight: 400;
+    border-bottom: 1px solid #e0e0e0;
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+}
+.chofn-flex .chofn-flex_h1 a{
+    color: #357fcc;
+    float: right;
+    border: 1px solid #eceae9;
+    background: #f5f5f5;
+    padding: 5px 15px;
+    font-size: 12px;
+}
+
+/* 选择条件 */
+.chofn-flex .chofn-flex_bar{
+    margin-bottom: 15px;
+}
+.chofn-flex .chofn-flex_searchNum{
+    color: #989898;
+    text-align: right;
+    margin-bottom: 15px;
+}
+.chofn-flex .chofn-flex_searchNum span{
+    color: #ff7426;
+}
+
+/* 业绩列表 */
+.chofn-flex .chofn-flex_table{
+    width: 100%;
+    color: #444444;
+}
+.chofn-flex .chofn-flex_table thead th{
+    background: #f5f5f5;
+    padding: 11px 0 11px 15px;
+    text-align: left;
+    font-weight: 400;
+    color: #444444;
+}
+.chofn-flex .chofn-flex_table tbody td{
+    padding: 15px 0 15px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ececec;
+}
+.chofn-flex .chofn-flex_table a{
+    color: #357fcc;
+}
+
+/* 监测商标 */
+.chofn-flex .chofn-flex_monitor{
+    position: relative;
+    z-index: 1;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 15px;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_img{
+    width: 136px;
+    height: 98px;
+    display: table;
+    border: 1px solid #ececec;
+    position: relative;
+    z-index: 1;
+    margin-left: 26px;
+    float: left;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_img a{
+    position: absolute;
+    display: table;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_img strong{
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    left: -26px;
+    top: 0;
+    width: 26px;
+    height: 100%;
+    background: #ff8e42;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_img span{
+    display: table-cell;
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    *position: absolute;
+    *top: 50%;
+    *left: 50%;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_img img{
+    position: relative;
+    z-index: 1;
+    *margin-top: -50%;
+    *margin-left: 50%;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_msg{
+    margin-left: 186px;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_msg p{
+    line-height: 20px;
+    padding-top: 10px;
+    color: #444;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_msg a{
+    color: #444;
+    font-size: 17px;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_msg .n2{
+    color: #444;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_msg .n3{
+    color: #a9a9a9;
+}
+.chofn-flex .chofn-flex_monitor .chofn-flex_monitor_out{
+    position: absolute;
+    right: 0;
+    top: 25px;
+    color: #357fcc;
+    border: 1px solid #357fcc;
+    padding: 5px 20px;
+    font-size: 14px;
+}
+
+/* 异议公告 */
+.chofn-flex .chofn-flex_linklist{
+    border-bottom: 1px solid #ececec;
+    color: #444;
+}
+.chofn-flex .chofn-flex_linklist .chofn-flex_linklist_tit{
+    float: left;
+    line-height: 25px;
+}
+.chofn-flex .chofn-flex_linklist .chofn-flex_linklist_box{
+    margin-left: 120px;
+    margin-right: -12px;
+}
+.chofn-flex .chofn-flex_linklist .chofn-flex_linklist_box a{
+    display: inline-block;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 12px;
+    margin-bottom: 12px;
+    color: #444;
+}
+.chofn-flex .chofn-flex_linklist .chofn-flex_linklist_box a.cur{
+    background: #ff6700;
+    color: #fff;
+}
+
+/* 文字 */
+.chofn-flex .chofn-flex_txt{
+    line-height: 45px;
+    height: 45px;
+    color: #a1a1a1;
+}
+.chofn-flex .chofn-flex_table1{
+    border-collapse:collapse;
+    width: 100%;
+    color: #444;
+    margin-bottom: 30px;
+}
+.chofn-flex .chofn-flex_table1 th,
+.chofn-flex .chofn-flex_table1 td{
+    border: 1px solid #ececec;
+}
+.chofn-flex .chofn-flex_table1 th{
+    background: #f5f5f5;
+    padding: 10px 0 10px 10px;
+    font-weight: 400;
+}
+.chofn-flex .chofn-flex_table1 td{
+    vertical-align: middle;
+    text-align: center;
+    padding: 5px 10px;
+}
+.chofn-flex .chofn-flex_table1 td img{
+    display: inline-block;
+    border: 1px solid #ececec;
+}
+.chofn-flex .chofn-flex_table1 p{
+    text-align: left;
+    position: relative;
+    z-index: 1;
+    line-height: 20px;
+}
+.chofn-flex .chofn-flex_table1 p a{
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    color: #5e94d3;
+    text-decoration: underline;
+}
+
+/* 监测咨询 */
+.chofn-flex .chofn-flex_consult{
+    color: #666666;
+    position: relative;
+    z-index: 1;
+}
+.chofn-flex .chofn-flex_consult p{
+    color: #808080;
+    line-height: 24px;
+}
+.chofn-flex .chofn-flex_consult p span{
+    color: #ff6700;
+}
+.chofn-flex .chofn-flex_consult a{
+    position: absolute;
+    z-index: 1;
+    top: 3px;
+    right: 0;
+    color: #fff;
+    background: #ff6700;
+    display: block;
+    padding: 6px 20px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+/* 监测弹窗 */
+.monitorTip{
+    background: #fff;
+    position: relative;
+    z-index: 1;
+    color: #666666;
+    padding-top: 40px;
+}
+.monitorTip .color_ff8142{
+    color: #ff8142;
+    font-weight: 400;
+}
+.monitorTip .moneyTxt{
+    display: inline-block;
+    margin-top: 9px;
+    margin-left: 5px;
+}
+.monitorTip .vaifn{
+    display: inline-block;
+    margin-top: 9px;
+    margin-left: 5px;
+    color: #ff5a00;
+}
+.monitorTip .monitorTip_close{
+    cursor: pointer;
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    top: 8px;
+}
+.monitorTip .monitorTip_h1{
+    padding: 0 20px;
+    font-size: 24px;
+    font-weight: 400;
+    text-align: center;
+}
+.monitorTip .monitorTip_h11{
+    text-align: center;
+    text-indent: 0;
+}
+.monitorTip .monitorTip_h1 span{
+    color: #ff6700;
+}
+.monitorTip .monitorTip_table{
+    min-width: 380px;
+    margin: 0 auto 30px;
+}
+.monitorTip .monitorTip_table td{
+    padding: 5px 10px;
+}
+.monitorTip .monitorTip_sanjiao{
+    position: relative;
+    z-index: 1;
+    border-bottom: 1px solid #dddddd;
+}
+.monitorTip .monitorTip_sanjiao img{
+    position: absolute;
+    z-index: 1;
+    left: 80px;
+    bottom: -1px;
+}
+.monitorTip .monitorTip_txt{
+    padding: 20px;
+    text-align: center;
+    color: #a9a9a9;
+    line-height: 24px;
+}
+.monitorTip .monitorTip_txt span{
+    color: #ff8142;
+}
+/* 成功 */
+.monitorTip .monitorTip_ok{
+    width: 410px;
+    margin: 0 auto;
+}
+.monitorTip .monitorTip_ok img{
+    float: left;
+    margin-top: 15px;
+}
+.monitorTip .monitorTip_ok div{
+    margin-left: 86px;
+}
+.monitorTip .monitorTip_ok h3{
+    font-weight: 400;
+    font-size: 24px;
+}
+.monitorTip .monitorTip_ok span{
+    color: #ff6700;
+}
+.monitorTip .monitorTip_ok p{
+    line-height: 24px;
+}
+.monitorTip .monitorTip_dt{
+    width: 450px;
+    margin: 0 auto;
+    line-height: 24px;
+    font-size: 12px;
+    color: #444;
+}
+.monitorTip .monitorTip_btn{
+    text-align: center;
+    padding: 30px 0;
+}
+.monitorTip .monitorTip_btn .config,
+.monitorTip .monitorTip_btn .close{
+    display: inline-block;
+    width: 90px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.monitorTip .monitorTip_btn .config{
+    color: #fff;
+    background: #ff6700;
+}
+.monitorTip .monitorTip_btn .close{
+    color: #939393;
+    background: #fff;
+    height: 31px;
+    border: 1px solid #e1dedd;
+    margin-left: 10px;
+}
+.monitorTip .monitorTip_ok_rowTwo{
+    padding-top: 13px;
+}
+
+/* 我的商标 切换标题 */
+.trademark_tab{
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e0e0e0;
+    color: #efefef;
+    margin-bottom: 17px;
+}
+.trademark_tab a{
+    display: inline-block;
+    padding: 0 15px;
+    color: #666;
+    font-size: 16px;
+}
+.trademark_tab a b{
+    color: #ff6700;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+}
+.trademark_tab a.cur{
+    color: #ff6700;
+}
+/* 我的商标 条件选择 */
+.trademark_st{
+    border-bottom: 1px solid #ececec;
+    margin-bottom: 15px;
+}
+.trademark_stTip{
+    padding-bottom: 45px;
+}
+.trademark_select{
+    margin-bottom: 10px;
+    position: relative;
+    z-index: 1;
+}
+.trademark_select .trademark_select_tit{
+    float: left;
+    width: 80px;
+    color: #444444;
+    margin-top: 4px;
+}
+.trademark_select .trademark_select_item{
+    width: 660px;
+    margin-left: 77px;
+}
+.trademark_select .trademark_select_item1{
+    height: 28px;
+    overflow: hidden;
+}
+.trademark_select .trademark_select_item a{
+    display: inline-block;
+    padding: 4px 15px;
+    margin-bottom: 5px;
+    color: #686868;
+}
+.trademark_select .trademark_select_item a b{
+    font-weight: 400;
+    color: #ffa37d;
+}
+.trademark_select .trademark_select_item .cur{
+    color: #fff;
+    background: #ff6700;
+}
+.trademark_select .trademark_select_item .cur b{
+    color: #fff;
+}
+.trademark_select .trademark_select_mag{
+    position: absolute;
+    z-index: 1;
+    right: 65px;
+    top: 3px;
+    color: #357fcc;
+    text-decoration: underline;
+}
+.trademark_select .trademark_select_more{
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    top: 3px;
+    color: #666666;
+    background: url("img/l-6.png") no-repeat right center;
+    padding-right: 13px;
+}
+.trademark_select .trademark_select_up{
+    background: url("img/l-30.png") no-repeat right center;
+}
+.trademark_select .trademark_select_tip{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: -35px;
+    border: 1px solid #e7e7e7;
+    border-radius: 3px;
+    padding: 3px 10px;
+    color: #a9a9a9;
+}
+.trademark_select .trademark_select_tip img{
+    position: absolute;
+    z-index: 1;
+    top: -12px;
+    left: 20px;
+}
+.trademark_select1 .trademark_select_tit{
+    color: #999999;
+}
+.trademark_select1 .trademark_select_item a{
+    color: #999999;
+}
+
+/* 我的商标 排序 */
+.trademark_sort{
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ececec;
+}
+.trademark_sort .trademark_sort_up{
+    display: block;
+    float: left;
+    background: #fff;
+    color: #444444;
+    border: 1px solid #eceae9;
+    width: 143px;
+    height: 33px;
+    text-indent: 27px;
+    line-height: 33px;
+    cursor: pointer;
+    margin-right: 15px;
+}
+.trademark_sort .trademark_sort_dm{
+    display: block;
+    float: left;
+    background: #f5f5f5;
+    color: #444444;
+    border: 1px solid #eceae9;
+    width: 143px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+    background: url("img/l-8.png") no-repeat 90% center;
+    cursor: pointer;
+    margin-right: 15px;
+}
+.trademark_sort .ul-input-text{
+    float: left;
+    width: 190px;
+    position: relative;
+    z-index: 1;
+    border: 1px solid #dadada;
+    margin-right: 60px;
+}
+.trademark_sort .ul-input-text label{
+    position: absolute;
+    z-index: 1;
+    right: -43px;
+    top: -1px;
+    width: 43px;
+    height: 35px;
+    cursor: pointer;
+}
+.trademark_sort .ul-input-text label button{
+    margin-top: 8px;
+}
+.trademark_sort .trademark_sort_out{
+    float: right;
+    color: #357fcc;
+    border: 1px solid #357fcc;
+    background: #fff;
+    width: 78px;
+    height: 28px;
+    text-align: center;
+    line-height: 28px;
+    margin-top: 2px;
+}
+.trademark_sort .trademark_sort_txt{
+    float: right;
+    text-align: center;
+    color: #666666;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+.trademark_sort .trademark_sort_txt span{
+    color: #ff6700;
+    line-height: 28px;
+}
+.trademark_sort .trademark_sort_zx{
+    float: left;
+    padding-top: 6px;
+    color: #999999;
+}
+.trademark_sort .trademark_sort_zx1{
+    padding-top: 10px;
+}
+.trademark_sort .trademark_sort_zx1 b{
+    color: #ff6700;
+    font-weight: 400;
+}
+.trademark_sort .trademark_sort_zx span,
+.trademark_sort .trademark_sort_zx img{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 我的商标 列表 */
+.trademark_list{
+    width: 100%;
+    border-collapse:collapse;
+    color: #444444;
+}
+.trademark_list td{
+    padding: 17px 0;
+    border-bottom: 1px solid #ececec;
+}
+.trademark_list .cur td{
+    background: #f2fff0;
+    border-bottom: 1px solid #ececec;
+}
+.trademark_list strong{
+    font-size: 17px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.trademark_list .trademark_list_img{
+    display: inline-block;
+    border: 1px solid #e3e3e3;
+    position: relative;
+    z-index: 1;
+}
+.trademark_list .trademark_list_img .new{
+    position: absolute;
+    z-index: 1;
+    left: -1px;
+    top: -1px;
+}
+.trademark_list .trademark_list_img .img{
+    display: block;
+    width: 118px;
+    height: 78px;
+}
+.trademark_list .n1,
+.trademark_list .n2,
+.trademark_list .n3,
+.trademark_list .n4{
+    line-height: 25px;
+}
+.trademark_list .n3,.trademark_list .n4{
+    color: #999999;
+}
+.trademark_list .n4 em{
+    color: #17af86;
+}
+.trademark_list .n4 em .mj-des {
+    display: none;
+}
+.trademark_list .n4 em strong {
+    font-size: 12px;
+    font-weight: normal;
+}
+.trademark_list .n4 em:hover .mj-des{
+    display: inline-block;
+}
+.trademark_list .n1 a,
+.trademark_list .n2 a{
+    color: #444;
+}
+.trademark_list .n1 a:hover,
+.trademark_list .n2 a:hover{
+    color: #fc6f28;
+}
+.trademark_list .n1 img{
+    cursor: pointer;
+    vertical-align: middle;
+}
+.trademark_list .trademark_list_cs{
+    color: #357fcc;
+    display: inline-block;
+    border: 1px solid #357fcc;
+    background: #f6faff;
+    width: 92px;
+    height: 33px;
+    text-align: center;
+    line-height: 33px;
+}
+.trademark_list .trademark_list_link{
+    display: inline-block;
+    color: #357fcc;
+    text-decoration: underline;
+}
+.trademark_list .trademark_list_bd{
+    text-align: center;
+}
+.trademark_list .trademark_list_bd .trademark_list_link{
+    margin-top: 10px;
+}
+.trademark_list .trademark_list_tag{
+    display: inline-block;
+    float: right;
+    margin-right: 20px;
+    color: #357fcc;
+}
+.trademark_list .cur .trademark_list_link{
+    display: inline-block;
+}
+.trademark_list .trademark_list_t1{
+    color: #444444;
+    line-height: 26px;
+}
+.trademark_list .trademark_list_t1 span{
+    color: #ff6700;
+}
+.trademark_list .trademark_list_links{
+    text-align: right;
+    padding-right: 20px;
+}
+.trademark_list .trademark_list_links a{
+    line-height: 26px;
+    color: #a9a9a9;
+}
+.trademark_list .trademark_list_links .color_357fcc{
+    color: #357fcc;
+}
+
+/* 浮动定位 */
+.monitor-fixed{
+    position: fixed;
+    right: 9%;
+    bottom: 30%;
+    width: 45px;
+}
+.monitor-fixed div{
+    border: 1px solid #eeeeee;
+}
+.monitor-fixed span{
+    display: block;
+    border-bottom: 1px solid #eeeeee;
+    cursor: pointer;
+}
+.monitor-fixed span.nocur{
+    border-bottom: 0;
+}
+.monitor-fixed img{
+    display: block;
+}
+.monitor-fixed a{
+    display: block;
+    border: 1px solid #eeeeee;
+    margin-top: 19px;
+}
+/*------------------------------------*\
+            __chofn-business__
+\*------------------------------------*/
+
