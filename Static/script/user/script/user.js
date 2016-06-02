@@ -10,7 +10,7 @@ var CRMNAME		= 'crm_name';
 var CRMSESSID	= 'crm_sessid';
 //------------------------------------------------------------- 
 //var HOST 	 	= 'http://www.uc.net';//处理域名
-var HOST 	 	= 'http://uc2.test.chofn.net';//处理域名
+var HOST 	 	= 'http://seller.chofn.net';//处理域名
 var configUrl	= '';//配置信息
 var classid	 	= 'chaofan-login';
 var config	 	= new Array();
