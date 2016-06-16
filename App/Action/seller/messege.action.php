@@ -5,7 +5,7 @@
  * Date: 2016/6/12 0012
  * Time: 下午 17:54
  */
-class MessegeAction extends SellerAction{
+class MessegeAction extends AppAction{
 
     public $size = 20;
 

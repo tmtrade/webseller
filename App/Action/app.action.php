@@ -20,6 +20,7 @@ abstract class AppAction extends Action
 	public $isLogin     = false;
 
 	public $token;
+
 	/**
 	* 前置操作(框架自动调用)
 	* @author	void
@@ -30,6 +31,7 @@ abstract class AppAction extends Action
 	*/
 	public function before()
 	{
+		//不验证登录的url
 		$mods = array(
 			'index'			=> '*',
 			'login'			=> '*',
@@ -38,17 +40,13 @@ abstract class AppAction extends Action
 			'lostpassword'	=> '*',
 			'authcode'		=> '*',
 			'test'	=> '*',
-
 		);
-
-
-
+		//验证用户是否登录
 		$allow  = false;
 		$mod	= $this->mod;
 		if ( isset($mods[$mod]) ) {
 			if ( is_array($mods[$mod]) ) {
-				$allow = in_array($action, $mods[$mod]) ? true : false;
-
+				$allow = in_array($this->action, $mods[$mod]) ? true : false;
 			} else {
 				$allow = $mods[$mod] == '*' ? true : false;
 			}
@@ -58,6 +56,12 @@ abstract class AppAction extends Action
 			$this->redirect('', '/login/index');
 			exit;
 		}
+		//得到站内信的数量
+		$msg_num = $this->load('messege')->getMsgNum();
+		$this->set('msg_num',$msg_num);
+		//静态文件版本号>>控制js,css缓存
+		$this->set('static_version', 9980);
+		//设置其他信息
 		$ucmenu = require ConfigDir.'/menu.config.php';
 		$this->set('ucmenu',$ucmenu);
 		$this->set('current_url', '/'.$this->mod .'/' . $this->action.'/');
@@ -76,7 +80,6 @@ abstract class AppAction extends Action
 		//自定义业务逻辑
 	}
 
-
 	/**
 	* 输出json数据
 	*
@@ -91,6 +94,7 @@ abstract class AppAction extends Action
 		$jsonStr = json_encode($data);
 		exit($jsonStr);
 	}
+
 	/**
 	* 设置用户信息数据
 	*
@@ -117,6 +121,7 @@ abstract class AppAction extends Action
 				$this->userInfo = $mbinfo;
 				$this->isLogin  = true;
 				$this->setUserView();
+				if(!defined('UID')) define('UID',$session['userId']);//定义用户id常量UID
 				return true;
 			}
 		}
@@ -133,7 +138,6 @@ abstract class AppAction extends Action
 	protected final function setUserView()
 	{
 		$this->userinfo					= $this->load('user')->getInfoById( $this->userInfo['id'] );
-		$message						= $this->load('message')->getPageList($this->userinfo['id'],1,30,'',false);//我的消息
 		$this->userInfo['specname'] 	= $this->userinfo['specname'];
 		$this->userInfo['mobile_hide'] 	= $this->userinfo['mobile_hide'];
 		$this->userInfo['email_hide'] 	= $this->userinfo['email_hide'];
@@ -143,8 +147,7 @@ abstract class AppAction extends Action
 		$this->set('userInfo', $this->userinfo);//用户数组
 		$this->set('cfwId', $this->userInfo['cfwId']);//超凡网id
 		$this->set('isLogin', $this->isLogin);//是否登录
-		$this->set('messagecount', $message['total']);//信息数量
-		$this->myStaff();
+//		$this->myStaff();
 	}
 
 	/**
@@ -163,6 +166,7 @@ abstract class AppAction extends Action
 		$this->isLogin      = false;
 		$this->setUserView();
 	}
+
 	/**
 	* 我的顾问
 	* @since    2016-01-21
@@ -182,6 +186,7 @@ abstract class AppAction extends Action
 		}
 		$this->set('staffInfo', $staffInfo);
 	}
+
 	/**
 	* 验证js跨域
 	* @author   haydn
@@ -206,6 +211,7 @@ abstract class AppAction extends Action
 		}
 		return $is;
 	}
+
 	/**
 	* 浏览
 	* @author   haydn
@@ -230,6 +236,41 @@ abstract class AppAction extends Action
 		}
 		if( $tid > 0 ){
 			$this->load('browse')->addTidBrowse($tid,$url,$userId);
+		}
+	}
+
+	/**
+	 * 检测当前url地址(操作)是否发送站内信
+	 * @param $uid int|string 站内信的发送对象(群发以逗号隔开)
+	 * @param $sendtype int 站内信的发送方式,默认对一,2对多,3全体
+	 */
+	protected function checkMsg($uid = null,$sendtype=1){
+		//设置发送的对象
+		if(!$uid){
+			$uid = $this->userId;
+		}
+		//设置发送的类型
+		if(!in_array($sendtype,array(1,2,3))){
+			$sendtype = 1;
+		}
+		//得到当前url地址
+		$url = 'http://'.$_SERVER['HTTP_HOST'].'/'.$this->mod.'/'.$this->action;
+		//得到监控触发的信息
+		$monitor = $this->load('messege')->getMonitor();
+		if($monitor){
+			//判断当前url是否发送信息
+			foreach($monitor as $item){
+				if(strpos($item['url'],$url)!==false){
+					$params = array();
+					$params['title'] = $item['title'];
+					$params['type'] = $item['type'];
+					$params['sendtype'] = $sendtype;
+					$params['content'] = $item['content'];
+					$params['uids'] = $uid;//当前用户
+					$this->load('messege')->createMsg($params);
+					break;
+				}
+			}
 		}
 	}
 }

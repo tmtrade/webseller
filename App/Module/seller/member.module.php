@@ -293,7 +293,7 @@ class MemberModule extends AppModule{
         );
         $this->import('user')->modify($record,$r);
         //取回公共发信的站内信
-        $this->load('messege')->createSelfMsg($data['userId']);
+        $this->load('messege')->createSelfMsg($data['id']);
         //保存用户信息
         Session::set('userinfo',$data,$this->session_time);
     }
