@@ -56,9 +56,9 @@ abstract class AppAction extends Action
 			$this->redirect('', '/login/index');
 			exit;
 		}
-		//得到站内信的数量
-		$msg_num = $this->load('messege')->getMsgNum();
-		$this->set('msg_num',$msg_num);
+//		//得到站内信的数量
+//		$msg_num = $this->load('messege')->getMsgNum();
+//		$this->set('msg_num',$msg_num);
 		//静态文件版本号>>控制js,css缓存
 		$this->set('static_version', 9980);
 		//设置其他信息
