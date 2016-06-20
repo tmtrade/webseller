@@ -291,7 +291,7 @@ if($isbinding==0){
 ?>
 <script language="javascript">
 $(document).ready(function(e) {
-    isScan();
+    //isScan();
 });
 var timeout = 1800;
 function getTimeString(){
@@ -311,28 +311,28 @@ function getTimeString(){
 		setTimeout('getTimeString();', 1000);
 	}
 }
-function isScan(){
-	$.ajax({
-		url 	: '/user/isBangDing/',
-		cache 	: false,
-		type  	: 'POST',
-		dataType : 'json',
-		success : function(json){
-			if(json != '' && json != null){
-				console.log(json.wxid);
-				if(json.wxid == 1){
-					//console.log(json.wxid);
-					window.location = '/user/main/';
-					return false;
-				}
-			}
-			setTimeout('isScan();', 10000);
-		},
-		error : function(msg){
-			setTimeout('isScan();', 10000);
-		}
-	});
-}
+// function isScan(){
+// 	$.ajax({
+// 		url 	: '/user/isBangDing/',
+// 		cache 	: false,
+// 		type  	: 'POST',
+// 		dataType : 'json',
+// 		success : function(json){
+// 			if(json != '' && json != null){
+// 				//console.log(json.wxid);
+// 				if(json.wxid == 1){
+// 					//console.log(json.wxid);
+// 					window.location = '/user/main/';
+// 					return false;
+// 				}
+// 			}
+// 			setTimeout('isScan();', 10000);
+// 		},
+// 		error : function(msg){
+// 			setTimeout('isScan();', 10000);
+// 		}
+// 	});
+// }
 </script>
 <?php
 }else{
