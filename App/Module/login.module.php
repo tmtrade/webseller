@@ -119,9 +119,9 @@ class LoginModule extends AppModule
             $this->load('verify')->setCodeUse($vinfo['id']);//验证码设置成使用
             $logincode = 1;
         }
-        
+        $pword = $vinfo['code'] == 1 ? '' : $yzm;//验证失败密码保存
         $this->import('loginlogs')->addlog($account,$yzm,$usInfo['id'],$logincode);
-        return $logincode;
+        return $vinfo['code'];
     }
 	
     /**
