@@ -3,6 +3,11 @@ $prefix		= 't_';
 $dbId		= 'tradenew';
 $configFile	= array( ConfigDir.'/Db/tradenew.master.config.php' );
 
+$tbl['income'] = array(
+	'name'		=> $prefix.'income',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
 $tbl['sale'] = array(
 	'name'		=> $prefix.'sale',
 	'dbId'		=> $dbId, 
