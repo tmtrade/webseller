@@ -84,7 +84,7 @@ class VerifyModule extends AppModule
 		$isSend		= 1;
 		if( !empty($data) ){
 			$lastTime = $data['created'];
-			(TIME - $lastTime < 60) && $isSend = 0;
+			(TIME - $lastTime < 3000) && $isSend = 0;
 		}
 		return $isSend;
     }

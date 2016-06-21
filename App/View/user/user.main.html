@@ -11,7 +11,7 @@
     <div class="col-xs-6">
       <aside class="profile-nav alt green-border">
         <section class="panel">
-          <div class="user-heading alt green-bg"> <a href="#"> <img alt="" src="<?=StaticDir?>workspace/img/profile-avatar.jpg"> </a>
+          <div class="user-heading alt green-bg"> <a href="#" data-toggle="modal" data-target="#avatar_up"> <img alt="" src="<?=StaticDir?>workspace/img/profile-avatar.jpg"> </a>
             <h1><?=$data['firstname']?></h1>
             <?php
             $logstr = $data['loginNum'] <= 1 ? '首次登录' : '上次登录';
@@ -121,6 +121,12 @@
       </div>
     </div>
   </div>
+</div>
+
+<!-- 头像上传 -->
+<div class="modal fade" id="avatar_up" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    
+    
 </div>
 
 <!-- Modal -->

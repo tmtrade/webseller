@@ -105,7 +105,7 @@ $define = array(
 
 	'PUBLIC_USER'		=> 'chaofancookid',//公用用户登录信息标识
 	'PUBLIC_TIME'		=> '36000',//登录过期时间(秒)
-	'CODE_TIME'			=> '300',//验证码过期时间(秒)
+	'CODE_TIME'			=> '600',//验证码过期时间(秒)
 	'MSG_TEMPLATE' => array(
 		'valid'     	=> "验证码：%s，有效期为10分钟，请尽快使用。退订回N",
 		'register'  	=> "%s（登录密码），系统已为您开通手机账户，登陆可查看求购进展，工作人员不会向你索要，请勿向任何人泄露。退订回N",

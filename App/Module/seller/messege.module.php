@@ -84,7 +84,7 @@ class MessegeModule extends AppModule
             $uid = UID;
         }
         $r['eq']['id'] = $uid;
-        $r['col'] = array('mupdate');
+        $r['col'] = array('lastDate');
         $res = $this->import('user')->find($r);
         if(!$res){
             return false;
@@ -93,7 +93,7 @@ class MessegeModule extends AppModule
         $r = array();
         $r['eq']['sendtype'] = 3;
         $r['col'] = array('id');
-        $r['raw'] = '`date`>'.$res['mupdate'];//时间需大于改用户上次的更新时间
+        $r['raw'] = '`date`>'.$res['date'];//时间需大于改用户上次的更新时间
         $r['limit'] = $this->limit;
         $rst1 = $this->import('messege')->find($r);
         $flag = true;
@@ -115,7 +115,7 @@ class MessegeModule extends AppModule
         if($flag){ //操作成功才更新用户表的最新更细时间
             $r = array();
             $r['eq']['id'] = $uid;
-            $ttt = array('mupdate'=>time());
+            $ttt = array('lastDate'=>time());
             $this->import('user')->modify($ttt,$r);
         }
         return true;

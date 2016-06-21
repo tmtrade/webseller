@@ -1,5 +1,5 @@
 <?
-$prefix		= 'cdb_';
+$prefix		= 'my_';
 $user		= 'user';
 
 $dbId		= 'usercentre';
