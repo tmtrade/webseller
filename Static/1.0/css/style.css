@@ -1,0 +1,1073 @@
+/*我的首页*/
+.top-bg{
+    background: #ffffff;
+    overflow: hidden;
+    padding-bottom:30px;
+}
+
+.sell-news{
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 13px;
+}
+.sell-news p{
+    float: left;
+    margin-left: 25px;
+    color: #ffffff;
+}
+.sell-news i{
+    float:right;
+    margin-right: 10px;
+    margin-top:7px;
+}
+.sell-news i:hover{
+    cursor: pointer;
+}
+.hint-bg{
+    background: url("../images/news-bg.png") repeat-x;
+}
+.ico-bg5{
+    width: 14px;
+    height: 14px;
+    background-image: url("../images/sell-cha.png");
+}
+.sell-per-mess{
+    overflow: hidden;
+    margin-top: 25px;
+}
+.sell-per-mess .head-mess{
+    margin-left: 10px;
+    margin-top: 10px;
+}
+.sell-per-mess .head-mess h3{
+    color: #666666;
+    font-size: 16px;
+    font-weight: bold;
+}
+.sell-per-mess .head-mess p{
+    margin-top: 12px;
+}
+.sell-per-mess .head-mess p.name{
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 10px;
+}
+.sell-per-mess .head-mess p.name img{
+    vertical-align: middle;
+    margin-left: 7px;
+}
+
+.sell-per-mess .head-mess p.teg span{
+    display: inline-block;
+    padding:4px 10px;
+    color: #ffffff;
+    margin-right: 8px;
+}
+.sell-per-mess .head-mess p.teg a{
+    color: #c75756;
+    text-decoration: underline;
+}
+.sell-comm-sub{
+    width: 280px;
+    height: 123px;
+    background: url("../images/yy-bg.png") no-repeat left top;
+    text-align: center;
+}
+.sell-comm-sub label{
+    display: inline-block;
+    margin-top:12px;
+}
+.sell-comm-sub p {
+    margin-top: 10px;
+}
+.sell-comm-sub p a{
+    color: #a6a6a6;
+    margin-left: 10px;
+    padding-right: 8px;
+}
+.sub-btn{
+    display:block;
+    width: 200px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    background: url("../images/btn-bg.png") repeat-x;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: "微软雅黑";
+    margin: 10px auto 0px;
+    border-radius: 5px;
+}
+.sub-btn:hover{
+    cursor:pointer;
+}
+
+
+.sell-per-mdl,.sell-per-btm{
+    overflow: hidden;
+    margin:23px auto 0px !important;
+}
+.sell-my-comm ul,.my-earn-show,.sell-earn-mess ul,.sell-data-main{
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.sell-tit{
+    color: #666666;
+    font-size: 14px;
+    margin-left: 7px;
+}
+.sell-my-comm ul{
+    border: 1px solid #ebebeb;
+    border-right: none;
+}
+.sell-my-comm ul li{
+    width: 24.84599999999%;
+    height:170px;
+    float:left;
+    border-right: 1px solid #ebebeb;
+    text-align: center;
+}
+.sell-my-comm ul li div{
+    height: 116px;
+
+    overflow: hidden;
+}
+.sell-my-comm ul li div.sell-state1{
+    background:#ffffff url("../images/welcome_icon_01.png") no-repeat center center;
+}
+.sell-my-comm ul li div.sell-state1:hover{
+    background:#ffffff url("../images/welcome_icon_h_04.png") no-repeat center center;
+    transition:all 0.3s;
+
+}
+.sell-my-comm ul li div.sell-state2{
+    background:#ffffff url("../images/welcome_icon_02.png") no-repeat center center;
+}
+.sell-my-comm ul li div.sell-state2:hover{
+    background:#ffffff url("../images/welcome_icon_h_03.png") no-repeat center center;
+    transition:all 0.3s;
+
+}
+.sell-my-comm ul li div.sell-state3{
+    background:#ffffff url("../images/welcome_icon_03.png") no-repeat center center;
+}
+.sell-my-comm ul li div.sell-state3:hover{
+    background:#ffffff url("../images/welcome_icon_h_02.png") no-repeat center center;
+    transition:all 0.3s;
+
+}
+.sell-my-comm ul li div.sell-state4{
+    background:#ffffff url("../images/welcome_icon_04.png") no-repeat center center;
+}
+.sell-my-comm ul li div.sell-state4:hover{
+    background:#ffffff url("../images/welcome_icon_h_01.png") no-repeat center center;
+    transition:all 0.3s;
+
+}
+
+
+.sell-my-comm ul li p{
+    color: #666666;
+    font-size: 15px;
+    margin-top: 18px;
+}
+.sell-my-comm ul li p span{
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+.my-earn-top{
+    overflow: hidden;
+}
+.my-earn-top p,.my-earn-top a{
+    margin-top:3px;
+    margin-right: 7px;
+}
+.my-earn-top i img{
+    vertical-align: middle;
+    margin-left: 3px;
+    margin-bottom: 1px;
+}
+.my-earn-top a{
+    color: #424b5a;
+    text-decoration:underline;
+
+}
+.my-earn-show{
+    width: 365px;
+    height: 174px;
+    background: url("../images/my-earn.jpg") no-repeat top center;
+    background-size: 100% 100%;
+}
+.my-earn-show p{
+    margin-top: 18px;
+    margin-left: 18px;
+}
+.my-earn-show p b{
+    display: inline-block;
+    color: #ce0000;
+    font-size: 30px;
+    font-weight: 400;
+    margin-top:5px;
+}
+.sell-earn-mess ul{
+    height: 183px;
+    background:#ffffff;
+    border: 1px solid #ebebeb;
+
+
+}
+.sell-earn-mess ul li{
+    width: 95%;
+    height: 45px;
+    line-height: 45px;
+    border-bottom: 1px solid #eaeaea;
+    margin: auto;
+
+}
+.sell-earn-mess ul li p{
+    max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.sell-earn-mess ul li p a{
+    color:#424b5a;
+}
+.sell-earn-mess ul li label{
+    color:#666666;
+}
+
+.sell-data-main{
+    min-height:183px;
+    background:#ffffff;
+    border: 1px solid #ebebeb;
+}
+.sell-data-main p{
+    margin-left: 26px;
+}
+.sell-data-main p{
+    color: #424b5a;
+    margin-top: 18px;
+
+}
+.sell-data-main .hot-ch{
+    overflow: hidden;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-left:20px;
+}
+
+.sell-data-main .hot-ch span{
+    display: inline-block;
+    padding: 6px 10px;
+    background: #969696;
+    box-shadow: 1px 1px 0px 1px #848484;
+    color: #ffffff;
+    float: left;
+    margin-top:10px;
+    margin-left:8px;
+}
+.sell-per-top,.sell-per-mdl,.sell-per-btm{
+    margin: auto;
+    max-width:95%;
+}
+.sell-my-comm ul, .sell-earn-mess ul {
+    min-width: 848px;
+}
+.sell-data-main,.my-earn-show{
+    min-width: 448px;
+}
+@media screen and (max-width:1921px){
+    .sell-per-top,.sell-per-mdl,.sell-per-btm{
+        margin: auto;
+        max-width:95%;
+    }
+    .sell-my-comm ul, .sell-earn-mess ul {
+        min-width: 848px;
+    }
+    .sell-data-main,.my-earn-show{
+        min-width: 448px;
+    }
+}
+
+@media screen and (max-width:1600px){
+    .sell-per-top,.sell-per-mdl,.sell-per-btm{
+        max-width:95%;
+        margin: auto;
+    }
+    .sell-my-comm ul, .sell-earn-mess ul {
+        min-width: 648px;
+    }
+    .sell-data-main,.my-earn-show{
+        min-width:365px;
+    }
+}
+
+/*我的商品列表*/
+.cancel-offer{
+    width: 504px;
+    height: 170px;
+    background: url("../images/cal-off.png") no-repeat top center;
+    overflow: hidden;
+}
+
+.cancel-offer  a.layui-layer-close2{
+    display: block;
+    width: 26px;
+    height: 26px;
+    top:10px;
+    right:-135px;
+}
+.cancel-offer .cancel-offer-ops{
+    margin-left: 180px;
+    margin-top: 40px;
+    color: #ffffff;
+}
+.cancel-offer .cancel-offer-ops h3{
+    font-size: 16px;
+    font-weight: 900;
+}
+.cancel-offer .cancel-offer-ops label{
+    display: inline-block;
+    margin-top: 10px;
+}
+.cancel-offer .common-cpm-sub{
+    margin-top: 55px;
+}
+
+.comm-list-tit{
+    height: 60px;
+    line-height: 60px;
+    background: #ffffff;
+    font-size: 15px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.comm-search-bg{
+    background: #f5f5f5;
+    height: 64px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.pull-list{
+    position: relative;
+    float: left;
+    background: #ffffff;
+    border-radius: 5px;
+    border: 1px solid #e8e8e8;
+    z-index: 9;
+    text-indent: 10px;
+}
+.comm-search-bg  .all-tp{
+    width: 148px;
+    height: 33px;
+    line-height: 33px;
+}
+.pull-list  a.all-tp-btn{
+    display: block;
+    position: relative;
+}
+.pull-list a.all-tp-btn i{
+    color:#b0b0b0;
+    font-size: 12px;
+    position: absolute;
+    right:10px;
+    top:10px;
+    text-indent: 0px;
+    transition:all 0.4s;
+}
+
+.pull-list  a.all-tp-btn:hover{
+    cursor: pointer;
+}
+
+.pull-list ul{
+    position: absolute;
+    top: 35px;
+    left:0px;
+    background: #ffffff;
+    z-index: 999;
+    border-radius: 0px 0px 5px 5px;
+    display: none;
+    overflow: hidden;
+}
+.all-tp ul li{
+    width: 148px;
+    height: 33px;
+    line-height: 33px;
+}
+.pull-list ul li{
+    text-indent: 10px;
+    border: 1px solid #e8e8e8;
+    border-top: none;
+
+}
+.pull-list ul li:hover{
+    background: #e8e8e8;
+    color: #666666;
+    cursor: pointer;
+}
+.paging ul{
+    width: 84px;
+    top:26px;
+}
+.comm-search-bg  div.type,div.desi {
+    float: left;
+    margin-top: 13px;
+}
+div.desi a{
+    margin-left:14px;
+}
+.comm-search-bg  div label{
+    float: left;
+    margin-top: 10px;
+}
+.comm-search-bg  div.type div{
+    float:left;
+    margin-left: 10px;
+}
+.comm-search-bg  div.type select{
+    width:148px;
+    height: 33px;
+    border: 1px solid #e8e8e8;
+    background: #ffffff;
+    text-indent: 10px;
+    border-radius: 5px;
+    float: left;
+    vertical-align: middle;
+    margin-top: -8px;
+}
+.comm-search-bg  div.type select option{
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    text-indent: 10px;
+    border: 1px solid #e8e8e8;
+}
+.comm-search-bg  div.desi input{
+    float:left;
+    margin-left: 10px;
+    width: 234px;
+    height: 33px;
+    border: 1px solid #e8e8e8;
+    background: #ffffff;
+    text-indent: 15px;
+    border-radius: 5px;
+    float: left;
+    vertical-align: middle;
+    /* margin-top: -8px; */
+    margin-top:0px;
+}
+
+.comm-search-bg  div.desi a{
+    cursor: pointer;
+    float: left;
+    /* margin-left: 10px; */
+}
+
+/* 本例子css */
+.comm-list-mess{width: 97%;margin:24px auto 0px;}
+.comm-list-mess .slideTxtBox{ width:100%; text-align:left;  }
+.comm-list-mess .slideTxtBox .hd{ width:410px;   line-height:33px; position:relative;}
+.comm-list-mess .slideTxtBox .hd ul{ float:left; position:absolute; left:0px; top:-1px; height:32px;  border-left:1px solid #e8e8e8;border-radius:5px 5px 0px 0px;  }
+.comm-list-mess .slideTxtBox .hd ul li{ float:left; padding:0 22px; cursor:pointer;border-right:1px solid #e8e8e8; border-radius: 3px;  border-top:1px solid #e8e8e8;font-family: "微软雅黑";}
+.comm-list-mess .slideTxtBox .hd ul li.on{ height:33px;background:url("../images/sta-bg.png") repeat-x; border:none;border-radius:5px 5px 0px 0px;color: #ffffff;transition:all 0.6s;}
+.comm-list-mess .slideTxtBox .bd{width: 100% !important; border-left:1px solid #e8e8e8;border-bottom:1px solid #e8e8e8; background: url("../images/tab-bg.png") repeat-y right top;}
+.comm-list-mess .slideTxtBox .bd ul{ padding:15px;  zoom:1;  }
+.comm-list-mess .slideTxtBox .bd li{ height:24px; line-height:24px;   }
+.comm-list-mess .slideTxtBox .bd li .date{ float:right; color:#999;  }
+.table-bg{
+    background: url("../images/tab-bg.png") repeat-y right top;
+}
+.comm-list-mess tr  a.del-lis{
+    color: #424b5a;
+    text-decoration: underline;
+}
+
+.list-mess table tr td{
+    width: 15%;
+}
+.list-mess table tr td.cg-price{
+    width:20%;
+}
+.list-mess table tr td.pri-num{
+    width:20%;
+}
+.comm-list-mess .list-mess-top{
+    height:31px;
+    width: 100%;
+    border-bottom: 2px solid #e74c52;
+}
+.comm-list-mess .list-mess{
+    width:99% !important;
+}
+.list-mess .exp-ear{
+    max-width: 80px;
+    padding: 5px 12px 5px 6px;
+    margin-right:3px;
+    margin-left: 3px;
+}
+.mess-top-dq{
+    margin-top:5px;
+}
+.mess-top-dq  label{
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.mess-top-dq .paging{
+    display: inline-block;
+    width: 84px;
+    height: 24px;
+    line-height: 24px;
+    vertical-align: middle;
+    margin-top: -4px;
+    margin-left: 5px;
+    float: right;
+}
+
+.mess-top-dq  a i{
+    position: absolute;
+    right: 5px !important;
+    top:5px !important;
+}
+
+.paging .pull-list ul{
+    width: 84px !important;
+    top: 26px !important;
+}
+table.list-mess-main{
+    width: 100%;
+}
+
+table.list-mess-main tr{
+    width: 100%;
+    height: 68px;
+    border-bottom:1px solid #e8e8e8;
+}
+table.list-mess-main tr:hover  a.pic img {
+    border: 2px solid #bbbbbb;
+}
+.tbl-tit{
+    height: 38px !important;
+}
+.list-mess-pic-tit{
+    text-indent: 36px;
+}
+table.list-mess-main tr a.pic{
+    display: inline-block;
+    max-width: 89px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table.list-mess-main tr a.pic img{
+    display: block;
+    max-width: 85px;
+    min-height:58px;
+    border: 2px solid #e8e8e8;
+    vertical-align: middle;
+    text-align: center;
+}
+table.list-mess-main thead{
+    text-indent: 20px;
+    height:38px;
+}
+table.list-mess-main tr td{
+    text-indent: 20px;
+    height: 68px;
+}
+table.list-mess-main tr p.price{
+    margin-left: -10px;
+}
+table.list-mess-main tr p.price a{
+    color: #424b5a;
+    text-decoration: underline;
+    margin-left: 10px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+table.list-mess-main tr p.price a.qx{
+    margin-left:0px;
+}
+table.list-mess-main tr p.price a.srue{
+    margin-left:-18px;
+}
+
+
+table.list-mess-main tr .pri-num span{
+    color: #ff6600;
+}
+table.list-mess-main tr .pri-num input{
+    display: inline-block;
+    width: 118px;
+    height: 33px;
+    line-height: 33px;
+    text-indent:10px;
+    border: 1px solid #e8e8e8;
+    background: #ffffff;
+    border-radius: 5px;
+
+}
+
+.comm-list-mess .comm-list-page{
+    display: block;
+    margin-top: 20px;
+    height: 33px;
+
+}
+.comm-list-mess .comm-list-page p{
+    float: left;
+    border: 1px solid #e4e4e4;
+}
+.comm-list-mess .comm-list-page p a {
+    display: inline-block;
+    width: 33px;
+    line-height: 33px;
+    text-align: center;
+    border-right: 1px solid #e4e4e4;
+    color: #666666;
+    float: left;
+}
+.comm-list-mess .comm-list-page p a.on{
+    background:#e4e4e4;
+}
+.comm-list-mess .comm-list-page .skip{
+    margin-left: 20px;
+    width: 135px;
+    float: left;
+    border: 1px solid #e4e4e4;
+}
+.comm-list-mess .comm-list-page .skip input{
+    display: inline-block;
+    float: left;
+    text-indent: 10px;
+    width: 64px;
+    height: 33px;
+    background: #ffffff;
+}
+.comm-list-mess .comm-list-page .skip a{
+    display: inline-block;
+    float: right;
+    width: 67px;
+    height: 33px;
+    line-height: 33px;
+    text-align:center;
+    background: #f2f2f2;
+
+}
+/*我的收益*/
+
+.chi-time span{
+    width: 98px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    float: left;
+    margin-left: 5px;
+
+}
+.earn-list-mess table tr td{
+    width: 17.5%;
+}
+.earn-list-mess table tr td.time{
+    width: 30%;
+}
+.chi-time i{
+    float: left;
+    margin-left: 5px;
+    margin-top: 10px;
+}
+.mess-earn-hj b{
+    font-size: 30px;
+    margin-left: 5px;
+    margin-right: 5px;
+    vertical-align: middle;
+    margin-bottom:3px;
+}
+.earn-list-mess table{
+    width: 100%;
+    border: 1px solid #e8e8e8;
+}
+.no-data{
+    min-width: 260px;
+    min-height: 152px;
+    background: url("../images/no-data.png") no-repeat center top;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    margin-left: -130px;
+    margin-top: -76px;
+    text-align: center;
+}
+.no-data h4{
+    font-size: 16px;
+    margin-top:122px;
+}
+.no-data label{
+    display: inline-block;
+    margin-top:16px;
+}
+/*消息列表*/
+.comm-list-news{
+    min-height: 500px;
+
+}
+/*.comm-list-news table tr td{*/
+/*width:30%;*/
+/*}*/
+/*.comm-list-news table .tick {*/
+/*text-indent: 20px;*/
+/*width: 40%;*/
+/*}*/
+.comm-list-news table .tick  i{
+    width:16px ;
+    height: 11px;
+    background: url("../images/sell-news.png") no-repeat center center;
+}
+/*商标出售  根据申请人*/
+.sell-by-brand h3 label{
+    font-size: 13px;
+    font-weight: normal;
+}
+.sell-by-brand p a{
+    color: #424b5a;
+    padding-right: 5px;
+    padding-left: 5px;
+    text-decoration: underline;
+}
+.brand-list tr td{
+    width:18.75% !important;
+}
+.brand-list tr td.pri-num{
+    width: 25% !important;
+}
+.brand-data{
+    margin-top: 25px;
+    margin-right: 25px;
+}
+
+.amend-cont{
+    width: 570px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    overflow: hidden;
+    background:#f5f5f5;
+    border: 1px solid #e8e8e8;
+
+}
+.cg-cont-tel,.cg-cont-name{
+    float: left;
+}
+.cg-cont input{
+    display: inline-block;
+    float: left;
+}
+.amend-cont div input{
+    width: 80px;
+    padding: 5px 15px 5px 5px;
+}
+.amend-cont label{
+    float: left;
+    margin-left: 25px;
+
+}
+
+.amend-cont span{
+    float: left;
+    margin-left:5px;
+}
+.amend-cont a{
+    color: #424b5a;
+    float:right;
+    margin-right: 15px;
+}
+
+
+/*根据商标号出售*/
+
+.brand-list table tr td.exp-ear{
+    width: 25% !important;
+}
+
+.brand-list table tr td.exp-ear input{
+    width: 118px;
+    height: 33px;
+    text-indent: 10px;
+    margin-left: 5px;
+}
+.amend-cont-all{
+    margin-left: 24px;
+    margin-top: 25px;
+}
+.amend-cont-all .sub-btn{
+    float: left;
+
+}
+.cg-tel{
+    float:right;
+}
+.cg-tel .sear-btn,.cg-tel .qx-btn{
+    padding:7px 14px !important;
+    float: left;
+}
+.incomp label{
+    line-height: 24px;
+}
+.inc-ts{
+    color: #ff6600;
+    padding:6px 12px;
+    display: inline-block;
+    margin-left:25px;
+    margin-top: 10px;
+}
+
+/*提交出售 根本申请人*/
+
+.batch-cz{
+    margin-top: 25px;
+}
+
+
+/*批量设置价格*/
+
+.common-cpm-cent{
+    padding-top: 30px;
+    border-bottom: 1px solid #bebebe;
+    padding-bottom: 22px;
+    overflow: hidden;
+}
+.common-cpm-cent select,.common-cpm-cent input{
+    vertical-align: middle;
+    margin-top: -7px;
+
+}
+
+.common-cpm-cent label,.common-cpm-cent select,.common-cpm-cent input{
+    display: inline-block;
+    float:left;
+}
+.reg-ts{
+    display: inline-block;
+    margin-top: 15px;
+}
+.common-cpm-cent select{
+    margin-left: 15px;
+    margin-right: 25px;
+    padding: 6px 65px 6px 3px;
+    background: url("../images/pull-down.png") no-repeat 135px center;
+    color: #999999;
+}
+.common-cpm-cent input{
+    padding: 7px 26px 7px 8px;
+    margin-left:25px;
+    margin-right: 5px;
+}
+.common-cpm-sub{
+    margin-top:25px;
+    text-align: center;
+    overflow: hidden;
+    /* padding-bottom: 25px; */
+}
+.common-cpm-sub a{
+    display: inline-block;
+    margin-left: 15px;
+    bottom: 20px;
+
+}
+.common-cpm-sub a.sear-btn{
+    left:220px; ;
+}
+.common-cpm-sub a.qx-btn{
+
+    left:320px;
+}
+/*请选择申请人*/
+.cpm-pel-cent{
+    padding-top:15px;
+}
+
+.cpm-pel-cent label.tit{
+    color:#999999;
+}
+.cpm-pel-cent table{
+    margin-top:15px;
+}
+.cpm-pel-cent table tr{
+    border-bottom: 1px solid #e8e8e8;
+    height: 34px;
+}
+.cpm-pel-cent table tr td.com-name{
+    text-indent: 15px;
+    width: 80%;
+}
+
+.cpm-pel-cent table tr td.com-ope{
+    text-align: center;
+    vertical-align: middle;
+    width: 20%;
+}
+.cpm-pel-cent table tr:hover{
+    background: #fff5e1 !important;
+}
+.cpm-pel-cent table tr:hover td.com-ope i{
+    background: url("../images/sell-ope-over.png") no-repeat center;
+}
+.cpm-pel-cent table tr td.com-ope i{
+    width: 16px;
+    height: 16px;
+    background: url("../images/sell-ope.png") no-repeat center;
+}
+.cpm-pel-price{
+    background: #f5f5f5;
+    border: 1px solid #e8e8e8;
+    overflow: hidden;
+    margin-top: 25px;
+    padding-top:20px;
+    padding-bottom:10px;
+}
+.cpm-pel-price label,.cpm-pel-price input{
+    float: left;
+    margin-left: 12px;
+}
+.cpm-pel-price input.chi{
+    margin-top: -1px;
+}
+.cpm-pel-price input.blk{
+    margin-top: -8px;
+}
+.cpm-pel-price input.blk{
+    padding: 8px 24px 8px 8px;
+}
+/*自定义弹窗关闭按钮*/
+.layui-layer-setwin .layui-layer-close2{
+    right: -190px !important;
+    top:-10px !important;;
+}
+.layui-layer-ico{
+    background: url("../images/cpm-cha.png") no-repeat center top !important;;
+}
+.layui-layer-ico:hover{
+    background: url("../images/cpm-cha-cg.png") no-repeat center top !important;
+    transition:all 0.2s;
+}
+
+/*根据文档提交*/
+
+.docum-step{
+    text-align: center;
+}
+.docum-step i{
+    font-size: 16px;
+    margin-left: 10px;
+
+}
+.docum-step{
+    margin-top: 24px;
+
+}
+.docum-step span{
+    display: inline-block;
+    background: #b0b0b0;
+    border-radius:50px; ;
+    color: #ffffff;
+    width: 185px;
+    height: 35px;
+    line-height: 35px;
+    text-indent: 12px;
+    vertical-align: middle;
+    margin-top: -8px;
+    margin-left: 10px;
+}
+.docum-step span.on{
+    background: #ff8186;
+}
+.sub-result{
+
+}
+.sub-state{
+    text-align: center;
+    width: 345px;
+    margin:145px auto 0px;
+}
+
+.sub-state p{
+    color: #999999;
+    line-height: 22px;
+    margin-top: 12px;
+}
+.sub-state p a{
+    color: #424b5a;
+    text-decoration: underline;
+}
+.sub-state h3{
+    font-size: 16px;
+    font-weight:900;
+    border-bottom: 1px solid #e8e8e8;
+    padding-bottom:8px;
+    margin-top: 8px;
+}
+.sell-sub-way{
+    width: 430px;
+    margin:20px auto;
+}
+.sell-sub-way div.fl{
+    margin-top: 25px;
+    margin-left: 15px;
+}
+.sell-sub-way h3{
+    font-size: 16px;
+    font-weight: 900;
+}
+.sell-sub-way label{
+    display: inline-block;
+    color: #999999;
+    margin-top:15px;
+}
+.all-sub-way{
+    border-top:1px solid #e8e8e8;
+    background: url("../images/sub-way-yy.png") no-repeat top center;
+    text-align: center;
+}
+.all-sub-way ul{
+    width: 830px;
+    margin:40px auto 0px;
+}
+.all-sub-way ul li{
+    width: 220px;
+    height: 280px;
+    border: 1px solid  #e8e8e8;
+    border-radius: 5px;
+    float: left;
+    margin-left: 35px;
+    background: #ffffff;
+    position: relative;
+    text-align: center;
+}
+.all-sub-way ul li span{
+    display: table;
+    width: 100%;
+    height:200px;
+    text-align: center;
+    vertical-align: middle;
+    border-bottom: 1px solid  #e8e8e8;
+}
+.all-sub-way ul li span img{
+    display: inline-block;
+    text-align: center;
+    margin-top: 15px;
+}
+.all-sub-way ul li  a{
+    position: absolute;
+    bottom: 63px;
+    left: 43px;
+    cursor: pointer;
+
+}
+.all-sub-way ul li  p{
+    line-height: 20px;
+    margin-top:30px;
+}
+.all-sub-way ul li  p label{
+    color:#c75756;
+}
