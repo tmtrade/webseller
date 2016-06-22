@@ -8,8 +8,13 @@
  */
 class IncomeModule extends AppModule{
 
+    public static $token = '';//万象云图片的token
+
     public $models = array(
         'income' => 'income',
+        'img'=> 'imgurl',
+        'tminfo' => 'saleTminfo',
+        'ptinfo' => 'patentInfo',
     );
 
     /**
@@ -49,7 +54,17 @@ class IncomeModule extends AppModule{
         $r['page']  = $page;
         $r['limit'] = $size;
         $r['order'] = array('date'=>'desc');
-        return $this->import('income')->findAll($r);
+        $rst = $this->import('income')->findAll($r);
+        if($rst['total']==0){
+            return $rst;
+        }else{
+            //得到商品对应的图片
+            foreach($rst['data'] as &$v){
+                $v['img'] = $this->getGoodsImg($v['saleId'],$v['type']);
+            }
+            unset($v);
+            return $rst;
+        }
     }
 
     /**
@@ -92,5 +107,129 @@ class IncomeModule extends AppModule{
             return array('count'=>count($rst),'price'=>array_sum($rst));
         }
         return  array('count'=>0,'price'=>0);
+    }
+
+    /**
+     * 得到类变量--图片token(所有图片可以共用token)
+     * @return mixed|string
+     */
+    private function getToken(){
+        //初始化类变量
+        if(self::$token==''){
+            self::$token = $this->requests('http://wanxiang.chaofan.wang/?t=accessToken','GET',array(),false);
+        }
+        return self::$token;
+    }
+
+    /**
+     * 根据商品的id得到商品的图片
+     * @param $id
+     * @param int $type 0为商标, 1为专利
+     * @return string
+     */
+    public function getGoodsImg($id,$type=0){
+        $default = '/Static/special/images/img1.png';
+        if ( intval($id) <= 0 ) return $default;
+        if($type==0){ //商标
+            //从包装表获得信息
+            $r = array();
+            $r['eq']    = array('saleId'=>$id);
+            $r['col']   = array('embellish','number');
+            $data       = $this->import("tminfo")->find($r);
+            if( empty($data['embellish']) ){
+                if ( empty($data['number']) ) return $default;
+                //从原始表获得数据
+                $r = array();
+                $r['col']   = array('url');
+                $r['eq']    = array('trademark_id'=>$data['number']);
+                $rst        = $this->import('img')->find($r);
+                $url = empty($rst)?$default:$rst['url'];
+            }else{
+                $url = TRADE_URL.$data['embellish'];
+            }
+        }else{ //专利
+            //从包装表获得信息
+            $r = array();
+            $r['eq']    = array('patentId'=>$id);
+            $r['col']   = array('embellish','number');
+            $data       = $this->import("ptinfo")->find($r);
+            if( empty($data['embellish']) ){
+                if ( empty($data['number']) ) return $default;
+                //从万象云获得图片信息
+                $rst = $this->getWXYImg($data['number']);
+                $url = empty($rst)?$default:$rst;
+            }else{
+                $url = TRADE_URL.$data['embellish'];
+            }
+        }
+        return $url;
+    }
+
+    /**
+     * 从万象云得到原始专利图片
+     * @param $number
+     * @return string
+     */
+    private function getWXYImg($number){
+        //从list表中获取数据
+        $eq = (strpos($number, '.') !== false) ? array('number'=>$number) : array('code'=>$number);
+        $r['eq']    = $eq;
+        $r['limit'] = 1;
+        $info = $this->import('ptlist')->find($r);
+        if ( !empty($info['data']) ){
+            $data = unserialize($info['data']);
+        }else{
+            //从万象云获得数据并保存在list表中
+            $code   = (strpos($number, '.') !== false) ? strstr($number, '.', true) : $number;
+            $url    = 'http://wanxiang.chaofan.wang/detail.php?id=%s&t=json';
+            $url    = sprintf($url, $code);
+            $data   = $this->requests($url);
+            //保存到list表中
+            if ( !empty($data) && !empty($data['id']) ){
+                $_data = array(
+                    'code'      => $code,
+                    'number'    => $number,
+                    'data'      => serialize($data),
+                );
+                $this->import('ptlist')->create($_data);
+            }
+        }
+        //得到图片信息
+        if(empty($data['figures'][0])){
+            return '';
+        }else{
+            $token = $this->getToken();
+            return 'https://user.wanxiangyun.net/client/figure/'.$data['figures'][0].'?access_token='.$token;
+        }
+    }
+
+    /**
+     * curl获得数据
+     * @param $url
+     * @param string $type
+     * @param array $params
+     * @param boolean $flag 默认反序列化得到数组, false时不做处理
+     * @return mixed
+     */
+    private function requests( $url, $type='GET', $params=array(),$flag=true )
+    {
+        $_type = ($type == 'POST') ? 'POST' : 'GET';
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $_type);
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt(
+            $ch, CURLOPT_POSTFIELDS, $params
+        );
+        $result = curl_exec($ch);
+        if($result === false) {
+            $result = curl_error($ch);
+        }
+        curl_close($ch);
+        if($flag){
+            $result =  json_decode(trim($result,chr(239).chr(187).chr(191)),true);
+        }
+        return $result;
     }
 }

@@ -53,4 +53,9 @@ $tbl['statusnew'] = array(
     'dbId'		=> $dbId,
     'configFile'=> $configFile,
 );
+$tbl['imgurl'] = array(
+	'name'		=> $prefix.'imgurl',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
 ?>

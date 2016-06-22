@@ -23,6 +23,30 @@ $tbl['salehistory'] = array(
 	'dbId'		=> $dbId, 
 	'configFile'=> $configFile,
 );
+$tbl['patent'] = array(
+	'name'		=> $prefix.'patent',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['patentContact'] = array(
+	'name'		=> $prefix.'patent_contact',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['patentInfo'] = array(
+	'name'		=> $prefix.'patent_info',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['patentList'] = array(
+	'name'		=> $prefix.'patent_list',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 $tbl['messege'] = array(
 	'name'		=> $prefix.'messege',
 	'dbId'		=> $dbId,
