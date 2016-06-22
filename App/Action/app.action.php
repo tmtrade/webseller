@@ -56,9 +56,9 @@ abstract class AppAction extends Action
 			$this->redirect('', '/login/index');
 			exit;
 		}
-//		//得到站内信的数量
-//		$msg_num = $this->load('messege')->getMsgNum();
-//		$this->set('msg_num',$msg_num);
+		//得到站内信的数量
+		$msg_num = $this->load('messege')->getMsgNum();
+		$this->set('msg_num',$msg_num);
 		//静态文件版本号>>控制js,css缓存
 		$this->set('static_version', 9980);
 		//设置其他信息
@@ -138,9 +138,9 @@ abstract class AppAction extends Action
 	protected final function setUserView()
 	{
 		$this->userinfo					= $this->load('user')->getInfoById( $this->userInfo['id'] );
-		$this->userInfo['specname'] 	= $this->userinfo['specname'];
-		$this->userInfo['mobile_hide'] 	= $this->userinfo['mobile_hide'];
-		$this->userInfo['email_hide'] 	= $this->userinfo['email_hide'];
+		$this->userInfo['specname'] 	= isset($this->userinfo['specname'])?$this->userinfo['specname']:'';
+		$this->userInfo['mobile_hide'] 	=  isset($this->userinfo['mobile_hide'])?$this->userinfo['mobile_hide']:'';
+		$this->userInfo['email_hide'] 	= isset($this->userinfo['email_hide'])?$this->userinfo['email_hide']:'';
 		$this->set('nickname', $this->userinfo['firstname']);//名称
 		$this->set('userMobile', $this->userInfo['mobile_hide']);//手机
 		$this->set('userEmail', $this->userInfo['email_hide']);//邮箱

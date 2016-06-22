@@ -1,5 +1,6 @@
 <?
 $prefix		= 't_';
+$prefix2	= 's_';
 $dbId		= 'tradenew';
 $configFile	= array( ConfigDir.'/Db/tradenew.master.config.php' );
 
@@ -48,19 +49,19 @@ $tbl['patentList'] = array(
 );
 
 $tbl['messege'] = array(
-	'name'		=> $prefix.'messege',
+	'name'		=> $prefix2.'messege',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
 
 $tbl['messegeMonitor'] = array(
-	'name'		=> $prefix.'messege_monitor',
+	'name'		=> $prefix2.'messege_monitor',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
 
 $tbl['messegeUser'] = array(
-	'name'		=> $prefix.'messege_user',
+	'name'		=> $prefix2.'messege_user',
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
