@@ -167,25 +167,6 @@ abstract class AppAction extends Action
 		$this->setUserView();
 	}
 
-	/**
-	* 我的顾问
-	* @since    2016-01-21
-	* @author   haydn
-	* @return   void
-	*/
-	protected final function myStaff()
-	{
-		$staffInfo  = array();
-		$userId 	= $this->userInfo['id'];
-		$aidArr 	= $this->load('relation')->getRelationList( $userId );
-		if( !empty($aidArr) ){
-			$arr = $this->load('relation')->getStaffInfo( array('aid' => $aidArr) );
-			if( $arr['code'] == 1 ){
-				$staffInfo = $arr['data'];
-			}
-		}
-		$this->set('staffInfo', $staffInfo);
-	}
 
 	/**
 	* 验证js跨域
@@ -212,32 +193,6 @@ abstract class AppAction extends Action
 		return $is;
 	}
 
-	/**
-	* 浏览
-	* @author   haydn
-	* @since    2016-04-11
-	* @return   bool
-	*/
-	protected final function recordLook($url = '')
-	{
-		$userId = !empty($this->userInfo['id']) ? $this->userInfo['id'] : 0;
-		//$url	= 'http://shansoo.net/trademark/detail/?id=10365769';
-		//$url	= 'http://t.chofn.net/d-12163945-25.html';
-		$url	= !empty($url) ? $url : $_SERVER["HTTP_REFERER"];
-		$array	= parse_url($url);
-		if( !empty($array['query']) ){
-			$host	= $array['host'];
-			$query	= $array['query'];
-			parse_str($query);
-			$tid	= !empty($id) && $id > 0 ? $id : 0;
-		}else{
-			$pathArr= explode('-',$array['path']);
-			$tid	= !empty($pathArr[1]) ? $pathArr[1] : 0;
-		}
-		if( $tid > 0 ){
-			$this->load('browse')->addTidBrowse($tid,$url,$userId);
-		}
-	}
 
 	/**
 	 * 检测当前url地址(操作)是否发送站内信
@@ -273,5 +228,32 @@ abstract class AppAction extends Action
 			}
 		}
 	}
+	
+    //图片上传
+    public function ajaxUploadPic()
+    {
+    	$kb = $this->input('size', 'int', 0);
+        $msg = array(
+            'code'  => 0,
+            'msg'   => '',
+            'img'   => '',
+            );
+        if ( empty($_FILES) || empty($_FILES['fileName']) ) {
+            $msg['msg'] = '请上传图片';
+            $this->returnAjax($msg);
+        }
+        if ( $kb > 0 && ($kb*1024 < $_FILES['fileName']['size']) ){
+        	$msg['msg'] = "文件大小超过 $kb KB限制";
+        	$this->returnAjax($msg);
+        }
+        $obj = $this->load('upload')->upload('fileName', 'img');
+        if ( $obj->_imgUrl_ ){
+            $msg['code']    = 1;
+            $msg['img']     = $obj->_imgUrl_;
+        }else{
+            $msg['msg']     = $obj->msg;
+        }
+        $this->returnAjax($msg);
+    }
 }
 ?>

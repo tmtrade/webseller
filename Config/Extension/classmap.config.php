@@ -7,5 +7,6 @@ return array(
 	'AppModel'  => ModelDir.'/app.model.php',
 	'AppModule' => ModuleDir.'/app.module.php',
 	'LoginAuth' => UtilDir.'/LoginAuth.php',
+	'Images' => UtilDir.'/Images.class.php',
 	);
 ?>

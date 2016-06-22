@@ -21,8 +21,10 @@ class IndexAction extends AppAction
 	 */
 	public function index()
 	{
-		$html = $this->isLogin ? '/user/user.main.html' : 'index/index.index.html';
-		$this->display($html);
+		if(!$this->isLogin){
+		      $this->redirect('', '/login/index/');
+		}
+		$this->display();
 	}
 }
 ?>

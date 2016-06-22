@@ -171,6 +171,16 @@ class UserModule extends AppModule
 		}
 		return array('code' => 2,'mess'=> '修改失败');
 	}
+	
+	public function setAvatar($user, $data){
+		$r['eq'] = array('id'=>$user);
+		$bool	 = $this->import("user")->modify($data, $r);
+		if($bool){
+			return array('code' => 1);
+		}
+		return array('code' => 2,'mess'=> '修改失败');
+	}
+
 	/**
 	 * 检查用户密码是否正确
 	 * @author	martin
