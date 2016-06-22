@@ -167,10 +167,6 @@ class LoginModule extends AppModule
 		$cookid 		= getRandChar();
 		$uKey			= C('PUBLIC_USER');
 		$uTime			= $uTime >=0 ? $uTime : C('PUBLIC_TIME');
-        //取回公共发信的站内信
-        if(!defined('UID')) define('UID',$usInfo['id']);//定义用户id常量UID
-        $this->load('messege')->createSelfMsg($usInfo['id']);
-
 		$this->import('user')->updateLogin($usInfo['id']);//修改登录次数
 		$this->import('sessions')->addSessions($usInfo['id'],$cookid,$cateId);//写入登录日志
 		LoginAuth::set(array($uKey => $cookid),$uTime);

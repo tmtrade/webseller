@@ -35,11 +35,6 @@ abstract class AppAction extends Action
 		$mods = array(
 			'index'			=> '*',
 			'login'			=> '*',
-			'register'		=> '*',
-			'buybrand'		=> '*',
-			'lostpassword'	=> '*',
-			'authcode'		=> '*',
-			'test'	=> '*',
 		);
 		//验证用户是否登录
 		$allow  = false;
@@ -61,9 +56,6 @@ abstract class AppAction extends Action
 		$this->set('msg_num',$msg_num);
 		//静态文件版本号>>控制js,css缓存
 		$this->set('static_version', 9980);
-		//设置其他信息
-		$ucmenu = require ConfigDir.'/menu.config.php';
-		$this->set('ucmenu',$ucmenu);
 		$this->set('current_url', '/'.$this->mod .'/' . $this->action.'/');
 	}
 
@@ -122,6 +114,8 @@ abstract class AppAction extends Action
 				$this->isLogin  = true;
 				$this->setUserView();
 				if(!defined('UID')) define('UID',$session['userId']);//定义用户id常量UID
+				//取回公共发信的站内信
+				$this->load('messege')->createSelfMsg($session['userId']);
 				return true;
 			}
 		}
@@ -168,7 +162,6 @@ abstract class AppAction extends Action
 		$this->setUserView();
 	}
 
-
 	/**
 	* 验证js跨域
 	* @author   haydn
@@ -194,7 +187,6 @@ abstract class AppAction extends Action
 		return $is;
 	}
 
-
 	/**
 	 * 检测当前url地址(操作)是否发送站内信
 	 * @param $uid int|string 站内信的发送对象(群发以逗号隔开)
@@ -203,7 +195,7 @@ abstract class AppAction extends Action
 	protected function checkMsg($uid = null,$sendtype=1){
 		//设置发送的对象
 		if(!$uid){
-			$uid = $this->userId;
+			$uid = UID;
 		}
 		//设置发送的类型
 		if(!in_array($sendtype,array(1,2,3))){

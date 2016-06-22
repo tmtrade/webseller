@@ -128,7 +128,7 @@ class IncomeModule extends AppModule{
      * @return string
      */
     public function getGoodsImg($id,$type=0){
-        $default = '/Static/special/images/img1.png';
+        $default = '/Static/1.0/images/img1.png';
         if ( intval($id) <= 0 ) return $default;
         if($type==0){ //商标
             //从包装表获得信息
