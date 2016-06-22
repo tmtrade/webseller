@@ -26,5 +26,20 @@ class IndexAction extends AppAction
 		}
 		$this->display();
 	}
+	
+	//设置头像
+	public function setAvatar()
+	{
+	   
+	    $image = $this->input('path', 'string');
+	    $images = new Images("file");
+	    $res = $images->thumb(".".$image,false,1);
+	    $userInfoId	= $this->userInfo['id'];
+	    $saveinfo	= array('photo' => $res['big']);
+	    $isupdate	= $this->load('user')->setAvatar($userInfoId, $saveinfo);
+	    if($isupdate){
+		 $this->redirect('', '/index');
+	    }
+	}
 }
 ?>

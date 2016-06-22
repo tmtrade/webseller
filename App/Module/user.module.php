@@ -176,9 +176,9 @@ class UserModule extends AppModule
 		$r['eq'] = array('id'=>$user);
 		$bool	 = $this->import("user")->modify($data, $r);
 		if($bool){
-			return array('code' => 1);
+			return true;
 		}
-		return array('code' => 2,'mess'=> '修改失败');
+		return false;
 	}
 
 	/**

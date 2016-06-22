@@ -1,0 +1,218 @@
+<? require(ViewDir.'/public/header.html'); ?> 
+<!--main content start-->
+<section id="main-content">
+  <section class="wrapper">
+    <section class="panel">
+      <header class="panel-heading"> <span class="float-left">邮箱设置</span>
+		<ul class="breadcrumb float-right">
+			<li><a href="/user/main/">返回</a></li>
+		</ul>
+	  </header>
+      <section class="wrapper wrapper tab-container">
+        <div class="row" style="height:100%; min-height:550px;" id="password_div" >
+          <div class="col-xs-12">
+            <section class="panel">
+              <header class="form-box to_buy">
+              	<form class="form-inline">
+		          	<div class="phone-form">
+			          	<div class="progressbar" >
+							<ul>
+								<li class="succeed">
+					                <i class="dian"></i>
+					                <span class="xian"></span>
+					                <div class="text">
+					                  <p>验证新邮箱</p>
+					                </div>
+					              </li>
+					              <li class="fail">
+					                <i class="dian"></i>
+					                <span class="xian"></span>
+					                <div class="text">
+					                  <p>绑定成功</p>
+					                </div>
+					              </li>
+							</ul>
+						</div>
+		              <p>邮箱地址</p>
+		              <div class="row">
+		                <div class="col-xs-12">
+		                	<input type="text" id="email" name="email" maxlength="50" style="width: 100%" value="<?=$emailtext?>" class="form-control" placeholder="">
+		                </div>
+		              </div>
+		              <font class="red" id="mess_email" ></font>
+		              <p>邮箱验证码</p>
+		              <div class="row">
+		                <div class="col-xs-12">
+		                  <div class="row">
+		                    <div class="col-xs-6">
+		                    	<input type="text" id="mj-inputYz" class="form-control btn-block">
+		                    </div>
+		                    <div class="col-xs-6 text-right">
+		                    	<a type="button" id="dl_fsmm" class=" btn btn-danger btn-block">获取邮箱验证码</a>
+		                    	<!-- <a name="btnSendCode" class="btn btn-success btn-block" id="btnSendCode" onclick="sendMessage()" value="">点击获取验证码</a> -->
+		                    </div>
+		                  </div>
+		                  <font class="red" id="mess_code"></font>
+		                </div>
+		              </div>
+		              <div class="row">
+		                <div class="col-xs-12">
+		                  <p>
+		                    <a href="javascript:;"  id="submitOk" class="btn btn-success btn-block">确认提交</a>
+		                  </p>
+		                </div>
+		              </div>
+		        	</div>
+                </form>
+              </header>
+            </section>
+          </div>
+        </div>
+
+        <div class="row" style="height:100%; min-height:550px;display:none;" id="success_div">
+          <div class="modal-body">
+            <ul class="list-inline ">
+              <li><img src="<?=StaticDir?>workspace/img/up_pwdcg.png"/></li>
+              <li>
+                <h3 style="color:#60c531;">恭喜邮箱修改成功 </h3>
+                <a href="/user/main/" class="btn btn-primary">返回</a></li>
+            </ul>
+          </div>
+        </div>
+
+      </section>
+    </section>
+  </section>
+  <!--main content end--> 
+</section>
+
+
+
+
+<script type="text/javascript">
+    $(function(){
+        //新邮箱验证
+        var reg = /0?(13|14|15|18)[0-9]{9}/;
+		var yz1 = false;
+        $("#email").blur(function () {
+			checkPhone();
+        });
+        //验证码
+        $("#mj-inputYz").blur(function () {
+			checkCode();
+        });
+    });
+	//给新邮箱发送验证码
+	$("#dl_fsmm").click(function(){
+		_email  = $("#email").val();
+		if($('#dl_fsmm').css("color") =='rgb(51, 51, 51)'){
+			return false;
+		}
+        $.ajax({
+            type: "post",
+            url: "/user/sendEmailCode/",
+            data: {m:_email},
+            dataType: "json",
+			async: true,
+            success: function(data){
+                if (data.code == 1){
+                    $('#dl_fsmm').html('邮箱验证码已发送');
+					$('#dl_fsmm').removeClass('btn-danger').addClass('btn-default');
+                    timer(120, $("#dl_fsmm"), '发送邮箱验证码');
+
+					
+					uurl = gotoEmail($("#email").val());
+					if (uurl != "") {
+						$("#emailurl").attr("href", "http://"+uurl);
+						$(".mj-emLink").show();
+					}
+
+                }else if (data.code == 2){
+					$('#mess_email').html('请输入正确的邮箱地址');
+                }else if (data.code == 3){
+					$('#mess_email').html('该号码已经存在，请重新输入');
+                }else{
+					$('#mess_email').html('发送失败');
+                }
+            }
+		});
+
+	})
+
+	//提交按钮判断
+	$('#submitOk').click(function(){
+		che1 = checkPhone();
+		che2 = checkCode();
+		if(!che1 || !che2){ return false; }
+		$.ajax({
+            type: "post",
+            url: "/user/checkEmailCode/",
+			async: true,
+            data: {m: $('#email').val(), v:$("#mj-inputYz").val()},
+            dataType: "json",
+            success: function(data){
+                if (data.code == 2 || data.code == 3){
+					$("#mess_code").html(data.mess);
+                }else{
+					$('#success_div').show().siblings().hide()
+                }
+            }
+		});
+
+	})
+
+	//发送验证码倒计时
+	function timer(count, obj, title)
+	{
+		 window.setTimeout (function () {
+			 count --;
+			 obj.text(count + "s后重新发送");
+			 if(count > -1){
+				 timer(count, obj, title);
+			 }else{
+				obj.text(title);
+				$('#dl_fsmm').removeClass('btn-default').addClass('btn-danger');
+			 }
+		 },1000);
+	}
+
+	//判断新邮箱输入框
+	function checkPhone()
+	{
+		var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+		var yz1 = false;
+		var cont1 = $('#email').val();
+		$("#mess-email").html('');
+		var rest = reg.test(cont1);
+		if (cont1=="") {
+			yz1 = false;
+			$("#mess_email").html('请输入邮箱地址');
+		} else if(rest){
+			$("#mess_email").html('<i class="icon-ok text-success"></i>');
+			yz1 = true;
+		} else{
+			yz1 = false;
+			$("#mess_email").html('请输入正确的邮箱地址');
+		}
+		return yz1;
+	}
+	//判断验证码输入框
+	function checkCode()
+	{
+		var yz1 = false;
+		var cont2 = $("#mj-inputYz").val();
+		$("#mess-code").html('');
+		if (cont2=="") {
+			yz1 = false;
+			$("#mess_code").html('请输入邮箱验证码');
+		}else if(cont2.length != 4){
+			yz1 = false;
+			$("#mess_code").html('请输入正确邮箱验证码');
+		}else{
+			yz1 = true;
+			$("#mess_code").html('<i class="icon-ok text-success"></i>');
+		}
+		return yz1;
+	}	
+</script>
+<? require(ViewDir.'/public/footer.html'); ?>

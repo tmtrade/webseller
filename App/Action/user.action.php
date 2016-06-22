@@ -609,18 +609,7 @@ class UserAction extends AppAction
 		$this->display();
 	}
 	
-	public function setAvatar()
-	{
-	   
-	    $image = $this->input('path', 'string');
-	    $images = new Images("file");
-	    $res = $images->thumb(".".$image,false,1);
-	    $userInfoId	= $this->userInfo['id'];
-	   
-	    $saveinfo	= array('photo' => $res['big']);
-	    $isupdate	= $this->load('user')->setAvatar($userInfoId, $saveinfo);
-	    $this->redirect('', '/user/main/');
-	}
+	
 }
 
 ?>

@@ -144,6 +144,7 @@ abstract class AppAction extends Action
 		$this->set('nickname', $this->userinfo['firstname']);//名称
 		$this->set('userMobile', $this->userInfo['mobile_hide']);//手机
 		$this->set('userEmail', $this->userInfo['email_hide']);//邮箱
+		$this->set('photo', $this->userinfo['photo']);//头像
 		$this->set('userInfo', $this->userinfo);//用户数组
 		$this->set('cfwId', $this->userInfo['cfwId']);//超凡网id
 		$this->set('isLogin', $this->isLogin);//是否登录

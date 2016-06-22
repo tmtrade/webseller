@@ -1,0 +1,314 @@
+<link rel="stylesheet" href="<?=StaticDir?>style/secCenter.css"/>
+
+<style type="text/css">
+.mj-reModel{
+    position: relative;
+    padding: 0 25px;
+    width: 608px;
+    height: 407px;
+    border: solid 1px #ddd;
+}
+.mj-reModel>p{
+    padding-top: 15px;
+    font-size: 18px;
+    color: #333;
+}
+.mj-reMcon{
+    margin-top: 20px;
+    height: 292px;
+}
+.mj-reMcon h3{
+    padding: 20px 0 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+.mj-reMcon p{
+    padding: 10px;
+    font-size: 12px;
+    color: #333;
+    line-height: 25px;
+}
+.mj-reMbtn{
+    padding-top: 15px;
+    text-align: center;
+}
+.mj-reMbtn a{
+    display: inline-block;
+    width: 307px;
+    height: 35px;
+    background: #fc7d28;
+    text-align: center;
+    line-height: 35px;
+    font-size: 16px;
+    color: #fff;
+}
+.mj-reMtext h5{
+    font-size: 14px;
+}
+.mj-close{
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    background: url(/Static/style/img/mj-icon23.png) no-repeat;
+    cursor: pointer;
+}
+.mj-close:hover{
+    background: url(/Static/style/img/mj-icon24.png) no-repeat;
+}
+
+.mj-rebModel{
+    position: relative;
+    width: 400px;
+    height: 200px;
+    background: #fff;
+    text-align: center;
+    border: solid 1px #ddd;
+}
+.mj-rebModel p{
+    padding: 75px 0 15px;
+    font-size: 14px;
+    color: #666;
+}
+.mj-rebModel a{
+    display: inline-block;
+    width: 85px;
+    height: 35px;
+    background: #fc7d28;
+    text-align: center;
+    line-height: 35px;
+    font-size: 16px;
+    color: #fff;
+    border-radius: 3px;
+}
+.mj-steps{
+	position: relative;
+    margin: 31px 0 0 150px;
+    width: 240px;
+    border-top: solid 1px #e5edf2;
+}
+.mj-steps .mj-val p{
+	color:#FFF;
+	font-size:14px;
+}
+.mj-steps .mj-bin p{
+	color:#FFF;
+	font-size:14px;
+}
+.emInput {
+    margin-top: 24px;
+}
+.mj-right_main{
+	min-height:0px;	
+}
+.mj-steps .mj-val, .mj-steps .mj-bin{
+}
+.mj-steps{
+	margin: 22px 0 0 150px;
+}
+.mj-right_main{
+	min-height:0px;
+}
+
+.mj-chaPaw{
+	padding: 41px 0 0 16px;
+}
+
+.mj-chaPaw{
+	padding: 41px 0 0 16px;
+}
+.mj-chaPaw li p.cor{
+	position: absolute;
+	margin-top:-57px;
+	margin-left:-29px;
+}
+
+.mj-chaPaw li p.cog{
+	position: absolute;
+	margin-top:-92px;
+	margin-left:-19px;
+}
+.pass_mess{
+	position:relative;
+}
+</style>
+<!--服务条款弹出层-->
+<div class="mj-reModel" style=" display:none">
+    <span class="ms-close mj-close"></span>
+    <p>请绑定手机号</p>
+    <div class="mj-reMcon">
+        <div class="mj-right_main f-clearfix">
+                <div class="mj-steps">
+                    <div class="mj-val">
+                        <p>1</p>
+                        <span>认证新手机</span>
+                    </div>
+                    <div class="mj-bin" id="dis1">
+                        <p>2</p>
+                        <span>绑定成功</span>
+                    </div>
+                    <div class="mj-val" style="left:185px;display:none" id="dis2">
+                        <p>2</p>
+                        <span>绑定成功</span>
+                    </div>
+                </div>
+                <ul class="mj-chaPaw emInput mj-chaPaw">
+					<li>
+						<div class="mj-liInput">
+							<span class="mj-inpuV">请输入新的手机号码</span>
+							<input type="text" id="phone" name="phone" class="mj-textPas" maxlength="11" style="width:200px;" />
+						</div>
+						<div id="mess_phone" class='pass_mess'></div>
+                   </li>
+                    <li class="f-clearfix">
+                        <div class="mj-liInput resetW">
+                            <span class="mj-inpuV">请输入验证码</span>
+                            <input type="text" id="mj-inputYz" class="mj-textPas" maxlength="5" />
+                        </div>
+                        <label class="mj-labtn mj-sent" id="dl_fsmm">获取验证码</label>
+                        <!--<span class="emTips">验证码已发送，120秒后可重新获取</span>-->
+						<div id="mess_code" class='pass_mess'></div>
+
+                    </li>
+                    <li><a href="javascript:void(0);" id="submitOk">提交</a></li>
+                </ul>
+            </div>
+    </div>
+</div>
+<script language="javascript">
+		layer.open({
+			type: 1,
+			title: false,
+			closeBtn: false,
+			skin: 'yourclass',
+			offset: ['22%', '32%'],
+			content: $('.mj-reModel')
+		});
+		$(".mj-close,.mj-reMbtn").bind("click",function(){
+			layer.closeAll();
+		});
+		$(".layui-layer").css("width","auto");
+	$(function(){
+		//手机号验证
+		var reg = /^0?(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])[0-9]{8}$/;
+		var yz1 = false;
+		$("#phone").blur(function () {
+			checkPhone();
+		});
+		//验证码
+		$("#mj-inputYz").blur(function () {
+			checkCode();
+		});
+	});
+	//给手机发送验证码
+	$("#dl_fsmm").click(function(){
+		_phone  = $("#phone").val();
+		if($('#dl_fsmm').css("color") =='rgb(51, 51, 51)'){
+			return false;
+		}
+        $.ajax({
+            type: "post",
+            url: "/user/sendRegCode/",
+            data: {m:_phone},
+            dataType: "json",
+			async: true,
+            success: function(data){
+                if (data.code == 1){
+                    $('#dl_fsmm').html('密码已发送');
+					$('#dl_fsmm').css({"color":"#333",'background-color':'#ddd'});
+                    timer(120, $("#dl_fsmm"), '发送密码');
+                }else if (data.code == 2){
+					layter_msg('请输入正确的手机号码', 0, '');
+                }else if (data.code == 3){
+					layter_msg('该号码已经存在，请重新输入', 0, '');
+                }else{
+					layter_msg('发送失败', 0, '');
+                }
+            }
+		});
+
+	})
+
+	//提交按钮判断
+	$('#submitOk').click(function(){
+		che1 = checkPhone();
+		che2 = checkCode();
+		if(!che1 || !che2){ return false; }
+		$.ajax({
+            type: "post",
+            url: "/user/checkCode/",
+			async: true,
+            data: {m: $('#phone').val(), v:$("#mj-inputYz").val()},
+            dataType: "json",
+            success: function(data){
+                if (data.code == 2 || data.code == 3){
+					layter_msg(data.mess, 0, '');
+                }else{
+					layter_msg('验证手机成功', 0, '');
+					$("#dis1").hide();
+					$("#dis2").show();
+					setTimeout("location.reload();'" ,'1000');
+					
+					$("#submitOk").hide();
+                }
+            }
+		});
+	})
+
+	//发送验证码倒计时
+	function timer(count, obj, title)
+	{
+		 window.setTimeout (function () {
+			 count --;
+			 obj.text(count + "s后重新发送");
+			 if(count > -1){
+				 timer(count, obj, title);
+			 }else{
+				obj.text(title);
+				$('#dl_fsmm').css({"color":"#007ece",'background-color':'#f3f7fa'});
+			 }
+		 },1000);
+	}
+
+	//判断手机输入框
+	function checkPhone()
+	{
+		var reg = /0?(13|14|15|18)[0-9]{9}/;
+		var yz1 = false;
+		var cont1 = $('#phone').val();
+		$("#mess-phone").html('');
+		var rest = reg.test(cont1);
+		if (cont1=="") {
+			yz1 = false;
+			textTip('mess_phone','请输入手机号码',0);
+		} else if(rest){
+			textTip('mess_phone','',1);
+			yz1 = true;
+		} else{
+			yz1 = false;
+			textTip('mess_phone','手机号错误！',0);
+		}
+		return yz1;
+	}
+	//判断验证码输入框
+	function checkCode()
+	{
+		var yz1 = false;
+		var cont2 = $("#mj-inputYz").val();
+		$("#mess-code").html('');
+		if (cont2=="") {
+			yz1 = false;
+			textTip('mess_code','请输入验证码！',0);
+		}else if(cont2.length != 4){
+			yz1 = false;
+			textTip('mess_code','请输入正确验证码！',0);
+		}else{
+			textTip('mess_code','',1);
+			yz1 = true;
+		}
+		return yz1;
+	}
+</script>
