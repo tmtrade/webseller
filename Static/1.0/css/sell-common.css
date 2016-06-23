@@ -281,13 +281,19 @@ body,html{
 .nav-list1:hover .ico-bg1{
     background-image: url("../images/home_icon_h.png");
 }
-.sell-pull-list:hover .ico-bg2{
+.nav-list2:hover .ico-bg2{
     background-image: url("../images/goods_icon_h.png");
 }
 .nav-list3:hover .ico-bg3{
     background-image: url("../images/self_icon_h.png");
 }
 .nav-list4:hover .ico-bg4{
+    background-image: url("../images/money_icon_h.png");
+}
+.nav-list5:hover .ico-bg5{
+    background-image: url("../images/bonus_icon_h.png");
+}
+.sell-pull-list:hover .ico-bg6{
     background-image: url("../images/data_icon_h.png");
 }
 .ico-bg1{
@@ -300,8 +306,15 @@ body,html{
     background-image: url("../images/self_icon.png");
 }
 .ico-bg4{
+    background-image: url("../images/money_icon.png");
+}
+.ico-bg5{
+    background-image: url("../images/bonus_icon.png");
+}
+.ico-bg6{
     background-image: url("../images/data_icon.png");
 }
+
 
 .sell-rg-nav ul li a{
     display:inline-block;
@@ -317,7 +330,7 @@ body,html{
 
 .sell-rg-nav ul li i{
     width: 25px;
-    height: 25px;
+    height: 26px;
     margin-left: 20px;
     margin-right: 18px;
     margin-bottom: 2px;

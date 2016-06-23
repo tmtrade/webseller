@@ -9,13 +9,13 @@
         $("#rg-nav").css({"height":wH});
     })
   //右边导航下拉框
-    $(".sell-pull-list").toggle(function(){
-        $(".xl-box").css({"display":"block"})
-        $(this).find("em").css({"transform":"rotate(180deg)"})
-    },function(){
-        $(".xl-box").css({"display":"none"})
-        $(this).find("em").css({"transform":"rotate(0deg)"})
-    })
+  $(".sell-pull-list").find("a.pull-btn").toggle(function(){
+      $(".xl-box").css({"display":"block"})
+      $(this).find("em").css({"transform":"rotate(180deg)"})
+  },function(){
+      $(".xl-box").css({"display":"none"})
+      $(this).find("em").css({"transform":"rotate(0deg)"})
+  })
   //点击消息条消失
     $(".skewer").click(function(){
         $(".sell-news").fadeOut("fast");

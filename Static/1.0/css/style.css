@@ -27,7 +27,7 @@
 .hint-bg{
     background: url("../images/news-bg.png") repeat-x;
 }
-.ico-bg5{
+.ts-ico-bg5{
     width: 14px;
     height: 14px;
     background-image: url("../images/sell-cha.png");
@@ -317,7 +317,7 @@
     width: 26px;
     height: 26px;
     top:10px;
-    right:-135px;
+    right:-45px;
 }
 .cancel-offer .cancel-offer-ops{
     margin-left: 180px;
@@ -722,8 +722,14 @@ table.list-mess-main tr .pri-num input{
 /*}*/
 .comm-list-news table .tick  i{
     width:16px ;
-    height: 11px;
+    height: 16px;
+
+}
+.comm-list-news table .tick  i.news-str{
     background: url("../images/sell-news.png") no-repeat center center;
+}
+.comm-list-news table .tick  i.news-end{
+    background: url("../images/sell-news-end.png") no-repeat center center;
 }
 /*商标出售  根据申请人*/
 .sell-by-brand h3 label{
@@ -820,6 +826,7 @@ table.list-mess-main tr .pri-num input{
     display: inline-block;
     margin-left:25px;
     margin-top: 10px;
+    display: none;
 }
 
 /*提交出售 根本申请人*/
@@ -859,7 +866,7 @@ table.list-mess-main tr .pri-num input{
     color: #999999;
 }
 .common-cpm-cent input{
-    padding: 7px 7px 7px 8px;
+    padding: 7px 26px 7px 8px;
     margin-left:25px;
     margin-right: 5px;
 }
@@ -872,15 +879,14 @@ table.list-mess-main tr .pri-num input{
 .common-cpm-sub a{
     display: inline-block;
     margin-left: 15px;
-    bottom: 20px;
+    bottom:10px;
 
 }
 .common-cpm-sub a.sear-btn{
-    left:220px; ;
+    left:170px; ;
 }
 .common-cpm-sub a.qx-btn{
-
-    left:320px;
+    left:260px;
 }
 /*请选择申请人*/
 .cpm-pel-cent{
@@ -941,8 +947,8 @@ table.list-mess-main tr .pri-num input{
 }
 /*自定义弹窗关闭按钮*/
 .layui-layer-setwin .layui-layer-close2{
-    right: -190px !important;
-    top:-10px !important;;
+    right:0px !important;
+    top:-5px !important;;
 }
 .layui-layer-ico{
     background: url("../images/cpm-cha.png") no-repeat center top !important;;
@@ -951,7 +957,29 @@ table.list-mess-main tr .pri-num input{
     background: url("../images/cpm-cha-cg.png") no-repeat center top !important;
     transition:all 0.2s;
 }
-
+.layui-layer-btn .layui-layer-btn0{
+    background: url("../images/search-bg-bf.png") repeat-x;
+}
+.layui-layer-btn .layui-layer-btn0:hover{
+    background: url("../images/search-bg.png") repeat-x;
+}
+.layui-layer-btn .layui-layer-btn1{
+    background: url("../images/qx-bg-bf.png") repeat-x;
+}
+.layui-layer-btn .layui-layer-btn1:hover{
+    background: url("../images/qx-bg.png") repeat-x;
+}
+.layui-layer-btn{
+    text-align: center !important;
+}
+.layui-layer-btn a{
+    width: 70px !important;
+    height: 35px !important;
+    line-height: 35px !important;
+    border-radius: 5px !important;;
+    border-color:#ffffff !important;;
+    color: #ffffff !important;
+}
 /*根据文档提交*/
 
 .docum-step{
