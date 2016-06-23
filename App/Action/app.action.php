@@ -54,6 +54,8 @@ abstract class AppAction extends Action
 		//得到站内信的数量
 		$msg_num = $this->load('messege')->getMsgNum();
 		$this->set('msg_num',$msg_num);
+		//客服qq
+		$this->set('qq_num',C('qq_num'));
 		//静态文件版本号>>控制js,css缓存
 		$this->set('static_version', 9980);
 		$this->set('current_url', '/'.$this->mod .'/' . $this->action.'/');

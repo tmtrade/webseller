@@ -4,7 +4,7 @@
  */
 $checkhost 	= include(ConfigDir.'/checkhost.config.php');
 $define = array(
-
+	'qq_num' => 2950506044,
 	'searchapi'	=> array(
 		'key'	=> '89eb637c610f94b9d281c458bca42421',
 		'url'	=> 'http://searchapi.chofn.net/trademark/search/',

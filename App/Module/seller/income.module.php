@@ -15,6 +15,7 @@ class IncomeModule extends AppModule{
         'img'=> 'imgurl',
         'tminfo' => 'saleTminfo',
         'ptinfo' => 'patentInfo',
+        'ptlist' => 'patentList',
     );
 
     /**
@@ -47,7 +48,7 @@ class IncomeModule extends AppModule{
             $r['scope'] = array('date'=>array($start,$end));
         }
         //其他条件
-        if($type!=3){
+        if($type!=2){
             $r['eq']['type'] = $type;
         }
         $r['eq']['uid'] = UID;//指定用户
@@ -59,8 +60,8 @@ class IncomeModule extends AppModule{
             return $rst;
         }else{
             //得到商品对应的图片
-            foreach($rst['data'] as &$v){
-                $v['img'] = $this->getGoodsImg($v['saleId'],$v['type']);
+            foreach($rst['rows'] as &$v){
+                $v['img'] = $this->getGoodsImg($v['number'],$v['type']);
             }
             unset($v);
             return $rst;
@@ -95,7 +96,7 @@ class IncomeModule extends AppModule{
             $r['scope'] = array('date'=>array($start,$end));
         }
         //其他条件
-        if($type!=3){
+        if($type!=2){
             $r['eq']['type'] = $type;
         }
         $r['eq']['uid'] = UID;//指定用户
@@ -123,44 +124,24 @@ class IncomeModule extends AppModule{
 
     /**
      * 根据商品的id得到商品的图片
-     * @param $id
+     * @param $number
      * @param int $type 0为商标, 1为专利
      * @return string
      */
-    public function getGoodsImg($id,$type=0){
+    public function getGoodsImg($number,$type=0){
         $default = '/Static/1.0/images/img1.png';
-        if ( intval($id) <= 0 ) return $default;
+        if ( !$number ) return $default;
         if($type==0){ //商标
-            //从包装表获得信息
+            //从原始表获得数据
             $r = array();
-            $r['eq']    = array('saleId'=>$id);
-            $r['col']   = array('embellish','number');
-            $data       = $this->import("tminfo")->find($r);
-            if( empty($data['embellish']) ){
-                if ( empty($data['number']) ) return $default;
-                //从原始表获得数据
-                $r = array();
-                $r['col']   = array('url');
-                $r['eq']    = array('trademark_id'=>$data['number']);
-                $rst        = $this->import('img')->find($r);
-                $url = empty($rst)?$default:$rst['url'];
-            }else{
-                $url = TRADE_URL.$data['embellish'];
-            }
+            $r['col']   = array('url');
+            $r['eq']    = array('trademark_id'=>$number);
+            $rst        = $this->import('img')->find($r);
+            $url = empty($rst)?$default:$rst['url'];
         }else{ //专利
-            //从包装表获得信息
-            $r = array();
-            $r['eq']    = array('patentId'=>$id);
-            $r['col']   = array('embellish','number');
-            $data       = $this->import("ptinfo")->find($r);
-            if( empty($data['embellish']) ){
-                if ( empty($data['number']) ) return $default;
-                //从万象云获得图片信息
-                $rst = $this->getWXYImg($data['number']);
-                $url = empty($rst)?$default:$rst;
-            }else{
-                $url = TRADE_URL.$data['embellish'];
-            }
+            //从万象云获得图片信息
+            $rst = $this->getWXYImg($number);
+            $url = empty($rst)?$default:$rst;
         }
         return $url;
     }

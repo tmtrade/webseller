@@ -14,6 +14,11 @@ $tbl['sale'] = array(
 	'dbId'		=> $dbId, 
 	'configFile'=> $configFile,
 );
+$tbl['saleTminfo'] = array(
+	'name'		=> $prefix.'sale_tminfo',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
 $tbl['salecontact'] = array(
 	'name'		=> $prefix.'sale_contact',
 	'dbId'		=> $dbId, 

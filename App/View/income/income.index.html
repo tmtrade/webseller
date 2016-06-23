@@ -1,5 +1,6 @@
 <? require(ViewDir.'/header.html'); ?>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.SuperSlide.2.1.js?v=<?=$static_version?>"></script>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/url.js?v=<?=$static_version?>"></script>
 <style type="text/css">
     body,html{
         background-color: #ffffff !important;
@@ -18,10 +19,11 @@
                 <label>商品类型</label>
                 <div class="all-tp pull-list">
                     <a class="all-tp-btn">
-                        <font>全部</font>
+                        <font id="type_income"><?=$type_income?></font>
                         <i class="fa fa-chevron-down"></i>
                     </a>
                     <ul class="all-tp-list">
+                        <li>全部</li>
                         <li>商标</li>
                         <li>专利</li>
                     </ul>
@@ -29,20 +31,22 @@
             </div>
             <div class="desi chi-time">
                 <label>选择时间</label>
-                <span class="cir blk">2016-04-30</span>
+                <span class="cir blk" id="start_income" onclick="laydate()"><?=$start?></span>
                 <i>-</i>
-                <span class="cir blk">2016-04-30</span>
-                <a  class="cir sear-btn">立刻搜索</a>
+                <span class="cir blk" id="end_income" onclick="laydate()"><?=$end?></span>
+                <a class="cir sear-btn" id="search_income">立刻搜索</a>
             </div>
         </div>
         <? if($list): ?>
         <div class="comm-list-mess">
             <div class="list-earn-top">
-                <p class="mess-earn-hj fl">从2016-05-16日 至 2016-06-16 日期间，共销售 <label class="pt-cor">1</label>张图片，收入合计 <b class="pt-cor">8888</b>元。</p>
+                <p class="mess-earn-hj fl"><?=$date_str?>，共销售 <label class="pt-cor"><?=$count?></label> 件商品，收入合计 <b class="pt-cor"><?=$income?></b> 元。</p>
                 <div class="mess-top-dq fr">
                     <div class="pull-list paging">
-                        <a class="cir all-tp-btn"><font>每页20</font><i class="fa fa-chevron-down"></i></a>
+                        <input type="hidden" id="size" value="<?=$size?>">
+                        <a class="cir all-tp-btn">每页 <font id="size_income"><?=$size?></font><i class="fa fa-chevron-down"></i> </a>
                         <ul class="all-tp-list" style="display: none;">
+                            <li>20</li>
                             <li>40</li>
                             <li>60</li>
                         </ul>
@@ -57,17 +61,19 @@
                     </tr>
                     </thead>
                     <tbody class="list-mess">
+                    <? foreach($list as $item): ?>
                     <tr>
                         <td class="list-mess-pic">
-                            <a class="pic" href=""><img src="images/list-pic.jpg"></a>
+                            <a class="pic" style="cursor: default" href="javascript:;"><img src="<?=$item['img']?>" onerror="this.src='/Static/1.0/images/img1.png'"></a>
                         </td>
-                        <td>商标商品</td>
-                        <td>彩蝶坊</td>
-                        <td>2015-06-12 13:24</td>
+                        <td><?=$item['type']?'专利':'商标'?>商品</td>
+                        <td><span style="cursor: pointer" title="<?=$item['name']?>"><?=mbSub($item['name'],0,10)?></span></td>
+                        <td><?=date('Y-m-d H:i:s',$item['date'])?></td>
                         <td class="pri-num">
-                              <span>35000</span>
+                              <span><?=$item['price']?></span>
                         </td>
                     </tr>
+                    <? endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -83,4 +89,73 @@
         <? endif; ?>
     </div>
 </div>
+<script type="text/javascript">
+    $(function(){
+        //提交事件
+        $('#search_income').click(function(){
+            buildUrl();
+        });
+        //每页大小改变
+        $('.mess-top-dq li').click(function(){
+            buildUrl();
+        });
+        //页码点击事件
+        $('.mj-pages a').click(function(){
+            var href = $(this).attr('href');
+            if(href=='javascript:;'){
+                return false;
+            }else{
+                var page = href.split('=');
+                page = page[1];
+                buildUrl(page);
+                return false;
+            }
+        });
+    });
+
+    //url处理跳转
+    function buildUrl(){
+        var page = arguments[0] ? arguments[0] : null;
+        var myurl = new objURL(location.href);//url处理对象
+        //时间
+        var start = $.trim($('#start_income').text());
+        if(start){
+            myurl.set('start',start);
+        }else{
+            myurl.remove('start');
+        }
+        var end = $.trim($('#end_income').text());
+        if(end){
+            myurl.set('end',end);
+        }else{
+            myurl.remove('end');
+        }
+        //类型
+        var type = $.trim($('#type_income').text());
+        if(type=='商标'){
+            type = 0;
+            myurl.set('type',type);
+        }else if(type=='专利'){
+            type = 1;
+            myurl.set('type',type);
+        }else{
+            type = 2;
+            myurl.remove('type');
+        }
+        //页码大小
+        var size = $.trim($('#size_income').text());
+        if(size==20){
+            myurl.remove('size');
+        }else{
+            myurl.set('size',size);
+        }
+        //分页
+        if(page===null || page<=1){
+            myurl.remove('page');
+        }else{
+            myurl.set('page',page);
+        }
+        location.href=myurl.url();
+    }
+</script>
 <? require(ViewDir.'/footer.html'); ?>
