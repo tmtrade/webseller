@@ -551,11 +551,12 @@ body,html{
     color: #e80b05;
     text-align: center;
 }
+
 /*分页*/
 .mj-pages{
-    margin-top:30px;
+    margin-top: 30px;
     text-align: center;
-
+    padding-bottom: 20px;
 }
 .mj-pages label{
     display: inline-block;
@@ -594,14 +595,8 @@ body,html{
     border: solid 1px #eee;
 }
 .mj-pages>a.on,.mj-pages>a:hover{
-    color: #ff6666;
-    border: solid 1px  #ff6666;
-}
-.mj-pages>a:first-child,.mj-pages>a:nth-child(6){
-    padding-left:20px;
-    padding-right:20px;
-    background:#CCC;
-    color:#fff;
+    color: #fc883a;
+    border: solid 1px #fc883a;
 }
 .mj-pages span{
     padding: 0 5px 0 10px;
@@ -631,4 +626,5 @@ body,html{
     background: #fff;
     cursor: pointer;
 }
+
 /*分页完*/

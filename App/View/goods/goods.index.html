@@ -1,0 +1,133 @@
+<? require(ViewDir.'/header.html'); ?>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
+ <style type="text/css">
+        body,html{
+            background-color: #ffffff !important;
+        }
+	a{color:#000;}
+    </style>
+<div class="yzc-sell-main">
+<!--公用左边导航-->
+<? require(ViewDir.'/left.html'); ?>
+
+    <div class="sell-lf-main">
+       <div class="comm-list-tit w-cont">
+           <h3>我的商品</h3>
+       </div>
+       <div class="comm-search-bg">
+	   <form name="seachForm" id="seachForm" action="/goods/index/" method="post">
+               <div class="desi w-cont">
+                   <label>商品名称</label>
+                   <input type="text" class="cir" name="name" id="names" value="<?=$s['name']?>"/>
+                   <a  class="cir sear-btn">立刻搜索</a>
+               </div>
+	       <input type="hidden" name="status" value="<?=$s['status']?>">
+	    </form>
+       </div>
+       <div class="comm-list-mess">
+           <div class="slideTxtBox">
+               <div class="list-mess-top">
+                   <div class="hd fl">
+                       <ul>
+			   <a href="/goods/index?status=1"><li <?if($s['status']==1) echo 'class="on"';?>>出售中</li></a>
+			   <a href="/goods/index?status=3"><li <?if($s['status']==3) echo 'class="on"';?>>审核中</li></a>
+			   <a href="/goods/no"><li <?if($s['status']==3) echo 'class="on"';?>>未通过</li></a>
+			   <a href="/goods/index?status=2"><li <?if($s['status']==2) echo 'class="on"';?>>已失效</li></a>
+		       </ul>
+                   </div>
+                   <div class="mess-top-dq fr">当前共有<label><?=$count?></label>条商品数据
+                      <div class="pull-list paging">
+                           <a class="cir all-tp-btn"><font>每页20</font><i class="fa fa-chevron-down"></i></a>
+                           <ul class="all-tp-list" style="display: none;">
+                               <li>
+                                   1111111
+                               </li>
+                               <li>
+                                   222222
+                               </li>
+                               <li>
+                                   222222
+                               </li>
+                               <li>
+                                   222222
+                               </li>
+                           </ul>
+                      </div>
+
+                   </div>
+               </div>
+
+               <div class="bd">
+                   <div class="list-mess">
+                      <table class="list-mess-main">
+                          <thead>
+                          <tr class="tbl-tit">
+                            <th class="list-mess-pic-tit">商品图片</th><th>商品名称</th><th>提交时间</th><th>期望获得收益</th><th>操作</th>
+                          </tr>
+                          </thead>
+                          <tbody class="list-mess">
+			<? foreach ($list as $k => $v) {?>
+                          <tr>
+                              <td class="list-mess-pic">
+                                  <a class="pic" href=""><img src="<?=$v['pic']['embellish']?>" onerror="this.src='/Static/images/img1.png'" width="90" height="60"></a>
+                              </td>
+                              <td><?=$v['name']?></td>
+                              <td><?=date("Y-m-d H:i",$v['date'])?></td>
+                              <td class="pri-num">
+                                  <span><?=$v['price']?></span>
+                              </td>
+                              <td class="cg-price">
+                                  <p class="price"><a class="revise">修改价格</a><label>|</label><a class="abo">取消报价</a></p>
+                              </td>
+                          </tr>
+			   <? } ?>
+                          </tbody>
+                      </table>
+                   </div>
+               </div>
+           </div>
+           <div class="mj-pages">
+	    <?=$pageBar?>
+	    </div>
+       </div>
+    </div>
+</div>
+<!--取消报价弹窗-->
+<div class="cancel-offer" id="cancel-offer" style="display: none;">
+   <a class="layui-layer-ico layui-layer-close layui-layer-close2" href="javascript:;"></a>
+   <div class="cancel-offer-ops">
+       <h3>您确定取消该条报价？</h3>
+       <label>点击确定将删除您的该条报价，请慎重选择。</label>
+   </div>
+    <div class="common-cpm-sub">
+      <a class="cir sear-btn batch-pric layui-layer-close"  href="javascript:;" >确定</a>
+      <a class="cir qx-btn batch-del gb-cpm-btn layui-layer-close" href="javascript:;">关闭</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+ $(".sear-btn").click(function(){
+            var names  = $.trim( $("#names").val() );
+            if (names === ''){
+                layer.tips('请输入商标名称', $(this),{tips: [2, '#78BA32']});
+                return false;
+            }
+            $("#seachForm").submit();
+        });
+});
+    
+    jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click"});
+    $(".abo").on("click",function(){
+        $(this).attr("index","1");
+        layer.open({
+            type: 1,
+            title: false,
+            closeBtn:0,
+            shadeClose:false, //开启遮罩关闭
+            content:$("#cancel-offer")
+
+        });
+    })
+</script>
+<? require(ViewDir.'/footer.html'); ?>

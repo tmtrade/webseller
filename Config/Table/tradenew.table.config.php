@@ -19,11 +19,23 @@ $tbl['salecontact'] = array(
 	'dbId'		=> $dbId, 
 	'configFile'=> $configFile,
 );
-$tbl['salehistory'] = array(
-	'name'		=> $prefix.'user_sale_history',
+$tbl['saleTminfo'] = array(
+	'name'		=> $prefix.'sale_tminfo',
 	'dbId'		=> $dbId, 
 	'configFile'=> $configFile,
 );
+$tbl['salehistory'] = array(
+	'name'		=> $prefix.'sale_history',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
+$tbl['userSaleHistory'] = array(
+	'name'		=> $prefix.'user_sale_history',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 $tbl['patent'] = array(
 	'name'		=> $prefix.'patent',
 	'dbId'		=> $dbId,

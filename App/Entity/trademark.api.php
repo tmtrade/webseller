@@ -9,16 +9,26 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class SaleHistoryApi extends Entity
+class TrademarkApi extends BaseCacheApi
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'salehistory';
+	public $tableKey = 'trademark';
 
 	/**
 	 * 数据表主键
 	 */
-	public $pk       = 'id';
+	public $pk       = 'auto';
+    
+    /**
+     * 缓存组件标识id
+     */
+    public $cacheId = 'redis';
+
+    /**
+     * 过期时间(360分钟)
+     */
+    public $expire  = 28800;
 }
 ?>
