@@ -80,19 +80,14 @@ $(document).ready(function(e) {
 
 	//获取验证码
 	$(document).on('click', "#getcode", function(){
-		layer.load(1, {
-			shade: [0.1,'#fff'] //0.1透明度的白色背景
-		});
 		var umobVal	= $.trim($('#umobile').val());
 		if( umobVal == '' ){
 			error('请输入手机号码',2);
-			layer.closeAll('loading');
 			return false;
 		}
 		var ismob	= isMobile(umobVal);
 		if( ismob == false ){
 			error('手机号码格式错误',2);
-			layer.closeAll('loading');
 			return false;
 		}
 		success();
@@ -122,6 +117,7 @@ function error(msg,i){
 	obj.show();
 	obj.find('span').html(msg);
 }
+
 //成功提示
 function success(){
 	var obj = $('.eTips');
@@ -243,34 +239,30 @@ function logCode(account,pword,utype,uauto){
 
 //发送验证码
 function sendCode(umobVal){
-	if( isSendCode == true ){
+	if( isSendCode == true ) {
 		$.ajax({
-			type 		: "POST",  
-			url 		: "/login/sendCode/",
-			dataType 	: "json",
-			data		: {"account" : umobVal,"cateId" : 2},
-			error		: function(msg){
-				layer.closeAll('loading');
-				error('服务器繁忙请稍后再试',2);
+			type: "POST",
+			url: "/login/sendCode/",
+			dataType: "json",
+			data: {"account": umobVal, "cateId": 2},
+			error: function (msg) {
+				error('服务器繁忙请稍后再试', 2);
 			},
-			success 	: function(data){
-				layer.closeAll('loading');
-				if (data.code == 1){
+			success: function (data) {
+				if (data.code == 1) {
 					isSendCode = false;//是否发送验证码
 					//页面显示
 					$('.ms2').show();
 					$('.ms1').hide();
-					countDown(downtime,$('#ms_n'));
-					error('验证码已发送',2);
-				}else if (data.code == 2){
-					error('手机号不正确',2);
-				}else{
-					error('发送失败',2);
+					countDown(downtime, $('#ms_n'));
+					error('验证码已发送', 2);
+				} else if (data.code == 2) {
+					error('手机号不正确', 2);
+				} else {
+					error('发送失败', 2);
 				}
 			}
 		});
-	}else{
-		layer.closeAll('loading');
 	}
 }
 

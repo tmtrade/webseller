@@ -1,0 +1,97 @@
+<? require(ViewDir.'/header.html'); ?>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.SuperSlide.2.1.js?v=<?=$static_version?>"></script>
+<style type="text/css">
+    body,html{
+        background-color: #ffffff !important;
+    }
+</style>
+<div class="yzc-sell-main">
+    <!--左侧菜单-->
+    <? require(ViewDir.'/left.html'); ?>
+    <!--右侧主体部分-->
+    <div class="sell-lf-main">
+        <div class="comm-list-tit w-cont">
+            <h3>我的收益</h3>
+        </div>
+        <div class="comm-search-bg">
+            <div class="type w-cont">
+                <label>商品类型</label>
+                <div class="all-tp pull-list">
+                    <a class="all-tp-btn">
+                        <font>全部类型</font>
+                        <i class="fa fa-chevron-down"></i>
+                    </a>
+                    <ul class="all-tp-list">
+                        <li>
+                            我是类型名称1
+                        </li>
+                        <li>
+                            我是类型名称2
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="desi chi-time">
+                <label>选择时间</label>
+                <span class="cir blk">2016-04-30</span>
+                <i>-</i>
+                <span class="cir blk">2016-04-30</span>
+                <a  class="cir sear-btn">立刻搜索</a>
+            </div>
+        </div>
+        <div class="comm-list-mess">
+            <div class="list-earn-top">
+                <p class="mess-earn-hj fl">从2016-05-16日 至 2016-06-16 日期间，共销售 <label class="pt-cor">1</label>张图片，收入合计 <b class="pt-cor">8888</b>元。</p>
+                <div class="mess-top-dq fr">
+                    <div class="pull-list paging">
+                        <a class="cir all-tp-btn"><font>每页20</font><i class="fa fa-chevron-down"></i></a>
+                        <ul class="all-tp-list" style="display: none;">
+                            <li>1111111</li>
+                            <li>22222</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="earn-list-mess">
+                <table class="list-mess-main">
+                    <thead>
+                    <tr class="tbl-tit">
+                        <th class="list-mess-pic-tit">商品图片</th><th>商品类型</th><th>商品名称</th><th>提交时间</th><th>获得收益</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list-mess">
+                    <tr>
+                        <td class="list-mess-pic">
+                            <a class="pic" href=""><img src="images/list-pic.jpg"></a>
+                        </td>
+                        <td>商标商品</td>
+                        <td>彩蝶坊</td>
+                        <td>2015-06-12 13:24</td>
+                        <td class="pri-num">
+                              <span>35000</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="comm-list-page">
+                <p>
+                    <a><i class="fa fa-angle-left"></i></a>
+                    <a>1</a>
+                    <a>2</a>
+                    <a>3</a>
+                    <a>4</a>
+                    <a><i class="fa fa-angle-right"></i></a>
+                </p>
+                <div class="skip">
+                    <input type="text"/>
+                    <a>跳转</a>
+                </div>
+            </div>
+        </div>
+        <!--收益列表没得数据的时候-->
+        <div class="no-data">
+            <h4>这段时间内您还没有成交记录</h4>
+        </div>
+    </div>
+</div>

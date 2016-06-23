@@ -1,0 +1,52 @@
+<? require(ViewDir.'/header.html'); ?>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.SuperSlide.2.1.js?v=<?=$static_version?>"></script>
+<style type="text/css">
+    body,html{
+        background-color: #ffffff !important;
+    }
+</style>
+<div class="yzc-sell-main">
+    <!--左侧菜单-->
+    <? require(ViewDir.'/left.html'); ?>
+    <!--右侧主体部分-->
+    <div class="sell-lf-main">
+        <div class="comm-list-tit w-cont">
+            <h3>消息中心</h3>
+        </div>
+        <div class="comm-list-mess">
+            <div class="comm-list-news blk">
+                <table class="list-mess-main">
+                    <thead>
+                       <tr class="tbl-tit">
+                           <th class="tick">站内信标题</th><th>接收时间</th><th>操作</th>
+                       </tr>
+                    </thead>
+                    <? foreach($list as $item): ?>
+                    <tr>
+                        <td class="tick"><p><i class="sell-ico"></i><?=$item['title']?></p></td>
+                        <td class="time"><?=date('Y-m-d H:i:s',$item['date'])?></td>
+                        <td class="dele">
+                            <a>删除</a>
+                        </td>
+                    </tr>
+                    <? endforeach; ?>
+                </table>
+            </div>
+            <div class="comm-list-page">
+                <?=$pageBar?>
+            <p>
+                <a><i class="fa fa-angle-left"></i></a>
+                <a>1</a>
+                <a class="on">2</a>
+                <a>3</a>
+                <a>4</a>
+                <a><i class="fa fa-angle-right"></i></a>
+            </p>
+            <div class="skip">
+                <input type="text"/>
+                <a>跳转</a>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
