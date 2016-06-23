@@ -31,51 +31,7 @@ $("#yzc-port").hover(function(){
 })
 
 
-//商品列表修改价格
-var ylnr;
-var cgval
-$(".revise").live("click",function(){
-    $(this).html('确定');
-    $(this).siblings("label").hide();
-    $(this).parent().css({"marginLeft":"18px"});
-    $(this).siblings("a").html('取消');
-    $(this).siblings("a").addClass("cir qx-btn qx");
-    $(this).addClass("cir sear-btn srue");
-    $(this).removeClass("revise");
-    $(this).siblings("a").removeClass("abo");
-    ylnr=$.trim($(this).parent().parent().prev("td").find("span").text());
-    $(this).parent().parent().prev("td").html('<input type="text" class="cg-pir" value=""/>')
-    $(".cg-pir").val(ylnr);
 
-//    $(".cg-pir").blur(function(){
-//        cgval=$(this).val()
-//    })
-
-})
-
-$(".srue").live("click",function(){
-    cgval=$(".cg-pir").val();
-    $(this).parent().parent().prev("td").html('<span>'+cgval+'</span>');
-    $(this).html('修改价格');
-    $(this).addClass("revise");
-    $(this).siblings("label").show();
-    $(this).removeClass("cir sear-btn srue");
-    $(this).siblings("a").html('取消报价');
-    $(this).siblings("a").removeClass("cir qx-btn qx");
-    $(this).parent().css({"marginLeft":"-10px"});
-})
-$(".qx").live("click",function(){
-    $(this).parent().parent().prev("td").html('<span>'+ylnr+'</span>');
-    $(this).html('取消报价');
-    $(this).addClass("abo");
-    $(this).siblings("label").show();
-    $(this).removeClass("cir qx-btn qx");
-    $(this).siblings("a").html('修改价格');
-    $(this).siblings("a").addClass("revise");
-    $(this).siblings("a").removeClass("cir sear-btn srue");
-    $(this).parent().css({"marginLeft":"-10px"});
-    return false;
-})
 //下拉列表
 var cbtn=$(".all-tp-btn");
 var plist= $(".all-tp-list");
