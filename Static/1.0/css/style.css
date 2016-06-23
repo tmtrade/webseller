@@ -786,6 +786,12 @@ table.list-mess-main tr .pri-num input{
     margin-left: 25px;
 
 }
+.add-cont label{
+    float: left;
+    margin-left: 25px;
+    margin-top: 5px;
+
+}
 
 .amend-cont span{
     float: left;
@@ -825,9 +831,7 @@ table.list-mess-main tr .pri-num input{
     padding:7px 14px !important;
     float: left;
 }
-.incomp label{
-    line-height: 24px;
-}
+
 .inc-ts{
     color: #ff6600;
     padding:6px 12px;
