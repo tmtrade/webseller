@@ -553,6 +553,7 @@ body,html{
 }
 
 /*分页*/
+/*分页*/
 .mj-pages{
     margin-top: 30px;
     text-align: center;
@@ -626,5 +627,12 @@ body,html{
     background: #fff;
     cursor: pointer;
 }
+.mj-pages>a:first-child,.mj-pages>a:last-child{
+    padding-left:20px;
+    padding-right:20px;
+    background:#CCC;
+    color:#fff;
+}
+
 
 /*分页完*/

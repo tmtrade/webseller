@@ -5,6 +5,32 @@
  * Time: 下午4:03
  * To change this template use File | Settings | File Templates.
  */
+//右边导航高度适应屏幕
+var wH=$(document).height();
+var tph=$(".yzc-sell-head").outerHeight(true)
+var slfH=wH-tph;
+$(document).ready(function(){
+    $("#rg-nav").css({"height":slfH});
+})
+$(window).resize(function(){
+    $("#rg-nav").css({"height":slfH});
+})
+//右边导航下拉框
+$(".sell-pull-list").find("a.pull-btn").toggle(function(){
+    $(".xl-box").css({"display":"block"})
+    $(this).find("em").css({"transform":"rotate(180deg)"})
+},function(){
+    $(".xl-box").css({"display":"none"})
+    $(this).find("em").css({"transform":"rotate(0deg)"})
+})
+//头部进入一只蝉
+$("#yzc-port").hover(function(){
+    $(".yzc-entr-list").fadeIn("fast");
+},function(){
+    $(".yzc-entr-list").fadeOut("2000");
+})
+
+
 //商品列表修改价格
 var ylnr;
 var cgval

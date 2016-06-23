@@ -1,31 +1,9 @@
-
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
-  //右边导航高度适应屏幕
-    var wH=$(document).height();
-    $(document).ready(function(){
-        $("#rg-nav").css({"height":wH});
-    })
-    $(window).resize(function(){
-        $("#rg-nav").css({"height":wH});
-    })
-  //右边导航下拉框
-  $(".sell-pull-list").find("a.pull-btn").toggle(function(){
-      $(".xl-box").css({"display":"block"})
-      $(this).find("em").css({"transform":"rotate(180deg)"})
-  },function(){
-      $(".xl-box").css({"display":"none"})
-      $(this).find("em").css({"transform":"rotate(0deg)"})
-  })
   //点击消息条消失
     $(".skewer").click(function(){
         $(".sell-news").fadeOut("fast");
     })
-  //头部进入一只蝉
-  $("#yzc-port").hover(function(){
-    $(".yzc-entr-list").fadeIn("fast");
-  },function(){
-    $(".yzc-entr-list").fadeOut("2000");
-  })
 </script>
 </body>
 </html>
