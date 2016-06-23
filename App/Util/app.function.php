@@ -105,6 +105,31 @@ function getPageBar($pager, $script = false)
 }
 
 /**
+ * 获取分页条
+ *
+ * @param	array   $pager   组合要素
+ * @param	bool    $script  是否带有下拉
+ * @return	string
+ */
+function getPageBarNew($pager, $script = true)
+{
+	if ( empty($pager) || !is_array($pager) ) {
+		return '';
+	}
+
+	$html = "";
+
+	$html .='<a href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .$pager['point'].
+		'<a href="' . $pager['next']  . '">下页</a>' . '&nbsp;' ;
+
+	$html .= '<span>共' . $pager['pageNum'] . '页</span>' . '&nbsp;';
+
+	$html .= $script ? $pager['jump'] : '';
+
+	return $html;
+}
+
+/**
 * 数组格式转换[2维转化成1维]
 *
 * @param  array  $list  2维数组

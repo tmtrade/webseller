@@ -19,8 +19,8 @@ class MessegeAction extends AppAction{
         $count = $rst['total'];
         $data = $rst['data'];
         //得到分页工具条
-        $pager 	= $this->pager($count, $this->size);
-        $pageBar 	= empty($data) ? '' : getPageBar($pager);
+        $pager = $this->pagerNew($count, $this->size);
+        $pageBar 	= empty($data) ? '' : getPageBarNew($pager);
         $this->set("pageBar",$pageBar);
         $this->set("list",$data);
         $this->display();
@@ -30,9 +30,21 @@ class MessegeAction extends AppAction{
      * 站内信详情
      */
     public function view(){
+        //暂时无站内信详情-------------跳转到首页-----------------
+        $this->redirect('','/');
         $id = $this->input('id','int');
         $msginfo = $this->load('messege')->viewMsg($id);
         $this->set('msginfo',$msginfo);
+    }
+
+    public function read(){
+        $id = $this->input('id','int');
+        $rst = $this->load('messege')->modifyMsg($id);
+        if($rst){
+            $this->returnAjax(array('code'=>0));
+        }else{
+            $this->returnAjax(array('code'=>1,'msg'=>'修改信息状态失败'));
+        }
     }
 
     /**

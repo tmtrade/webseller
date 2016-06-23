@@ -18,16 +18,12 @@
                 <label>商品类型</label>
                 <div class="all-tp pull-list">
                     <a class="all-tp-btn">
-                        <font>全部类型</font>
+                        <font>全部</font>
                         <i class="fa fa-chevron-down"></i>
                     </a>
                     <ul class="all-tp-list">
-                        <li>
-                            我是类型名称1
-                        </li>
-                        <li>
-                            我是类型名称2
-                        </li>
+                        <li>商标</li>
+                        <li>专利</li>
                     </ul>
                 </div>
             </div>
@@ -39,6 +35,7 @@
                 <a  class="cir sear-btn">立刻搜索</a>
             </div>
         </div>
+        <? if($list): ?>
         <div class="comm-list-mess">
             <div class="list-earn-top">
                 <p class="mess-earn-hj fl">从2016-05-16日 至 2016-06-16 日期间，共销售 <label class="pt-cor">1</label>张图片，收入合计 <b class="pt-cor">8888</b>元。</p>
@@ -46,8 +43,8 @@
                     <div class="pull-list paging">
                         <a class="cir all-tp-btn"><font>每页20</font><i class="fa fa-chevron-down"></i></a>
                         <ul class="all-tp-list" style="display: none;">
-                            <li>1111111</li>
-                            <li>22222</li>
+                            <li>40</li>
+                            <li>60</li>
                         </ul>
                     </div>
                 </div>
@@ -74,24 +71,15 @@
                     </tbody>
                 </table>
             </div>
-            <div class="comm-list-page">
-                <p>
-                    <a><i class="fa fa-angle-left"></i></a>
-                    <a>1</a>
-                    <a>2</a>
-                    <a>3</a>
-                    <a>4</a>
-                    <a><i class="fa fa-angle-right"></i></a>
-                </p>
-                <div class="skip">
-                    <input type="text"/>
-                    <a>跳转</a>
-                </div>
+            <div class="mj-pages">
+                <?=$pageBar?>
             </div>
         </div>
+        <? else: ?>
         <!--收益列表没得数据的时候-->
         <div class="no-data">
             <h4>这段时间内您还没有成交记录</h4>
         </div>
+        <? endif; ?>
     </div>
 </div>

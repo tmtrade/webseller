@@ -550,25 +550,85 @@ body,html{
     background: #fff7e1;
     color: #e80b05;
     text-align: center;
-
+}
+/*分页*/
+.mj-pages{
+    margin-top:30px;
+    text-align: center;
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.mj-pages label{
+    display: inline-block;
+    width: 79px;
+    height: 31px;
+    background: #fff;
+    text-align: center;
+    line-height: 31px;
+    font-size: 12px;
+    color: #666;
+    border: solid 1px #eee;
+}
+.mj-pages label.on{
+    background: #dcdbd9;
+    color: #fff;
+}
+.mj-pages label.on a{
+    color: #fff;
+}
+.mj-pages label a{
+    color: #666;
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+}
+.mj-pages>a{
+    display: inline-block;
+    margin:0 5px;
+    width: 30px;
+    height: 31px;
+    background: #fff;
+    text-align: center;
+    line-height: 31px;
+    font-size: 12px;
+    color: #666;
+    border: solid 1px #eee;
+}
+.mj-pages>a.on,.mj-pages>a:hover{
+    color: #ff6666;
+    border: solid 1px  #ff6666;
+}
+.mj-pages>a:first-child,.mj-pages>a:nth-child(6){
+    padding-left:20px;
+    padding-right:20px;
+    background:#CCC;
+    color:#fff;
+}
+.mj-pages span{
+    padding: 0 5px 0 10px;
+    font-size: 12px;
+    color: #666;
+}
+.mj-pages select{
+    height: 31px;
+    color: #666;
+    border: solid 1px #eee;
+    cursor: pointer;
+    outline: none;
+}
+.mj-pages input{
+    margin-top: -2px;
+    width: 35px;
+    height: 31px;
+    outline: none;
+    border: solid 1px #ddd;
+    vertical-align: middle;
+    text-align: center;
+    margin-top: -4px\9;
+    line-height: 31px\9;
+}
+.mj-pages label.mj-qbtn{
+    width: 40px;
+    background: #fff;
+    cursor: pointer;
+}
+/*分页完*/
