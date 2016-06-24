@@ -42,15 +42,12 @@ class GoodsAction extends AppAction{
     
     
     //修改报价
-    public function upPrice(){
+    public function updatePrice(){
+	$number = $this->input('number','int',0);
 	$price = $this->input('price','int',0);
-	
-	$param = array(
-		'uid'           => $this->userinfo['id'],//联系人信息ID
-		'price'         => $price,//底价
-	    );
-	//调用接口
-	$data = $this->importBi('sale')->updateContactPrice($param);
+	$result = array('status'=>'2');
+	if($number<=0) $this->returnAjax($result);
+	$data =  $this->load('goods')->updatePrice($number,$price,$this->userinfo['id']);
 	$this->returnAjax($data);//返回结果
     }
 

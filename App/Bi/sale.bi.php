@@ -73,7 +73,7 @@ class SaleBi extends Bi
     function sign($data)
     {
         ksort($data, SORT_STRING);
-        $apiKey = 'JyZyZcXmChOfN2016ZxWlQkFkEyCsZpT';
+        $apiKey = 'JyZyZcXmChOfN2016ZxWlQkFkEyYhZx';
         $sign   = md5( md5(serialize($data)).$apiKey );
         return $sign;
     }

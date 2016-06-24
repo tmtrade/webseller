@@ -19,7 +19,7 @@
                <div class="desi w-cont">
                    <label>商品名称</label>
                    <input type="text" class="cir" name="name" id="names" value="<?=$s['name']?>"/>
-                   <a  class="cir sear-btn">立刻搜索</a>
+                   <a  class="cir sear-btn" id="seachbut">立刻搜索</a>
                </div>
 	       <input type="hidden" name="status" value="<?=$s['status']?>">
 	    </form>
@@ -39,18 +39,9 @@
                       <div class="pull-list paging">
                            <a class="cir all-tp-btn"><font>每页20</font><i class="fa fa-chevron-down"></i></a>
                            <ul class="all-tp-list" style="display: none;">
-                               <li>
-                                   1111111
-                               </li>
-                               <li>
-                                   222222
-                               </li>
-                               <li>
-                                   222222
-                               </li>
-                               <li>
-                                   222222
-                               </li>
+				<li>20</li>
+				<li>40</li>
+				<li>60</li>
                            </ul>
                       </div>
 
@@ -62,22 +53,43 @@
                       <table class="list-mess-main">
                           <thead>
                           <tr class="tbl-tit">
-                            <th class="list-mess-pic-tit">商品图片</th><th>商品名称</th><th>提交时间</th><th>期望获得收益</th><th>操作</th>
+                            <th class="list-mess-pic-tit">商品图片</th>
+			    <th>商品名称</th>
+			    <th>提交时间</th>
+			    <?if($s['status']==1 || $s['status']==2){
+				echo "<th>期望获得收益</th>";
+			    }else{
+				if($s['status']==3){
+				    echo "<th>驳回原因</th>";
+				}else{
+				    echo "<th>下架原因</th>";
+				}
+			    }
+			    ?>
+			    
+			    <th>操作</th>
                           </tr>
                           </thead>
                           <tbody class="list-mess">
 			<? foreach ($list as $k => $v) {?>
                           <tr>
                               <td class="list-mess-pic">
-                                  <a class="pic" href=""><img src="<?=$v['pic']['embellish']?>" onerror="this.src='/Static/images/img1.png'" width="90" height="60"></a>
+                                  <a class="pic" <?if(!empty($v['tid'])){?> href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>" onerror="this.src='/Static/images/img1.png'" width="90" height="60"></a>
                               </td>
                               <td><?=$v['name']?></td>
                               <td><?=date("Y-m-d H:i",$v['date'])?></td>
-                              <td class="pri-num">
-                                  <span><?=$v['price']?></span>
-                              </td>
+                              
+			      <?if($s['status']==1 || $s['status']==2){
+				    echo "<td class='pri-num'><span>".$v['price']."</span></td>";
+				}else{
+				    echo "<td>".$v['momo']."</td>";
+				}
+				?>
                               <td class="cg-price">
-                                  <p class="price"><a class="revise">修改价格</a><label>|</label><a class="abo">取消报价</a></p>
+                                  <p class="price">
+				      <a class="revise" data-number="<?=$v['number']?>">修改价格</a><label>|</label>
+				      <a class="abo" data-number="<?=$v['number']?>">取消报价</a>
+				  </p>
                               </td>
                           </tr>
 			   <? } ?>
@@ -100,20 +112,25 @@
        <label>点击确定将删除您的该条报价，请慎重选择。</label>
    </div>
     <div class="common-cpm-sub">
-      <a class="cir sear-btn batch-pric layui-layer-close"  href="javascript:;" >确定</a>
+      <a class="cir sear-btn batch-pric layui-layer-close" id="cancel-price" data-number="0" href="javascript:;" >确定</a>
       <a class="cir qx-btn batch-del gb-cpm-btn layui-layer-close" href="javascript:;">关闭</a>
     </div>
 </div>
 
 <script type="text/javascript">
 $(function(){
- $(".sear-btn").click(function(){
+ $("#seachbut").click(function(){
             var names  = $.trim( $("#names").val() );
             if (names === ''){
                 layer.tips('请输入商标名称', $(this),{tips: [2, '#78BA32']});
                 return false;
             }
             $("#seachForm").submit();
+        });
+	
+	 $("#cancel-price").click(function(){
+            var number = $(this).data("number");
+	    alert(number);
         });
 });
 //table切换
@@ -122,6 +139,7 @@ $(function(){
 var ylnr;
 var cgval
 $(".revise").live("click",function(){
+    var number = $(this).data("number");
     $(this).html('确定');
     $(this).siblings("label").hide();
     $(this).parent().css({"marginLeft":"18px"});
@@ -132,11 +150,13 @@ $(".revise").live("click",function(){
     $(this).removeClass("revise");
     $(this).siblings("a").removeClass("abo");
     ylnr=$.trim($(this).parent().parent().prev("td").find("span").text());
-    $(this).parent().parent().prev("td").html('<input type="text" class="cg-pir" value=""/>')
+    $(this).parent().parent().prev("td").html('<input type="text" class="cg-pir n-'+number+'" value="" />');
     $(".cg-pir").val(ylnr);
 })
 $(".srue").live("click",function(){
     cgval=$(".cg-pir").val();
+    var number = $(this).data("number");
+    var price = $(".n-"+number).val();
     $(this).parent().parent().prev("td").html('<span>'+cgval+'</span>');
     $(this).html('修改价格');
     $(this).addClass("revise");
@@ -146,11 +166,14 @@ $(".srue").live("click",function(){
     $(this).siblings("a").removeClass("cir qx-btn qx");
     $(this).parent().css({"marginLeft":"-10px"});
     $(this).siblings("a").attr("index","1");
-})
+    ajaxsubmit("updatePrice",number,price);
+});
 
 var judin;
 $(".abo").attr("index","1");
 $(".abo").on("click",function(){
+    var number = $(this).data("number");
+    $("#cancel-price").data("number",number);
     judin=$(this).attr("index");
     if(judin==1){
         layer.open({
@@ -172,6 +195,37 @@ $(".abo").on("click",function(){
         $(this).siblings("a").removeClass("cir sear-btn srue");
         $(this).attr("index","1");
     }
-})
+});
+  function ajaxsubmit(action,number,price){
+      if(number==0 || price<=0){
+	  layer.msg('请填写正确的金额', {
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    });
+      }
+        $.ajax({
+            type : 'post',
+            url  : '/goods/'+action+'/',
+            data : {'number':number,'price':price},
+            dataType : 'json',
+            success : function (data){
+                if (data.code==999){
+                    layer.msg('操作成功！', {
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    }, function(){
+                        //window.location.reload();
+                    });
+                }else{
+                    layer.msg('操作失败，请确认数据是否正确。', {
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    });
+                }
+            },
+            error : function (data){
+                layer.msg('操作失败，请检查您输入的内容是否正确后重新尝试。', {
+                    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                });
+            }
+        });
+    }
 </script>
 <? require(ViewDir.'/footer.html'); ?>
