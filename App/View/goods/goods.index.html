@@ -22,6 +22,7 @@
                    <a  class="cir sear-btn" id="seachbut">立刻搜索</a>
                </div>
 	       <input type="hidden" name="status" value="<?=$s['status']?>">
+	       <input type="hidden" name="size" value="<?=$size?>">
 	    </form>
        </div>
        <div class="comm-list-mess">
@@ -37,7 +38,7 @@
                    </div>
                    <div class="mess-top-dq fr">当前共有<label><?=$count?></label>条商品数据
                       <div class="pull-list paging">
-                           <a class="cir all-tp-btn"><font>每页20</font><i class="fa fa-chevron-down"></i></a>
+                           <a class="cir all-tp-btn"><font id="size_income"><?=$size?></font><i class="fa fa-chevron-down"></i></a>
                            <ul class="all-tp-list" style="display: none;">
 				<li>20</li>
 				<li>40</li>
@@ -72,7 +73,7 @@
                           </thead>
                           <tbody class="list-mess">
 			<? foreach ($list as $k => $v) {?>
-                          <tr>
+                          <tr id="re-<?=$v['number']?>">
                               <td class="list-mess-pic">
                                   <a class="pic" <?if(!empty($v['tid'])){?> href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>" onerror="this.src='/Static/images/img1.png'" width="90" height="60"></a>
                               </td>
@@ -82,14 +83,20 @@
 			      <?if($s['status']==1 || $s['status']==2){
 				    echo "<td class='pri-num'><span>".$v['price']."</span></td>";
 				}else{
-				    echo "<td>".$v['momo']."</td>";
+				    echo "<td>".$v['memo']."</td>";
 				}
 				?>
                               <td class="cg-price">
+				  <?if($s['status']==1 || $s['status']==2){?>
                                   <p class="price">
 				      <a class="revise" data-number="<?=$v['number']?>">修改价格</a><label>|</label>
 				      <a class="abo" data-number="<?=$v['number']?>">取消报价</a>
 				  </p>
+				  <?}else{?>
+				  <p class="price">
+				      <a class="abo" data-number="<?=$v['number']?>">删除报价</a>
+				  </p>
+				  <?}?>
                               </td>
                           </tr>
 			   <? } ?>
@@ -119,6 +126,7 @@
 
 <script type="text/javascript">
 $(function(){
+ //提交搜索   
  $("#seachbut").click(function(){
             var names  = $.trim( $("#names").val() );
             if (names === ''){
@@ -128,9 +136,17 @@ $(function(){
             $("#seachForm").submit();
         });
 	
+	//取消报价
 	 $("#cancel-price").click(function(){
             var number = $(this).data("number");
-	    alert(number);
+	    ajaxsubmit("cancelPrice",number,0,1);
+        });
+	
+	//每页大小改变
+        $('.mess-top-dq li').click(function(){
+            var size = $.trim($('#size_income').text());
+	    $("input[name=size]").val(size);
+	    $("#seachForm").submit();
         });
 });
 //table切换
@@ -166,7 +182,7 @@ $(".srue").live("click",function(){
     $(this).siblings("a").removeClass("cir qx-btn qx");
     $(this).parent().css({"marginLeft":"-10px"});
     $(this).siblings("a").attr("index","1");
-    ajaxsubmit("updatePrice",number,price);
+    ajaxsubmit("updatePrice",number,price,0);
 });
 
 var judin;
@@ -196,11 +212,12 @@ $(".abo").on("click",function(){
         $(this).attr("index","1");
     }
 });
-  function ajaxsubmit(action,number,price){
-      if(number==0 || price<=0){
+  function ajaxsubmit(action,number,price,del){
+      if(price<=0 && del==0){
 	  layer.msg('请填写正确的金额', {
                         time: 1000 //2秒关闭（如果不配置，默认是3秒）
                     });
+	    return;
       }
         $.ajax({
             type : 'post',
@@ -212,7 +229,10 @@ $(".abo").on("click",function(){
                     layer.msg('操作成功！', {
                         time: 1000 //2秒关闭（如果不配置，默认是3秒）
                     }, function(){
-                        //window.location.reload();
+			if(del==1){
+			    $("#re-"+number).remove();
+			}
+                        
                     });
                 }else{
                     layer.msg('操作失败，请确认数据是否正确。', {

@@ -53,7 +53,7 @@ class SaleBi extends Bi
 	    return $this->request("systemapi/updateContactPrice/", $params);
     }
     
-    //修改联系人价格
+    //取消联系人价格
     public function cancelContact($data)
     {
 	    $actionName = 'systemapi';

@@ -79,5 +79,17 @@ class GoodsModule extends AppModule
 	$data = $this->importBi('sale')->updateContactPrice($param);
 	return $data;//返回结果
     }
+    
+        
+   //修改报价
+    public function cancelPrice($number,$uid){
+	$param = array(
+		'uid'           => $uid,//联系人信息ID
+		'number'         => $number,//底价
+	    );
+	//调用接口
+	$data = $this->importBi('sale')->cancelContact($param);
+	return $data;//返回结果
+    }
 
 }
