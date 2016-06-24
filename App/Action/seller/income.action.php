@@ -21,11 +21,11 @@ class IncomeAction extends AppAction{
         $start = strtotime($start0);
         $end = strtotime($end0);
         //得到分页数据
-        $res = $this->load('income')->getPageList($type,$start,$end,$page,1);
+        $res = $this->load('income')->getPageList($type,$start,$end,$page,$size);
         $count = $res['total'];
         $data = $res['rows'];
         //得到分页工具条
-        $pager 	= $this->pagerNew($count, 1);
+        $pager 	= $this->pagerNew($count, $size);
         $pageBar 	= empty($data) ? '' : getPageBarNew($pager);
         $this->set("pageBar",$pageBar);
         $this->set("list",$data);

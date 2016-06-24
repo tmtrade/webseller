@@ -9,17 +9,17 @@
  * @version 3.0
  +------------------------------------------------------------------------------
  */
-class TrademarkApi extends Entity
+class SecondStatusApi extends Entity
 {
 	/**
 	 * 数据表键[表的唯一标识]
 	 */
-	public $tableKey = 'trademark';
+	public $tableKey = 'secondStatus';
 
 	/**
 	 * 数据表主键
 	 */
-	public $pk       = 'auto';
+	public $pk       = 'status_id';
 
 }
 ?>

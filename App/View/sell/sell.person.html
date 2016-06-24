@@ -1,0 +1,314 @@
+<? require(ViewDir.'/header.html'); ?>
+<style type="text/css">
+    body,html{
+        background-color: #ffffff !important;
+    }
+</style>
+<div class="yzc-sell-main" style="">
+    <!--左侧菜单-->
+    <? require(ViewDir.'/left.html'); ?>
+    <!--右侧主体部分-->
+    <div class="sell-lf-main">
+        <div class="comm-list-tit sell-by-brand w-cont">
+            <h3 class="fl">商标出售 ><label>根据申请人出售</label></h3>
+            <p class="fr">
+                您还可以选择:<a href="/sell/number">根据申请号出售  </a>|<a href="/sell/document">根据文档出售</a>
+            </p>
+        </div>
+        <div class="comm-search-bg">
+            <div class="desi by-brand-search w-cont">
+                <label>根据申请人出售</label>
+                <input type="text" class="cir" />
+                <a  class="cir sear-btn" id="serch-pel">立刻搜索</a>
+                <!--当该商标失效-->
+                <a class="eff-brand hint-bg cir"><i></i>改商标已失效</a>
+            </div>
+            <div class="batch-cz fr w-cont">
+                <a  class="cir sear-btn batch-pric">批量设置价格</a>
+                <a  class="cir qx-btn batch-del">批量删除</a>
+            </div>
+
+        </div>
+        <div class="comm-list-mess">
+            <div class="comm-list-news blk">
+                <table class="list-mess-main">
+                    <thead>
+                    <tr class="tbl-tit">
+                        <th>全选</th> <th>序号</th>
+                        <th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>期望获得收益    </th><th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody class="list-mess">
+                    <tr>
+                        <td>
+                            <input type="checkbox"/>
+                        </td>
+                        <td>
+                            01
+                        </td>
+                        <td class="list-mess-pic">
+
+                            <a class="pic" href="">
+                                <img src="<?=StaticDir?>1.0/images/list-pic.jpg">
+                            </a>
+
+                        </td>
+                        <td>
+                            123454878
+                        </td>
+                        <td>
+                            彩蝶坊
+                        </td>
+                        <td class="exp-ear">
+                            我期望获益<input type="text" placeholder="30000" class="cir blk exp-ear"/>元
+                        </td>
+                        <td class="dele">
+                            <a class="del-lis" href="javascript:;">删除</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="checkbox"/>
+                        </td>
+                        <td>
+                            01
+                        </td>
+                        <td class="list-mess-pic">
+
+                            <a class="pic" href="">
+                                <img src="<?=StaticDir?>1.0/images/list-pic.jpg">
+                            </a>
+
+                        </td>
+                        <td>
+                            123454878
+                        </td>
+                        <td>
+                            彩蝶坊
+                        </td>
+                        <td class="exp-ear">
+                            我期望获益<input type="text" placeholder="30000" class="cir blk exp-ear"/>元
+                        </td>
+                        <td class="dele">
+                            <a class="del-lis" href="javascript:;">删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+
+                </table>
+            </div>
+            <p class="brand-data fr">当前共有<a>23145 </a>条商品数据 </p>
+
+        </div>
+        <!--未添加商标-->
+        <div class="no-data">
+            <h4>您还未添加商标</h4>
+            <label>请先输入商标号，并点击 添加至出售列表 按钮</label>
+        </div>
+        <div class="amend-cont-all">
+            <!--联系人信息完整可以修改-->
+
+            <div class="amend-cont cir">
+                <div class="incomp f-hidden">
+                    <label>联系电话：</label>
+                    <div class="cg-cont-tel">
+                        <span>13982236728</span>
+                    </div>
+                    <label>联系人：</label>
+                    <div class="cg-cont-name">
+                        <span>周杰伦</span>
+                    </div>
+                    <div class="cg-tel">
+                        <a class="amend" href="javascript:;">修改联系方式</a>
+                    </div>
+                </div>
+                <p class="cir blk inc-ts">请至少添加一条商标数据</p>
+            </div>
+            <!--联系人信息不完整可以添加-->
+            <div class="amend-cont cir add-cont">
+                <div class="incomp f-hidden">
+                    <label>联系电话：</label>
+                    <div class="cg-cont-tel">
+                        <input type="text" placeholder="13982236728" class="cir blk"/>
+                    </div>
+                    <label>联系人：</label>
+                    <div class="cg-cont-name">
+                        <input type="text" placeholder="周杰伦" class="cir blk"/>
+                    </div>
+                    <div class="cg-tel">
+                        <a class="cir sear-btn cg-sear">确定添加</a><a class="cir qx-btn cg-qx">取消</a>
+                    </div>
+                </div>
+
+                <p class="cir blk inc-ts">请至少添加一条商标数据</p>
+
+            </div>
+            <a class="sub-btn cir">
+                提交商品
+            </a>
+        </div>
+
+    </div>
+</div>
+<!--批量设置价格弹窗-->
+<div class="price-cpm common-cpm-sty" id="pri-cont-main">
+    <div class="common-cpm-top">
+        <h3>批量设置价格</h3>
+    </div>
+    <div class="common-cpm-cent">
+        <label>您现在可以将</label>
+        <select class="cir blk">
+            <option>勾选中的商标</option>
+            <option>全部商标</option>
+        </select>
+        <label>统一设置为</label>
+        <input class="cir blk" type="text" placeholder="请输入每条商品期望获益的价格"/>
+        <label>元</label>
+    </div>
+    <!--<div class="common-cpm-sub">-->
+        <!--<a class="layui-layer-close cir sear-btn batch-pric " href="javascript:;">确定</a>-->
+        <!--<a class="cir qx-btn batch-del gb-cpm-btn layui-layer-close" href="javascript:;">关闭</a>-->
+    <!--</div>-->
+
+</div>
+<!--申请人输入为空时 点击搜索时弹出选择申请人弹窗-->
+<div class="price-cpm common-cpm-sty" id="pel-cont-main">
+    <div class="common-cpm-top">
+        <h3>请选择申请人</h3>
+    </div>
+    <div class="cpm-pel-cent">
+        <label class="tit">根据您搜索的关键字,有以下 20 条申请人符合您的搜索要求，请选择</label>
+        <table class="cir blk">
+            <thead>
+            <tr>
+                <td class="com-name">公司名称</td>
+                <td class="com-ope">操作</td>
+            </tr>
+            </thead>
+            <tbody class="list-mess">
+            <tr>
+                <td class="com-name"><p>四川川投有限责任公司</p></td>
+                <td class="com-ope">
+                    <i class="sell-ico opera"></i>
+                </td>
+            </tr>
+            <tr>
+                <td class="com-name"><p>四川川投有限责任公司</p></td>
+                <td class="com-ope">
+                    <i class="sell-ico opera"></i>
+                </td>
+            </tr>
+            <tr>
+                <td class="com-name"><p>四川川投有限责任公司</p></td>
+                <td class="com-ope">
+                    <i class="sell-ico opera"></i>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="cpm-pel-price cir">
+            <input class="chi" type="checkbox"/>
+            <label>我想把本次出售的商标获益统一设置为</label>
+            <input class="blk cir" type="text" placeholder="请输入每条商品期望获益的价格"/>
+        </div>
+    </div>
+    <!--<div class="common-cpm-sub">-->
+        <!--<a class="cir sear-btn batch-pric layui-layer-close" href="javascript:;">确定</a>-->
+        <!--<a class="cir qx-btn batch-del gb-cpm-btn layui-layer-close" href="javascript:;">关闭</a>-->
+    <!--</div>-->
+</div>
+<script type="text/javascript">
+    //提交出售中修改联系方式；
+    var tel;
+    var pel;
+    var cgtel;
+    var cgname;
+    $(".cg-tel").on("click","a.amend",function(){
+        tel=$(this).parent().siblings(".cg-cont-tel").find("span").html();
+        pel=$(this).parent().siblings(".cg-cont-name").find("span").html();
+        $(this).parent().siblings(".cg-cont-tel").html('<input type="text" class="intel cir blk"/>');
+        $(this).parent().siblings(".cg-cont-name").html('<input type="text" class="iname cir blk"/>');
+        $(this).parent().siblings("label").css({"marginTop":"4px"})
+        $(this).parent().siblings(".cg-cont-tel").find("input").val(tel);
+        $(this).parent().siblings(".cg-cont-name").find("input").val(pel);
+        $(this).parent().html("<a class='cir sear-btn cg-sear'>确定修改</a><a class='cir qx-btn cg-qx'>取消</a>")
+        $(".cg-qx").click(function(){
+            $(this).parent().siblings("label").css({"marginTop":"0px"});
+            $(this).parent().siblings(".cg-cont-tel").html('<span>'+tel+'</span>');
+            $(this).parent().siblings(".cg-cont-name").html('<span>'+pel+'</span>');
+            $(this).parent().html(" <a class='amend' href='javascript:;'>修改联系方式</a>");
+
+        })
+        $(".cg-sear").click(function(){
+            $(this).parent().siblings("label").css({"marginTop":"0px"});
+            cgtel=$(this).parent().siblings(".cg-cont-tel").find("input").val();
+            cgname=$(this).parent().siblings(".cg-cont-name").find("input").val();
+            if(isMobile(cgtel)){
+                $(this).parent().parent().siblings("p.inc-ts").css({"display":"none"});
+                $(this).parent().siblings(".cg-cont-tel").html('<span>'+cgtel+'</span>');
+                $(this).parent().siblings(".cg-cont-name").html('<span>'+cgname+'</span>');
+                $(this).parent().html(" <a class='amend' href='javascript:;'>修改联系方式</a>");
+
+            }
+            else{
+                $(this).parent().siblings("label").css({"marginTop":"4px"});
+                $(this).parent().parent().siblings("p.inc-ts").css({"display":"inline-block"});
+            }
+        })
+
+    })
+  //批量设置价格
+    $(".batch-pric").on("click",function(){
+            layer.open({
+                area:["640px","202"],
+                btn: ['确定','关闭'],
+                type: 1,
+                title: false,
+                closeBtn:1,
+                shadeClose:false,
+                content:$("#pri-cont-main")
+
+            });
+    })
+  //批量删除；
+    var oips=$(".list-mess tr td").find("input:checkbox");
+    $(".batch-del").on("click",function(){
+        oips.each(function(i){
+            if($(oips[i]).attr("checked")=="checked"){
+                $(oips[i]).parent().parent().remove();
+            }
+
+        })
+    })
+    //table tr点击删除的时候删除当前一行
+    $(".del-lis").on("click",function(){
+        $(this).parent().parent().remove();
+    })
+  //搜索框输入为空的时候 弹出请选择申请人弹窗
+    var osinp;
+    $("#serch-pel").on("click",function(){
+        osinp=$(this).siblings("input").val();
+        if(osinp==""){
+            layer.open({
+                area:["640px","202"],
+                btn: ['确定','关闭'],
+                type: 1,
+                title: false,
+                closeBtn:1,
+                shadeClose: true, //开启遮罩关闭
+                content:$("#pel-cont-main")
+            });
+        }
+    })
+    //验证是否手机
+    function isMobile(mobile){
+        var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
+        if(!mobilereg.test(mobile) || mobile.length!=11){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+</script>
+<? require(ViewDir.'/footer.html'); ?>

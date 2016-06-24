@@ -1,0 +1,58 @@
+<? require(ViewDir.'/header.html'); ?>
+<style type="text/css">
+    body,html{
+        background-color: #ffffff !important;
+    }
+</style>
+<div class="yzc-sell-main" style="">
+    <!--左侧菜单-->
+    <? require(ViewDir.'/left.html'); ?>
+    <!--右侧主体部分-->
+    <div class="sell-lf-main">
+        <div class="comm-list-tit sell-by-brand w-cont">
+            <h3 class="fl">商标出售 </h3>
+        </div>
+        <div class="sell-sub-way f-hidden">
+           <img src="<?=StaticDir?>1.0/images/sub-way.png" class="fl">
+            <div class="fl">
+                <h3>尊敬的用户，为便于您的不同提交需求</h3>
+                <label>您可以选择以下提交方式</label>
+            </div>
+        </div>
+        <div class="all-sub-way f-hidden">
+            <ul>
+                <li>
+                    <span>
+                        <img src="<?=StaticDir?>1.0/images/sell-way1.png">
+                    </span>
+                    <a href="/sell/number" class="cir sear-btn">根据商标号出售</a>
+                    <p>
+                        适合在知道注册号的前提下<br/>
+                        <label>发布一条或多条出售商标</label>
+                    </p>
+                </li>
+                <li>
+                    <span>
+                        <img src="<?=StaticDir?>1.0/images/sell-way2.png">
+                    </span>
+                    <a href="/sell/person" class="cir sear-btn">根据申请人出售</a>
+                    <p>
+                        可通过系统查询申请人<br/>
+                        <label>选择申请人名义下商标进行出售</label>
+                    </p>
+                </li>
+                <li>
+                    <span>
+                        <img src="<?=StaticDir?>1.0/images/sell-way3.png">
+                    </span>
+                    <a href="/sell/document" class="cir sear-btn">通过文档提交出售</a>
+                    <p>
+                        如商标较多，可通过<label>上传表格</label>的<br/>
+                        方式快速提交商标批量出售
+                    </p>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<? require(ViewDir.'/footer.html'); ?>

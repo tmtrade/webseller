@@ -1,0 +1,68 @@
+<? require(ViewDir.'/header.html'); ?>
+<style type="text/css">
+    body,html{
+        background-color: #ffffff !important;
+    }
+</style>
+<div class="yzc-sell-main" style="">
+    <!--左侧菜单-->
+    <? require(ViewDir.'/left.html'); ?>
+    <!--右侧主体部分-->
+    <div class="sell-lf-main">
+        <div class="comm-list-tit sell-by-brand w-cont">
+            <h3 class="fl">商标出售 ><label>根据商标号出售</label></h3>
+            <p class="fr">
+                您还可以选择:<a href="/sell/number">根据申请号出售 </a>|<a href="/sell/person">根据申请人出售</a>
+            </p>
+        </div>
+        <div class="comm-search-bg f-hidden">
+            <p class="docum-step">
+                <span class="on">第一步&nbsp;|&nbsp;选择文档上传</span>
+                <i class="fa fa-chevron-right"></i>
+                <span class="on">第二步&nbsp;|&nbsp;自动提交商品</span>
+                <i class="fa fa-chevron-right"></i>
+                <span>第三步&nbsp;|&nbsp;提交完成</span>
+            </p>
+        </div>
+        <div class="sub-result">
+            <!--选择文档上传-->
+            <div class="sub-state">
+                <div class="sub-state-pic">
+                    <img src="<?=StaticDir?>1.0/images/sub-state-bf.png">
+                </div>
+                <a class="sub-btn cir">
+                    选择上传文档
+                </a>
+                <p>
+                    <label>一次最高不超过3000条数据<br/>还没有模板？</label>
+                    <a>点这里 EXCEL模板下载</a>
+                </p>
+            </div>
+            <!--商品提交中-->
+            <div class="sub-state">
+                <div class="sub-state-pic">
+                    <img src="<?=StaticDir?>1.0/images/sub-state-ing.png">
+                </div>
+                <h3>
+                    商品提交中，请耐心等候
+                </h3>
+                <p>
+                    提交的商品越多，等待的时间就越长噢~不要捉急，马上就好
+                </p>
+            </div>
+            <!--提交完毕-->
+            <div class="sub-state">
+                <div class="sub-state-pic">
+                    <img src="<?=StaticDir?>1.0/images/sub-state-end.png">
+                </div>
+                <h3>
+                    提交完毕
+                </h3>
+                <p>
+                    本次上传文档内共有 2431 条商标数据 | 其中，成功提交 3411 条，失败 31 条
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<? require(ViewDir.'/footer.html'); ?>
