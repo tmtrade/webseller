@@ -122,8 +122,8 @@ input{
     min-width: 450px !important;
 }
 body,html{
-    background-color: #f5f5f5;
-    font-family: "å®‹ä½“","arial";
+    background-color: #ffffff;
+    font-family: "宋体","arial";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
@@ -362,7 +362,7 @@ body,html{
 
 .sell-qq-serve{
     position: absolute;
-    bottom:225px;
+    bottom:15%;
     left:9px;
 }
 .sell-qq-serve p{
@@ -550,14 +550,16 @@ body,html{
     background: #fff7e1;
     color: #e80b05;
     text-align: center;
+
+
 }
 
-/*分页*/
+
 /*分页*/
 .mj-pages{
-    margin-top: 30px;
+    margin-top:30px;
     text-align: center;
-    padding-bottom: 20px;
+
 }
 .mj-pages label{
     display: inline-block;
@@ -596,9 +598,10 @@ body,html{
     border: solid 1px #eee;
 }
 .mj-pages>a.on,.mj-pages>a:hover{
-    color: #fc883a;
-    border: solid 1px #fc883a;
+    color: #ff6666;
+    border: solid 1px  #ff6666;
 }
+
 .mj-pages span{
     padding: 0 5px 0 10px;
     font-size: 12px;
@@ -627,12 +630,28 @@ body,html{
     background: #fff;
     cursor: pointer;
 }
-.mj-pages>a:first-child,.mj-pages>a:last-child{
+.mj-pages>a:first-child,.mj-pages>a:nth-child(3){
     padding-left:20px;
     padding-right:20px;
     background:#CCC;
     color:#fff;
 }
 
-
 /*分页完*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

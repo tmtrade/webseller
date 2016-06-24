@@ -1,10 +1,6 @@
 <? require(ViewDir.'/header.html'); ?>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/url.js?v=<?=$static_version?>"></script>
-<style type="text/css">
-    body,html{
-        background-color: #ffffff !important;
-    }
-</style>
+
 <div class="yzc-sell-main">
     <!--左侧菜单-->
     <? require(ViewDir.'/left.html'); ?>
@@ -66,7 +62,7 @@
                             <a class="pic" style="cursor: default" href="javascript:;"><img src="<?=$item['img']?>" onerror="this.src='/Static/1.0/images/img1.png'"></a>
                         </td>
                         <td><?=$item['type']?'专利':'商标'?>商品</td>
-                        <td><span style="cursor: pointer" title="<?=$item['name']?>"><?=mbSub($item['name'],0,10)?></span></td>
+                        <td><span class="list-name" title="<?=$item['name']?>"><?=mbSub($item['name'],0,10)?></span></td>
                         <td><?=date('Y-m-d H:i:s',$item['date'])?></td>
                         <td class="pri-num">
                               <span><?=$item['price']?></span>

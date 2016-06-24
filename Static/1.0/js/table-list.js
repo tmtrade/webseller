@@ -30,8 +30,6 @@ $("#yzc-port").hover(function(){
     $(".yzc-entr-list").fadeOut("2000");
 })
 
-
-
 //下拉列表
 var cbtn=$(".all-tp-btn");
 var plist= $(".all-tp-list");
@@ -63,6 +61,22 @@ cbtn.each(function(){
         })
     })
 })
+//下拉列表点空白的时候消失
+$(".pull-list").bind('click',function(e){
+    stopPropagation(e);
+});
+$(document).bind('click',function(){
+    $(".all-tp-list").slideUp();
+    $(".all-tp-btn").attr("index","1");
+    $(".all-tp-btn").find("i").css({"transform":"rotate(0deg)"});
+});
+function stopPropagation(e) {
+    if (e.stopPropagation)
+        e.stopPropagation();
+    else
+        e.cancelBubble = true;
+}
+
 //table偶数行变色
 var otrs= $(".list-mess").find("tr");
 for(var i=0;i<=otrs.length;i++){
