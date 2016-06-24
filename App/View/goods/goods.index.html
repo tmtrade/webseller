@@ -30,9 +30,9 @@
                    <div class="hd fl">
                        <ul>
 			   <a href="/goods/index?status=1"><li <?if($s['status']==1) echo 'class="on"';?>>出售中</li></a>
-			   <a href="/goods/index?status=3"><li <?if($s['status']==3) echo 'class="on"';?>>审核中</li></a>
-			   <a href="/goods/no"><li <?if($s['status']==3) echo 'class="on"';?>>未通过</li></a>
-			   <a href="/goods/index?status=2"><li <?if($s['status']==2) echo 'class="on"';?>>已失效</li></a>
+			   <a href="/goods/index?status=2"><li <?if($s['status']==2) echo 'class="on"';?>>审核中</li></a>
+			   <a href="/goods/index?status=3"><li <?if($s['status']==3) echo 'class="on"';?>>未通过</li></a>
+			   <a href="/goods/index?status=4"><li <?if($s['status']==4) echo 'class="on"';?>>已失效</li></a>
 		       </ul>
                    </div>
                    <div class="mess-top-dq fr">当前共有<label><?=$count?></label>条商品数据
@@ -117,7 +117,7 @@ $(function(){
         });
 });
 //table切换
-jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click"});
+//jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click"});
 //商品列表修改价格
 var ylnr;
 var cgval

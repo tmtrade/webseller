@@ -7,7 +7,7 @@
  * @author	Xuni
  * @since	2016-03-17
  */
-class FaqBi extends Bi
+class SaleBi extends Bi
 {
     /**
      * 对外接口域名编号

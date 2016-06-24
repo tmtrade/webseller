@@ -20,7 +20,12 @@ class GoodsAction extends AppAction{
 	$params['uid']    = $this->userinfo['id'];
         $page = $this->input('page','int',1);
         //得到分页数据
-        $res = $this->load('goods')->getList($params, $page, $this->size);
+	if($params['status']==1 || $params['status']==2){
+	    $res = $this->load('goods')->getList($params, $page, $this->size);
+	}else{
+	    $res = $this->load('goods')->usedList($params, $page, $this->size);
+	}
+        
         $count = $res['total'];
         $data = $res['rows'];
         //得到分页工具条
@@ -33,6 +38,20 @@ class GoodsAction extends AppAction{
 //	print_r($data);
 	$this->set("s",$params);
         $this->display();
+    }
+    
+    
+    //修改报价
+    public function upPrice(){
+	$price = $this->input('price','int',0);
+	
+	$param = array(
+		'uid'           => $this->userinfo['id'],//联系人信息ID
+		'price'         => $price,//底价
+	    );
+	//调用接口
+	$data = $this->importBi('sale')->updateContactPrice($param);
+	$this->returnAjax($data);//返回结果
     }
 
 }
