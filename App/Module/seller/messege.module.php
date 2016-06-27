@@ -225,6 +225,40 @@ class MessegeModule extends AppModule
     }
 
     /**
+     * 得到最近的指定数量的站内信
+     * @param int $number
+     * @return array
+     */
+    public function getSizeMsg($number=4){
+        //得到分页的用户-信息表中的数据
+        $r = array();
+        $r['limit'] = $number;
+        $r['eq']['uid'] = UID;
+        $r['eq']['status'] = 0;
+        $r['col'] = array('mid','status');
+        $r['order'] = array('date'=>'desc');
+        $rst = $this->import('messege_user')->find($r);
+        if($rst){
+            //得到对应的用户详情信息
+            $mids = arrayColumn($rst,'mid');
+            $r = array();
+            $r['in']['id'] = $mids;
+            $r['limit'] = $this->limit;
+            $rst2 = $this->import('messege')->find($r);
+            //合并两个数组
+            $mids = arrayColumn($rst2,'id');
+            $data = array();
+            foreach($rst as $v){
+                $index = array_search($v['mid'],$mids);
+                $data[] = $v + $rst2[$index];
+            }
+            return $data;
+        }else{
+            return array();
+        }
+    }
+
+    /**
      * 浏览指定的站内信
      * @param $mid
      * @return array

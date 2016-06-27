@@ -168,7 +168,8 @@ class UserModule extends AppModule
 		$r['eq']				= array('id'=>$user);
 		$bool					= $this->import("user")->modify($data, $r);
 		if($bool){
-			return array('code' => 1);
+			LoginAuth::logout();//修改成功,清空登录状态, 重新登录
+			return array('code' => 1,'url'=>'/index/index');
 		}
 		return array('code' => 2,'mess'=> '修改失败');
 	}

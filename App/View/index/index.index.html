@@ -21,20 +21,20 @@
                 <div class="sell-per-mess">
                     <div class="sell-per-head fl">
                         <i class="fl">
-                            <img src="<?=$photo?>" id="set_avatar" onerror="this.src='/Static/images/img1.png'">
+                            <img src="<?=$photo?>" id="set_avatar">
                         </i>
                         <div class="head-mess fl">
                             <h3>您好，<?=$nickname?>！</h3>
                             <p class="name">账户名： <?=$userMobile?><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a></p>
-                            <p class="teg"><span class="hint-bg cir">我的蝉豆：<?=$userInfo['total']?></span><a href="/exchange">用蝉豆兑换奖励</a></p>
+                            <p class="teg"><span class="hint-bg cir">我的蝉豆：56</span><a href="">用蝉豆兑换奖励</a></p>
                         </div>
                     </div>
                     <div class="sell-comm-sub fr">
                         <label>提交商品，获取收益</label>
-                        <a class="sub-btn cir">
+                        <a class="sub-btn cir" href="/sell/index">
                             提交商品
                         </a>
-                        <p><a href="">商标号</a>|<a href="">申请人</a> |<a href="">文档</a></p>
+                        <p><a href="/sell/number">商标号</a>|<a href="/sell/person">申请人</a> |<a href="/sell/document">文档</a></p>
                     </div>
                 </div>
             </div>
@@ -48,65 +48,75 @@
                         <div class="sell-state1">
 
                         </div>
-                        <p><b>出售中</b><span class="sell-infor cir"><?=$sellCount['one']?></span></p>
+                        <p><b>审核中</b><span class="sell-infor cir">25</span></p>
                     </li>
                     <li>
                         <div class="sell-state2">
 
                         </div>
-                        <p><b>审核中</b><span class="sell-infor cir"><?=$sellCount['two']?></span></p>
+                        <p><b>审核中</b><span class="sell-infor ">25</span></p>
                     </li>
                     <li>
                         <div class="sell-state3">
 
                         </div>
-                        <p><b>未通过</b><span class="sell-infor cir"><?=$sellCount['three']?></span></p>
+                        <p><b>审核中</b></p>
                     </li>
                     <li>
                         <div class="sell-state4">
 
                         </div>
-                        <p><b>已失效</b><span class="sell-infor cir"><?=$sellCount['four']?></span></p>
+                        <p><b>审核中</b></p>
                     </li>
                 </ul>
             </div>
             <div class="sell-my-earn fr">
                 <div class="my-earn-top ">
                     <h3 class="sell-tit fl">最近收益</h3>
-                    <p class="fr"><a href="/exchange/index?t=2">查看历史收益明细</a><i><img src="<?=StaticDir?>1.0/images/sell-sf.png"></i></p>
+                    <p class="fr"><a href="/income/index">查看历史收益明细</a><i><img src="<?=StaticDir?>1.0/images/sell-sf.png"></i></p>
                 </div>
                 <div class="my-earn-show ">
                     <p>
                         <label>最近一个月收益</label><br/>
-                        <b>381711</b>元
+                        <? if($month_income): ?>
+                        <b><?=$month_income?></b>元
+                        <? else: ?>
+                        <b>暂无</b>
+                        <? endif; ?>
                     </p>
                 </div>
-
             </div>
         </div>
         <div class="sell-per-btm ">
             <div class="sell-earn-mess fl ">
                 <div class="my-earn-top ">
                     <h3 class="sell-tit fl">最新通知</h3>
-                    <a class="fr">全部通知</a>
+                    <a class="fr" href="/messege/index">全部通知</a>
                 </div>
                 <ul class="">
-                    <li>
-                        <p class="fl"><a>欢迎你啊，新用户，来看看我有什么话对你说吧</a></p>
-                        <label class="fr">2016-05-30 12：23</label>
-                    </li>
-                    <li>
-                        <p class="fl"><a>欢迎你啊，新用户，来看看我有什么话对你说吧</a></p>
-                        <label class="fr">2016-05-30 12：23</label>
-                    </li>
-                    <li>
-                        <p class="fl"><a>欢迎你啊，新用户，来看看我有什么话对你说吧</a></p>
-                        <label class="fr">2016-05-30 12：23</label>
-                    </li>
-                    <li>
-                        <p class="fl"><a>欢迎你啊，新用户，来看看我有什么话对你说吧</a></p>
-                        <label class="fr">2016-05-30 12：23</label>
-                    </li>
+                    <? if($msg_list): ?>
+                        <? foreach($msg_list as $item): ?>
+                        <li>
+                            <?php
+                                //判断站内信的类型
+                                if($item['type']==2){
+                                    $link_type = $item['content'];
+                                    $target = '_blank';
+                                }else{
+                                    $link_type = '/messege/view/?id='.$item['mid'];
+                                    $target = '';
+                                }
+                            ?>
+                            <p class="fl"><a class="msg_a" mid="<?=$item['mid']?>" target="<?=$target?>" href="<?=$link_type?>"><?=$item['title']?></a></p>
+                            <label class="fr"><?=date('Y-m-d H:i:s',$item['date'])?></label>
+                            <div style="display: none">
+                                <a class="msg_s" target="<?=$target?>" href="<?=$link_type?>">1</a>
+                            </div>
+                        </li>
+                        <? endforeach; ?>
+                    <? else: ?>
+                        <li><p>暂无未读消息</p></li>
+                    <? endif; ?>
                 </ul>
             </div>
             <div class="sell-data-mess fr">
@@ -136,7 +146,7 @@
 		<input type="file" id="bzfile" onchange="uplouadPic()" name="fileName" style="display: none;"/>
 	    </div>
 	</form>
-	<div style="float:left; max-width: 400px;max-height: 400px;"><img id="target"  src="<?=$photo?>" style="display:block"></div>
+	<div style="float:left;"><img id="target"  src="<?=$photo?>" style="display:block"></div>
 	<div style="width:48px;height:48px;margin:10px;overflow:hidden; float:left;display: none;" class="hideimg"><img  style="float:left;" id="preview" src="<?=$photo?>" width="48" heigt="48" ></div>
 	<div style="width:100px;height:100px;margin:10px;overflow:hidden; float:left;display: none;" class="hideimg"><img  style="float:left;" id="preview2" src="<?=$photo?>" width="100" heigt="100" ></div>
 	<form action="/index/setAvatar/" method="post" onsubmit="return checkCoords();">
@@ -149,8 +159,41 @@
 	</form>
     </div>
 </div>
-
 <script type="text/javascript">
+
+    $(function(){
+        //给链接类型消息添加已读功能
+        $(".msg_a[target=_blank]").click(function(){
+            var id = $(this).attr('mid');
+            if(id<=0 || id=='') return false;
+            var _this = this;
+            //是否第一次点击
+            var flag = $(this).attr('isfirst');
+            if(flag){
+                $(_this).closest('li').find('.msg_s').click();
+            }else{
+                $.post('/messege/read',{'id':id},function(data){
+                    if(data.code==0){
+                        $(_this).closest('td').find('.msg_s').click();
+                        //变当前消息为已读
+                        $(_this).attr('isfirst',1);
+                        //消息数减1
+                        $('.sell-infor').text(function(i,n){
+                            if(n==0){
+                                return 0;
+                            }else{
+                                return n-1;
+                            }
+                        })
+                    }else{
+                        layer.msg('操作失败，请稍后再试', {
+                            time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                        });
+                    }
+                },'json');
+            }
+        })
+    });
      //剪切头像代码
     var jcrop_api, boundx, boundy;
     function updateCoords(c)

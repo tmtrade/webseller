@@ -14,6 +14,8 @@ define('SEC', 180);//验证码有效时间
 define('SELLER_URL', 'http://seller.chofn.net/');
 //一只蝉URL
 define('SITE_URL', 'http://t.chofn.net/');
+//蝉窝
+define('MY_URL', 'http://my.test.chofn.net/');
 
 define('CRM_URL', 'http://demo.chofn.com:88/');
 define('CRM_EXPORT','http://crmwin.chofn.net/Api/jsontoexcel.php');

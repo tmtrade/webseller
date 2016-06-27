@@ -111,6 +111,24 @@ class IncomeModule extends AppModule{
     }
 
     /**
+     * 得到最近一个月的收益情况
+     * @return int|number
+     */
+    public function getMonthIncome(){
+        $r = array();
+        $r['scope'] = array('date'=>array(strtotime('last month'),time()));
+        $r['eq']['uid'] = UID;//指定用户
+        $r['limit'] = 100000;
+        $r['col'] = array('price');
+        $rst = $this->import('income')->find($r);
+        if($rst){
+            $rst = arrayColumn($rst,'price');
+            return array_sum($rst);
+        }
+        return  0;
+    }
+
+    /**
      * 得到类变量--图片token(所有图片可以共用token)
      * @return mixed|string
      */

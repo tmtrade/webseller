@@ -208,13 +208,13 @@ function ajaxCode(umobVal,ucodeVal,uauto){
 			error('服务器繁忙请稍后再试',2);
 		},
         success: function(data){
+			layer.closeAll('loading');
 			if (data.code == 1){
-				logCode(umobVal,ucodeVal,utype,uauto);
+				logCode(umobVal,ucodeVal,2,uauto);
 				//window.location.reload();
 			}else{
 				error(data.mess,2);
 			}
-			layer.closeAll('loading');
         }
     });	
 }

@@ -116,16 +116,10 @@ function getPageBarNew($pager, $script = true)
 	if ( empty($pager) || !is_array($pager) ) {
 		return '';
 	}
-
 	$html = "";
-
-	$html .='<a href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .$pager['point'].
-		'<a href="' . $pager['next']  . '">下页</a>' . '&nbsp;' ;
-        
-        $html .= '<span>共' . $pager['pageNum'] . '页</span>' . '&nbsp;';
-        
+	$html .='<a class="page_btn" href="' . $pager['pre']   . '">上页</a>' . '&nbsp;' .$pager['point']. '&nbsp;' .'<a class="page_btn" href="' . $pager['next']  . '">下页</a>' . '&nbsp;' ;
+	$html .= '<span>共' . $pager['pageNum'] . '页</span>' . '&nbsp;';
 	$html .= $script ? $pager['jump'] : '';
-
 	return $html;
 }
 
