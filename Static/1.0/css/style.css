@@ -469,7 +469,7 @@ div.desi a{
 }
 
 /* æœ¬ä¾‹å­css */
-.comm-list-mess{width: 97%;margin:24px auto 0px;}
+.comm-list-mess{width: 97%;margin:24px auto 0px;min-height: 500px;}
 .comm-list-mess .slideTxtBox{ width:100%; text-align:left;  }
 .comm-list-mess .slideTxtBox .hd{ width:410px;   line-height:33px; position:relative;}
 .comm-list-mess .slideTxtBox .hd ul{ float:left; position:absolute; left:0px; top:-1px; height:32px;  border-left:1px solid #e8e8e8;border-radius:5px 5px 0px 0px;  }
@@ -723,7 +723,7 @@ table.list-mess-main tr .pri-num input{
     min-height: 152px;
     background: url("../images/no-data.png") no-repeat center top;
     position: fixed;
-    left:60%;
+    left: 50%;
     top: 50%;
     margin-left: -130px;
     margin-top: -76px;
@@ -836,8 +836,7 @@ table.list-mess-main tr .pri-num input{
 }
 .amend-cont-all{
     margin-left: 24px;
-    position: fixed;
-    bottom: 10%;
+    margin-top: 25px;
 }
 .amend-cont-all .sub-btn{
     float: left;
@@ -1367,10 +1366,32 @@ table.list-mess-main tr .pri-num input{
     width:320px;
 }
 
+/*修改密码*/
 
+.sell-cg-password-list li{
+    overflow: hidden;
+    margin-top:20px;
+}
+.sell-cg-password-list li span{
+    display: inline-block;
+    min-width:94px;
+}
+.sell-cg-password-list li input{
+    min-width: 236px;
+}
 
-
-
+.sell-cg-password .sell-ts-blk{
+    margin-top: 25px;
+    margin-left:104px;
+}
+.cg-password-btn{
+    border-top: 1px solid #d5d5d5;
+    margin-top: 15px;
+}
+.cg-password-btn a{
+    margin-left:104px;
+    margin-top:15px;
+}
 
 
 

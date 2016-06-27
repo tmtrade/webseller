@@ -105,3 +105,7 @@ function jc(name,curr,n)
 }
 
 
+$("input").focus(function(){
+    $(this).css({"borderColor":"#d5d5d5"})
+})
+

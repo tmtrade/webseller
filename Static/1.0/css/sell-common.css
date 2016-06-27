@@ -52,6 +52,30 @@ a[href]:hover{
 .f-hidden{
     overflow: hidden;
 }
+/*所以提示框*/
+.sell-ts-blk{
+    display: inline-block;
+    padding: 8px 22px;
+    background: url("../images/news-bg.png") repeat-x;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
+    color: #ffffff;
+
+}
+.sell-ip-box{
+    height: 33px;
+    line-height: 33px;
+    text-indent: 10px;
+    background: #ffffff;
+    color:#666666;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius:5px;
+    -o-border-radius:5px;
+}
 .common-cpm-sty{
     background: #ffffff !important;
     padding: 15px 15px 50px 15px !important;;
@@ -630,7 +654,7 @@ body,html{
     background: #fff;
     cursor: pointer;
 }
-.mj-pages>a:first-child,.mj-pages>a:nth-child(3){
+.mj-pages>a:first-child,.mj-pages>a:nth-child(6){
     padding-left:20px;
     padding-right:20px;
     background:#CCC;
