@@ -1,0 +1,185 @@
+<? require(ViewDir.'/header.html'); ?>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
+<div class="yzc-sell-main">
+<!--公用左边导航-->
+<? require(ViewDir.'/left.html'); ?>
+<div class="sell-lf-main">
+<div class="comm-list-tit w-cont">
+    <h3>奖励兑换</h3>
+</div>
+
+<div class="comm-list-mess">
+<div class="slideTxtBox">
+<div class="list-mess-top">
+    <div class="hd fl">
+        <ul><li>奖励兑换</li><li>蝉豆记录</li></ul>
+    </div>
+
+</div>
+
+<div class="bd">
+  <div class="award-main">
+        <div class="int-score cir">
+            <p class="int-score-num">
+                <label>您的蝉豆数量</label>
+
+                <b><?=$userInfo['total']?></b>
+            </p>
+            <div class="int-score-rule">
+                <h6>奖励兑换规则</h6>
+                <font>平台每两周将发放一次免费资源，您可通过蝉豆来进行兑换。每个账号每期最多可申请两条免费资源。</font>
+                <font>您的蝉豆可通过以下方式获取:</font>
+                <h5>每提交10条商品  或  有一件商品被销售  奖励 10 蝉豆</h5>
+            </div>
+        </div>
+        <div class="int-score-time cir f-hidden">
+            <p class="int-score-time-tit">每月1号开放申请，至每月月末截止。本月申请的资源，将于下月的10号统一上线 |  如需商务合作，请联系QQ：8812637</p>
+            <div class="int-score-lis f-hidden">
+                <ul class="f-hidden">
+		    <? foreach ($adCountList as $k => $v) {
+			$counts = $ad_config[$v['pages']]['count']-$v['counts'];
+			 $firstday=date('Y-m-10');
+		    ?>
+                    <li>
+                        <div class="int-score-lis-top f-hidden">
+                          <span>
+                             <img src="<?=StaticDir?>1.0/images/exp-pic.png">
+				<?if($counts<=0){?>
+				    <i class="not-exch">兑完</i>
+				<?}else{?>
+				    <i class="alr-exch"><?=$counts?> 件</i>
+				<?}?>
+                          </span>
+                            <h6><?=$ad_config[$v['pages']]['name']?></h6>
+                        </div>
+                        <div class="int-score-lis-btm">
+                            <span>有效期:<?=date('Y-m-d',strtotime("$firstday +1 month"));?> 至 <?=date('Y-m-d',strtotime("$firstday +2 month"));?></span>
+                            <p><?=$ad_config[$v['pages']]['note']?></p>
+			    <?if($counts>0){?>
+			    <a class="free-exc" data-pages="<?=$v['pages']?>">免费兑换</a>
+			    <?}?>
+                            
+                        </div>
+                    </li>
+		    <? } ?>
+                    
+                </ul>
+            </div>
+
+        </div>
+    </div>
+  <div class="award-main">
+      <div class="sell-int-lis blk f-hidden f-clearfix">
+          <table>
+              <thead><th>发放/扣除时间</th><th>发放/扣除原因</th><th>对应积分</th></thead>
+              <tbody class="list-mess">
+	    <? foreach ($list as $k => $v) {
+	    if($v['types']==1){
+	    ?>
+              <tr>
+                  <td><?=$v['date']?></td><td><?=$v['note']?></td><td><a class="add-score">+ <?=$v['amount']?></a></td>
+              </tr>
+	      <?}else{?>
+              <tr>
+                  <td><?=$v['date']?></td><td><?=$v['note']?></td><td><a>- <?=$v['amount']?></a></td>
+              </tr>
+	       <? } }?>
+              </tbody>
+          </table>
+      </div>
+      <div class="mj-pages">
+	    <?=$pageBar?>
+	    </div>
+  </div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+<!--申请免费广告弹窗-->
+<div class="app-ad" id="app-ad" style="display: none;">
+    <h3>申请免费广告</h3>
+    <div class="app-ad-remark f-hidden">
+        <label>备注</label>
+        <textarea class="rem-tex cir blk" id="note" placeholder="如您需要的包装的商品等信息，最多不超过100字，如有更多需求可与在线qq客服联系。"></textarea>
+    </div>
+    <div class="app-ad-cont f-hidden">
+        <label>手机号</label>
+        <input class="cont-tel cir blk" type="text" id="phone" placeholder="预设这丫的手机号">
+        <label>QQ号</label>
+        <input class="cont-qq cir blk" type="text" id="qq" placeholder="为便于客服与您联系获取需要包装的素材，请填写QQ">
+    </div>
+    <input type="hidden" name="pages" value="1" id="pages">
+</div>
+<script type="text/javascript" src="js/table-list.js"></script>
+<script type="text/javascript" src="js/layer/layer.js"></script>
+<script type="text/javascript">
+    jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click"});
+   $(".free-exc").on("click",function(){
+       $("#pages").val($(this).data("pages"));
+       layer.open({
+           area:["640px","300px"],
+           btn: ['确定','关闭'],
+	   yes: function(index, layero){
+	       var pages    = $("#pages").val();
+	       var note	    = $("#note").val();
+	       var phone    = $("#phone").val();
+	       var qq	    = $("#qq").val();
+	       if(pages=="" || note=="" || phone=="" || qq==""){
+		   layer.msg('请填写完整需求项！', {
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+                    });
+	       }else{
+		   var ph = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/; 
+		   if(!ph.test(phone)){
+		       layer.msg('手机号填写错误！', {
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+			});
+			return;
+		   }
+		    var re=/^[1-9][0-9]{4,}$/;
+		    if(!re.test(qq)){
+		       layer.msg('QQ号填写错误！', {
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+			});
+			return;
+		    }
+		    $.ajax({
+			type : 'post',
+			url  : '/exchange/addEx/',
+			data : {'pages':pages,'note':note,'phone':phone,'qq':qq},
+			dataType : 'json',
+			success : function (data){
+			    if (data.code==1){
+				layer.msg('兑换成功！请等待管理员审核！', {
+				    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+				}, function(){
+				    layer.close(index); //如果设定了yes回调，需进行手工关闭
+				});
+			    }else{
+				layer.msg(data.msg, {
+				    time: 1000 //2秒关闭（如果不配置，默认是3秒）
+				});
+			    }
+			},
+			error : function (data){
+			    layer.msg('操作失败，请检查您输入的内容是否正确后重新尝试。', {
+				time: 2000 //2秒关闭（如果不配置，默认是3秒）
+			    });
+			}
+		    });
+	       }
+	    },
+           type: 1,
+           title: false,
+           closeBtn:1,
+           shadeClose:true,
+           content:$("#app-ad")
+
+       });
+   });
+</script>
+
+</body>
+</html>

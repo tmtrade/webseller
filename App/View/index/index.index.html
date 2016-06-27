@@ -21,12 +21,12 @@
                 <div class="sell-per-mess">
                     <div class="sell-per-head fl">
                         <i class="fl">
-                            <img src="<?=$photo?>" id="set_avatar">
+                            <img src="<?=$photo?>" id="set_avatar" onerror="this.src='/Static/images/img1.png'">
                         </i>
                         <div class="head-mess fl">
                             <h3>您好，<?=$nickname?>！</h3>
                             <p class="name">账户名： <?=$userMobile?><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a></p>
-                            <p class="teg"><span class="hint-bg cir">我的蝉豆：56</span><a href="">用蝉豆兑换奖励</a></p>
+                            <p class="teg"><span class="hint-bg cir">我的蝉豆：<?=$userInfo['total']?></span><a href="/exchange">用蝉豆兑换奖励</a></p>
                         </div>
                     </div>
                     <div class="sell-comm-sub fr">
@@ -48,32 +48,32 @@
                         <div class="sell-state1">
 
                         </div>
-                        <p><b>审核中</b><span class="sell-infor cir">25</span></p>
+                        <p><b>出售中</b><span class="sell-infor cir"><?=$sellCount['one']?></span></p>
                     </li>
                     <li>
                         <div class="sell-state2">
 
                         </div>
-                        <p><b>审核中</b><span class="sell-infor ">25</span></p>
+                        <p><b>审核中</b><span class="sell-infor cir"><?=$sellCount['two']?></span></p>
                     </li>
                     <li>
                         <div class="sell-state3">
 
                         </div>
-                        <p><b>审核中</b></p>
+                        <p><b>未通过</b><span class="sell-infor cir"><?=$sellCount['three']?></span></p>
                     </li>
                     <li>
                         <div class="sell-state4">
 
                         </div>
-                        <p><b>审核中</b></p>
+                        <p><b>已失效</b><span class="sell-infor cir"><?=$sellCount['four']?></span></p>
                     </li>
                 </ul>
             </div>
             <div class="sell-my-earn fr">
                 <div class="my-earn-top ">
                     <h3 class="sell-tit fl">最近收益</h3>
-                    <p class="fr"><a>查看历史收益明细</a><i><img src="<?=StaticDir?>1.0/images/sell-sf.png"></i></p>
+                    <p class="fr"><a href="/exchange/index?t=2">查看历史收益明细</a><i><img src="<?=StaticDir?>1.0/images/sell-sf.png"></i></p>
                 </div>
                 <div class="my-earn-show ">
                     <p>
@@ -136,7 +136,7 @@
 		<input type="file" id="bzfile" onchange="uplouadPic()" name="fileName" style="display: none;"/>
 	    </div>
 	</form>
-	<div style="float:left;"><img id="target"  src="<?=$photo?>" style="display:block"></div>
+	<div style="float:left; max-width: 400px;max-height: 400px;"><img id="target"  src="<?=$photo?>" style="display:block"></div>
 	<div style="width:48px;height:48px;margin:10px;overflow:hidden; float:left;display: none;" class="hideimg"><img  style="float:left;" id="preview" src="<?=$photo?>" width="48" heigt="48" ></div>
 	<div style="width:100px;height:100px;margin:10px;overflow:hidden; float:left;display: none;" class="hideimg"><img  style="float:left;" id="preview2" src="<?=$photo?>" width="100" heigt="100" ></div>
 	<form action="/index/setAvatar/" method="post" onsubmit="return checkCoords();">

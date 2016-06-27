@@ -24,6 +24,12 @@ class IndexAction extends AppAction
 		if(!$this->isLogin){
 		      $this->redirect('', '/login/index/');
 		}
+		$sell['one'] = $this->load('goods')->getSaleCount($this->userInfo['id'],1);//出售中
+		$sell['two'] = $this->load('goods')->getSaleCount($this->userInfo['id'],2);//审核中
+		$sell['three'] = $this->load('goods')->getSaleCancelCount($this->userInfo['id'],3);//未通过
+		$sell['four'] = $this->load('goods')->getSaleCancelCount($this->userInfo['id'],1);//已失效
+		
+		$this->set("sellCount",$sell);
 		$this->display();
 	}
 	

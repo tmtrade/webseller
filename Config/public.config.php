@@ -146,6 +146,27 @@ $define = array(
 					4 => '已立案', 
 					5 => '交易关闭', 
 					), 
+    
+	 'ADCONFIG'		=> array(//广告配置项
+				    '1'  => array(
+					"name"=>"首页轮播广告",
+					"count"	=>"10",
+					"amount"=>"40",
+					"note"	=>"首页轮播广告",
+					),
+				    '2'  => array(
+					"name"=>"通用分类广告",
+					"count"	=>"36",
+					"amount"=>"30",
+					"note"	=>"通用分类广告",
+					),
+				    '3'  => array(
+					"name"=>"列表页右侧广告",
+					"count"	=>"10",
+					"amount"=>"20",
+					"note"	=>"列表页右侧广告",
+					),
+				    ), 
 
 );
 if(is_array($checkhost)){

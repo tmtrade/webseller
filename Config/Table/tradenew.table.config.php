@@ -82,4 +82,21 @@ $tbl['messegeUser'] = array(
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
+$tbl['exchange'] = array(
+	'name'		=> $prefix2.'exchange',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
+$tbl['total'] = array(
+	'name'		=> $prefix2.'total',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+$tbl['totalLog'] = array(
+	'name'		=> $prefix2.'total_log',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+
 ?>

@@ -68,6 +68,30 @@ class GoodsModule extends AppModule
         return $res;
     }
     
+    //获取出售中和审核中的数据个数
+    public function getSaleCount($uid,$type)
+    {
+	$r = array();
+        $r['eq']['uid'] = $uid;
+	$r['eq']['isVerify'] = $type;//是否审核（1：是，2：否）
+        $res = $this->import('contact')->count($r);
+        return $res;
+    }
+    
+    //获取交易完成或驳回的数据个数
+    public function getSaleCancelCount($uid,$type)
+    {
+	$r = array();
+        $r['eq']['uid'] = $uid;
+	if($type==3){
+	    $r['eq']['type'] = $type;//类型（1：出售成功，2：后台删除，3：后台驳回，4：自行取消（已审核））
+	}else{
+	    $r['in'] = array('type' => array(1,2,4));
+	}
+        $res = $this->import('userSaleHistory')->count($r);
+        return $res;
+    }
+    
    //修改报价
     public function updatePrice($number,$price,$uid){
 	$res = $this->load('sale')->getSaleContactByUid($number, $uid);
@@ -81,7 +105,7 @@ class GoodsModule extends AppModule
     }
     
         
-   //修改报价
+   //取消报价
     public function cancelPrice($number,$uid){
 	$param = array(
 		'uid'           => $uid,//联系人信息ID
