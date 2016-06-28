@@ -13,7 +13,7 @@ table {border-collapse: collapse;border-spacing: 0;}
 body{min-width: 1280px;}
 table{width: 100%;}
 input{color: #666666;border-color:#d5d5d5; }
-select{
+input,select{
     appearance:none;
     -moz-appearance:none;
     -webkit-appearance:none;
