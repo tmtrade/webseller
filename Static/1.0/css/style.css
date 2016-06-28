@@ -67,6 +67,10 @@
     color: #c75756;
     text-decoration: underline;
 }
+.sell-per-head i img{
+    max-width: 108px;
+    max-height: 108px;
+}
 .sell-comm-sub{
     width: 280px;
     height: 123px;
