@@ -26,7 +26,7 @@
                         <div class="head-mess fl">
                             <h3>您好，<?=$nickname?>！</h3>
                             <p class="name">账户名： <?=$userMobile?><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a></p>
-                            <p class="teg"><span class="hint-bg cir">我的蝉豆：56</span><a href="">用蝉豆兑换奖励</a></p>
+                            <p class="teg"><span class="hint-bg cir">我的蝉豆：56</span><a href="/exchange">用蝉豆兑换奖励</a></p>
                         </div>
                     </div>
                     <div class="sell-comm-sub fr">
@@ -123,8 +123,10 @@
                 <h3 class="sell-tit">数据分享</h3>
                 <div class="sell-data-main">
                     <p>最近一个月用户热搜词：</p>
-                    <div class="hot-ch">
-                        <span class="cir">人工智能</span><span class="cir">人工智能</span><span class="cir">人工智能</span><span class="cir">人工智能</span>
+                    <div class="hot-ch" style="width:345px;">
+			<? foreach($keyword_list as $item): ?>
+                        <span class="cir"><?=$item['keyword']?></span>
+			<? endforeach; ?>
                     </div>
                 </div>
             </div>

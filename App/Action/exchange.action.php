@@ -17,7 +17,6 @@ class ExchangeAction extends AppAction{
         //获得参数
 	$params['uid']    = $this->userinfo['id'];
         $page = $this->input('page','int',1);
-	$page = $this->input('t','int',1);
         //获取蝉豆记录
 	$res = $this->load('total')->getTotallogList($params, $page, $this->size);
         $count = $res['total'];

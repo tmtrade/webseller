@@ -1,6 +1,6 @@
 <?php
 /**
- * 站内信基础业务模型
+ * 兑换信息基础业务模型
  * Created by PhpStorm.
  * User: dower
  * Date: 2016/6/7 0007

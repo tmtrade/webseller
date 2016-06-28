@@ -98,5 +98,10 @@ $tbl['totalLog'] = array(
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
+$tbl['keywordCount'] = array(
+	'name'		=> $prefix.'keyword_count',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
 
 ?>
