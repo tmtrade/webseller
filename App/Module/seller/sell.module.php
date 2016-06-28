@@ -130,4 +130,18 @@ class SellModule extends AppModule{
         }
         return array('code'=>0);
     }
+
+    /**
+     * 得到模糊查询的申请人列表
+     * @param $person
+     * @return mixed
+     */
+    public function getPerson($person){
+        $rst = $this->importBi('search')->aa($person);
+        return $rst;
+    }
+
+    public function getPersonTm(){
+
+    }
 }

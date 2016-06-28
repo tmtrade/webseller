@@ -66,6 +66,31 @@ class SellAction extends AppAction{
     }
 
     /**
+     * 得到申请人模糊查询的申请人列表
+     * @return array
+     */
+    public function getPerson(){
+        $person = $this->input('person','string','');
+        if(!$person) return array('code'=>1,'msg'=>'申请人不能为空');
+        $rst = $this->load('sell')->getPerson($person);
+        return array('code'=>0);
+    }
+
+    //得到申请人的商标数据
+    public function getPersonTm(){
+
+    }
+
+    /**
+     * 通过申请人提交的商标号
+     */
+    public function addPerson(){
+        $params = $_POST;
+        $rst = $this->load('sell')->addSell($params,50);
+        $this->returnAjax($rst);
+    }
+
+    /**
      * 通过excel文档添加商品
      */
     public function document(){

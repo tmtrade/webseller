@@ -18,11 +18,10 @@
         <div class="comm-search-bg">
             <div class="desi by-brand-search w-cont">
                 <label>根据申请人出售</label>
-                <input type="text" class="cir" />
+                <input type="text" class="cir" id="person"/>
                 <a  class="cir sear-btn" id="serch-pel">立刻搜索</a>
                 <!--当该商标失效-->
                 <!--<a class="eff-brand hint-bg cir"><i></i>改商标已失效</a>-->
-                <p class="sqr-ts cir blk"><span class="fl">当前申请人:四川川投有限公司</span><a class="fr"><i class="fa fa-remove"></i>删除</a></p>
             </div>
             <div class="batch-cz fr w-cont">
                 <a  class="cir sear-btn batch-pric">批量设置价格</a>
@@ -150,7 +149,7 @@
         <h3>请选择申请人</h3>
     </div>
     <div class="cpm-pel-cent">
-        <label class="tit">根据您搜索的关键字,有以下 20 条申请人符合您的搜索要求，请选择</label>
+        <label class="tit">根据您搜索的关键字,有以下<span class="p_num"></span> 条申请人符合您的搜索要求，请选择</label>
         <table class="cir blk">
             <thead>
             <tr>
@@ -158,34 +157,19 @@
                 <td class="com-ope">操作</td>
             </tr>
             </thead>
-            <tbody class="list-mess">
+            <tbody class="list-mess" id="p_list">
             <tr>
                 <td class="com-name"><p>四川川投有限责任公司</p></td>
                 <td class="com-ope">
                     <i class="sell-ico opera"></i>
-                   <input type="checkbox"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="com-name"><p>四川川投有限责任公司</p></td>
-                <td class="com-ope">
-                    <i class="sell-ico opera"></i>
-                    <input type="checkbox"/>
-                </td>
-            </tr>
-            <tr>
-                <td class="com-name"><p>四川川投有限责任公司</p></td>
-                <td class="com-ope">
-                    <i class="sell-ico opera"></i>
-                    <input type="checkbox"/>
                 </td>
             </tr>
             </tbody>
         </table>
         <div class="cpm-pel-price cir">
-            <input class="chi" type="checkbox"/>
+            <input class="chi" type="checkbox" id="is_union"/>
             <label>我想把本次出售的商标获益统一设置为</label>
-            <input class="blk cir" type="text" placeholder="请输入每条商品期望获益的价格"/>
+            <input class="blk cir" type="text" id="union_price" placeholder="请输入期望获益的价格"/>
         </div>
     </div>
     <!--<div class="common-cpm-sub">-->
@@ -219,34 +203,17 @@
             });
             check_table();
         });
-        //添加商标事件
-        $('#addSell').click(function(){
-            var number = $.trim($('#add_number').val());
-            if(number==''){
-                layer.msg('请输入商标号', {
-                    time: 1500
-                });
-                return false;
-            }
-            //检查列表中是否有此商标
-            var numbers = $('#list_body .number');
-            var tmp = '';
-            var flag = true;
-            numbers.each(function(i){
-                tmp = $.trim($(this).text());
-                if(tmp==number){
-                    flag = false;
-                    return false;
-                }
-            });
-            if(!flag){
-                layer.msg('该商标已在列表中', {
+        //搜索申请人事件
+        $('#serch-pel').click(function(){
+            var person = $.trim($('#person').val());
+            if(person==''){
+                layer.msg('请输入申请人', {
                     time: 1500
                 });
                 return false;
             }
             //提交到服务器检查
-            $.post('/sell/getTminfo',{'number':number},function(data){
+            $.post('/sell/getPerson',{'person':person},function(data){
                 if(data.code==0){
                     var html = '<tr>\
                             <td><input type="checkbox"/></td>\
@@ -264,12 +231,18 @@
                             <a class="del-lis" href="javascript:;">删除</a>\
                             </td>\
                             </tr>';
-                    $('#list_body').append(html);
-                    $('#add_number').val('');//清空输入框
-                    $('#goods_num').text(function(i,v){
-                        return v-0+1;
+                    $('#p_list').append(html);
+                    //弹出申请人选择框
+                    layer.open({
+                        area:["640px","202"],
+                        btn: ['确定','关闭'],
+                        yes: 'sendProp',
+                        type: 1,
+                        title: false,
+                        closeBtn:1,
+                        shadeClose: true, //开启遮罩关闭
+                        content:$("#pel-cont-main")
                     });
-                    check_table();
                 }else{
                     layer.msg(data.msg, {
                         time: 1500
@@ -280,14 +253,14 @@
         //提交商品事件
         $('#add_goods').click(function(){
             var num = $('#goods_num').text();
-            if(num>20){
-                layer.msg('单次提交商标数不能大于20', {
+            if(num>50){
+                layer.msg('单次提交商标数不能大于50', {
                     time: 1500
                 });
                 return false;
             }
             //检查商标价格
-            var prices = $('#list_body input[name*=price]');
+            var prices = $('#p_list input[name*=price]');
             if(prices.length==0){
                 layer.msg('请至少添加一条商标信息', {
                     time: 1500
@@ -335,7 +308,7 @@
             //组装联系人信息
             data += ('&mobile='+mobile+'&name='+name);
             //提交数据
-            $.post('/sell/addNumber',data,function(dd){
+            $.post('/sell/addPerson',data,function(dd){
                 if(dd.code==0){
                     layer.msg('提交成功', {
                         time: 1500
@@ -376,22 +349,34 @@
             })
         });
     });
-    //搜索框输入为空的时候 弹出请选择申请人弹窗
-    var osinp;
-    $("#serch-pel").on("click",function(){
-        osinp=$(this).siblings("input").val();
-        if(osinp==""){
-            layer.open({
-                area:["640px","202"],
-                btn: ['确定','关闭'],
-                type: 1,
-                title: false,
-                closeBtn:1,
-                shadeClose: true, //开启遮罩关闭
-                content:$("#pel-cont-main")
-            });
+    //发送申请人到后台获得商标数据
+    function sendProp(){
+        //得到相关参数
+        var proposer = $('p');
+        //是否设置通用价格
+        var union_price = 0;
+        if($('#is_union').attr('checked')){
+            union_price = Number($('#union_price').val());
         }
-    });
+        union_price = union_price?union_price:'';
+        //提交数据获得商标数据
+        $.post('/sell/getPersonTm',{},function(data){
+            if(data.code==0){
+                //追加商标数据
+                    //加上价格
+
+                //修改商标数量
+
+                //添加当前申请人的提示框并清空申请人表单
+
+                check_table();
+            }else{
+                layer.msg(data.msg, {
+                    time: 1500
+                });
+            }
+        },'json');
+    }
     //检查表格中是否有内容
     function check_table(){
         var objs = $('#list_body tr').length;
