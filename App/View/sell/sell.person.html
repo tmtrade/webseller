@@ -22,6 +22,7 @@
                 <a  class="cir sear-btn" id="serch-pel">立刻搜索</a>
                 <!--当该商标失效-->
                 <!--<a class="eff-brand hint-bg cir"><i></i>改商标已失效</a>-->
+                <p class="sqr-ts cir blk"><span class="fl">当前申请人：四川川投有限责任公司</span><a class="del-sqr fl"><i class="fa fa-remove"></i>删除</a></p>
             </div>
             <div class="batch-cz fr w-cont">
                 <a  class="cir sear-btn batch-pric">批量设置价格</a>
@@ -178,9 +179,11 @@
     <!--</div>-->
 </div>
 <script type="text/javascript">
+   $(".del-sqr").on("click",function(){
+       $(this).parent().remove();
+   })
    $(".com-ope input").attr("index","1");
    $(".com-ope input").on("click",function(){
-
        var oinx= $(this).attr("index");
        if(oinx==1){
            $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
@@ -190,8 +193,6 @@
            $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
            $(this).attr("index","1");
        }
-
-
    })
     var p_tel = '';
     var p_name = '';
