@@ -161,7 +161,7 @@
             <tr>
                 <td class="com-name"><p>四川川投有限责任公司</p></td>
                 <td class="com-ope">
-                    <i class="sell-ico opera"></i>
+                    <input type="checkbox"/>
                 </td>
             </tr>
             </tbody>
@@ -178,6 +178,21 @@
     <!--</div>-->
 </div>
 <script type="text/javascript">
+   $(".com-ope input").attr("index","1");
+   $(".com-ope input").on("click",function(){
+
+       var oinx= $(this).attr("index");
+       if(oinx==1){
+           $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
+           $(this).attr("index","2");
+       }
+       else{
+           $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
+           $(this).attr("index","1");
+       }
+
+
+   })
     var p_tel = '';
     var p_name = '';
     $(function(){

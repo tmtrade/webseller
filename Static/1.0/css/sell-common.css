@@ -12,8 +12,12 @@ table {border-collapse: collapse;border-spacing: 0;}
 .fr{float: right}
 body{min-width: 1280px;}
 table{width: 100%;}
-input{color: #666666;border-color:#d5d5d5; }
-input,select{
+input{color: #666666;border-color:#d5d5d5;
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
+}
+select{
     appearance:none;
     -moz-appearance:none;
     -webkit-appearance:none;

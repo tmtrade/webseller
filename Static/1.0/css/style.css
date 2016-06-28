@@ -947,15 +947,16 @@ table.list-mess-main tr .pri-num input{
 .cpm-pel-cent table tr td.com-ope input{
     width: 16px;
     height: 16px;
+
     background: url("../images/sell-ope.png") no-repeat center;
 }
 .cpm-pel-cent table tr:hover{
     background: #fff5e1 !important;
 }
 
-.cpm-pel-cent table tr:hover td.com-ope input{
-    background: url("../images/sell-ope-over.png") no-repeat center;
-}
+/*.cpm-pel-cent table tr:hover td.com-ope input{*/
+    /*background: url("../images/sell-ope-over.png") no-repeat center;*/
+/*}*/
 /*.cpm-pel-cent table tr td.com-ope i{*/
     /*width: 16px;*/
     /*height: 16px;*/
