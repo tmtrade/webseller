@@ -17,29 +17,30 @@
         </div>
         <div class="comm-search-bg f-hidden">
             <p class="docum-step">
-                <span class="on">第一步&nbsp;|&nbsp;选择文档上传</span>
+                <span class="on one" >第一步&nbsp;|&nbsp;选择文档上传</span>
                 <i class="fa fa-chevron-right"></i>
-                <span class="on">第二步&nbsp;|&nbsp;自动提交商品</span>
+                <span class="two">第二步&nbsp;|&nbsp;自动提交商品</span>
                 <i class="fa fa-chevron-right"></i>
-                <span>第三步&nbsp;|&nbsp;提交完成</span>
+                <span class="three">第三步&nbsp;|&nbsp;提交完成</span>
             </p>
         </div>
         <div class="sub-result">
             <!--选择文档上传-->
-            <div class="sub-state">
+            <div class="sub-state" id="one">
                 <div class="sub-state-pic">
                     <img src="<?=StaticDir?>1.0/images/sub-state-bf.png">
                 </div>
-                <a class="sub-btn cir">
+                <a class="sub-btn cir" onclick="upfile.click();">
                     选择上传文档
                 </a>
+		<input type="file"  name="fileName" id="upfile" onchange="uplouadExcel()" style="display:none;"/>
                 <p>
-                    <label>一次最高不超过3000条数据<br/>还没有模板？</label>
-                    <a>点这里 EXCEL模板下载</a>
+                    <label>一次最高不超过100条数据<br/>还没有模板？</label>
+                    <a href="javascript:void(0)" onclick="downModel()" >点这里 EXCEL模板下载</a>
                 </p>
             </div>
             <!--商品提交中-->
-            <div class="sub-state">
+            <div class="sub-state" id="two" style="display:none;">
                 <div class="sub-state-pic">
                     <img src="<?=StaticDir?>1.0/images/sub-state-ing.png">
                 </div>
@@ -51,18 +52,134 @@
                 </p>
             </div>
             <!--提交完毕-->
-            <div class="sub-state">
-                <div class="sub-state-pic">
+            <div class="sub-state" id="three" style="display:none;">
+                <div class="sub-state-pic" >
                     <img src="<?=StaticDir?>1.0/images/sub-state-end.png">
                 </div>
                 <h3>
                     提交完毕
                 </h3>
                 <p>
-                    本次上传文档内共有 2431 条商标数据 | 其中，成功提交 3411 条，失败 31 条
+                    本次您导入了<span class="cFF0000" id="alldata"></span>条商品，
+		    成功<span class="cFF0000" id="sucdata"></span>条商品，
+		    失败<span class="cFF0000" id="errdata"></span>条商品<br/>
+		    <a href="javascript:void(0)" id="downError">下载失败文档</a>
                 </p>
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.form.js"></script>
+<script type="text/javascript">
+var errMsg = "上传的附件文件不能超过2M！！！";
+	var errFile = "可选择一条excel文件（仅支持后缀名为 .xls  .xlsx  .xlsm 文件）。文件最大不可超过 ( 10m ) ";
+	//检查文件类型
+	function checkfileType(fileInput){
+		var flag = true;
+		var extStart=fileInput.lastIndexOf(".");
+		var ext=fileInput.substring(extStart,fileInput.length).toUpperCase(); //wenjian 
+		var fileType=new Array(".XLS",".XLSX",".XLSM");
+		if($.inArray(ext, fileType) == -1){
+			layer.msg(errFile, {
+					time: 2000 //2秒关闭（如果不配置，默认是3秒）
+			});
+			flag = 0;
+			return false;
+		}
+		return flag;
+	}
+	var filepath;
+	//excel文件上传
+	$("#upfile").wrap("<form id='bzformupload' action='/sell/ajaxUploadExcel/' method='post' enctype='multipart/form-data'></form>");
+	function uplouadExcel(){
+		/**文件格式**/
+		var fileInput = $("#upfile").val();
+		var result = checkfileType(fileInput);
+		if(!result){
+			$("#upfile").val('');
+			return false;
+		}
+		$(".docum-step .two").addClass("on");
+		$(".docum-step .one").removeClass("on");
+		$("#one").hide();
+		$("#two").show();
+		$("#bzformupload").ajaxSubmit({
+			dataType:  'json',
+			success: function(data) {
+				if (data.code == 1){
+					$('#alldata').text(data.alldata);
+					$('#sucdata').text(data.sucdata);
+					$('#errdata').text(data.errdata);
+					filepath = data.filepath;
+					$('#downError').attr('href',filepath);
+					$(".docum-step .three").addClass("on");
+					$(".docum-step .two").removeClass("on");
+					$("#two").hide();
+					$("#three").show();
+				}else{
+				    layer.msg(data.msg, {
+					time: 2000 //2秒关闭（如果不配置，默认是3秒）
+				    });
+				}
+			},
+			error:function(xhr){
+			    layer.msg('文件格式不正确或文件过大，请重新上传！', {
+					time: 2000 //2秒关闭（如果不配置，默认是3秒）
+				    });
+			}
+		});
+	}
+	
+	//下载模板
+	function downModel(){
+		window.location.href="/Static/1.0/saletemplate.xls";
+	}
+	
+	
+	$('#nextpt').click(function(){
+		//文件格式
+		var result = true;
+		var fileInput = $("#upfile").val();
+		if(!fileInput){
+			alert('请选择文件');
+			return false;
+		}
+		result = checkfileType(fileInput);
+		if(!result){
+			return false;
+		}
+		$('#loadForm').hide();
+		$('#loading').show();
+		content = $('#importForm').serialize();
+		$.ajax({
+			type: "post",
+			url: "/sell/importForm/",
+			data: content,
+			dataType: "json",
+			success: function(data){
+				if (data.code == 1){
+					$('#alldata').text(data.alldata);
+					$('#sucdata').text(data.sucdata);
+					$('#errdata').text(data.errdata);
+					filepath = data.filepath;
+					if(errdata == 0){
+						$('#errdata').hide();
+					}
+					$('#downError').attr('href',filepath);
+				}else{
+					$('.leading').html(data.msg);
+					$('#downError').hide();;
+				}
+				$('#loading').hide();
+				$('#loadok').show();
+			}
+		});
+	})
+	
+	//错误文档下载
+	$('#downError').click(function(){
+		window.location.href=filepath;
+	})
+</script>
 <? require(ViewDir.'/footer.html'); ?>

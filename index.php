@@ -6,6 +6,8 @@ set_time_limit(0);							//设置程序运行超时时间
 ob_start();									//打开磁盘缓冲(加快速度)
 define('WebDir', dirname(__FILE__));		//定义项目路径
 define('FILEDIR', dirname(__FILE__)."/");	//定义项目文件路径
+define('UPLOADEXCEL', dirname(__FILE__)."/Static/upload/avatar/excel/");
+define('UPLOADEXCELED', "/Static/upload/avatar/excel/");
 require('../Spring/Spring.php');			//载入框架入口文件
 require(ConfigDir . '/app.config.php');		//载入应用全局配置
 Spring::run();								//启动框架

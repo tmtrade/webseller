@@ -68,7 +68,7 @@ class SellModule extends AppModule{
         $info['imgUrl'] = $this->getImg($number);
         return $info;
     }
-
+    
     /**
      * 得到商标图片
      * @param $number
@@ -130,6 +130,30 @@ class SellModule extends AppModule{
         }
         return array('code'=>0);
     }
+    
+    /**
+     * 添加导入商标
+     * @param $params
+     * @return array
+     */
+    public function documentAddSell($params){
+        $tmp = array(
+                'uid'           => UID,
+                'number'        => $params['number'],
+                'phone'         => $params['phone'],
+                'contact'       => $params['name'],
+                'price'         => $params['price'],
+                'type'          => 1,
+                'source'        => 4,
+		'memo'		=> $params['memo'],
+            );
+            $rst = $this->importBi('sale')->addSale($tmp);
+            if($rst['code']!=999){
+                return false;
+            }
+        return true;
+    }
+
 
     /**
      * 得到模糊查询的申请人列表
@@ -144,4 +168,5 @@ class SellModule extends AppModule{
     public function getPersonTm(){
 
     }
+
 }
