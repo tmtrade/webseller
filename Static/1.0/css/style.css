@@ -723,7 +723,7 @@ table.list-mess-main tr .pri-num input{
     min-height: 152px;
     background: url("../images/no-data.png") no-repeat center top;
     position: fixed;
-    left: 50%;
+    left:60%;
     top: 50%;
     margin-left: -130px;
     margin-top: -76px;
@@ -735,7 +735,7 @@ table.list-mess-main tr .pri-num input{
 }
 .no-data label{
     display: inline-block;
-    margin-top:16px;
+    margin-top:24px;
 }
 /*æ¶ˆæ¯åˆ—è¡¨*/
 .comm-list-news{
@@ -837,6 +837,8 @@ table.list-mess-main tr .pri-num input{
 .amend-cont-all{
     margin-left: 24px;
     margin-top: 25px;
+    position: absolute;
+    top: 520%;
 }
 .amend-cont-all .sub-btn{
     float: left;
@@ -863,6 +865,8 @@ table.list-mess-main tr .pri-num input{
 
 .batch-cz{
     margin-top: 25px;
+    padding-right:26px;
+    padding-left:0px;
 }
 
 
@@ -947,7 +951,9 @@ table.list-mess-main tr .pri-num input{
 .cpm-pel-cent table tr td.com-ope input{
     width: 16px;
     height: 16px;
-
+    appearance:none;
+    -moz-appearance:none;
+    -webkit-appearance:none;
     background: url("../images/sell-ope.png") no-repeat center;
 }
 .cpm-pel-cent table tr:hover{

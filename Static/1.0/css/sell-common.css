@@ -12,11 +12,7 @@ table {border-collapse: collapse;border-spacing: 0;}
 .fr{float: right}
 body{min-width: 1280px;}
 table{width: 100%;}
-input{color: #666666;border-color:#d5d5d5;
-    appearance:none;
-    -moz-appearance:none;
-    -webkit-appearance:none;
-}
+input{color: #666666;border-color:#d5d5d5;}
 select{
     appearance:none;
     -moz-appearance:none;
@@ -298,10 +294,9 @@ body,html{
     /*line-height: 62px;*/
     border-bottom: 1px solid #2c2c2c;
     border-top:1px solid #505050;
-    font-family: "å¾®è½¯é›…é»‘";
+    font-family: "微软雅黑";
     font-size: 14px;
-    padding-top: 17px;
-    padding-bottom: 11px;
+
 }
 .sell-rg-nav ul li:hover{
     background:#4a4a4a;
@@ -346,10 +341,11 @@ body,html{
 
 
 .sell-rg-nav ul li a{
-    display:inline-block;
+    display: block;
     overflow: hidden;
     color: #ffffff;
-
+    padding-top: 17px;
+    padding-bottom: 11px;
 }
 .sell-rg-nav ul li a:hover{
     color: #ffffff;
@@ -376,16 +372,19 @@ body,html{
     width: 100%;
     overflow: hidden;
     display: none;
-    padding:10px 0px;
+    padding-bottom:10px;
+
+    margin-top:-10px;
 
 }
 .xl-box p{
     display:block;
     width: 100%;
-    height:25px;
-    line-height: 25px;
-    text-indent: 32px;
+    /* height:25px; */
+    /* line-height: 25px; */
+    text-indent:62px;
     font-size: 13px;
+
 }
 
 .sell-qq-serve{
@@ -658,11 +657,11 @@ body,html{
     background: #fff;
     cursor: pointer;
 }
-.mj-pages>a:first-child,.mj-pages>a:nth-child(6){
+.mj-pages>a:first-child,.page_btn{
     padding-left:20px;
     padding-right:20px;
-    background:#CCC;
-    color:#fff;
+    background:#CCC !important;
+    color:#fff !important;;
 }
 
 /*分页完*/
