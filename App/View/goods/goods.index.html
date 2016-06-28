@@ -66,8 +66,9 @@
 				}
 			    }
 			    ?>
-			    
-			    <th>操作</th>
+			    <?if($s['status']==1 || $s['status']==2){?>
+				<th>操作</th>
+			    <?}?>
                           </tr>
                           </thead>
                           <tbody class="list-mess">
@@ -85,18 +86,21 @@
 				    echo "<td>".$v['memo']."</td>";
 				}
 				?>
-                              <td class="cg-price">
-				  <?if($s['status']==1 || $s['status']==2){?>
+                              
+				<?if($s['status']==1){?>
+				  <td class="cg-price">
                                   <p class="price">
 				      <a class="revise" data-number="<?=$v['number']?>">修改价格</a><label>|</label>
 				      <a class="abo" data-number="<?=$v['number']?>">取消报价</a>
 				  </p>
-				  <?}else{?>
+				  </td>
+				  <?}elseif($s['status']==2){?>
+				  <td class="cg-price">
 				  <p class="price">
 				      <a class="abo" data-number="<?=$v['number']?>">删除报价</a>
 				  </p>
-				  <?}?>
-                              </td>
+				  </td>
+				<?}?>
                           </tr>
 			   <? } ?>
                           </tbody>
