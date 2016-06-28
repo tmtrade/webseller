@@ -37,6 +37,9 @@ class MessegeAction extends AppAction{
         $this->set('msginfo',$msginfo);
     }
 
+    /**
+     * 链接类型的站内信,添加已读状态
+     */
     public function read(){
         $id = $this->input('id','int');
         $rst = $this->load('messege')->modifyMsg($id);

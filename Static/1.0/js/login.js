@@ -1,5 +1,5 @@
 var downtime  	= 60;
-var home_url = '/index/index';
+var home_url = '/';
 var isSendCode	= true;
 $(document).ready(function(e) {
 	//表单获得焦点隐藏提示

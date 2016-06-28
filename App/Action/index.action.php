@@ -49,7 +49,7 @@ class IndexAction extends AppAction
 		    $this->com('redisHtml')->set('keyword_count', $keyword_list, 600);
 		}
 		$this->set('keyword_list',$keyword_list);
-		
+
 		$this->display();
 	}
 	
@@ -66,6 +66,13 @@ class IndexAction extends AppAction
 	    if($isupdate){
 		 $this->redirect('', '/index');
 	    }
+	}
+
+	/**
+	 * 渲染修改密码页面
+	 */
+	public function changePassword(){
+		$this->display();
 	}
 }
 ?>

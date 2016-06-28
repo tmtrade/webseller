@@ -91,8 +91,8 @@ class RegisterModule extends AppModule
 			$smsId		= $msgIdArr[$smstemp];
 			$msg		= array_key_exists($smstemp,$msgArr) ? $msgArr[$smstemp] : $config;
 			//$content    = sprintf($msg,$password);
-			//$array      = $this->importBi('message')->sendMsg($account,$password,$smsId);
-			$array      = $this->importBi('crm')->sendSmsMsg($account,$password,$smsId);
+			$array      = $this->importBi('message')->sendMsg($account,$password,$smsId);
+//			$array      = $this->importBi('crm')->sendSmsMsg($account,$password,$smsId);
 		}
 		$code = isset($array['code']) && $array['code'] == 1 ? 1 : 0;
 		return $code;
