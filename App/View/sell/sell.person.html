@@ -22,7 +22,7 @@
                 <a  class="cir sear-btn" id="serch-pel">立刻搜索</a>
                 <!--当该商标失效-->
                 <!--<a class="eff-brand hint-bg cir"><i></i>改商标已失效</a>-->
-                <p class="sqr-ts cir blk"><span class="fl">当前申请人：四川川投有限责任公司</span><a class="del-sqr fl"><i class="fa fa-remove"></i>删除</a></p>
+                <p class="sqr-ts cir blk" style="display: none"  id="p_tip"><span class="fl">当前申请人：<span class="p_tip"></span></span><a class="del-sqr fl"><i class="fa fa-remove"></i>删除</a></p>
             </div>
             <div class="batch-cz fr">
                 <a  class="cir sear-btn batch-pric">批量设置价格</a>
@@ -131,18 +131,14 @@
     </div>
     <div class="common-cpm-cent">
         <label>您现在可以将</label>
-        <select class="cir blk">
-            <option>勾选中的商标</option>
-            <option>全部商标</option>
+        <select class="cir blk" id="mass_set">
+            <option value="0">勾选中的商标</option>
+            <option value="1">全部商标</option>
         </select>
         <label>统一设置为</label>
-        <input class="cir blk" type="text" placeholder="请输入商品期望获益的价格"/>
+        <input class="cir blk" id="mass_price" type="text" placeholder="请输入商品期望获益的价格"/>
         <label>元</label>
     </div>
-    <!--<div class="common-cpm-sub">-->
-        <!--<a class="layui-layer-close cir sear-btn batch-pric " href="javascript:;">确定</a>-->
-        <!--<a class="cir qx-btn batch-del gb-cpm-btn layui-layer-close" href="javascript:;">关闭</a>-->
-    <!--</div>-->
 </div>
 <!--申请人输入为空时 点击搜索时弹出选择申请人弹窗-->
 <div class="price-cpm common-cpm-sty" id="pel-cont-main">
@@ -173,27 +169,8 @@
             <input class="blk cir" type="text" id="union_price" placeholder="请输入期望获益的价格"/>
         </div>
     </div>
-    <!--<div class="common-cpm-sub">-->
-        <!--<a class="cir sear-btn batch-pric layui-layer-close" href="javascript:;">确定</a>-->
-        <!--<a class="cir qx-btn batch-del gb-cpm-btn layui-layer-close" href="javascript:;">关闭</a>-->
-    <!--</div>-->
 </div>
 <script type="text/javascript">
-   $(".del-sqr").on("click",function(){
-       $(this).parent().remove();
-   })
-   $(".com-ope input").attr("index","1");
-   $(".com-ope input").on("click",function(){
-       var oinx= $(this).attr("index");
-       if(oinx==1){
-           $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
-           $(this).attr("index","2");
-       }
-       else{
-           $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
-           $(this).attr("index","1");
-       }
-   })
     var p_tel = '';
     var p_name = '';
     $(function(){
@@ -228,25 +205,20 @@
                 });
                 return false;
             }
-            //提交到服务器检查
+            //获得申请人模糊列表
             $.post('/sell/getPerson',{'person':person},function(data){
                 if(data.code==0){
-                    var html = '<tr>\
-                            <td><input type="checkbox"/></td>\
-                            <td>01</td>\
-                            <td class="list-mess-pic">\
-                            <a class="pic" href="javascript:;"><img src="'+data.img+'"></a>\
-                            </td>\
-                            <td class="number">'+number+'</td>\
-                            <td>'+data.name+'</td>\
-                            <td class="exp-ear">\
-                            <input type="hidden" name="number[]" value="'+number+'">\
-                            我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk"/>元\
-                            </td>\
-                            <td class="dele">\
-                            <a class="del-lis" href="javascript:;">删除</a>\
-                            </td>\
-                            </tr>';
+                    var html = '';
+                    //组装内容
+                    for(var i in data.list){
+                        html += '<tr>\
+                                <td class="com-name"><p>四川川投有限责任公司</p></td>\
+                                <td class="com-ope">\
+                                <input type="hidden" class="proposer_id" value="">\
+                                <input type="checkbox" index="1"/>\
+                                </td>\
+                                </tr>';
+                    }
                     $('#p_list').append(html);
                     //弹出申请人选择框
                     layer.open({
@@ -349,6 +321,7 @@
                 area:["640px","202"],
                 btn: ['确定','关闭'],
                 type: 1,
+                yes:'massSet',
                 title: false,
                 closeBtn:1,
                 shadeClose:false,
@@ -356,19 +329,52 @@
             });
         });
         //批量删除；
-        var oips=$(".list-mess tr td").find("input:checkbox");
         $(".batch-del").on("click",function(){
+            var oips=$("#list_body").find("input:checkbox");
+            if(oips.length==0){
+                layer.msg('请至少选择一个', {
+                    time: 1500
+                });
+            }
             oips.each(function(i){
                 if($(oips[i]).attr("checked")=="checked"){
                     $(oips[i]).parent().parent().remove();
                 }
             })
         });
+        //删除申请人标签
+        $(".del-sqr").on("click",function(){
+            $(this).parent().remove();
+        });
+        //申请人列表选中效果相关js
+        $("#p_list input").on("click",function(){
+            var oinx= $(this).attr("index");
+            if(oinx==1){
+                $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
+                $(this).attr("index","2");
+            }else{
+                $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
+                $(this).attr("index","1");
+            }
+        });
     });
     //发送申请人到后台获得商标数据
     function sendProp(){
-        //得到相关参数
-        var proposer = $('p');
+        //得到申请人
+        var choose = $("#p_list input[index=2]");
+        if(choose.length==0){
+            layer.msg('请选择具体的申请人', {
+                time: 1500
+            });
+            return false;
+        }
+        var proposer_id = $.trim(choose.closest('tr').find('.proposer_id').val());
+        if(!proposer_id){
+            layer.msg('参数异常,请刷新', {
+                time: 1500
+            });
+            return false;
+        }
         //是否设置通用价格
         var union_price = 0;
         if($('#is_union').attr('checked')){
@@ -376,15 +382,37 @@
         }
         union_price = union_price?union_price:'';
         //提交数据获得商标数据
-        $.post('/sell/getPersonTm',{},function(data){
+        $.post('/sell/getPersonTm',{'proposer_id':proposer_id},function(data){
             if(data.code==0){
                 //追加商标数据
-                    //加上价格
-
+                var html = '';
+                //组装内容
+                for(var i in data.list){
+                    html += '<tr>\
+                            <td><input type="checkbox"/></td>\
+                            <td>01</td>\
+                            <td class="list-mess-pic">\
+                            <a class="pic" href="javascript:;"><img src="'+data.img+'"></a>\
+                            </td>\
+                            <td class="number">'+number+'</td>\
+                            <td>'+data.name+'</td>\
+                            <td class="exp-ear">\
+                            <input type="hidden" name="number[]" value="'+number+'">\
+                            我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk" value="'+union_price+'"/>元\
+                            </td>\
+                            <td class="dele">\
+                            <a class="del-lis" href="javascript:;">删除</a>\
+                            </td>\
+                            </tr>';
+                }
+                $('#list_body').append(html);
                 //修改商标数量
-
+                $('#goods_num').text(data.list.length);
                 //添加当前申请人的提示框并清空申请人表单
-
+                $('.p_tip').text('申请人名');
+                $('#person').val('');
+                $('#p_tip').show();
+                //检测内容
                 check_table();
             }else{
                 layer.msg(data.msg, {
@@ -456,6 +484,29 @@
         }else{
             return false;
         }
+    }
+    //批量设置商标价格
+    function massSet(){
+        //价格
+        var price = $.trim($('#mass_price').val());
+        if(!price){
+            layer.msg('请填写价格', {
+                time: 1500
+            });
+            return false;
+        }
+        //设置模式
+        var choose = $('#mass_set').val();
+        var trs = '';
+        if(choose){//全部商标
+            trs = $('#list_body>tr');
+        }else{//选中商标
+            trs = $('#list_body input:checked').parents('tr');
+        }
+        //设置价格
+        trs.each(function(){
+            $(this).find('input[name*=price]').val(price);
+        });
     }
 </script>
 <? require(ViewDir.'/footer.html'); ?>

@@ -78,7 +78,11 @@ class SellAction extends AppAction{
 
     //得到申请人的商标数据
     public function getPersonTm(){
-
+        $proposer_id = $this->input('proposer_id','int');
+        if(!$proposer_id) return array('code'=>1,'msg'=>'申请人不能为空');
+        //得到申请人商标数据
+        $rst = $this->load('sell')->getPersonTm($proposer_id);
+        return array('code'=>0);
     }
 
     /**
