@@ -72,7 +72,7 @@
 
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.form.js"></script>
 <script type="text/javascript">
-var errMsg = "上传的附件文件不能超过2M！！！";
+	var errMsg = "上传的附件文件不能超过2M！！！";
 	var errFile = "可选择一条excel文件（仅支持后缀名为 .xls  .xlsx  .xlsm 文件）。文件最大不可超过 ( 10m ) ";
 	//检查文件类型
 	function checkfileType(fileInput){
@@ -135,47 +135,6 @@ var errMsg = "上传的附件文件不能超过2M！！！";
 	function downModel(){
 		window.location.href="/Static/1.0/saletemplate.xls";
 	}
-	
-	
-	$('#nextpt').click(function(){
-		//文件格式
-		var result = true;
-		var fileInput = $("#upfile").val();
-		if(!fileInput){
-			alert('请选择文件');
-			return false;
-		}
-		result = checkfileType(fileInput);
-		if(!result){
-			return false;
-		}
-		$('#loadForm').hide();
-		$('#loading').show();
-		content = $('#importForm').serialize();
-		$.ajax({
-			type: "post",
-			url: "/sell/importForm/",
-			data: content,
-			dataType: "json",
-			success: function(data){
-				if (data.code == 1){
-					$('#alldata').text(data.alldata);
-					$('#sucdata').text(data.sucdata);
-					$('#errdata').text(data.errdata);
-					filepath = data.filepath;
-					if(errdata == 0){
-						$('#errdata').hide();
-					}
-					$('#downError').attr('href',filepath);
-				}else{
-					$('.leading').html(data.msg);
-					$('#downError').hide();;
-				}
-				$('#loading').hide();
-				$('#loadok').show();
-			}
-		});
-	})
 	
 	//错误文档下载
 	$('#downError').click(function(){

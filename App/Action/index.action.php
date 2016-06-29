@@ -56,7 +56,10 @@ class IndexAction extends AppAction
 	//设置头像
 	public function setAvatar()
 	{
-	   
+	   $msg = array(
+            'code'  => 0,
+            'msg'   => '上传失败',
+            );
 	    $image = $this->input('path', 'string');
 	    $images = new Images("file");
 	    $res = $images->thumb(".".$image,false,1);
@@ -64,8 +67,10 @@ class IndexAction extends AppAction
 	    $saveinfo	= array('photo' => $res['big']);
 	    $isupdate	= $this->load('user')->setAvatar($userInfoId, $saveinfo);
 	    if($isupdate){
-		 $this->redirect('', '/index');
+		  $msg['code'] = 1;
+		  $msg['msg'] = $res['big'];
 	    }
+	    $this->returnAjax($msg);
 	}
 
 	/**

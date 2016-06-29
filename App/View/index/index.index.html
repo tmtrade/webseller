@@ -141,26 +141,29 @@
         <h3>设置头像</h3>
     </div>
     <div class="common-cpm-cent">
+	<div style="width:600px;float:left;">
        <form id='bzformupload' action='/index/ajaxUploadPic/' method='post' enctype='multipart/form-data'>
 	    <div class="bzform pics" id="bzform">
-		<input type="button" value="上传头像" id="bzpic" class="info-pic" onclick="bzfile.click();" >
+		<input type="button" value="上传头像" id="bzpic" class="info-pic" onclick="bzfile.click();" style="padding:8px;margin: 0px;">
 		<input type="hidden" name="size" value="500" style="display: none;"/>
 		<input type="file" id="bzfile" onchange="uplouadPic()" name="fileName" style="display: none;"/>
 	    </div>
 	</form>
-	<div style="float:left;"><img id="target"  src="<?=$photo?>" style="display:block"></div>
+	</div>
+	<div style="float:left;"><img id="target"  src="<?=$photo?>" style="max-width: 400px;max-height: 400px;display:block"></div>
 	<div style="width:48px;height:48px;margin:10px;overflow:hidden; float:left;display: none;" class="hideimg"><img  style="float:left;" id="preview" src="<?=$photo?>" width="48" heigt="48" ></div>
 	<div style="width:100px;height:100px;margin:10px;overflow:hidden; float:left;display: none;" class="hideimg"><img  style="float:left;" id="preview2" src="<?=$photo?>" width="100" heigt="100" ></div>
-	<form action="/index/setAvatar/" method="post" onsubmit="return checkCoords();">
+	<form action="/index/setAvatar/" method="post" onsubmit="return checkCoords();" id="avatarFrom">
 		<input type="hidden" id="x" name="x" />
 		<input type="hidden" id="y" name="y" />
 		<input type="hidden" id="w" name="w" />
 		<input type="hidden" id="h" name="h" />
 		<input type="hidden" name="path" value="<?=$photo?>" id="picPatch"/>
-		<input type="submit" value="裁剪保存" style="display: none;" class="hideimg"/>
+		<input type="button" onclick="avatarSubmit()" value="裁剪保存" style="padding:8px;margin-top: 30px;float: right;display: none;" class="hideimg"/>
 	</form>
     </div>
 </div>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.form.js"></script>
 <script type="text/javascript">
 
     $(function(){
@@ -274,10 +277,10 @@
 	});
     };
     
-  //批量设置价格
+  //头像上传弹窗
     $("#set_avatar").on("click",function(){
             layer.open({
-                area:["640px","202"],
+                area:["600px","202"],
                 type: 1,
                 title: false,
                 closeBtn:1,
@@ -286,7 +289,30 @@
 
             });
     })
-  
+  function avatarSubmit(){
+		$("#avatarFrom").ajaxSubmit({
+			dataType:  'json',
+			success: function(data) {
+				if (data.code == 1){
+					$("#set_avatar").attr("src",data.msg);
+					layer.closeAll();
+					layer.msg('头像上传成功', {
+					time: 2000 //2秒关闭（如果不配置，默认是3秒）
+				    });
+				    
+				}else{
+				    layer.msg(data.msg, {
+					time: 2000 //2秒关闭（如果不配置，默认是3秒）
+				    });
+				}
+			},
+			error:function(xhr){
+			    layer.msg('文件格式不正确或文件过大，请重新上传！', {
+					time: 2000 //2秒关闭（如果不配置，默认是3秒）
+				    });
+			}
+		});
+	}
     
       
       
