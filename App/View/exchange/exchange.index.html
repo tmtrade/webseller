@@ -53,7 +53,7 @@
                             <h6><?=$ad_config[$v['pages']]['name']?></h6>
                         </div>
                         <div class="int-score-lis-btm">
-                            <span>有效期:<?=date('Y-m-d',strtotime("$firstday +1 month"));?> 至 <?=date('Y-m-d',strtotime("$firstday +2 month"));?></span>
+                            <span>有效期:<?=date('Y-m-d',strtotime("$firstday +1 month"));?> 至 <?=date('Y-m-d',strtotime("$firstday +2 month -1 day"));?></span>
                             <p><?=$ad_config[$v['pages']]['note']?></p>
 			    <?if($counts>0){?>
 			    <a class="free-exc" data-pages="<?=$v['pages']?>">免费兑换</a>
@@ -112,8 +112,6 @@
     </div>
     <input type="hidden" name="pages" value="1" id="pages">
 </div>
-<script type="text/javascript" src="js/table-list.js"></script>
-<script type="text/javascript" src="js/layer/layer.js"></script>
 <script type="text/javascript">
     jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click",defaultIndex:0});
    $(".free-exc").on("click",function(){

@@ -39,9 +39,7 @@ class ExchangeModule extends AppModule
      * @param array $data
      */
     public function addExchange($data){
-	$sort = $this->getMaxSort($data['pages']);
 	$data['isUse'] = 3;
-	$data['sort'] = $sort+1;
 	$this->begin('exchange');
 	$res = $this->import('exchange')->create($data);
 	if($res){
@@ -55,17 +53,6 @@ class ExchangeModule extends AppModule
 	}
 	return $res1;
     }
-    
-    
-    /**
-     * 获取页面广告最大兑换排序值
-     * @param array $data
-     */
-    public function getMaxSort($pages){
-	$r['col']   = array('max(sort)as sort');
-	$r['eq'] = array('pages'=>$pages);
-        $res = $this->import('exchange')->find($r);
-	return $res['sort'];
-    }
+
 
 }
