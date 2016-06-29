@@ -204,6 +204,7 @@ abstract class AppAction extends Action
 		}
 		//得到当前url地址
 		$url = 'http://'.$_SERVER['HTTP_HOST'].'/'.$this->mod.'/'.$this->action;
+		$url = strtolower($url);//转换为小写
 		//得到监控触发的信息
 		$monitor = $this->load('messege')->getMonitor();
 		if($monitor){
