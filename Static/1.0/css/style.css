@@ -98,7 +98,7 @@
     background: url("../images/btn-bg.png") repeat-x;
     color: #ffffff;
     font-size: 16px;
-    font-family: "å¾®è½¯é›…é»‘";
+    font-family: "微软雅黑";
     margin: 10px auto 0px;
     border-radius: 5px;
 }
@@ -1426,6 +1426,251 @@ table.list-mess-main tr .pri-num input{
     color: #000000;
     margin-right: 2px;
 }
+
+
+/*添加手机绑定*/
+.tab-container {
+    margin-top: 10px;
+    color: #000;
+}
+.wrapper {
+    display: inline-block;
+    margin-top: 60px;
+    padding: 15px;
+    width: 100%;
+}
+.row{
+    overflow: hidden;
+}
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+}
+
+.panel {
+    border: none;
+    box-shadow: none;
+}
+
+.form-box {
+    padding: 15px 10px;
+    border-bottom: 1px solid #ddd;
+}
+.to_buy {
+    margin-top: -20px;
+    border-bottom: none;
+}
+.phone-form {
+    background: #fff;
+    padding: 50px 20px 50px 20px;
+    margin: 10px auto;
+    max-width: 350px;
+}
+
+.progressbar, .progressbar2 {
+    padding: 80px 50px 30px 10px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+.phone-form p {
+    padding: 10px 0 10px 0;
+    margin: 0;
+}
+.progressbar ul, .progressbar2 ul {
+    border-top: 3px solid #ccc;
+}
+.progressbar ul li, .progressbar2 ul li {
+    position: relative;
+    float: left;
+    padding-top: 30px;
+    text-align: center;
+    min-width: 100px;
+}
+.progressbar ul li.fail .dian, .progressbar2 ul li.fail .dian {
+    width: 10px !important;
+    height: 10px !important;
+    background: #eee;
+    border: 3px solid #d7d7d7;
+}
+.progressbar ul li .dian, .progressbar2 ul li .dian {
+    width: 16px;
+    height: 16px;
+    border-radius: 5px;
+    display: block;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    z-index: 10;
+    margin-left: -9px;
+}
+
+.progressbar ul li .xian, .progressbar2 ul li .xian {
+    position: absolute;
+    top: -3px;
+    left: 0;
+    height: 3px;
+    width: 100%;
+    display: block;
+    z-index: 5;
+}
+.progressbar ul li .text, .progressbar2 ul li .text {
+    text-align: center;
+}
+.progressbar ul li.succeed .text p, .progressbar2 ul li.succeed .text p {
+    color: #78CD51;
+}
+
+
+.progressbar ul li.succeed .dian, .progressbar2 ul li.succeed .dian {
+    background: #78CD51;
+}
+.phone-form font {
+    margin-top: 10px;
+    display: block;
+}
+.red {
+    color: #f00;
+}
+
+.phone-form p {
+    padding: 10px 0 10px 0;
+    margin: 0;
+}
+.col-xs-12 {
+    width: 100%;
+}
+@media (min-width: 768px){
+    .form-inline .form-control {
+        width: auto;
+    }
+}
+.form-inline .form-control {
+    width: 100%;
+}
+.form-inline .form-control {
+    display: inline-block;
+    width/***/: auto\9;
+}
+@media (min-width: 768px){
+    .form-inline .form-control {
+        display: inline-block;
+    }
+}
+.form-control {
+    color: #333;
+}
+.form-control {
+    border: 1px solid #e2e2e4;
+    box-shadow: none;
+    color: #c2c2c2;
+}
+.form-control {
+    display: block;
+    text-indent: 10px;
+    width: 100%;
+    height: 34px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.075);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.col-xs-6 {
+    width:45%;
+}
+.text-right {
+    text-align: right;
+}
+
+.btn-danger {
+    background-color: #ff6c60;
+    border-color: #ff6c60;
+    color: #FFFFFF;
+}
+
+.btn {
+    display: inline-block;
+    padding: 7px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+button, html input[type="button"], input[type="reset"], input[type="submit"] {
+    cursor: pointer;
+    -webkit-appearance: button;
+}
+p .btn {
+    vertical-align: baseline;
+}
+.btn {
+    min-width: 60px;
+}
+.btn-success {
+    background-color: #78CD51;
+    border-color: #78CD51;
+    color: #FFFFFF;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
