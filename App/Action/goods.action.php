@@ -56,9 +56,28 @@ class GoodsAction extends AppAction{
     //取消报价或删除报价
     public function cancelPrice(){
 	$number = $this->input('number','int',0);
-	$result = array('status'=>'2');
+	$type = $this->input('type','int',0);
+	$result = array('code'=>'2');
 	if($number<=0) $this->returnAjax($result);
-	$data =  $this->load('goods')->cancelPrice($number,$this->userinfo['id']);
+	
+	$date = date("Y-m-d");
+	$str_cancel_count = UID."_".$date.'cancel_count';
+	//判断每天取消个数
+	if($type==1){
+	    $cancel_count = $this->com('redis')->get($str_cancel_count);
+	    if($cancel_count>=20){
+		$this->returnAjax(array('code'=>'3'));
+	    }
+	}
+	
+	$data =  $this->load('goods')->cancelPrice($number,UID,$type);
+	if($data['code']==999 && $type==1){
+	    $date = date("Y-m-d");
+	    $cancel_count += 1;
+	    $this->com('redis')->set($str_cancel_count, $cancel_count, 86400);
+	    
+	    $this->load('total')->updatePassCount(UID,2);//减少用户商品个数
+	}
 	$this->returnAjax($data);//返回结果
     }
 

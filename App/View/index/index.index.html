@@ -26,7 +26,7 @@
                         <div class="head-mess fl">
                             <h3>您好，<?=$nickname?>！</h3>
                             <p class="name">账户名： <?=$userMobile?><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a></p>
-                            <p class="teg"><span class="hint-bg cir">我的蝉豆：56</span><a href="/exchange">用蝉豆兑换奖励</a></p>
+                            <p class="teg"><span class="hint-bg cir">我的蝉豆：<?=$userInfo['total']?></span><a href="/exchange">用蝉豆兑换奖励</a></p>
                         </div>
                     </div>
                     <div class="sell-comm-sub fr">
@@ -45,28 +45,32 @@
                 <h3 class="sell-tit">我的商品</h3>
                 <ul>
                     <li>
-                        <div class="sell-state1">
-
+                        <a href="/goods/index?status=1">
+			<div class="sell-state1">
                         </div>
-                        <p><b>审核中</b><span class="sell-infor cir">25</span></p>
+			</a>
+                        <p><b>出售中</b><span class="sell-infor cir"><?=$sellCount['one']?></span></p>
                     </li>
                     <li>
-                        <div class="sell-state2">
-
+                        <a href="/goods/index?status=2">
+			<div class="sell-state2">
                         </div>
-                        <p><b>审核中</b><span class="sell-infor ">25</span></p>
+			</a>
+                        <p><b>审核中</b><span class="sell-infor cir"><?=$sellCount['two']?></span></p>
                     </li>
                     <li>
-                        <div class="sell-state3">
-
+                        <a href="/goods/index?status=3">
+			<div class="sell-state3">
                         </div>
-                        <p><b>审核中</b></p>
+			</a>
+                        <p><b>未通过</b><span class="sell-infor cir"><?=$sellCount['three']?></span></p>
                     </li>
                     <li>
-                        <div class="sell-state4">
-
+                        <a href="/goods/index?status=4">
+			<div class="sell-state4">
                         </div>
-                        <p><b>审核中</b></p>
+			</a>
+                        <p><b>已失效</b><span class="sell-infor cir"><?=$sellCount['four']?></span></p>
                     </li>
                 </ul>
             </div>

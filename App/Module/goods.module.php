@@ -48,7 +48,7 @@ class GoodsModule extends AppModule
         $r = array();
         $r['page']  = $page;
         $r['limit'] = $limit;
-        $r['col']   = array('number','name','(select memo from t_sale_history where saleId=t_user_sale_history.saleId) as memo','date');
+        $r['col']   = array('number','name','memo','date');
         $r['eq']['uid'] = $params['uid'];
 	$r['raw'] = ' 1 ';
         
@@ -105,7 +105,13 @@ class GoodsModule extends AppModule
     }
     
         
-   //取消报价
+    /**
+     * 取消报价
+     * @param type $number
+     * @param type $uid
+     * @param type $type 1:出售中的取消  2：审核中的取消
+     * @return type
+     */
     public function cancelPrice($number,$uid){
 	$param = array(
 		'uid'           => $uid,//联系人信息ID

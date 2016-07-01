@@ -24,7 +24,6 @@ class IndexAction extends AppAction
 		if(!$this->isLogin){
 		      $this->redirect('', '/login/index/');
 		}
-		
 		//获取我的商品个各状态个数
 		$sell = $this->com('redisHtml')->get('sell_count');
 		if(empty($sell)){

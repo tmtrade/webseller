@@ -39,7 +39,7 @@ class TotalModule extends AppModule
     
 
     /**
-     * 获取用户的蝉豆数
+     *  变更用户的蝉豆数
      * @param type $uid
      * @param type $type 1:增加 2：减少
      * @param type $amount
@@ -75,7 +75,28 @@ class TotalModule extends AppModule
 	}
 	return $res;
     }
-        
+    
+    
+    /**
+     *  变更用户的商品审核通过数
+     * @param type $uid
+     * @param type $type 1:增加 2：减少
+     * @return $res
+     */
+    public function updatePassCount($uid,$type){
+	$r['eq'] = array('uid'=>$uid);
+	if($type==1){
+	    $record = array(
+		'pass_count'    => array('pass_count', 1),
+	    );
+	}else{
+	    $record = array(
+		'pass_count'    => array('pass_count', -1),
+	    );
+	}
+	$res	 = $this->import("total")->modify($record, $r);
+	return $res;
+    }
     
     /**
      * 添加广告兑换信息
