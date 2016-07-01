@@ -159,7 +159,7 @@ $define = array(
 	),
 	'3' => array(
 	    "name" => "列表页右侧广告",
-	    "count" => "10",
+	    "count" => "20",
 	    "amount" => "20",
 	    "note" => "列表页右侧广告",
 	),

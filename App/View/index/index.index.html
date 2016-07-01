@@ -25,7 +25,19 @@
                         </i>
                         <div class="head-mess fl">
                             <h3>您好，<?=$nickname?>！</h3>
-                            <p class="name">账户名： <?=$userMobile?><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a><a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a></p>
+                            <p class="name">账户名： <?=$userMobile?>
+				<?if($userInfo['isEmail']==1){?>
+				    <a href="" class=""><img src="<?=StaticDir?>1.0/images/email.png"></a>
+				<?}else{?>
+				    <a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a>
+				<?}?>
+				
+				<?if($userInfo['isMobile']==1){?>
+				    <a href="" class=""><img src="<?=StaticDir?>1.0/images/phone.png"></a>
+				<?}else{?>
+				    <a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a>
+				<?}?>
+			    </p>
                             <p class="teg"><span class="hint-bg cir">我的蝉豆：<?=$userInfo['total']?></span><a href="/exchange">用蝉豆兑换奖励</a></p>
                         </div>
                     </div>

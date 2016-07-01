@@ -41,13 +41,22 @@ class ExchangeAction extends AppAction{
 	$params['note']	    = $this->input('note', 'string', '');
 	$params['phone']    = $this->input('phone', 'string', '');
 	$params['qq']	    = $this->input('qq', 'int', '');
-	$params['uid']	    = $this->userinfo['id'];
+	$params['uid']	    = UID;
 	
 	$code = 2;
-	if(empty($params['pages'])) $this->returnAjax(array("code"=>$code,"msg"=>"数据错误"));
-	
 	$adConfig = C('ADCONFIG');
 	$params['amount'] = $adConfig[$params['pages']]['amount'];
+	
+	if(empty($params['pages'])) $this->returnAjax(array("code"=>$code,"msg"=>"数据错误"));
+	
+	$page_count =  $this->load('exchange')->getPagesCount(UID,$params['pages']);
+	if($page_count>=2){
+	    $this->returnAjax(array("code"=>$code,"msg"=>"每类广告每月最多只能申请2个"));
+	}
+	
+	if($this->userinfo['total']<$params['amount']){
+	    $this->returnAjax(array("code"=>$code,"msg"=>"需要{$params['amount']}个蝉豆，您的蝉豆不够哦！"));
+	}
 	$res =  $this->load('exchange')->addExchange($params);
 	if($res){
 	    $code = 1;

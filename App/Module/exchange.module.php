@@ -22,7 +22,6 @@ class ExchangeModule extends AppModule
         $r = array();
 	$r['limit'] = 5;
 	$r['col']   = array('pages,count(1)as counts');
-	$r['order'] = array('pages'=>'asc');
 	
 	$r['raw'] = ' date>= '.date("Y-m-01");
 	$r['in'] = array('isUse' => array(1,3));
@@ -33,6 +32,17 @@ class ExchangeModule extends AppModule
         return $res;
     }
 
+    //计算用户当月兑换个数
+    public function getPagesCount($uid, $pages)
+    {
+        $r = array();
+	$r['eq']['uid'] = $uid;
+	$r['eq']['pages'] = $pages;
+	$r['raw'] = ' date>= '.date("Y-m-01");
+	$r['in'] = array('isUse' => array(1,3));
+        $res = $this->import('exchange')->count($r);
+        return $res;
+    }
     
     /**
      * 添加广告兑换信息
