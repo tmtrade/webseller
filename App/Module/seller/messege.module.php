@@ -193,17 +193,16 @@ class MessegeModule extends AppModule
      * @return array
      */
     public function getMsg($p,$size){
-        //得到总数
-        $r = array();
-        $r['eq']['uid'] = UID;
-        $total = $this->import('messege_user')->count($r);
         //得到分页的用户-信息表中的数据
         $r = array();
-        $r['index'] = array($p,$size);
         $r['eq']['uid'] = UID;
+        $r['page']  = $p;
+        $r['limit'] = $size;
         $r['col'] = array('mid','status');
         $r['order'] = array('status'=>'asc','date'=>'desc');
-        $rst = $this->import('messege_user')->find($r);
+        $result = $this->import('messege_user')->findAll($r);
+        $rst = $result['rows'];
+        $total = $result['total'];
         if($rst){
             //得到对应的用户详情信息
             $mids = arrayColumn($rst,'mid');
@@ -220,7 +219,7 @@ class MessegeModule extends AppModule
             }
             return array('total'=>$total,'data'=>$data);
         }else{
-            return array('total'=>0);
+            return array('total'=>$total);
         }
     }
 

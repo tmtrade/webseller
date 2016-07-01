@@ -7,7 +7,7 @@
  */
 class MessegeAction extends AppAction{
 
-    public $size = 20;
+    public $size = 7;
 
     /**
      * 站内信列表
@@ -15,7 +15,7 @@ class MessegeAction extends AppAction{
     public function index(){
         $page 	= $this->input('page', 'int', '1');
         //得到站内信分页数据信息
-        $rst = $this->load('messege')->getMsg($page-1,$this->size);
+        $rst = $this->load('messege')->getMsg($page,$this->size);
         $count = $rst['total'];
         $data = $rst['data'];
         //得到分页工具条
