@@ -124,7 +124,7 @@ class SellModule extends AppModule{
                 'source'        => 4,
             );
             $rst = $this->importBi('sale')->addSale($tmp);
-            if($rst['code']!=999){
+            if(!in_array($rst['code'],array(999,109,112))){ //成功(联系人已存在也认为是成功)
                 return array('code'=>2,'msg'=>$rst['msg']);
             }
         }
