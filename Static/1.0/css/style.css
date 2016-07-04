@@ -760,7 +760,7 @@ table.list-mess-main tr .pri-num input{
     min-width: 260px;
     min-height: 152px;
     background: url("../images/no-data.png") no-repeat center top;
-    position: fixed;
+    position:absolute;
     left:60%;
     top: 50%;
     margin-left: -130px;
