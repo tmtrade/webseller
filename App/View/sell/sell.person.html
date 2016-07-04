@@ -45,10 +45,13 @@
             <p class="brand-data fr">当前共有 <span id="goods_num">0</span> 条商品数据 </p>
         </div>
         <!--未添加商标-->
-        <div id="no-data" class="no-data">
-            <h4>您还未添加商标</h4>
-            <label>请先添加商标到出售列表</label>
+        <div class="data-list-mess">
+            <div id="no-data" class="no-data">
+                <h4>您还未添加商标</h4>
+                <label>请先添加商标到出售列表</label>
+            </div>
         </div>
+
         <div class="amend-cont-all">
             <? if($userInfo['mobile']): ?>
             <!--联系人信息完整可以修改-->
@@ -147,17 +150,22 @@
     </div>
     <div class="cpm-pel-cent">
         <label class="tit">根据您搜索的关键字,有以下<span class="p_num"></span> 条申请人符合您的搜索要求，请选择</label>
-        <table class="cir blk">
+        <table class="pel-cent-th">
             <thead>
             <tr>
-                <td class="com-name">公司名称</td>
+                <td class="com-name" style="width:39.9%;">公司名称</td>
                 <td class="com-name">公司地址</td>
-                <td class="com-ope">操作</td>
+                <td class="com-ope" style="width:16.9%;">操作</td>
             </tr>
             </thead>
-            <tbody class="list-mess" id="p_list">
-            </tbody>
         </table>
+        <div class="pel-cent">
+            <table class="cir">
+                <tbody class="list-mess" id="p_list">
+                </tbody>
+            </table>
+        </div>
+
         <div class="cpm-pel-price cir">
             <input class="chi" type="checkbox" id="is_union"/>
             <label>我想把本次出售的商标获益统一设置为</label>

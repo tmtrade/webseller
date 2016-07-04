@@ -6,13 +6,16 @@
  * To change this template use File | Settings | File Templates.
  */
 //右边导航高度适应屏幕
-var wH=$(document).height();
+var wH=$(document).height()+$(document).scrollTop();
 var tph=$(".yzc-sell-head").outerHeight(true)
 var slfH=wH-tph;
 $(document).ready(function(){
     $("#rg-nav").css({"height":slfH});
 })
-$(window).resize(function(){
+$(document,window).on("resize",function(){
+    $("#rg-nav").css({"height":slfH});
+})
+$(window).scroll(function(){
     $("#rg-nav").css({"height":slfH});
 })
 //右边导航下拉框

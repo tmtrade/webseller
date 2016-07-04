@@ -347,6 +347,7 @@ body,html{
     color: #ffffff;
     padding-top: 17px;
     padding-bottom: 11px;
+    cursor: pointer;
 }
 .sell-rg-nav ul li a:hover{
     color: #ffffff;
@@ -421,9 +422,8 @@ body,html{
 }
 .logo-bg{
     width: 100%;
-    height: 700px;
-    background: url("../images/logo-bg.jpg") no-repeat center top;
-    background-size: 100% 100%;
+    height: 498px;
+    background: #c9bdac url("../images/logo-bg.jpg") no-repeat center top;
 }
 .logo-main{
     width: 362px;

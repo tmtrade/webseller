@@ -67,9 +67,42 @@
     color: #c75756;
     text-decoration: underline;
 }
+
+
 .sell-per-head i img{
     max-width: 108px;
     max-height: 108px;
+}
+.sell-per-head-pic{
+    display: inline-block;
+    width: 108px;
+    height: 108px;
+    position: relative;
+    float: left;
+
+}
+.sell-per-head-pic span{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    display:inline-block;
+    width: 108px;
+    text-align: center;
+    height: 108px;
+    line-height: 108px;
+    background-color:#000;
+    opacity: 0.6;
+    filter:opacity(.6);
+    -webkit-filter:opacity(.6);
+    cursor: pointer;
+    display:none;
+}
+.sell-per-head-pic span a{
+    text-decoration: underline;
+    color: #ffffff;
+}
+.sell-per-head-pic:hover .tx{
+    display: block;
 }
 .sell-comm-sub{
     width: 280px;
@@ -473,6 +506,7 @@ div.desi a{
 }
 
 /* æœ¬ä¾‹å­css */
+.data-list-mess{width: 97%;margin:24px auto 0px;min-height: 500px;}
 .comm-list-mess{width: 97%;margin:24px auto 0px;min-height: 500px;}
 .comm-list-mess .slideTxtBox{ width:100%; text-align:left;  }
 .comm-list-mess .slideTxtBox .hd{ width:410px;   line-height:33px; position:relative;}
@@ -778,7 +812,7 @@ table.list-mess-main tr .pri-num input{
     text-decoration: underline;
 }
 .brand-list tr td{
-    width:18.75% !important;
+    /*width:18.75% !important;*/
 }
 .brand-list tr td.pri-num{
     width: 25% !important;
@@ -930,6 +964,20 @@ table.list-mess-main tr .pri-num input{
 .cpm-pel-cent{
     padding-top:15px;
 }
+.pel-cent-th{
+    border-top:1px  solid #e8e8e8;
+    border-right:1px  solid #e8e8e8;
+}
+.cpm-pel-cent .pel-cent{
+    height:400px;
+    overflow-y:scroll;
+    border:1px  solid #e8e8e8;
+    border-top:none;
+    border-left:none;
+}
+.cpm-pel-cent .pel-cent table{
+    margin-top: 0px;
+}
 
 .cpm-pel-cent label.tit{
     color:#999999;
@@ -941,16 +989,27 @@ table.list-mess-main tr .pri-num input{
     border-bottom: 1px solid #e8e8e8;
     height: 34px;
 }
+.cpm-pel-cent table tr td{
+    border-left:1px  solid #e8e8e8;
+}
 .cpm-pel-cent table tr td.com-name{
-    text-indent: 15px;
-    width: 80%;
+    /*text-indent: 15px;*/
+    padding-left: 10px;
+    width:40%;
+}
+cpm-pel-cent table tr td.com-name p{
+    width:100%;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .cpm-pel-cent table tr td.com-ope{
     text-align: center;
     vertical-align: middle;
     width: 14%;
-    border-left:1px  solid #e8e8e8;
+
 }
 .cpm-pel-cent table tr td.com-ope input{
     width: 16px;
