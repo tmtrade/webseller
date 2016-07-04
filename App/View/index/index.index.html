@@ -14,10 +14,10 @@
     <div class="sell-lf-main">
         <div class="top-bg">
             <div class="sell-per-top">
-                <div class="sell-news hint-bg cir">
+<!--                <div class="sell-news hint-bg cir">
                     <p>欢迎你加入一只蝉出售者平台，点我可以了解到使用说明，另外还送你10个蚕豆噢！</p>
                     <i class="sell-ico ts-ico-bg5 skewer"></i>
-                </div>
+                </div>-->
                 <div class="sell-per-mess">
                     <div class="sell-per-head fl">
                         <div class="sell-per-head-pic" id="set_avatar">
@@ -316,7 +316,7 @@
 			dataType:  'json',
 			success: function(data) {
 				if (data.code == 1){
-					$("#set_avatar").attr("src",data.msg);
+					$("#set_avatar img").attr("src",data.msg);
 					layer.closeAll();
 					layer.msg('头像上传成功', {
 					time: 2000 //2秒关闭（如果不配置，默认是3秒）
