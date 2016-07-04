@@ -10,5 +10,6 @@ $config  = array(
 	'7' => array('url' => 'http://api.chofn.net/', 'token' => '*'),	//专利系统服务接口
 	'8' => array('url' => 'http://api.chofn.net/', 'token' => '*'),	//超凡网服务接口
 	'9' => array('url' => 'http://tr2.chofn.net/', 'token' => '*'),	//超凡网服务接口
+	'10' => array('url' => 'http://searchapi.chofn.net/', 'token' => '855e192add3028e1d312289206ff35d3'),
 	);
 ?>
