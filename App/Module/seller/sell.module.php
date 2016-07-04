@@ -179,22 +179,27 @@ class SellModule extends AppModule{
 
     /**
      * 根据申请人id得到对应的商标数据
-     * @param $proposerId
+     * @param $proposerId int
      * @return array
      */
     public function getPersonTm($proposerId){
         $data = array(
-            'proposerId' => 631884,
+            'proposerId' => $proposerId,
         );
         $rst = $this->importBi('trademark')->proposerTmsearch($data);
         //处理数据
         $res = array();
+        $res['total'] = $rst['total'];
         foreach($rst['rows'] as $item){
+            if(count($res)>=50){ //只取50条数据
+                break;
+            }
             if($item['status']=='已注册' && !($this->existContact($item['code'],UID))){ //检测商标状态及该商标是否在出售中
                 $temp = array();
                 $temp['number'] = $item['code'];
                 $temp['name'] = $item['name'];
-                $temp['imgUrl'] = $item['imageUrl'];
+//                $temp['imgUrl'] = $item['imageUrl'];//暂时不可用
+                $temp['imgUrl'] = $this->getImg($item['code']);
                 $res[] = $temp;
             }
         }

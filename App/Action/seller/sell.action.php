@@ -90,7 +90,9 @@ class SellAction extends AppAction{
         //得到申请人商标数据
         $rst = $this->load('sell')->getPersonTm($proposer_id);
         if($rst){
-            $this->returnAjax(array('code'=>0,'list'=>$rst));
+            $count = $rst['total'];
+            unset($rst['total']);
+            $this->returnAjax(array('code'=>0,'list'=>$rst,'count'=>$count));
         }else{
             $this->returnAjax(array('code'=>1,'msg'=>'无有效商标信息'));
         }

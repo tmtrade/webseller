@@ -150,11 +150,15 @@
         });
         //添加商标事件
         $('#addSell').click(function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
             var number = $.trim($('#add_number').val());
             if(number==''){
                 layer.msg('请输入商标号', {
                     time: 1500
                 });
+                layer.closeAll('loading');
                 return false;
             }
             //检查列表中是否有此商标
@@ -172,10 +176,12 @@
                 layer.msg('该商标已在列表中', {
                     time: 1500
                 });
+                layer.closeAll('loading');
                 return false;
             }
             //提交到服务器检查
             $.post('/sell/getTminfo',{'number':number},function(data){
+                layer.closeAll('loading');
                 if(data.code==0){
                     var html = '<tr>\
                             <td class="list-mess-pic">\
@@ -206,11 +212,15 @@
         });
         //提交商品事件
         $('#add_goods').click(function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
             var num = $('#goods_num').text();
             if(num>20){
                 layer.msg('单次提交商标数不能大于20', {
                     time: 1500
                 });
+                layer.closeAll('loading');
                 return false;
             }
             //检查商标价格
@@ -219,6 +229,7 @@
                 layer.msg('请至少添加一条商标信息', {
                     time: 1500
                 });
+                layer.closeAll('loading');
                 return false;
             }
             var tmp = '';
@@ -234,6 +245,7 @@
                 layer.msg('请填写底价', {
                     time: 1500
                 });
+                layer.closeAll('loading');
                 return false;
             }
             //序列化表单数据
@@ -244,6 +256,7 @@
                 layer.msg('手机号不正确', {
                     time: 1500
                 });
+                layer.closeAll('loading');
                 return false;
             }
             var name = $('.amend-cont-all .contact_name').text();
@@ -251,23 +264,27 @@
                 layer.msg('请输入联系人', {
                     time: 1500
                 });
+                layer.closeAll('loading');
                 return false;
             }
             if(!isName(name)){
                 layer.msg('联系人为30个字符内的中文或英文', {
                     time: 1500
                 });
+                layer.closeAll('loading');
                 return false;
             }
             //组装联系人信息
             data += ('&mobile='+mobile+'&name='+name);
             //提交数据
             $.post('/sell/addNumber',data,function(dd){
+                layer.closeAll('loading');
                 if(dd.code==0){
                     layer.msg('提交成功', {
                         time: 1500
+                    },function(){
+                        location.reload();
                     });
-                    location.reload();
                 }else if(dd.code==1){
                     layer.msg(dd.msg, {
                         time: 1500
@@ -275,7 +292,7 @@
                 }else{
                     //var msg = '出现错误, 请稍后再试';//线上
                     var msg = dd.msg;
-                    layer.msg(dd.msg, {
+                    layer.msg(msg, {
                         time: 1500
                     });
                 }
