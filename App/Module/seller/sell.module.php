@@ -27,7 +27,7 @@ class SellModule extends AppModule{
     );
 
     /**
-     * 检测用户是否具有提交了改商标信息
+     * 检测用户是否具有提交了该商标信息
      * @param $number
      * @param $userId
      * @param string $phone
@@ -158,15 +158,47 @@ class SellModule extends AppModule{
     /**
      * 得到模糊查询的申请人列表
      * @param $person
-     * @return mixed
+     * @return array
      */
     public function getPerson($person){
-        $rst = $this->importBi('search')->aa($person);
-        return $rst;
+        $data = array(
+            'keyword' => $person,
+        );
+        $rst = $this->importBi('proposer')->search($data);
+        //处理数据
+        $res = array();
+        foreach($rst['rows'] as $item){
+            $temp = array();
+            $temp['address'] = $item['address'];
+            $temp['name'] = $item['name'];
+            $temp['id'] = $item['id'];
+            $res[] = $temp;
+        }
+        return $res;
     }
 
-    public function getPersonTm(){
-
+    /**
+     * 根据申请人id得到对应的商标数据
+     * @param $proposerId
+     * @return array
+     */
+    public function getPersonTm($proposerId){
+        $data = array(
+            'proposerId' => 631884,
+        );
+        $rst = $this->importBi('trademark')->proposerTmsearch($data);
+        //处理数据
+        $res = array();
+        foreach($rst['rows'] as $item){
+            if($item['status']=='已注册' && !($this->existContact($item['code'],UID))){ //检测商标状态及该商标是否在出售中
+                $temp = array();
+                $temp['number'] = $item['code'];
+                $temp['name'] = $item['name'];
+                $temp['imgUrl'] = $item['imageUrl'];
+                $res[] = $temp;
+            }
+        }
+        return $res;
     }
 
 }

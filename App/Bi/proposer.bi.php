@@ -46,7 +46,6 @@ class ProposerBi extends Bi
 			'num'         => isset($num)         ? $num         : 20,
 			'page'        => isset($page)        ? $page        : 1,
 			);
-		
 		$data = $this->invoke("proposer/search/", $param);
 		return array(
 			'total' => isset($data['total']) ? $data['total'] : 0,

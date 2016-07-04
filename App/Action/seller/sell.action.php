@@ -73,16 +73,27 @@ class SellAction extends AppAction{
         $person = $this->input('person','string','');
         if(!$person) return array('code'=>1,'msg'=>'申请人不能为空');
         $rst = $this->load('sell')->getPerson($person);
-        return array('code'=>0);
+        if($rst){
+            $this->returnAjax(array('code'=>0,'list'=>$rst));
+        }else{
+            $this->returnAjax(array('code'=>1,'msg'=>'无相关申请人信息'));
+        }
     }
 
-    //得到申请人的商标数据
+    /**
+     * 得到申请人相关信息
+     * @return array
+     */
     public function getPersonTm(){
         $proposer_id = $this->input('proposer_id','int');
         if(!$proposer_id) return array('code'=>1,'msg'=>'申请人不能为空');
         //得到申请人商标数据
         $rst = $this->load('sell')->getPersonTm($proposer_id);
-        return array('code'=>0);
+        if($rst){
+            $this->returnAjax(array('code'=>0,'list'=>$rst));
+        }else{
+            $this->returnAjax(array('code'=>1,'msg'=>'无有效商标信息'));
+        }
     }
 
     /**
@@ -121,7 +132,6 @@ class SellAction extends AppAction{
         }
         $this->returnAjax($msg);
     }
-
 
     //把文件里面的数据读取出来，然后组成一个数组返回  
     public function PHPExcelToArr($filePath){
