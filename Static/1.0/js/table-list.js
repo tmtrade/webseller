@@ -6,17 +6,29 @@
  * To change this template use File | Settings | File Templates.
  */
 //右边导航高度适应屏幕
-var wH=$(document).height()+$(document).scrollTop();
+var stop;
+var wH=$(window).height();
 var tph=$(".yzc-sell-head").outerHeight(true)
 var slfH=wH-tph;
-$(document).ready(function(){
+var cgh;
+$(window).ready(function(){
     $("#rg-nav").css({"height":slfH});
 })
-$(document,window).on("resize",function(){
+$(window).on("resize",function(){
     $("#rg-nav").css({"height":slfH});
 })
 $(window).scroll(function(){
-    $("#rg-nav").css({"height":slfH});
+    stop=$(document).scrollTop();
+    cgh=tph-stop;
+    $("#rg-nav").css({"top":cgh,"height":wH-cgh});
+    if($(document).scrollTop()>=tph){
+        $("#rg-nav").css({"height":wH});
+        $("#rg-nav").css({"top":0});
+    }
+    else{
+        $("#rg-nav").css({"height":wH-cgh});
+        $("#rg-nav").css({"top":cgh});
+    }
 })
 //右边导航下拉框
 $(".sell-pull-list").find("a.pull-btn").toggle(function(){

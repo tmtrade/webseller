@@ -875,8 +875,9 @@ table.list-mess-main tr .pri-num input{
 .amend-cont-all{
     margin-left: 24px;
     margin-top: 25px;
-    position: absolute;
-    bottom:-12%;
+    position: relative;
+    bottom:5%;
+    margin-bottom: 10%;
 }
 .amend-cont-all .sub-btn{
     float: left;

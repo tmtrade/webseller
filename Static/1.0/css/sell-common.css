@@ -283,9 +283,12 @@ body,html{
     width:200px;
     height: 100%;
     background: #363636;
-    position:absolute;
+    /*position:absolute;*/
+    /*left: 0;*/
+    /*top:0px;*/
+    position: fixed;
     left: 0;
-    top:0px;
+    top: 77px;
 }
 .sell-rg-nav ul{
     width: 100%;
@@ -408,6 +411,7 @@ body,html{
 .yzc-sell-main{
     position: relative;
     padding-left: 200px;
+    /*padding-bottom: 15%;*/
 }
 .sell-lf-main{
     overflow: hidden;
