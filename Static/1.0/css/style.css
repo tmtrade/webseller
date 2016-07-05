@@ -1367,11 +1367,14 @@ cpm-pel-cent table tr td.com-name p{
     border-top: 1px solid #ffe9ab;
     overflow: hidden;
 
+
 }
 .int-score-lis ul li .int-score-lis-btm span{
     display: block;
     margin-top: 5px;
-    padding-left: 3px;
+    /*padding-left: 3px;*/
+    font-size: 12px;
+    text-align: center;
 }
 .int-score-lis ul li .int-score-lis-btm p{
     display: block;
