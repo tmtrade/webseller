@@ -311,9 +311,11 @@
 }
 .sell-my-comm ul, .sell-earn-mess ul {
     min-width: 848px;
+    min-width/***/:648px\9;
 }
 .sell-data-main,.my-earn-show{
     min-width: 448px;
+    min-width/***/:365px\9;
 }
 @media screen and (max-width:1921px){
     .sell-per-top,.sell-per-mdl,.sell-per-btm{

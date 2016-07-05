@@ -442,6 +442,9 @@ body,html{
     padding-right: 25px;
     display: none;
 }
+#con_lg_2{
+    padding-bottom:45px;
+}
 .logo-cont a.sub-btn{
     margin-left:68px;
 }
