@@ -75,7 +75,7 @@
 			<? foreach ($list as $k => $v) {?>
                           <tr id="re-<?=$v['number']?>">
                               <td class="list-mess-pic">
-                                  <a class="pic" <?if(!empty($v['tid'])){?> href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>" onerror="this.src='/Static/images/img1.png'" width="90" height="60"></a>
+                                  <a class="pic" <?if(!empty($v['tid'])){?> href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>"  width="90" height="60"></a>
                               </td>
                               <td><?=$v['name']?></td>
                               <td><?=date("Y-m-d H:i",$v['date'])?></td>
@@ -177,6 +177,12 @@ $(".srue").live("click",function(){
     cgval=$(".cg-pir").val();
     var number = $(this).data("number");
     var price = $(".n-"+number).val();
+    if(price<=0 || isNaN(price)){
+	layer.msg('请填写正确的金额', {
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    });
+	return false;
+    }
     $(this).parent().parent().prev("td").html('<span>'+cgval+'</span>');
     $(this).html('修改价格');
     $(this).addClass("revise");

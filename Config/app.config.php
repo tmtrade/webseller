@@ -9,6 +9,7 @@ define('SEC', 180);//验证码有效时间
 //define('SITE_URL', 'http://t.chofn.net/');
 //define('TRADE_URL', 'http://tr.chofn.net/');
 //define('GUANJIA_URL', 'http://s.chofn.net/');
+define('TRADE_URL', 'http://tr2.chofn.net/');
 
 //出售者平台
 define('SELLER_URL', 'http://seller.chofn.net/');

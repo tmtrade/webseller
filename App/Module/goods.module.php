@@ -26,7 +26,7 @@ class GoodsModule extends AppModule
         $r = array();
         $r['page']  = $page;
         $r['limit'] = $limit;
-        $r['col']   = array('tid','class','number','name','(select price from t_sale_contact where saleId=t_sale.id and uid='.$params["uid"].') as price','date');
+        $r['col']   = array('tid','class','number','name','(select price from t_sale_contact where saleId=t_sale.id and uid='.$params["uid"].') as price','(select date from t_sale_contact where saleId=t_sale.id and uid='.$params["uid"].') as date');
         $r['raw'] = ' 1 ';
         
         if ( !empty($params['name']) ){

@@ -22,7 +22,7 @@
                     <div class="sell-per-head fl">
                         <div class="sell-per-head-pic" id="set_avatar">
                             <i class="fl">
-                                <img src="<?=$photo?>"  onerror="this.src='/Static/images/img1.png'" >
+                                <img src="<?=$photo?>"  onerror="this.src='/Static/images/avatar.jpg'" >
                             </i>
                             <span class="tx">
                                 <a >更换头像</a>
@@ -33,15 +33,15 @@
                             <h3>您好，<?=$nickname?>！</h3>
                             <p class="name">账户名： <?=$userMobile?>
 				<?if($userInfo['isEmail']==1){?>
-				    <a href="" class=""><img src="<?=StaticDir?>1.0/images/email.png"></a>
+				    <a title="点击前往验证"><img src="<?=StaticDir?>1.0/images/email.png"></a>
 				<?}else{?>
-				    <a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a>
+				    <a title="点击前往验证"><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a>
 				<?}?>
 				
 				<?if($userInfo['isMobile']==1){?>
-				    <a href="" class=""><img src="<?=StaticDir?>1.0/images/phone.png"></a>
+				    <a title="点击前往验证"><img src="<?=StaticDir?>1.0/images/phone.png"></a>
 				<?}else{?>
-				    <a href="" class=""><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a>
+				    <a title="点击前往验证"><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a>
 				<?}?>
 			    </p>
                             <p class="teg"><span class="hint-bg cir">我的蝉豆：<?=$userInfo['total']?></span><a href="/exchange">用蝉豆兑换奖励</a></p>

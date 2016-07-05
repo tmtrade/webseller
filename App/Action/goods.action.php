@@ -26,7 +26,6 @@ class GoodsAction extends AppAction{
 	}else{
 	    $res = $this->load('goods')->usedList($params, $page, $size);
 	}
-        
         $count = $res['total'];
         $data = $res['rows'];
         //得到分页工具条
