@@ -235,7 +235,7 @@
             var tmp = '';
             var flag = true;
             prices.each(function(i){
-                tmp = $.trim($(this).val());
+                tmp = Number($.trim($(this).val()));
                 if(!tmp){
                     flag = false;
                     return false;

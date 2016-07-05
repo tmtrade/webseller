@@ -20,6 +20,10 @@ class LoginAction extends AppAction
 	*/
 	public function index()
 	{
+		if($this->isLogin){
+			$this->redirect('', '/');
+			exit;
+		}
 		$this->display();
 	}
 	/**
