@@ -349,7 +349,7 @@
             var tmp = '';
             var flag = true;
             prices.each(function(i){
-                tmp = Number($.trim($(this).val()));
+                tmp = parseInt($.trim($(this).val()));
                 if(!tmp){
                     flag = false;
                     return false;
@@ -427,7 +427,7 @@
                 type: 1,
                 yes:function(){
                     //价格
-                    var price = Number($.trim($('#mass_price').val()));
+                    var price = parseInt($.trim($('#mass_price').val()));
                     if(!price){
                         layer.msg('请填写价格', {
                             time: 1500
