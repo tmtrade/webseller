@@ -45,7 +45,7 @@ class SellAction extends AppAction{
         $info   = $this->load('sell')->getTmInfo($number);
         if ( empty($info) ) $this->returnAjax(array('code'=>3,'msg'=>'找不到对应商标，请查证重新输入'));
         //不能出售的商标
-        $status = array('已无效','冻结中');
+        $status = array('商标已无效','冻结中');
         foreach ($status as $s) {
             if( in_array($s, $info['second']) ){
                 $this->returnAjax(array('code'=>4,'msg'=>'该商标状态不太适合出售呢'));
