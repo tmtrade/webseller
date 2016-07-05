@@ -28,6 +28,10 @@ class SellAction extends AppAction{
     public function addNumber(){
         $params = $_POST;
         $rst = $this->load('sell')->addSell($params,20);
+        //保存用户的姓名
+        if($params['name'] && $this->userInfo['name'] != $params['name']){
+            $this->load('user')->saveInfo(UID, array('name'=>$params['name']));
+        }
         $this->returnAjax($rst);
     }
 
@@ -104,6 +108,10 @@ class SellAction extends AppAction{
     public function addPerson(){
         $params = $_POST;
         $rst = $this->load('sell')->addSell($params,50);
+        //保存用户的姓名
+        if($params['name'] && $this->userInfo['name'] != $params['name']){
+            $this->load('user')->saveInfo(UID, array('name'=>$params['name']));
+        }
         $this->returnAjax($rst);
     }
 
