@@ -17,7 +17,7 @@ class UploadModule extends AppModule
     /**
      * 允许上传文件的类型(扩张名)
      */
-    public $type      = 'jpeg|jpg|gif|png|txt|doc|docx|ppt|pptx|xlsx|xls|rar|zip|pdf|bmp';
+    public $type      = 'jpeg|jpg|gif|txt|doc|docx|ppt|pptx|xlsx|xls|rar|zip|pdf|bmp';
 
     /**
      * 上传文件的最大字节数(默认10M)
@@ -40,7 +40,7 @@ class UploadModule extends AppModule
 	 */
     public function upload($name, $type='all',$maxSize=10000000)
     {
-        if ($type == 'img') $this->type = 'jpeg|jpg|gif|png|bmp';
+        if ($type == 'img') $this->type = 'jpeg|jpg|gif|bmp';
     	$filename    = $_FILES[$name]['name'];
         $up          = $this->com('upload');
         $up->maxSize = $maxSize;

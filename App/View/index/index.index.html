@@ -295,11 +295,15 @@
 			jcrop_api = this;
 		    });
 		}else{
-		    alert(data.msg);
+		    layer.msg(data.msg, {
+                            time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                        });
 		}
 	    },
 	    error:function(xhr){
-		alert('图片格式不正确或图片过大，请重新上传！');
+		layer.msg('图片格式不正确或图片过大，请重新上传！', {
+                            time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                        });
 	    }
 	});
     };
