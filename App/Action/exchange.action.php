@@ -32,6 +32,7 @@ class ExchangeAction extends AppAction{
         $this->set("pageBar",$pageBar);
         $this->set("list",$data);
 	$this->set("s",$params);
+	$this->set("t",$this->input('t','int',0));
         $this->display();
     }
     

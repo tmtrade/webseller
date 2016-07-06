@@ -114,7 +114,16 @@
     <input type="hidden" name="pages" value="1" id="pages">
 </div>
 <script type="text/javascript">
-    jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click",defaultIndex:0});
+    var t ="<?=$t?>";
+    var defaultindex = 0;
+    if(t>0){
+	defaultindex = 1;
+    }
+    jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click",defaultIndex:defaultindex});
+    
+    $(".mj-pages a").each(function(){
+	$(this).attr("href",$(this).attr("href")+"&t=1");
+    });
     var money = "<?=$userInfo['total']?>";
    $(".free-exc").on("click",function(){
        $("#pages").val($(this).data("pages"));
