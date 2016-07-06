@@ -516,7 +516,7 @@ div.desi a{
 .comm-list-mess .slideTxtBox .hd ul li{ float:left; padding:0 22px; cursor:pointer;border-right:1px solid #e8e8e8; border-radius: 3px;  border-top:1px solid #e8e8e8;}
 .comm-list-mess .slideTxtBox .hd ul li.on{ height:33px;background:url("../images/sta-bg.png") repeat-x; border:none;border-radius:5px 5px 0px 0px;color: #ffffff;transition:all 0.6s;}
 .comm-list-mess .slideTxtBox .bd{width: 100% !important;}
-/*.comm-list-mess .slideTxtBox .bd ul{ padding:15px;  zoom:1;  }*/
+.comm-list-mess .slideTxtBox .blk{border-bottom: none;}
 .comm-list-mess .slideTxtBox .bd ul{ padding:10px;  zoom:1;  }
 .comm-list-mess .slideTxtBox .bd li{ height:24px; line-height:24px;   }
 .comm-list-mess .slideTxtBox .bd li .date{ float:right; color:#999;  }
@@ -545,6 +545,7 @@ div.desi a{
 .comm-list-mess .list-mess{
     width:99% !important;
 }
+.comm-list-mess .slideTxtBox .bd .list-mess{width:100% !important;}
 .list-mess .list-name{
     display: block;
     min-width: 130px;
