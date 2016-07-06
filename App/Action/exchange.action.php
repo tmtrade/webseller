@@ -8,7 +8,7 @@
  */
 class ExchangeAction extends AppAction{
 
-    public $size = 20;
+    public $size = 15;
 
     /**
      * 得到收益列表数据

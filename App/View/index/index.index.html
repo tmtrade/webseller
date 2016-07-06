@@ -33,15 +33,15 @@
                             <h3>您好，<?=$nickname?>！</h3>
                             <p class="name">账户名： <?=$userMobile?>
 				<?if($userInfo['isEmail']==1){?>
-				    <a title="点击前往验证"><img src="<?=StaticDir?>1.0/images/email.png"></a>
+				    <a ><img src="<?=StaticDir?>1.0/images/email.png"></a>
 				<?}else{?>
-				    <a title="点击前往验证"><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a>
+				    <a target="_blank" href="<?=MY_URL?>user/changeEmail/" title="点击前往验证"><img src="<?=StaticDir?>1.0/images/sell-mess.png"></a>
 				<?}?>
 				
 				<?if($userInfo['isMobile']==1){?>
-				    <a title="点击前往验证"><img src="<?=StaticDir?>1.0/images/phone.png"></a>
+				    <a ><img src="<?=StaticDir?>1.0/images/phone.png"></a>
 				<?}else{?>
-				    <a title="点击前往验证"><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a>
+				    <a target="_blank" href="<?=MY_URL?>user/changePhone/" title="点击前往验证"><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a>
 				<?}?>
 			    </p>
                             <p class="teg"><span class="hint-bg cir">我的蝉豆：<?=$userInfo['total']?></span><a href="/exchange">用蝉豆兑换奖励</a></p>
