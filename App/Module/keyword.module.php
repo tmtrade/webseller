@@ -26,7 +26,7 @@ class KeywordModule extends AppModule
      */
     public function getKeywordRanking()
     {
-	$t = time()-604800;//获取最近一周的数据
+	$t = time()-2592000;//获取最近一月的数据
         $r['eq']    = array('type'=>1);
 	$r['raw'] = ' date>='.$t;
         $r['col']   = array('keyword','count(1) as c');

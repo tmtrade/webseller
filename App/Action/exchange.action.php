@@ -26,8 +26,8 @@ class ExchangeAction extends AppAction{
         $pageBar 	= empty($data) ? '' : getPageBarNew($pager);
 	
 	//获取广告兑换剩余数
-	$adCountList = $this->load('exchange')->getAdCount();
-	$this->set("adCountList",$adCountList);
+	$CountList = $this->load('exchange')->getAdCount();
+	$this->set("CountList",$CountList);
 	$this->set('ad_config',C('ADCONFIG'));
         $this->set("pageBar",$pageBar);
         $this->set("list",$data);

@@ -36,28 +36,29 @@
             <p class="int-score-time-tit">每月1号开放申请，至每月月末截止。本月申请的资源，将于下月的10号统一上线 |  如需商务合作，请联系QQ：8812637</p>
             <div class="int-score-lis f-hidden">
                 <ul class="f-hidden">
-		    <? foreach ($adCountList as $k => $v) {
-			$counts = $ad_config[$v['pages']]['count']-$v['counts'];
-			 $firstday=date('Y-m-10');
+		    <? foreach ($ad_config as $k => $v) {
+			$key = $k-1;
+			$counts = $v['count']-$CountList[$key]['counts'];
+			$firstday=date('Y-m-10');
 		    ?>
                     <li>
                         <div class="int-score-lis-top f-hidden">
                           <span>
-			      <img src="<?=StaticDir?>1.0/images/<?=$ad_config[$v['pages']]['pic']?>">
+			      <img src="<?=StaticDir?>1.0/images/<?=$v['pic']?>">
 				<?if($counts<=0){?>
 				    <i class="not-exch">兑完</i>
 				<?}else{?>
 				    <i class="alr-exch"><?=$counts?> 件</i>
 				<?}?>
                           </span>
-                            <h6><?=$ad_config[$v['pages']]['name']?></h6>
+                            <h6><?=$v['name']?></h6>
                         </div>
-                        <p class="int-score-add-cd"><img src="<?=StaticDir?>1.0/images/cd-ico.png">需<?=$ad_config[$v['pages']]['amount']?>蝉豆</p>
+                        <p class="int-score-add-cd"><img src="<?=StaticDir?>1.0/images/cd-ico.png">需<?=$v['amount']?>蝉豆</p>
                         <div class="int-score-lis-btm">
                             <span>有效期:<?=date('Y-m-d',strtotime("$firstday +1 month"));?>至<?=date('Y-m-d',strtotime("$firstday +2 month -1 day"));?></span>
-                            <p><?=$ad_config[$v['pages']]['note']?></p>
+                            <p><?=$v['note']?></p>
 			    <?if($counts>0){?>
-			    <a class="free-exc" data-pages="<?=$v['pages']?>" data-amount="<?=$ad_config[$v['pages']]['amount']?>">免费兑换</a>
+			    <a class="free-exc" data-pages="<?=$k?>" data-amount="<?=$v['amount']?>">免费兑换</a>
 			    <?}?>
                             
                         </div>

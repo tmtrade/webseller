@@ -166,6 +166,20 @@ $define = array(
 	    "pic" => "exp-pic2.png",
 	    "note" => "用户在列表页选商品，一眼就可以看到右侧的广告噢",
 	),
+	'4' => array(
+	    "name" => "商标美化",
+	    "count" => "50",
+	    "amount" => "10",
+	    "pic" => "exp-pic3.png",
+	    "note" => "用户在列表页选商品，一眼就可以看到右侧的广告噢",
+	),
+	'5' => array(
+	    "name" => "专题制作",
+	    "count" => "2",
+	    "amount" => "50",
+	    "pic" => "exp-pic4.png",
+	    "note" => "用户在列表页选商品，一眼就可以看到右侧的广告噢",
+	),
     ),
     //来源渠道
     'SOURCE' => array(

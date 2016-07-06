@@ -45,7 +45,7 @@ class ExcelModule extends AppModule
 		$allRow = $currentSheet->getHighestRow();  
 		
 		$sbArr = array();
-		if($allRow-2 > 100){
+		if($allRow-1 > 100){
 			$sbArr['statue'] = 1;	
 		}else{
 			//循环读取每个单元格的内容。注意行从1开始，列从A开始  
@@ -129,7 +129,7 @@ class ExcelModule extends AppModule
 		$PHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
 		//字体颜色
 		$PHPExcel->getActiveSheet()->getStyle('A1')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
-		$PHPExcel->getActiveSheet()->setCellValue('A1', " 超凡-商标导入信息");
+		$PHPExcel->getActiveSheet()->setCellValue('A1', "     超凡-商标导入信息");
 		$PHPExcel->getActiveSheet()->getStyle('B1')->getAlignment()->setHorizontal(
 			PHPExcel_Style_Alignment::HORIZONTAL_RIGHT
 		);
@@ -162,9 +162,9 @@ class ExcelModule extends AppModule
 		$numNError = count($saleError);
 		$numNotContact = count($saleNotContact);
 		
-		$error = $numExists+$numNotHas+$numNError+$numNotContact-$numSucess;
+		$error = $numNotHas+$numNError+$numNotContact-$numSucess;
 		$PHPExcel->getActiveSheet()->setCellValue('A2',
-			"导入成功".$numSucess."条   共导入失败".$error."条  缺少联系人、缺少联系电话".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在商标".$numExists."条  不存在的商标".$numNotHas."条"
+			"        导入成功".$numSucess."条   共导入失败".$error."条  缺少联系人、缺少联系电话".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在商标".$numExists."条  不存在的商标".$numNotHas."条"
 		);
 		//----------------全局---------------------------------------------
 		//设置单元格宽度
@@ -231,7 +231,7 @@ class ExcelModule extends AppModule
 		if($saleError){
 			$num = $num+1;
 			$PHPExcel->getActiveSheet()->mergeCells('A'.$num.':G'.$num);
-			$PHPExcel->getActiveSheet()->setCellValue('A'.$num, "数据存入失败的商标，可重新上传");
+			$PHPExcel->getActiveSheet()->setCellValue('A'.$num, "数据存入失败的商标,请检查该商标是否已提交过联系人！");
 			foreach($saleError as $k => $item ){
 				$num ++;
 				$PHPExcel->getActiveSheet()->setCellValue('A'.$num, $item['number']);
