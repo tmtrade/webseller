@@ -161,20 +161,26 @@ class SellModule extends AppModule{
      * @return array
      */
     public function getPerson($person){
-        $data = array(
-            'keyword' => $person,
-        );
-        $rst = $this->importBi('proposer')->search($data);
-        //处理数据
-        $res = array();
-        foreach($rst['rows'] as $item){
-            $temp = array();
-            $temp['address'] = $item['address'];
-            $temp['name'] = $item['name'];
-            $temp['id'] = $item['id'];
-            $res[] = $temp;
+        //redis缓存接口查询数据
+        $rst = $this->com('redis')->get('tm_person'.$person);
+        if(!$rst){
+            $data = array(
+                'keyword' => $person,
+            );
+            $rst = $this->importBi('proposer')->search($data);
+            //处理数据
+            $res = array();
+            foreach($rst['rows'] as $item){
+                $temp = array();
+                $temp['address'] = $item['address'];
+                $temp['name'] = $item['name'];
+                $temp['id'] = $item['id'];
+                $res[] = $temp;
+            }
+            $this->com('redis')->set('tm_person'.$person,$res,7200);
+            return $res;
         }
-        return $res;
+        return $rst;
     }
 
     /**
@@ -183,10 +189,15 @@ class SellModule extends AppModule{
      * @return array
      */
     public function getPersonTm($proposerId){
-        $data = array(
-            'proposerId' => $proposerId,
-        );
-        $rst = $this->importBi('trademark')->proposerTmsearch($data);
+        //redis缓存接口查询数据
+        $rst = $this->com('redis')->get('tmproposer'.$proposerId);
+        if(!$rst){
+            $data = array(
+                'proposerId' => $proposerId,
+            );
+            $rst = $this->importBi('trademark')->proposerTmsearch($data);
+            $this->com('redis')->set('tmproposer'.$proposerId,$rst,7200);
+        }
         //处理数据
         $res = array();
         $res['total'] = $rst['total'];

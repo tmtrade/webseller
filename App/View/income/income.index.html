@@ -14,14 +14,15 @@
                 <label>商品类型</label>
                 <div class="all-tp pull-list">
                     <a class="all-tp-btn">
-                        <font id="type_income"><?=$type_income?></font>
-                        <i class="fa fa-chevron-down"></i>
+                        <font id="type_income">商标</font>
+                        <!--<font id="type_income"><?=$type_income?></font>-->
+                        <!--<i class="fa fa-chevron-down"></i>-->
                     </a>
-                    <ul class="all-tp-list">
+                    <!--<ul class="all-tp-list">
                         <li>全部</li>
                         <li>商标</li>
                         <li>专利</li>
-                    </ul>
+                    </ul>-->
                 </div>
             </div>
             <div class="desi chi-time">
@@ -63,7 +64,7 @@
                         </td>
                         <td><?=$item['type']?'专利':'商标'?>商品</td>
                         <td><span class="list-name" title="<?=$item['name']?>"><?=mbSub($item['name'],0,10)?></span></td>
-                        <td><?=date('Y-m-d H:i:s',$item['date'])?></td>
+                        <td><?=date('Y-m-d',$item['date'])?></td>
                         <td class="pri-num">
                               <span><?=$item['price']?></span>
                         </td>
@@ -104,7 +105,8 @@
                 return false;
             }else{
                 var page = href.split('=');
-                page = page[1];
+                var index_page = page.length-1;
+                page = page[index_page];
                 buildUrl(page);
                 return false;
             }
@@ -130,14 +132,14 @@
         }
         //类型
         var type = $.trim($('#type_income').text());
-        if(type=='商标'){
-            type = 0;
+        if(type=='全部'){
+            type = 2;
             myurl.set('type',type);
         }else if(type=='专利'){
             type = 1;
             myurl.set('type',type);
         }else{
-            type = 2;
+            type = 0;
             myurl.remove('type');
         }
         //页码大小
