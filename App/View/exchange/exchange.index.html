@@ -110,7 +110,7 @@
         <label>手机号</label>
         <input class="cont-tel cir blk" type="text" id="phone" placeholder="预设这丫的手机号">
         <label>QQ号</label>
-        <input class="cont-qq cir blk" type="text" id="qq" placeholder="为便于客服与您联系获取需要包装的素材，请填写QQ">
+        <input class="cont-qq cir blk" type="text" id="qq" placeholder="为便于客服与您联系获取需要包装的素材，请填写QQ" value="<?=$info['qq']?>">
     </div>
     <input type="hidden" name="pages" value="1" id="pages">
 </div>
@@ -162,6 +162,12 @@
 			});
 			return;
 		    }
+		    if(note.length>200){
+		       layer.msg('备注信息请限制在200个文字以内！', {
+                        time: 1000 //2秒关闭（如果不配置，默认是3秒）
+			});
+			return;
+		   }
 		    $.ajax({
 			type : 'post',
 			url  : '/exchange/addEx/',

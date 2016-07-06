@@ -160,7 +160,7 @@ $define = array(
 	    "note" => "通用下拉菜单的分类处广告，用户在一只蝉的所有页面都有能看到噢",
 	),
 	'3' => array(
-	    "name" => "列表页右侧广告",
+	    "name" => "列表页右侧浮动广告",
 	    "count" => "20",
 	    "amount" => "20",
 	    "pic" => "exp-pic2.png",
@@ -174,7 +174,7 @@ $define = array(
 	    "note" => "用户在列表页选商品，一眼就可以看到右侧的广告噢",
 	),
 	'5' => array(
-	    "name" => "专题制作",
+	    "name" => "专题聚合页",
 	    "count" => "2",
 	    "amount" => "50",
 	    "pic" => "exp-pic4.png",

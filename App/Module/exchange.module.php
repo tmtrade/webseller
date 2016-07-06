@@ -31,7 +31,16 @@ class ExchangeModule extends AppModule
         $res = $this->import('exchange')->find($r);
         return $res;
     }
-
+    
+    //获取用户最近一次兑换的信息
+    public function getOngInfo($uid)
+    {
+        $r = array();
+	$r['eq']['uid'] = $uid;
+	$r['order'] = array('date'=>'desc');
+        $res = $this->import('exchange')->find($r);
+        return $res;
+    }
     //计算用户当月兑换个数
     public function getPagesCount($uid, $pages)
     {
