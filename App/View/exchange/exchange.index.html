@@ -52,12 +52,12 @@
                           </span>
                             <h6><?=$ad_config[$v['pages']]['name']?></h6>
                         </div>
-                        <p class="int-score-add-cd"><img src="<?=StaticDir?>1.0/images/cd-ico.png">需50蝉豆</p>
+                        <p class="int-score-add-cd"><img src="<?=StaticDir?>1.0/images/cd-ico.png">需<?=$ad_config[$v['pages']]['amount']?>蝉豆</p>
                         <div class="int-score-lis-btm">
                             <span>有效期:<?=date('Y-m-d',strtotime("$firstday +1 month"));?>至<?=date('Y-m-d',strtotime("$firstday +2 month -1 day"));?></span>
                             <p><?=$ad_config[$v['pages']]['note']?></p>
 			    <?if($counts>0){?>
-			    <a class="free-exc" data-pages="<?=$v['pages']?>">免费兑换</a>
+			    <a class="free-exc" data-pages="<?=$v['pages']?>" data-amount="<?=$ad_config[$v['pages']]['amount']?>">免费兑换</a>
 			    <?}?>
                             
                         </div>
@@ -115,8 +115,16 @@
 </div>
 <script type="text/javascript">
     jQuery(".slideTxtBox").slide({effect:"fold",trigger:"click",defaultIndex:0});
+    var money = "<?=$userInfo['total']?>";
    $(".free-exc").on("click",function(){
        $("#pages").val($(this).data("pages"));
+       var amount = $(this).data("amount");
+       if(money<amount){
+	   layer.msg('对不起，你的蝉豆不足！', {
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+			});
+	    return;
+       }
        layer.open({
            area:["640px","300px"],
            btn: ['确定','关闭'],
