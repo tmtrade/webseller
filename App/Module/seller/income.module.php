@@ -31,7 +31,7 @@ class IncomeModule extends AppModule{
         $r = array();
         //处理时间问题
         if($start && !$end){
-            $end = time();
+            $end = strtotime(date('Y-m-d'));//当天零时
         }
         if($end && !$start){
             $start = 1000;
@@ -79,7 +79,7 @@ class IncomeModule extends AppModule{
         $r = array();
         //处理时间问题
         if($start && !$end){
-            $end = time();
+            $end = strtotime(date('Y-m-d'));//当天零时
         }
         if($end && !$start){
             $start = 1000;
