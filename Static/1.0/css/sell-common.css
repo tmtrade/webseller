@@ -540,6 +540,7 @@ body,html{
     text-align: center;
     margin-top: 15px;
     text-indent: 20px;
+    cursor: pointer;
 }
 
 .reg-now a{

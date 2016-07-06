@@ -124,3 +124,89 @@ $("input").focus(function(){
     $(this).css({"borderColor":"#d5d5d5"})
 })
 
+//placeholder兼容IE//placeholder兼容IE
+//判断浏览器是否支持placeholder属性
+supportPlaceholder = 'placeholder' in document.createElement('input'),
+    placeholder = function (input) {
+        var text = input.attr('placeholder'),
+            defaultValue = input.defaultValue;
+        var _val = $.trim(input.val());
+        if (!defaultValue && _val == '') {
+            input.val(text).addClass("phcolor");
+        }
+        input.focus(function () {
+            if (input.val() == text) {
+                $(this).val("");
+            }
+        });
+        input.blur(function () {
+            if (input.val() == "") {
+                $(this).val(text).addClass("phcolor");
+            }
+        });
+//输入的字符不为灰色
+        input.keydown(function () {
+            $(this).removeClass("phcolor");
+        });
+    };
+//当浏览器不支持placeholder属性时，调用placeholder函数
+if (!supportPlaceholder) {
+    $('input').each(function () {
+        text = $(this).attr("placeholder");
+        if ($(this).attr("type") == "text") {
+            placeholder($(this));
+        }
+    });
+}
+
+//placeholder兼容IE
+function isPlaceholder() {
+    var input = document.createElement('input');
+    return 'placeholder' in input;
+}
+
+if (!isPlaceholder()) {//不支持placeholder 用jquery来完成
+    $(document).ready(function () {
+        if (!isPlaceholder()) {
+            $("input").not("input[type='password']").each(//把input绑定事件 排除password框
+                function () {
+                    if ($(this).val() == "" && $(this).attr("placeholder") != "") {
+                        $(this).addClass("phcolor").val($(this).attr("placeholder"));
+                        $(this).focus(function () {
+                            if ($(this).val() == $(this).attr("placeholder")) {
+                                $(this).val("");
+                            }
+                        });
+                        $(this).blur(function () {
+                            if ($(this).val() == "") {
+                                $(this).val($(this).attr("placeholder")).addClass("phcolor");
+                            }
+                        });
+                        $(this).keydown(function () {
+                            $(this).removeClass("phcolor");
+                        });
+                    }
+                });
+            //对password框的特殊处理1.创建一个text框 2获取焦点和失去焦点的时候切换
+            var pwdField = $("input[type=password]");
+            var pwdVal = pwdField.attr('placeholder');
+            pwdField.after('<input id="pwdPlaceholder" class="cir" type="text" class="phcolor" value=' + pwdVal + ' autocomplete="off" />');
+            var pwdPlaceholder = $('#pwdPlaceholder');
+            pwdPlaceholder.show();
+            pwdField.hide();
+
+            pwdPlaceholder.focus(function () {
+                pwdPlaceholder.hide();
+                pwdField.show();
+                pwdField.focus();
+            });
+
+            pwdField.blur(function () {
+                if (pwdField.val() == '') {
+                    pwdPlaceholder.show();
+                    pwdField.hide();
+                }
+            });
+        }
+    });
+}

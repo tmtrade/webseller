@@ -312,10 +312,12 @@
 .sell-my-comm ul, .sell-earn-mess ul {
     min-width: 848px;
     min-width/***/:648px\9;
+    width/***/:648px\9;
 }
 .sell-data-main,.my-earn-show{
     min-width: 448px;
     min-width/***/:365px\9;
+    width/***/:365px\9;
 }
 @media screen and (max-width:1921px){
     .sell-per-top,.sell-per-mdl,.sell-per-btm{
@@ -509,7 +511,7 @@ div.desi a{
 
 /* æœ¬ä¾‹å­css */
 .data-list-mess{width: 97%;margin:24px auto 0px;min-height: 500px;}
-.comm-list-mess{width: 97%;margin:24px auto 0px;min-height: 500px;}
+.comm-list-mess{width: 97%;margin:24px auto 0px;min-height: 500px;position: relative;}
 .comm-list-mess .slideTxtBox{ width:100%; text-align:left;  }
 .comm-list-mess .slideTxtBox .hd{ width:410px;   line-height:33px; position:relative;}
 .comm-list-mess .slideTxtBox .hd ul{ float:left; position:absolute; left:0px; top:-1px; height:32px;  border-left:1px solid #e8e8e8;border-radius:5px 5px 0px 0px;  }
@@ -764,7 +766,7 @@ table.list-mess-main tr .pri-num input{
     min-height: 152px;
     background: url("../images/no-data.png") no-repeat center top;
     position:absolute;
-    left:60%;
+    left:50%;
     top: 50%;
     margin-left: -130px;
     margin-top: -76px;
