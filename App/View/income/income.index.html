@@ -27,9 +27,9 @@
             </div>
             <div class="desi chi-time">
                 <label>选择时间</label>
-                <span class="cir blk" id="start_income" onclick="laydate()"><?=$start?></span>
+                <span class="cir blk" id="start_income" onclick="laydate({max: laydate.now()})"><?=$start?></span>
                 <i>-</i>
-                <span class="cir blk" id="end_income" onclick="laydate()"><?=$end?></span>
+                <span class="cir blk" id="end_income" onclick="laydate({max: laydate.now()})"><?=$end?></span>
                 <a class="cir sear-btn" id="search_income">立刻搜索</a>
             </div>
         </div>
