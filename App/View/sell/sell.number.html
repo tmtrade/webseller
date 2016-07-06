@@ -161,6 +161,15 @@
                 layer.closeAll('loading');
                 return false;
             }
+            //商标数不能大于20
+            var num = $('#goods_num').text();
+            if(num>=20){
+                layer.msg('单次提交商标数不能大于20', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
             //检查列表中是否有此商标
             var numbers = $('#list_body .number');
             var tmp = '';
@@ -216,7 +225,7 @@
                 shade: [0.1,'#fff'] //0.1透明度的白色背景
             });
             var num = $('#goods_num').text();
-            if(num>20){
+            if(num>=20){
                 layer.msg('单次提交商标数不能大于20', {
                     time: 1500
                 });

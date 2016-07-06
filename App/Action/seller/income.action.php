@@ -13,7 +13,7 @@ class IncomeAction extends AppAction{
      */
     public function index(){
         //获得参数
-        $type = $this->input('type','int',2);
+        $type = $this->input('type','int',0);
         $start0 = $this->input('start','string','');
         $end0 = $this->input('end','string','');
         $page = $this->input('page','int',1);

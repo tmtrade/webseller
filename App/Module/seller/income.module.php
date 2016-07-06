@@ -43,9 +43,7 @@ class IncomeModule extends AppModule{
                 $end = $start ^ $end;
                 $start = $start ^ $end;
             }
-            $start += 28799;//加8小时 时区问题
-            $end += 115199;//加32小时 定位到当天24点
-            var_dump(date('Y-m-d H:i:s',$start),date('Y-m-d H:i:s',$end));
+            $end += 86399;//定位到当天24点
             $r['scope'] = array('date'=>array($start,$end));
         }
         //其他条件
@@ -92,8 +90,7 @@ class IncomeModule extends AppModule{
                 $end = $start ^ $end;
                 $start = $start ^ $end;
             }
-            $start += 28799;//加8小时 时区问题
-            $end += 115199;//加32小时 定位到当天24点
+            $end += 86399;//定位到当天24点
             $r['scope'] = array('date'=>array($start,$end));
         }
         //其他条件
