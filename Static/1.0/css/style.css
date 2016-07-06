@@ -895,9 +895,9 @@ table.list-mess-main tr .pri-num input{
 }
 
 .inc-ts{
+    display: inline-block !important;
     color: #ff6600;
     padding:6px 12px;
-    display: inline-block;
     margin-left:25px;
     margin-top: 10px;
     display: none;
@@ -1293,6 +1293,7 @@ cpm-pel-cent table tr td.com-name p{
     width: 100%;
     background: #e37979;
     margin-top: 12px;
+    padding-bottom: 30px;
 }
 .int-score-time-tit{
     height: 40px;
