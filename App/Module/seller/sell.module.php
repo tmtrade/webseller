@@ -177,7 +177,9 @@ class SellModule extends AppModule{
                 $temp['id'] = $item['id'];
                 $res[] = $temp;
             }
-            $this->com('redis')->set('tm_person'.$person,$res,7200);
+            if($res){
+                $this->com('redis')->set('tm_person'.$person,$res,7200);
+            }
             return $res;
         }
         return $rst;
@@ -196,7 +198,9 @@ class SellModule extends AppModule{
                 'proposerId' => $proposerId,
             );
             $rst = $this->importBi('trademark')->proposerTmsearch($data);
-            $this->com('redis')->set('tmproposer'.$proposerId,$rst,7200);
+            if($rst['rows']){
+                $this->com('redis')->set('tmproposer'.$proposerId,$rst,7200);
+            }
         }
         //处理数据
         $res = array();
