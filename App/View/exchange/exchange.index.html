@@ -178,7 +178,8 @@
 				layer.msg('兑换成功！请等待管理员审核！', {
 				    time: 2000 //2秒关闭（如果不配置，默认是3秒）
 				}, function(){
-				    layer.close(index); //如果设定了yes回调，需进行手工关闭
+				    //layer.close(index); //如果设定了yes回调，需进行手工关闭
+				    window.location.reload();
 				});
 			    }else{
 				layer.msg(data.msg, {
