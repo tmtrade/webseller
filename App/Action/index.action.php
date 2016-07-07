@@ -24,6 +24,11 @@ class IndexAction extends AppAction
 		if(!$this->isLogin){
 		      $this->redirect('', '/login/index/');
 		}
+		//检测是否第一次登陆
+		if(!$this->userinfo['isfirst']){
+			$res = $this->load('login')->isFirst();//修改为非首次登陆
+			if($res) $this->checkMsg();
+		}
 		//获取我的商品个各状态个数
 		$sell = $this->com('redisHtml')->get('sell_count');
 		if(empty($sell)){
@@ -48,7 +53,6 @@ class IndexAction extends AppAction
 		    $this->com('redisHtml')->set('keyword_count', $keyword_list, 600);
 		}
 		$this->set('keyword_list',$keyword_list);
-
 		$this->display();
 	}
 	

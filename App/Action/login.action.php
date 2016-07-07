@@ -49,11 +49,7 @@ class LoginAction extends AppAction
 		}
 		$msg		= $this->load('login')->getError($code);
 		$result     = array('code' => $code,'msg' => $msg);
-		//检测是否发送站内信
-		if($code==1){ //登陆成功
-			$res = $this->load('login')->isFirst();//是否首次登陆
-			if($res) $this->checkMsg();
-		}
+
 		$this->setJson($result,$callback);
 	}
 	/**
@@ -257,11 +253,7 @@ class LoginAction extends AppAction
 		$mcode   	= $this->input('mcode', 'string', '');//验证码
 		$cateId  	= isCheck($account);
 		$array		= $this->load('verify')->getVerify($account,$password,$cateId);
-		//检测是否发送站内信
-		if($array['code']==1){ //登陆成功
-			$res = $this->load('login')->isFirst();//是否首次登陆
-			if($res) $this->checkMsg();
-		}
+
 		$this->setJson($array,$callback);
 	}
 	/**
