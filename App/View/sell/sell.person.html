@@ -36,7 +36,7 @@
                         <table class="list-mess-main">
                             <thead>
                             <tr class="tbl-tit">
-                                <th>全选</th> <th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>期望获得收益    </th><th>操作</th>
+                                <th><label><input type="checkbox" id="chooseall">全选</label></th> <th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>期望获得收益    </th><th>操作</th>
                             </tr>
                             </thead>
                             <tbody class="list-mess" id="list_body"></tbody>
@@ -232,7 +232,7 @@
                             </td>\
                             </tr>';
                     }
-                    $('#p_list').append(html);
+                    $('#p_list').text('').append(html);
                     //弹出申请人选择框
                     layer.open({
                         area:["640px","202"],
@@ -271,39 +271,49 @@
                                     if(data.count>max_tmnum){
                                         is_all=false;
                                     }
-                                    //追加商标数据
-                                    var html = '';
-                                    //组装内容
-                                    for(var i in data.list){
-                                        html += '<tr>\
-                                            <td><input type="checkbox"/></td>\
-                                            <td>'+(i-0+1)+'</td>\
-                                            <td class="list-mess-pic">\
-                                            <a class="pic" href="javascript:;"><img src="'+(data.list)[i]['imgUrl']+'" onerror="this.src=\'/Static/1.0/images/img1.png\'"></a>\
-                                            </td>\
-                                            <td class="number">'+(data.list)[i]['number']+'</td>\
-                                            <td>'+(data.list)[i]['name']+'</td>\
-                                            <td class="exp-ear">\
-                                            <input type="hidden" name="number[]" value="'+(data.list)[i]['number']+'">\
-                                            我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk" value="'+union_price+'"/>元\
-                                            </td>\
-                                            <td class="dele">\
-                                            <a class="del-lis" href="javascript:;">删除</a>\
-                                            </td>\
-                                            </tr>';
-                                    }
-                                    $('#list_body').append(html);
                                     //修改商标数量
                                     $('#goods_num').text(data.list.length);
-                                    //添加当前申请人的提示框并清空申请人表单
-                                    $('.p_tip').text(person);
-                                    $('#person').val('');
-                                    $('#p_tip').show();
                                     //清空列表框并关闭
                                     $('#p_list').empty();
                                     layer.closeAll();
-                                    //检测内容
-                                    check_table();
+                                    //为空时
+                                    if(!(data.list.length)){
+                                        layer.msg('该申请人无有效商标或商标已在您的出售中', {
+                                            time: 2000
+                                        },function(){
+                                            //检测内容
+                                            check_table();
+                                        });
+                                    }else{
+                                        //追加商标数据
+                                        var html = '';
+                                        //组装内容
+                                        for(var i in data.list){
+                                            html += '<tr>\
+                                                <td><input type="checkbox"/></td>\
+                                                <td>'+(i-0+1)+'</td>\
+                                                <td class="list-mess-pic">\
+                                                <a class="pic" href="javascript:;"><img src="'+(data.list)[i]['imgUrl']+'" onerror="this.src=\'/Static/1.0/images/img1.png\'"></a>\
+                                                </td>\
+                                                <td class="number">'+(data.list)[i]['number']+'</td>\
+                                                <td>'+(data.list)[i]['name']+'</td>\
+                                                <td class="exp-ear">\
+                                                <input type="hidden" name="number[]" value="'+(data.list)[i]['number']+'">\
+                                                我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk" value="'+union_price+'"/>元\
+                                                </td>\
+                                                <td class="dele">\
+                                                <a class="del-lis" href="javascript:;">删除</a>\
+                                                </td>\
+                                                </tr>';
+                                        }
+                                        $('#list_body').append(html);
+                                        //添加当前申请人的提示框并清空申请人表单
+                                        $('.p_tip').text(person);
+                                        $('#person').val('');
+                                        $('#p_tip').show();
+                                        //检测内容
+                                        check_table();
+                                    }
                                 }else{
                                     layer.msg(data.msg, {
                                         time: 1500
@@ -495,6 +505,11 @@
                 $(this).attr("index","1");
             }
         });
+        //全选/全不选 事件
+        $('#chooseall').click(function(){
+            var flag = $(this).prop('checked');
+            $('#list_body>tr input[type=checkbox]').prop('checked',flag);
+        })
     });
     //得到剩余的商标
     function getLeft(){
