@@ -216,6 +216,14 @@
                 layer.closeAll('loading');
                 return false;
             }
+            var btnval = $('#serch-pel').text();
+            if(btnval=='重新搜索'){
+                $('#p_tip').hide();
+                $('#serch-pel').text('搜索');
+                $('#list_body').empty();
+                $('#goods_num').text(0);
+                check_table();
+            }
             //获得申请人模糊列表
             $.post('/sell/getPerson',{'person':person},function(data){
                 layer.closeAll('loading');
@@ -311,6 +319,7 @@
                                         $('.p_tip').text(person);
                                         $('#person').val('');
                                         $('#p_tip').show();
+                                        $('#serch-pel').text('重新搜索');
                                         //检测内容
                                         check_table();
                                     }
@@ -488,11 +497,15 @@
         });
         //删除申请人标签
         $(".del-sqr").on("click",function(){
-            $(this).parent().remove();
-            //清空当前
-            $('#list_body').empty();
-            $('#goods_num').text(0);
-            check_table();
+            layer.confirm('删除申请人会同时清空出售商标列表，您确定继续操作么?',function(){
+                $('#p_tip').hide();
+                //清空当前
+                $('#serch-pel').text('搜索');
+                $('#list_body').empty();
+                $('#goods_num').text(0);
+                check_table();
+                layer.closeAll();
+            })
         });
         //申请人列表选中效果相关js
         $("#p_list").on("click",'input',function(){
