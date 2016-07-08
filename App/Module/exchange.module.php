@@ -23,7 +23,7 @@ class ExchangeModule extends AppModule
 	$r['limit'] = 5;
 	$r['col']   = array('pages,count(1)as counts');
 	
-	$r['raw'] = ' date>= '.date("Y-m-01");
+	$r['raw'] = "date>= '".date("Y-m-01")."'";
 	$r['in'] = array('isUse' => array(1,3));
 	$r['order'] = array('pages'=>'asc');
 	$r['group'] = array('pages' => 'asc');
