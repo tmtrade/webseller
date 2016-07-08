@@ -197,11 +197,15 @@
         });
         //删除列表框
         $('#list_body').on("click",".del-lis",function(){
-            $(this).parent().parent().remove();
-            $('#goods_num').text(function(i,v){
-                return v-1;
+            var _this = this;
+            layer.confirm('您确定删除该商标吗?',function() {
+                $(_this).parent().parent().remove();
+                $('#goods_num').text(function (i, v) {
+                    return v - 1;
+                });
+                layer.closeAll();
+                check_table();
             });
-            check_table();
         });
         //搜索申请人事件
         $('#serch-pel').click(function(){
@@ -228,6 +232,7 @@
             $.post('/sell/getPerson',{'person':person},function(data){
                 layer.closeAll('loading');
                 if(data.code==0){
+                    $('.p_num').text(data.list.length);
                     var html = '';
                     //组装内容
                     for(var i in data.list){
@@ -484,17 +489,21 @@
         $(".batch-del").on("click",function(){
             var oips=$("#list_body").find("input:checked");
             if(oips.length==0){
-                layer.msg('请至少选择一个', {
+                layer.msg('请至少选择一条商标', {
                     time: 1500
                 });
+                return false;
             }
-            oips.each(function(i){
-                $(this).parent().parent().remove();
-                $('#goods_num').text(function(i,v){
-                    return v-1;
+            layer.confirm('您确定删除选中的商标吗?',function(){
+                oips.each(function(i){
+                    $(this).parent().parent().remove();
+                    $('#goods_num').text(function(i,v){
+                        return v-1;
+                    });
                 });
-            });
-            check_table();
+                layer.closeAll();
+                check_table();
+            })
         });
         //删除申请人标签
         $(".del-sqr").on("click",function(){
