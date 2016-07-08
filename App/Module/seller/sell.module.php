@@ -191,9 +191,10 @@ class SellModule extends AppModule{
     /**
      * 根据申请人id得到对应的商标数据
      * @param $proposerId int
+     * @param $start int
      * @return array
      */
-    public function getPersonTm($proposerId){
+    public function getPersonTm($proposerId,$start = 0){
         //redis缓存接口查询数据
         $rst = $this->com('redis')->get('tmproposer'.$proposerId);
         if(!$rst){
@@ -209,8 +210,10 @@ class SellModule extends AppModule{
         //处理数据
         $res = array();
         $res['total'] = $rst['total'];
-        foreach($rst['rows'] as $item){
+        foreach($rst['rows'] as $k=>$item){
+            if($k<$start) continue;
             if(count($res)>=51){ //只取50条数据---count除去
+                $res['now'] = $k;//保存下次改取的位置
                 break;
             }
             if($item['status']=='已注册' && !($this->existContact($item['code'],UID))){ //检测商标状态及该商标是否在出售中

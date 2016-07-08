@@ -177,6 +177,7 @@
     var p_tel = '';
     var p_name = '';
     var is_all = true;//当前商标是否为申请人下的所有商标
+    var now = 0;
     var max_tmnum = 50;
     var proposer_id = 0;
     var union_price = 0;
@@ -284,6 +285,7 @@
                                     //是否为申请人的所有商标
                                     if(data.count>max_tmnum){
                                         is_all=false;
+                                        now = data.now;//下次的起点
                                     }
                                     //修改商标数量
                                     $('#goods_num').text(data.list.length);
@@ -549,7 +551,7 @@
         //是否设置通用价格
         union_price = Number(union_price)?Number(union_price):'';
         //提交数据获得商标数据
-        $.post('/sell/getPersonTm',{'proposer_id':proposer_id},function(data){
+        $.post('/sell/getPersonTm',{'proposer_id':proposer_id,'now':now},function(data){
             if(data.code==0){
                 //追加商标数据
                 var html = '';

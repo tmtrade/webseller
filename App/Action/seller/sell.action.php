@@ -90,13 +90,16 @@ class SellAction extends AppAction{
      */
     public function getPersonTm(){
         $proposer_id = $this->input('proposer_id','int');
+        $now = $this->input('now','int',0);
         if(!$proposer_id) return array('code'=>1,'msg'=>'申请人不能为空');
         //得到申请人商标数据
-        $rst = $this->load('sell')->getPersonTm($proposer_id);
+        $rst = $this->load('sell')->getPersonTm($proposer_id,$now);
         if($rst){
             $count = $rst['total'];
             unset($rst['total']);
-            $this->returnAjax(array('code'=>0,'list'=>$rst,'count'=>$count));
+            $now = $rst['now'];
+            unset($rst['now']);
+            $this->returnAjax(array('code'=>0,'list'=>$rst,'count'=>$count,'now'=>$now));
         }else{
             $this->returnAjax(array('code'=>1,'msg'=>'无有效商标信息'));
         }
