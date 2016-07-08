@@ -67,6 +67,13 @@ class TotalModule extends AppModule
 	    );
 	    $res1 = $this->addExchangeLog($date);
 	    if($res1){
+		$params = array();
+		$params['title'] = "你的蝉豆产生了变化，点击查看详情";
+		$params['type'] = 2;
+		$params['sendtype'] = 1;
+		$params['content'] = "/exchange/?page=1&t=1";
+		$params['uids'] = $uid;//当前用户
+		$this->load('messege')->createMsg($params);
 		$this->commit('total');
 		return $res1;
 	    }else{
