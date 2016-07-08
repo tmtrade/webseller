@@ -17,6 +17,8 @@ class SellModule extends AppModule{
         'img' => 'imgurl',
     );
 
+    private $num = 100000;
+
     /**
      * 商标字段
      */
@@ -165,6 +167,7 @@ class SellModule extends AppModule{
         $rst = $this->com('redis')->get('tm_person'.$person);
         if(!$rst){
             $data = array(
+                'num'=>$this->num,
                 'keyword' => $person,
             );
             $rst = $this->importBi('proposer')->search($data);
@@ -195,6 +198,7 @@ class SellModule extends AppModule{
         $rst = $this->com('redis')->get('tmproposer'.$proposerId);
         if(!$rst){
             $data = array(
+                'num'=>$this->num,
                 'proposerId' => $proposerId,
             );
             $rst = $this->importBi('trademark')->proposerTmsearch($data);
@@ -206,7 +210,7 @@ class SellModule extends AppModule{
         $res = array();
         $res['total'] = $rst['total'];
         foreach($rst['rows'] as $item){
-            if(count($res)>=50){ //只取50条数据
+            if(count($res)>=51){ //只取50条数据---count除去
                 break;
             }
             if($item['status']=='已注册' && !($this->existContact($item['code'],UID))){ //检测商标状态及该商标是否在出售中
