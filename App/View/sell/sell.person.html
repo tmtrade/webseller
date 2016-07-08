@@ -258,6 +258,7 @@
                                 layer.closeAll('loading');
                                 return false;
                             }
+                            var proposer_name = $.trim(choose.closest('tr').find('td:first p').text());
                             proposer_id = $.trim(choose.closest('tr').find('.proposer_id').val());
                             if(!proposer_id){
                                 layer.msg('参数异常,请刷新', {
@@ -287,7 +288,7 @@
                                     //为空时
                                     if(!(data.list.length)){
                                         layer.msg('该申请人无有效商标或商标已在您的出售中', {
-                                            time: 2000
+                                            time: 3000
                                         },function(){
                                             //检测内容
                                             check_table();
@@ -316,7 +317,7 @@
                                         }
                                         $('#list_body').append(html);
                                         //添加当前申请人的提示框并清空申请人表单
-                                        $('.p_tip').text(person);
+                                        $('.p_tip').text(proposer_name);
                                         $('#person').val('');
                                         $('#p_tip').show();
                                         $('#serch-pel').text('重新搜索');
