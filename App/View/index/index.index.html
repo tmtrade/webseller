@@ -44,7 +44,7 @@
 				    <a target="_blank" href="<?=MY_URL?>user/changePhone/" title="点击前往验证"><img src="<?=StaticDir?>1.0/images/sell-phon.png"></a>
 				<?}?>
 			    </p>
-                            <p class="teg"><span class="hint-bg cir">我的蝉豆：<?=$userInfo['total']?></span><a href="/exchange">用蝉豆兑换奖励</a></p>
+                            <p class="teg"><span class="hint-bg cir">我的蝉豆：<?=$userInfo['total']? $userInfo['total']:0;?></span><a href="/exchange">用蝉豆兑换奖励</a></p>
                         </div>
                     </div>
                     <div class="sell-comm-sub fr">

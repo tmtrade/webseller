@@ -23,7 +23,7 @@
             <p class="int-score-num">
                 <label>您的蝉豆数量</label>
 
-                <b><?=$userInfo['total']?></b>
+                <b><?=$userInfo['total']? $userInfo['total']:0;?></b>
             </p>
             <div class="int-score-rule">
                 <h6>奖励兑换规则</h6>
