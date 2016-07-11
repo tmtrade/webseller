@@ -47,7 +47,7 @@ class ExchangeModule extends AppModule
         $r = array();
 	$r['eq']['uid'] = $uid;
 	$r['eq']['pages'] = $pages;
-	$r['raw'] = ' date>= '.date("Y-m-01");
+	$r['raw'] = "date>= '".date("Y-m-01")."'";
 	$r['in'] = array('isUse' => array(1,3));
         $res = $this->import('exchange')->count($r);
         return $res;
