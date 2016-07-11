@@ -11,9 +11,9 @@ var wH=$(window).height();
 var tph=$(".yzc-sell-head").outerHeight(true)
 var slfH=wH-tph;
 var cgh;
-$(window).ready(function(){
-    $("#rg-nav").css({"height":slfH});
-})
+
+$("#rg-nav").css({"height":slfH});
+
 $(window).on("resize",function(){
     $("#rg-nav").css({"height":slfH});
 })
@@ -164,8 +164,8 @@ function isPlaceholder() {
     var input = document.createElement('input');
     return 'placeholder' in input;
 }
-
-if (!isPlaceholder()) {//不支持placeholder 用jquery来完成
+//不支持placeholder 用jquery来完成
+if (!isPlaceholder()) {
     $(document).ready(function () {
         if (!isPlaceholder()) {
             $("input").not("input[type='password']").each(//把input绑定事件 排除password框
