@@ -257,7 +257,7 @@
                             });
                             //得到申请人
                             var choose = $("#p_list input[index=2]");
-                            if(choose.length==0){
+                            if(choose.length!=1){
                                 layer.msg('请选择具体的申请人', {
                                     time: 1500
                                 });
@@ -275,9 +275,16 @@
                             }
                             //是否设置通用价格
                             if($('#is_union').attr('checked')){
-                                union_price = parseInt($('#union_price').val());
+                                union_price = $('#union_price').val();
+                                if(union_price && checkPrice(union_price)==false){
+                                    layer.msg('请输入正确的价格', {
+                                        time: 1500
+                                    });
+                                    layer.closeAll('loading');
+                                    return false;
+                                }
                             }
-                            union_price = union_price?union_price:'';
+                            union_price = union_price?parseInt(union_price):'';
                             //提交数据获得商标数据
                             $.post('/sell/getPersonTm',{'proposer_id':proposer_id},function(data){
                                 layer.closeAll('loading');
@@ -376,14 +383,14 @@
             var tmp = '';
             var flag = true;
             prices.each(function(i){
-                tmp = parseInt($.trim($(this).val()));
-                if(!tmp){
+                tmp = $.trim($(this).val());
+                if(checkPrice(tmp)==false){
                     flag = false;
                     return false;
                 }
             });
             if(!flag){
-                layer.msg('请填写底价', {
+                layer.msg('请填写正确的价格', {
                     time: 1500
                 });
                 layer.closeAll('loading');
@@ -521,7 +528,6 @@
         });
         //申请人列表选中效果相关js
         $("#p_list").on("click",'input',function(){
-            $('#p_list').find('input').attr('index',0);
             var oinx= $(this).attr("index");
             if(oinx==1){
                 $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
@@ -529,18 +535,6 @@
             }else{
                 $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
                 $(this).attr("index","1");
-            }
-            return false;
-        });
-        $("#p_list").on("click",'tr',function(){
-            var _this = $(this).find('input');
-            var oinx= _this.attr("index");
-            if(oinx==1){
-                _this.css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
-                _this.attr("index","2");
-            }else{
-                _this.css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
-                _this.attr("index","1");
             }
             return false;
         });
@@ -563,7 +557,7 @@
             return false;
         }
         //是否设置通用价格
-        union_price = Number(union_price)?Number(union_price):'';
+        union_price = union_price?parseInt(union_price):'';
         //提交数据获得商标数据
         $.post('/sell/getPersonTm',{'proposer_id':proposer_id,'now':now},function(data){
             if(data.code==0){
@@ -663,6 +657,14 @@
         }
         var reg = /^([\u4E00-\u9FA5]|[A-Za-z])+$/i;
         if(reg.test(name)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    //验证价格
+    function checkPrice(price){
+        if(/^\d+(\.\d+)?$/.test(price)){
             return true;
         }else{
             return false;
