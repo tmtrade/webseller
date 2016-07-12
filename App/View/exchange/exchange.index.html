@@ -37,8 +37,7 @@
             <div class="int-score-lis f-hidden">
                 <ul class="f-hidden">
 		    <? foreach ($ad_config as $k => $v) {
-			$key = $k-1;
-			$counts = $v['count']-$CountList[$key]['counts'];
+			$counts = $v['count']-$CountList[$k];
 			$firstday=date('Y-m-10');
 		    ?>
                     <li>

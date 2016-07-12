@@ -28,12 +28,16 @@ class ExchangeModule extends AppModule
 	$r['order'] = array('pages'=>'asc');
 	$r['group'] = array('pages' => 'asc');
 	
+	$arr = array();
         $res = $this->import('exchange')->find($r);
-        return $res;
+	foreach($res as $v){
+	    $arr[$v['pages']] = $v['counts'];
+	}
+        return $arr;
     }
     
     //获取用户最近一次兑换的信息
-    public function getOngInfo($uid)
+    public function getOneInfo($uid)
     {
         $r = array();
 	$r['eq']['uid'] = $uid;

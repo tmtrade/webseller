@@ -75,7 +75,7 @@
 			<? foreach ($list as $k => $v) {?>
                           <tr id="re-<?=$v['number']?>">
                               <td class="list-mess-pic">
-                                  <a class="pic" <?if(!empty($v['tid'])){?> href="/d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>"  onerror="this.src='/Static/1.0/images/img1.png'" width="90" height="60"></a>
+                                  <a class="pic" <?if(!empty($v['tid']) && $s['status']==1){?> href="<?=SITE_URL?>d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>"  onerror="this.src='/Static/1.0/images/img1.png'" width="90" height="60"></a>
                               </td>
                               <td><?=$v['name']?></td>
                               <td><?=date("Y-m-d H:i",$v['date'])?></td>

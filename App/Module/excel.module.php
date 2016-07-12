@@ -231,7 +231,7 @@ class ExcelModule extends AppModule
 		if($saleError){
 			$num = $num+1;
 			$PHPExcel->getActiveSheet()->mergeCells('A'.$num.':G'.$num);
-			$PHPExcel->getActiveSheet()->setCellValue('A'.$num, "数据存入失败的商标,请检查该商标是否已提交过联系人！");
+			$PHPExcel->getActiveSheet()->setCellValue('A'.$num, "数据存入失败,请检查该商标是否已提交过，或商标已失效！");
 			foreach($saleError as $k => $item ){
 				$num ++;
 				$PHPExcel->getActiveSheet()->setCellValue('A'.$num, $item['number']);

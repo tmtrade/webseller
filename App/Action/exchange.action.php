@@ -27,7 +27,7 @@ class ExchangeAction extends AppAction{
 	
 	//获取广告兑换剩余数
 	$CountList = $this->load('exchange')->getAdCount();
-	$info = $this->load("exchange")->getOngInfo(UID);
+	$info = $this->load("exchange")->getOneInfo(UID);
 	$this->set("CountList",$CountList);
 	$this->set("info",$info);
 	$this->set('ad_config',C('ADCONFIG'));
