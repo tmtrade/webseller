@@ -462,8 +462,8 @@
                 yes:function(){
                     //价格
                     var price = parseInt($.trim($('#mass_price').val()));
-                    if(!price){
-                        layer.msg('请填写价格', {
+                    if(checkPrice(price)==false){
+                        layer.msg('请填写正确的价格', {
                             time: 1500
                         });
                         return false;
@@ -477,7 +477,7 @@
                         trs = $('#list_body input:checked').parents('tr');
                     }
                     if(trs.length==0){
-                        layer.msg('请勾选删除的商标信息', {
+                        layer.msg('请勾选需设置价格的商标', {
                             time: 1500
                         });
                         return false;
@@ -527,7 +527,7 @@
             })
         });
         //申请人列表选中效果相关js
-        $("#p_list").on("click",'input',function(){
+        $("#p_list").on("click",'input[type=checkbox]',function(){
             var oinx= $(this).attr("index");
             if(oinx==1){
                 $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
