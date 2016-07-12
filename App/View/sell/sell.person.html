@@ -602,6 +602,7 @@
     function check_table(){
         var objs = $('#list_body tr').length;
         if(!objs){
+            $('#chooseall').prop('checked',false)//全选按钮失去勾选
             $('#has-data').hide();
             $('#no-data').show();
         }else{
