@@ -214,8 +214,8 @@
                 shade: [0.1,'#fff'] //0.1透明度的白色背景
             });
             var person = $.trim($('#person').val());
-            if(person==''){
-                layer.msg('请输入申请人', {
+            if(person=='' || person=='请输入申请人名义'){
+                layer.msg('您还未填写申请人名义', {
                     time: 1500
                 });
                 layer.closeAll('loading');
@@ -521,6 +521,7 @@
         });
         //申请人列表选中效果相关js
         $("#p_list").on("click",'input',function(){
+            $('#p_list').find('input').attr('index',0);
             var oinx= $(this).attr("index");
             if(oinx==1){
                 $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
@@ -529,6 +530,19 @@
                 $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
                 $(this).attr("index","1");
             }
+            return false;
+        });
+        $("#p_list").on("click",'tr',function(){
+            var _this = $(this).find('input');
+            var oinx= _this.attr("index");
+            if(oinx==1){
+                _this.css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
+                _this.attr("index","2");
+            }else{
+                _this.css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
+                _this.attr("index","1");
+            }
+            return false;
         });
         //全选/全不选 事件
         $('#chooseall').click(function(){
