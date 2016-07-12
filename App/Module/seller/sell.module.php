@@ -208,24 +208,29 @@ class SellModule extends AppModule{
             }
         }
         //处理数据
-        $res = array();
+        $res = array();//可销售商标
+        $exist = array();//已出售商标
         $res['total'] = $rst['total'];
+        $res['now'] = 0;
         foreach($rst['rows'] as $k=>$item){
             if($k<$start) continue;
             if(count($res)>=51){ //只取50条数据---count除去
                 $res['now'] = $k;//保存下次改取的位置
                 break;
             }
-            if($item['status']=='已注册' && !($this->existContact($item['code'],UID))){ //检测商标状态及该商标是否在出售中
+            if(strpos($item['status'],'商标已无效')===false && strpos($item['status'],'冻结中')===false){
                 $temp = array();
                 $temp['number'] = $item['code'];
                 $temp['name'] = $item['name'];
-//                $temp['imgUrl'] = $item['imageUrl'];//暂时不可用
                 $temp['imgUrl'] = $this->getImg($item['code']);
-                $res[] = $temp;
+                if($this->existContact($item['code'],UID)){//该商标是否在出售中
+                    $exist[] = $temp;
+                }else{
+                    $res[] = $temp;
+                }
             }
         }
-        return $res;
+        return array($res,$exist);
     }
 
 }

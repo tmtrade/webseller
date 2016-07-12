@@ -49,7 +49,7 @@ class SellAction extends AppAction{
         $info   = $this->load('sell')->getTmInfo($number);
         if ( empty($info) ) $this->returnAjax(array('code'=>3,'msg'=>'找不到对应商标，请查证重新输入'));
         //不能出售的商标
-        $status = array('商标已无效','冻结中');
+        $status = array('商标已无效','冻结中');//module里也有一处
         foreach ($status as $s) {
             if( in_array($s, $info['second']) ){
                 $this->returnAjax(array('code'=>4,'msg'=>'该商标状态不太适合出售呢'));
@@ -94,12 +94,12 @@ class SellAction extends AppAction{
         if(!$proposer_id) return array('code'=>1,'msg'=>'申请人不能为空');
         //得到申请人商标数据
         $rst = $this->load('sell')->getPersonTm($proposer_id,$now);
-        if($rst){
-            $count = $rst['total'];
-            unset($rst['total']);
-            $now = $rst['now'];
-            unset($rst['now']);
-            $this->returnAjax(array('code'=>0,'list'=>$rst,'count'=>$count,'now'=>$now));
+        if($rst[0]){
+            $count = $rst[0]['total'];
+            unset($rst[0]['total']);
+            $now = $rst[0]['now'];
+            unset($rst[0]['now']);
+            $this->returnAjax(array('code'=>0,'list'=>$rst[0],'count'=>$count,'now'=>$now,'exist'=>$rst[1]));
         }else{
             $this->returnAjax(array('code'=>1,'msg'=>'无有效商标信息'));
         }

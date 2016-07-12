@@ -34,6 +34,7 @@ abstract class AppAction extends Action
 		//不验证登录的url
 		$mods = array(
 			'login'			=> '*',
+			'test'			=> '*',
 		);
 		//验证用户是否登录
 		$allow  = false;
