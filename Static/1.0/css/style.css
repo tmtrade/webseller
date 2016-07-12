@@ -1030,7 +1030,19 @@ cpm-pel-cent table tr td.com-name p{
     background: #fff5e1 !important;
     cursor: pointer;
 }
-
+.by-prop{
+    margin-top: 70px;
+    display:none;
+}
+.choose-trade{
+  margin:15px 25px;
+  width: 180px;
+  height: 33px;
+  line-height: 33px;
+}
+.choose-trade .all-tp-list{
+    width: 100%;
+}
 /*.cpm-pel-cent table tr:hover td.com-ope input{*/
     /*background: url("../images/sell-ope-over.png") no-repeat center;*/
 /*}*/
