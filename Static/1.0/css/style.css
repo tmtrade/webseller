@@ -898,7 +898,7 @@ table.list-mess-main tr .pri-num input{
 }
 
 .inc-ts{
-    display: inline-block !important;
+    display: inline-block;
     color: #ff6600;
     padding:6px 12px;
     margin-left:25px;
@@ -1028,6 +1028,7 @@ cpm-pel-cent table tr td.com-name p{
 }
 .cpm-pel-cent table tr:hover{
     background: #fff5e1 !important;
+    cursor: pointer;
 }
 
 /*.cpm-pel-cent table tr:hover td.com-ope input{*/

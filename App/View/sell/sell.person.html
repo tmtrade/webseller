@@ -189,9 +189,11 @@
         //编辑联系人
         $('.amend-cont-all').on('click','.xg_mobile',function(){
             edit_mobile(1);
+            $(".amend-cont label").css({"marginTop":"6px"})
         });
         $('.amend-cont-all').on('click','.cg-qx',function(){
             edit_mobile(2);
+            $(".amend-cont label").css({"marginTop":"0px"})
         });
         $('.amend-cont-all').on('click','.cg-sear',function(){
             edit_mobile(3);
@@ -237,12 +239,12 @@
                     var html = '';
                     //组装内容
                     for(var i in data.list){
-                        html += '<tr>\
+                        html += '<tr index="1">\
                             <td class="com-name"><p>'+(data.list)[i]['name']+'</p></td>\
                             <td class="com-name"><p>'+(data.list)[i]['address']+'</p></td>\
                             <td class="com-ope">\
                             <input type="hidden" class="proposer_id" value="'+(data.list)[i]['id']+'">\
-                            <input type="checkbox" index="1"/>\
+                            <input type="checkbox"/>\
                             </td>\
                             </tr>';
                     }
@@ -527,17 +529,24 @@
             })
         });
         //申请人列表选中效果相关js
-        $("#p_list").on("click",'input[type=checkbox]',function(){
+
+        $("#p_list").on("click",'tr',function(){
             var oinx= $(this).attr("index");
             if(oinx==1){
-                $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
+                $("#p_list").find("tr").css({"backgroundColor":"#ffffff"});
+                $("#p_list").find("tr").find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
+                $("#p_list").find("tr").attr("index","1");
+                $(this).css({"backgroundColor":"#fff5e1"});
+                $(this).find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
                 $(this).attr("index","2");
             }else{
-                $(this).css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
+                $(this).css({"backgroundColor":"#ffffff"});
+                $(this).find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
                 $(this).attr("index","1");
             }
             return false;
         });
+
         //全选/全不选 事件
         $('#chooseall').click(function(){
             var flag = $(this).prop('checked');
@@ -643,11 +652,13 @@
                     show1.find('.contact_mobile').text(now_tel);
                     show1.find('.contact_name').text(now_name);
                     $('.amend-cont').html(show1.html());
+                    $(".amend-cont label").css({"marginTop":"0px"})
                 }else{
-                    $('.inc-ts').html('请输入正确的联系人').show();
+                    $('.inc-ts').html('请输入正确的联系人').css({"display":"inline-block"});
+
                 }
             }else{
-                $('.inc-ts').html('请输入正确的联系电话').show();
+                $('.inc-ts').html('请输入正确的联系电话').css({"display":"inline-block"});
             }
         }
     }
