@@ -46,7 +46,7 @@ $(function(){
 //验证是否手机
 function isMobile(mobile){
     var mobilereg = /^(13[0-9]|14[0-9]|15[0-9]|17[0-9]|18[0-9])\d\d\d\d\d\d\d\d$/i;
-    return (!mobilereg.test(mobile) || mobile.length!=11);
+    return mobilereg.test(mobile);
 }
 //编辑联系人
 function edit_mobile(type){
