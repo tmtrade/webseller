@@ -214,7 +214,7 @@ class SellModule extends AppModule{
         $res['now'] = 0;
         foreach($rst['rows'] as $k=>$item){
             if($k<$start) continue;
-            if(count($res)>=51){ //只取50条数据---count除去
+            if(count($res)>=52){ //只取50条数据---count,now除去
                 $res['now'] = $k;//保存下次改取的位置
                 break;
             }
