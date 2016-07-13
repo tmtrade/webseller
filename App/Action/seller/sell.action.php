@@ -28,10 +28,6 @@ class SellAction extends AppAction{
     public function addNumber(){
         $params = $_POST;
         $rst = $this->load('sell')->addSell($params,20);
-        //保存用户的姓名
-        if($params['name'] && $this->userInfo['name'] != $params['name']){
-            $this->load('user')->saveInfo(UID, array('name'=>$params['name']));
-        }
         $this->returnAjax($rst);
     }
 
@@ -111,11 +107,26 @@ class SellAction extends AppAction{
     public function addPerson(){
         $params = $_POST;
         $rst = $this->load('sell')->addSell($params,50);
-        //保存用户的姓名
-        if($params['name'] && $this->userInfo['name'] != $params['name']){
-            $this->load('user')->saveInfo(UID, array('name'=>$params['name']));
-        }
         $this->returnAjax($rst);
+    }
+
+    /**
+     * 修改联系人
+     */
+    public function changeContact(){
+        $name = $this->input('name');
+        if(!$name) $this->returnAjax(array('code'=>1,'msg'=>'联系人为空'));
+        //保存用户的姓名
+        if($this->userInfo['name'] != $name){
+           $rst = $this->load('user')->saveInfo(UID, array('name'=>$name));
+            if($rst && $rst['code']==1){
+                $this->returnAjax(array('code'=>0));
+            }else{
+                $this->returnAjax(array('code'=>2,'msg'=>'修改失败'));
+            }
+        }else{
+            $this->returnAjax(array('code'=>0));
+        }
     }
 
     /**
