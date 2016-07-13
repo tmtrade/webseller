@@ -11,7 +11,7 @@ class LoginAction extends AppAction
 {
 
 	/**
-	* 控制器默认方法
+	* 控制器默认方法 ---------- 弃用
 	* @author	void
 	* @since	2015-11-20
 	*
@@ -139,7 +139,7 @@ class LoginAction extends AppAction
 		if( !empty($callback) ){
 			$this->verifyLog();
 		}else{
-			$this->redirect('', '/index/');
+			$this->redirect('', '/');
 		}
 
 	}

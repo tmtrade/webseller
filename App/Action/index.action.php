@@ -22,7 +22,8 @@ class IndexAction extends AppAction
 	public function index()
 	{
 		if(!$this->isLogin){
-		      $this->redirect('', '/login/index/');
+			$this->display('login/login.index.html');
+			exit;
 		}
 		//检测是否第一次登陆
 		if(!$this->userinfo['isfirst']){

@@ -35,6 +35,7 @@ abstract class AppAction extends Action
 		$mods = array(
 			'login'			=> '*',
 			'test'			=> '*',
+			'index'			=> array('index'),
 		);
 		//验证用户是否登录
 		$allow  = false;
@@ -48,7 +49,7 @@ abstract class AppAction extends Action
 		}
 		$isLogin = $this->setLoginUser();
 		if ( !$allow && !$isLogin) {
-			$this->redirect('', '/login/index');
+			$this->redirect('', '/');
 			exit;
 		}
 		//得到站内信的数量--登录用户

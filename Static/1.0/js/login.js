@@ -1,12 +1,16 @@
 var downtime  	= 60;
-var home_url = '/';
+var lastview = getUrlHost(document.referrer);//跳转回来源页(蝉窝)
+var home_url = (lastview.indexOf('my.')!==-1)?lastview:'/';
 var isSendCode	= true;
 $(document).ready(function(e) {
 	//表单获得焦点隐藏提示
 	$('#log1_account,#log1_password,#umobile,#ucode').focus(function(){
 		success();
 	});
-
+	//忘记密码
+	$('#miss_pass').click(function(){
+		$('#lg2').click();
+	});
 	//密码登录
     $('#log1').click(function(){
 		layer.load(1, {
@@ -282,4 +286,14 @@ function getDefaultMobile(){
 		$('#umobile').focus().val(mobile);
 		$('#remindM').attr('checked',true);
 	}
+}
+
+function getUrlHost(url){
+	var host = "null";
+	var regex = /^(\w+\:\/\/[^\/]*).*/;
+	var match = url.match(regex);
+	if(typeof match != "undefined" && null != match) {
+		host = match[1];
+	}
+	return host;
 }
