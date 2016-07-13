@@ -77,7 +77,7 @@
                               <td class="list-mess-pic">
                                   <a class="pic" <?if(!empty($v['tid']) && $s['status']==1){?> href="<?=SITE_URL?>d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>"  onerror="this.src='/Static/1.0/images/img1.png'" width="90" height="60"></a>
                               </td>
-                              <td><?=$v['name']?></td>
+                              <td><?=replaceSpace($v['name']);?></td>
                               <td><?=date("Y-m-d H:i",$v['date'])?></td>
                               
 			      <?if($s['status']==1 || $s['status']==2){
@@ -177,7 +177,7 @@ $(".srue").live("click",function(){
     cgval=$(".cg-pir").val();
     var number = $(this).data("number");
     var price = $(".n-"+number).val();
-    if(price<=0 || isNaN(price)){
+    if(price<=1 || isNaN(price)){
 	layer.msg('请填写正确的金额', {
                         time: 2000 //2秒关闭（如果不配置，默认是3秒）
                     });
@@ -225,7 +225,7 @@ $(".abo").on("click",function(){
     }
 });
   function ajaxsubmit(action,number,price,del,type){
-      if(price<=0 && del==0){
+      if(price<=1 && del==0){
 	  layer.msg('请填写正确的金额', {
                         time: 1000 //2秒关闭（如果不配置，默认是3秒）
                     });

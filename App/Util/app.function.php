@@ -805,4 +805,10 @@ function verifyArrayKey($array,$param)
 	}
 	return $msg;
 }
+
+function replaceSpace($str) {
+  $str = str_replace ( ' ',  '&nbsp;' ,  $str );
+  return $str;
+
+}
 ?>

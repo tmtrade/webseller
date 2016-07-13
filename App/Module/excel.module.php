@@ -113,30 +113,31 @@ class ExcelModule extends AppModule
 		$PHPExcel->getActiveSheet()->setTitle('商标导入信息');
 		$PHPExcel->setActiveSheetIndex(0);
 		//合并单元格
-		$PHPExcel->getActiveSheet()->mergeCells('B1:G1');
-		$PHPExcel->getActiveSheet()->getStyle('A1:B1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
-		$PHPExcel->getActiveSheet()->getStyle('A1:B1')->getFill()->getStartColor()->setRGB('e86b1d');
+		$PHPExcel->getActiveSheet()->mergeCells('C1:H1');
+		$PHPExcel->getActiveSheet()->getStyle('A1:C1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+		$PHPExcel->getActiveSheet()->getStyle('A1:C1')->getFill()->getStartColor()->setRGB('e86b1d');
 		//设置居中
-		$PHPExcel->getActiveSheet()->getStyle('A1:B1')->getAlignment()->setHorizontal(
+		$PHPExcel->getActiveSheet()->getStyle('A1:C1')->getAlignment()->setHorizontal(
 			PHPExcel_Style_Alignment::HORIZONTAL_CENTER
 		);
 		//所有垂直居中
-		$PHPExcel->getActiveSheet()->getStyle('A1:B1')->getAlignment()->setVertical(
+		$PHPExcel->getActiveSheet()->getStyle('A1:C1')->getAlignment()->setVertical(
 			PHPExcel_Style_Alignment::VERTICAL_CENTER
 		);
+		$PHPExcel->getActiveSheet()->mergeCells('A1:B1');
 		$PHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setName('微软雅黑');
 		$PHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setSize(14);
 		$PHPExcel->getActiveSheet()->getStyle('A1')->getFont()->setBold(true);
 		//字体颜色
 		$PHPExcel->getActiveSheet()->getStyle('A1')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
-		$PHPExcel->getActiveSheet()->setCellValue('A1', "     超凡-商标导入信息");
-		$PHPExcel->getActiveSheet()->getStyle('B1')->getAlignment()->setHorizontal(
+		$PHPExcel->getActiveSheet()->setCellValue('A1', "超凡-商标导入信息");
+		$PHPExcel->getActiveSheet()->getStyle('C1')->getAlignment()->setHorizontal(
 			PHPExcel_Style_Alignment::HORIZONTAL_RIGHT
 		);
-		$PHPExcel->getActiveSheet()->getStyle('B1')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
-		$PHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setName('微软雅黑');
-		$PHPExcel->getActiveSheet()->getStyle('B1')->getFont()->setSize(9);
-		$PHPExcel->getActiveSheet()->setCellValue('B1',
+		$PHPExcel->getActiveSheet()->getStyle('C1')->getFont()->getColor()->setARGB(PHPExcel_Style_Color::COLOR_WHITE);
+		$PHPExcel->getActiveSheet()->getStyle('C1')->getFont()->setName('微软雅黑');
+		$PHPExcel->getActiveSheet()->getStyle('C1')->getFont()->setSize(9);
+		$PHPExcel->getActiveSheet()->setCellValue('C1',
 			"报告编号：" . date('Ymd', time()) . randCode(4, 'NUMBER') . '  数据截止时间：' . date(
 				'Y/m/d',
 				time()
@@ -144,7 +145,7 @@ class ExcelModule extends AppModule
 		);
 		
 		//第二行-----------------------------------------------------------
-		$PHPExcel->getActiveSheet()->mergeCells('A2:G2');
+		$PHPExcel->getActiveSheet()->mergeCells('A2:H2');
 		$PHPExcel->getActiveSheet()->getStyle('A2')->getFont()->setName('微软雅黑');
 		$PHPExcel->getActiveSheet()->getStyle('A2')->getFont()->setSize(12);
 		$PHPExcel->getActiveSheet()->getStyle('A2')->getFont()->setBold(true);
@@ -164,7 +165,7 @@ class ExcelModule extends AppModule
 		
 		$error = $numNotHas+$numNError+$numNotContact-$numSucess;
 		$PHPExcel->getActiveSheet()->setCellValue('A2',
-			"        导入成功".$numSucess."条   共导入失败".$error."条  缺少联系人、缺少联系电话".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在商标".$numExists."条  不存在的商标".$numNotHas."条"
+			"导入成功".$numSucess."条   共导入失败".$error."条  缺少联系人、缺少联系电话".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在商标".$numExists."条  不存在的商标".$numNotHas."条"
 		);
 		//----------------全局---------------------------------------------
 		//设置单元格宽度
@@ -313,7 +314,7 @@ class ExcelModule extends AppModule
 		$PHPExcel->getActiveSheet()->setTitle('专利导入信息');
 		$PHPExcel->setActiveSheetIndex(0);
 		//合并单元格
-		$PHPExcel->getActiveSheet()->mergeCells('B1:G1');
+		$PHPExcel->getActiveSheet()->mergeCells('C1:G1');
 		$PHPExcel->getActiveSheet()->getStyle('A1:B1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
 		$PHPExcel->getActiveSheet()->getStyle('A1:B1')->getFill()->getStartColor()->setRGB('e86b1d');
 		//设置居中
