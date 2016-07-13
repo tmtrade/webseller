@@ -456,19 +456,7 @@
                         });
                     }else{
                         //将当前数据添加到已售中
-                        var has_tm = '';
-                        for(var i in now_data){
-                            ++now_k;
-                            has_tm += '<tr>\
-                                <td>'+now_k+'</td>\
-                                <td class="list-mess-pic">\
-                                <a class="pic" href="javascript:;"><img src="'+now_data[i]['imgUrl']+'" onerror="this.src=\'/Static/1.0/images/img1.png\'"></a>\
-                                </td>\
-                                <td class="number">'+now_data[i]['number']+'</td>\
-                                <td>'+now_data[i]['name']+'</td>\
-                                </tr>';
-                        }
-                        $('#list_body2').append(has_tm);//追加到当前中
+                        putSubmitData();
                         layer.msg('提交成功,现加载剩余商标', {
                             time: 1500
                         });
@@ -671,6 +659,29 @@
             $('#no-data2').hide();
             $('#has-data2').show();
         }
+    }
+    //将提交的数据添加到已售列表中
+    function putSubmitData(){
+        var objs = $('#list_body tr');
+        var has_tm = '';
+        var t_img = '';
+        var t_name = '';
+        var t_number = '';
+        objs.each(function(){
+            ++now_k;
+            t_img = $(this).find('img').attr('src');
+            t_number = $(this).find('.number').text();
+            t_name = $(this).find('td:eq(4)').text();
+            has_tm += '<tr>\
+                <td>'+now_k+'</td>\
+                <td class="list-mess-pic">\
+                <a class="pic" href="javascript:;"><img src="'+t_img+'" onerror="this.src=\'/Static/1.0/images/img1.png\'"></a>\
+                </td>\
+                <td class="number">'+t_number+'</td>\
+                <td>'+t_name+'</td>\
+                </tr>';
+        });
+        $('#list_body2').append(has_tm);//追加到当前中
     }
 </script>
 <? require(ViewDir.'/footer.html'); ?>
