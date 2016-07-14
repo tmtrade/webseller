@@ -30,10 +30,10 @@
             </div>
         </div>
         <div class="pull-list choose-trade">
-            <a class="cir all-tp-btn" index="1"><font id="size_income">仅查看未出售商标</font><i class="fa fa-chevron-down"></i></a>
+            <a class="cir all-tp-btn" index="1"><font id="size_income">仅查看未提交商标</font><i class="fa fa-chevron-down"></i></a>
             <ul class="all-tp-list" style="display: none;">
-                <li id="trade1" onmouseover="jc('trade',1,2)">仅查看未出售商标</li>
-                <li id="trade2" onmouseover="jc('trade',2,2)">仅查看已出售商标</li>
+                <li id="trade1" onmouseover="jc('trade',1,2)">仅查看未提交商标</li>
+                <li id="trade2" onmouseover="jc('trade',2,2)">仅查看已提交商标</li>
             </ul>
         </div>
         <div class="data-list-mess by-prop" style="display: block" id="con_trade_1">
@@ -43,7 +43,7 @@
                         <table class="list-mess-main">
                             <thead>
                             <tr class="tbl-tit">
-                                <th><label><input type="checkbox" id="chooseall">全选</label></th> <th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>期望获得收益    </th><th>操作</th>
+                                <th><label><input type="checkbox" id="chooseall">全选</label></th> <th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>类别</th><th>期望获得收益    </th><th>操作</th>
                             </tr>
                             </thead>
                             <tbody class="list-mess" id="list_body"></tbody>
@@ -64,7 +64,7 @@
                     <table class="list-mess-main">
                         <thead>
                         <tr class="tbl-tit">
-                           <th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th>
+                           <th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>类别</th>
                         </tr>
                         </thead>
                         <tbody class="list-mess" id="list_body2"></tbody>
@@ -112,7 +112,7 @@
             </div>
             <? endif; ?>
             <a class="sub-btn cir" id="add_goods">
-                提交商品
+                提交当前页面商品
             </a>
         </div>
         <!--保存修改内容的隐藏域-->
@@ -191,7 +191,7 @@
         </div>
 
         <div class="cpm-pel-price cir">
-            <label><input class="chi" type="checkbox" id="is_union"/>
+            <!--<label><input class="chi" type="checkbox" id="is_union"/>-->
             <label>我想把本次出售的商标获益统一设置为</label></label>
             <input class="blk cir" type="text" id="union_price" placeholder="请输入期望获益的价格"/>
         </div>
@@ -199,12 +199,9 @@
 </div>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/sell.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
-    var is_all = true;//当前商标是否为申请人下的所有商标
-    var now = 0;
-    var max_tmnum = 50;
+    var now = 0;//0表示全部商标,大于0表示还有下一页数据
     var proposer_id = 0;
     var union_price = 0;
-    var now_data = [];
     var now_k = 0;
     $(function(){
         //enter键事件
@@ -282,26 +279,22 @@
                                 return false;
                             }
                             //是否设置通用价格
-                            if($('#is_union').attr('checked')){
-                                union_price = $('#union_price').val();
-                                if(union_price && checkPrice(union_price)==false){
-                                    layer.msg('请输入正确的价格', {
-                                        time: 1500
-                                    });
-                                    layer.closeAll('loading');
-                                    return false;
-                                }
+                            union_price = $('#union_price').val();
+                            if(union_price && checkPrice(union_price)==false){
+                                layer.msg('请输入正确的价格', {
+                                    time: 1500
+                                });
+                                layer.closeAll('loading');
+                                return false;
                             }
                             union_price = union_price?parseInt(union_price):'';
                             //提交数据获得商标数据
                             $.post('/sell/getPersonTm',{'proposer_id':proposer_id},function(data){
                                 layer.closeAll('loading');
                                 if(data.code==0){
-                                    //是否为申请人的所有商标
-                                    if(data.count>max_tmnum){
-                                        is_all=false;
-                                        now = data.now;//下次的起点
-                                    }
+                                    //下页的起点, 为0则无
+                                    now = data.now;
+                                    is_show();
                                     //修改商标数量
                                     $('#goods_num').text(data.list.length);
                                     //清空列表框并关闭
@@ -318,6 +311,7 @@
                                             </td>\
                                             <td class="number">'+(data.exist)[i]['number']+'</td>\
                                             <td>'+(data.exist)[i]['name']+'</td>\
+                                            <td>'+(data.exist)[i]['class']+'</td>\
                                             </tr>';
                                     }
                                     $('#list_body2').append(has_tm);//追加到当前中
@@ -327,8 +321,6 @@
                                             time: 3000
                                         });
                                     }else{
-                                        //保存当前商标数据到全局变量中
-                                        now_data = data.list;
                                         //追加商标数据
                                         var html = '';
                                         //组装内容
@@ -341,6 +333,7 @@
                                                 </td>\
                                                 <td class="number">'+(data.list)[i]['number']+'</td>\
                                                 <td>'+(data.list)[i]['name']+'</td>\
+                                                <td>'+(data.list)[i]['class']+'</td>\
                                                 <td class="exp-ear">\
                                                 <input type="hidden" name="number[]" value="'+(data.list)[i]['number']+'">\
                                                 我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk tr_price" value="'+union_price+'"/>元\
@@ -449,7 +442,7 @@
             $.post('/sell/addPerson',data,function(dd){
                 layer.closeAll('loading');
                 if(dd.code==0){
-                    if(is_all){
+                    if(now==0){
                         layer.msg('提交成功', {
                             time: 1500
                         },function(){
@@ -468,8 +461,8 @@
                         time: 1500
                     });
                 }else{
-                    //var msg = '出现错误, 请稍后再试';//线上
-                    var msg = dd.msg;
+                    var msg = '出现错误, 请稍后再试';//线上
+//                    var msg = dd.msg;
                     layer.msg(msg, {
                         time: 1500
                     });
@@ -572,7 +565,22 @@
         $('#chooseall').click(function(){
             var flag = $(this).prop('checked');
             $('#list_body>tr input[type=checkbox]').prop('checked',flag);
-        })
+        });
+        $('#list_body').on('click','input[type=checkbox]',function(){
+            if($('#list_body tr').length != $('#list_body input:checked').length){
+                $('#chooseall').prop('checked',false);
+            }else{
+                $('#chooseall').prop('checked',true);
+            }
+        });
+        //换一批功能
+        $('#get_left').click(function(){
+            if(now==0){
+                layer.msg('没有更多信息了',{time:1500});
+            }else{
+                getLeft();
+            }
+        });
     });
     //得到剩余的商标
     function getLeft(){
@@ -591,20 +599,9 @@
         //提交数据获得商标数据
         $.post('/sell/getPersonTm',{'proposer_id':proposer_id,'now':now},function(data){
             if(data.code==0){
-                //保存已售商标
-                var has_tm = '';
-                for(var i in data.exist){
-                    ++now_k;
-                    has_tm += '<tr>\
-                        <td>'+now_k+'</td>\
-                        <td class="list-mess-pic">\
-                        <a class="pic" href="javascript:;"><img src="'+(data.exist)[i]['imgUrl']+'" onerror="this.src=\'/Static/1.0/images/img1.png\'"></a>\
-                        </td>\
-                        <td class="number">'+(data.exist)[i]['number']+'</td>\
-                        <td>'+(data.exist)[i]['name']+'</td>\
-                        </tr>';
-                }
-                $('#list_body2').append(has_tm);//追加到当前中
+                //下页的起点, 为0则无
+                now = data.now;
+                is_show();
                 //追加商标数据
                 var html = '';
                 //组装内容
@@ -617,6 +614,7 @@
                         </td>\
                         <td class="number">'+(data.list)[i]['number']+'</td>\
                         <td>'+(data.list)[i]['name']+'</td>\
+                        <td>'+(data.list)[i]['class']+'</td>\
                         <td class="exp-ear">\
                         <input type="hidden" name="number[]" value="'+(data.list)[i]['number']+'">\
                         我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk tr_price" value="'+union_price+'"/>元\
@@ -629,10 +627,6 @@
                 $('#list_body').append(html);
                 //修改商标数量
                 $('#goods_num').text(data.list.length);
-                //是否为申请人的所有商标
-                if(data.count>max_tmnum){
-                    is_all=false;
-                }
                 //检测内容
                 check_table();
             }else{
@@ -668,12 +662,14 @@
         var has_tm = '';
         var t_img = '';
         var t_name = '';
+        var t_class = '';
         var t_number = '';
         objs.each(function(){
             ++now_k;
             t_img = $(this).find('img').attr('src');
             t_number = $(this).find('.number').text();
             t_name = $(this).find('td:eq(4)').text();
+            t_class = $(this).find('td:eq(5)').text();
             has_tm += '<tr>\
                 <td>'+now_k+'</td>\
                 <td class="list-mess-pic">\
@@ -681,9 +677,18 @@
                 </td>\
                 <td class="number">'+t_number+'</td>\
                 <td>'+t_name+'</td>\
+                <td>'+t_class+'</td>\
                 </tr>';
         });
         $('#list_body2').append(has_tm);//追加到当前中
+    }
+    //是否显示 换一批
+    function is_show(){
+        if(now){
+            $('#get_left').hide();
+        }else{
+            $('#get_left').show();
+        }
     }
 </script>
 <? require(ViewDir.'/footer.html'); ?>

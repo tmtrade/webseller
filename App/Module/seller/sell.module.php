@@ -210,22 +210,25 @@ class SellModule extends AppModule{
         //处理数据
         $res = array();//可销售商标
         $exist = array();//已出售商标
-        $res['total'] = $rst['total'];
         $res['now'] = 0;
+        $flag = true;//是否继续保存未出售数据
         foreach($rst['rows'] as $k=>$item){
             if($k<$start) continue;
-            if(count($res)>=52){ //只取50条数据---count,now除去
+            if(count($res)>=51){ //只取50条数据---now除去
                 $res['now'] = $k;//保存下次改取的位置
-                break;
+                $flag = false;
             }
             if(strpos($item['status'],'商标已无效')===false && strpos($item['status'],'冻结中')===false){
                 $temp = array();
                 $temp['number'] = $item['code'];
+                $temp['class'] = $item['classId'];
                 $temp['name'] = $item['name'];
-                $temp['imgUrl'] = $this->getImg($item['code']);
+//                $temp['imgUrl'] = $this->getImg($item['code']);
+//                $temp['tid'] = $item['id'];//可以组装一只蝉地址
+                $temp['imgUrl'] = $item['imageUrl'];
                 if($this->existContact($item['code'],UID)){//该商标是否在出售中
-                    $exist[] = $temp;
-                }else{
+                    if($start==0) $exist[] = $temp;//第一次才保存已出售信息
+                }else if($flag){
                     $res[] = $temp;
                 }
             }
