@@ -42,13 +42,9 @@ class IndexAction extends AppAction
 		$this->set("sellCount",$sell);
 		
 		//得到最近一个月的收益情况
-		$month_income = $this->com('redisHtml')->get('month_income');
-		if(empty($month_income)){
-		    $month_income = $this->load('income')->getMonthIncome();
-		    $this->com('redisHtml')->set('month_income', $month_income, 600);
-		}
+		$month_income = $this->load('income')->getMonthIncome();
 		$this->set('month_income',$month_income);
-		
+
 		//得到最近的四条站内信
 		$msg_list = $this->load('messege')->getSizeMsg(4);
 		$this->set('msg_list',$msg_list);
