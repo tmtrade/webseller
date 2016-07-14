@@ -55,6 +55,8 @@ class SellAction extends AppAction{
         $data['code'] = 0;
         $data['name'] = $info['name'];
         $data['img']	= $info['imgUrl'];
+        $data['class']	= $info['class'];
+        $data['thum']	= mbSub($info['class'],0,18);
         $this->returnAjax($data);
     }
 

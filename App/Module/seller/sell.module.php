@@ -64,6 +64,7 @@ class SellModule extends AppModule{
         if(empty($data)) return array();
         //得到商标状态
         $info   = current($data);
+        $info['class'] = implode(',',arrayColumn($data,'class'));//合并分类
         if(empty($info) || empty($info['tid'])) return array();
         $info['second'] = $this->getSecond($info['tid']);
         //得到商标图片

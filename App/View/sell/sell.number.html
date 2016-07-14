@@ -30,7 +30,7 @@
                 <table class="list-mess-main">
                     <thead>
                     <tr class="tbl-tit">
-                        <th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>期望获得收益    </th><th>操作</th>
+                        <th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>类别</th><th>期望获得收益    </th><th>操作</th>
                     </tr>
                     </thead>
                     <tbody class="list-mess" id="list_body"></tbody>
@@ -175,6 +175,7 @@
                             </td>\
                             <td class="number">'+number+'</td>\
                             <td>'+data.name+'</td>\
+                            <td title="'+data.class+'">'+data.thum+'</td>\
                             <td class="exp-ear">\
                             <input type="hidden" name="number[]" value="'+number+'">\
                             我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk tr_price"/>元\
