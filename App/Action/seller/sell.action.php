@@ -167,7 +167,7 @@ class SellAction extends AppAction{
 		    }else{
 			    foreach($SBarr as $k => $item){
 				
-				    if((!$item['phone']) || (!$item['name'])){
+				    if((!$item['phone']) || (!$item['name']) || (!$item['price'])){
 					    $saleNotContact[] = $item;
 					    continue;
 				    }

@@ -37,12 +37,18 @@ class IndexAction extends AppAction
 		    $sell['two'] = $this->load('goods')->getSaleCount($this->userInfo['id'],2);//审核中
 		    $sell['three'] = $this->load('goods')->getSaleCancelCount($this->userInfo['id'],3);//未通过
 		    $sell['four'] = $this->load('goods')->getSaleCancelCount($this->userInfo['id'],1);//已失效
-		    $this->com('redisHtml')->set('sell_count', $sell, 600);
+		    $this->com('redisHtml')->set('sell_count', $sell, 60);
 		}
 		$this->set("sellCount",$sell);
+		
 		//得到最近一个月的收益情况
-		$month_income = $this->load('income')->getMonthIncome();
+		$month_income = $this->com('redisHtml')->get('month_income');
+		if(empty($month_income)){
+		    $month_income = $this->load('income')->getMonthIncome();
+		    $this->com('redisHtml')->set('month_income', $month_income, 600);
+		}
 		$this->set('month_income',$month_income);
+		
 		//得到最近的四条站内信
 		$msg_list = $this->load('messege')->getSizeMsg(4);
 		$this->set('msg_list',$msg_list);

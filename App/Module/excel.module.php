@@ -165,7 +165,7 @@ class ExcelModule extends AppModule
 		
 		$error = $numNotHas+$numNError+$numNotContact-$numSucess;
 		$PHPExcel->getActiveSheet()->setCellValue('A2',
-			"导入成功".$numSucess."条   共导入失败".$error."条  缺少联系人、缺少联系电话".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在商标".$numExists."条  不存在的商标".$numNotHas."条"
+			"导入成功".$numSucess."条   共导入失败".$error."条  缺少联系人或缺少联系电话".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在商标".$numExists."条  不存在的商标".$numNotHas."条"
 		);
 		//----------------全局---------------------------------------------
 		//设置单元格宽度
@@ -246,7 +246,7 @@ class ExcelModule extends AppModule
 		if($saleNotContact){
 			$num = $num+1;
 			$PHPExcel->getActiveSheet()->mergeCells('A'.$num.':G'.$num);
-			$PHPExcel->getActiveSheet()->setCellValue('A'.$num, "缺少联系人、缺少联系电话");
+			$PHPExcel->getActiveSheet()->setCellValue('A'.$num, "缺少联系人、缺少联系电话或商品底价");
 			foreach($saleNotContact as $k => $item ){
 				$num ++;
 				$PHPExcel->getActiveSheet()->setCellValue('A'.$num, $item['number']);
@@ -365,7 +365,7 @@ class ExcelModule extends AppModule
 		
 		$error = $numExists+$numNotHas+$numNError+$numNotContact;
 		$PHPExcel->getActiveSheet()->setCellValue('A2',
-			"导入成功".$numSucess."条   共导入失败".$error."条  缺少联系人、缺少联系电话".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在专利".$numExists."条  万象云不存在的专利".$numNotHas."条"
+			"导入成功".$numSucess."条   共导入失败".$error."条  联系人、缺少联系电话或商品底价".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在专利".$numExists."条  万象云不存在的专利".$numNotHas."条"
 		);
 		//----------------全局---------------------------------------------
 		//设置单元格宽度
@@ -446,7 +446,7 @@ class ExcelModule extends AppModule
 		if($saleNotContact){
 			$num = $num+1;
 			$PHPExcel->getActiveSheet()->mergeCells('A'.$num.':G'.$num);
-			$PHPExcel->getActiveSheet()->setCellValue('A'.$num, "缺少联系人、缺少联系电话");
+			$PHPExcel->getActiveSheet()->setCellValue('A'.$num, "联系人、缺少联系电话或商品底价");
 			foreach($saleNotContact as $k => $item ){
 				$num ++;
 				$PHPExcel->getActiveSheet()->setCellValue('A'.$num, $item['number']);
