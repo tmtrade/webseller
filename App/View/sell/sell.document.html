@@ -33,7 +33,9 @@
                 <a class="sub-btn cir" >
                     选择上传文档
                 </a>
-		<input type="file"  name="fileName" id="upfile"  style="display:none;"/>
+		<form id='bzformupload' action='/sell/ajaxUploadExcel/' method='post' enctype='multipart/form-data'>
+		    <input type="file"  name="fileName" id="upfile"  style="display:none;"/>
+		</form>
                 <p>
                     <label>一次最高不超过100条数据<br/>还没有模板？</label>
                     <a href="javascript:void(0)" onclick="downModel()" >点这里 EXCEL模板下载</a>
@@ -94,7 +96,6 @@
 	    $("#upfile").click();
 	})
 	//excel文件上传
-	$("#upfile").wrap("<form id='bzformupload' action='/sell/ajaxUploadExcel/' method='post' enctype='multipart/form-data'></form>");
 	$("#upfile").change(function(){
 		/**文件格式**/
 		var fileInput = $("#upfile").val();
