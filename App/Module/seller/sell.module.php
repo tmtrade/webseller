@@ -204,6 +204,25 @@ class SellModule extends AppModule{
             );
             $rst = $this->importBi('trademark')->proposerTmsearch($data);
             if($rst['rows']){
+                //何并一标多类, 去除无效商标
+                $aa = array();
+                foreach($rst['rows'] as $k0=>$v0){
+                    if(strpos($v0['status'],'商标已无效')===false && strpos($v0['status'],'冻结中')===false){
+                        if(isset($aa[$v0['code']])){
+                            $aa[$v0['code']]['classId'] .= (','.$v0['classId']);
+                        }else{
+                            $aa[$v0['code']] = array(
+                                'code' => $v0['code'],
+                                'classId' => $v0['classId'],
+                                'imageUrl' => $v0['imageUrl'],
+                                'id' => $v0['id'],
+                                'name' => $v0['name'],
+                            );
+                        }
+                    }
+                }
+                $rst['rows'] = $aa;
+                //缓存数据
                 $this->com('redis')->set('tmproposer'.$proposerId,$rst,7200);
             }
         }
@@ -218,19 +237,18 @@ class SellModule extends AppModule{
                 $res['now'] = $k;//保存下次改取的位置
                 $flag = false;
             }
-            if(strpos($item['status'],'商标已无效')===false && strpos($item['status'],'冻结中')===false){
-                $temp = array();
-                $temp['number'] = $item['code'];
-                $temp['class'] = $item['classId'];
-                $temp['name'] = $item['name'];
-//                $temp['imgUrl'] = $this->getImg($item['code']);
-//                $temp['tid'] = $item['id'];//可以组装一只蝉地址
-                $temp['imgUrl'] = $item['imageUrl'];
-                if($this->existContact($item['code'],UID)){//该商标是否在出售中
-                    if($start==0) $exist[] = $temp;//第一次才保存已出售信息
-                }else if($flag){
-                    $res[] = $temp;
-                }
+            $temp = array();
+            $temp['number'] = $item['code'];
+            $temp['class'] = $item['classId'];
+            $temp['name'] = $item['name'];
+            $temp['thumb'] = mbSub($item['classId'],0,18);
+            $temp['imgUrl'] = $this->getImg($item['code']);
+//            $temp['tid'] = $item['id'];//可以组装一只蝉地址
+//            $temp['imgUrl'] = $item['imageUrl'];
+            if($this->existContact($item['code'],UID)){//该商标是否在出售中
+                if($start==0) $exist[] = $temp;//第一次才保存已出售信息
+            }else if($flag){
+                $res[] = $temp;
             }
         }
         return array($res,$exist);
