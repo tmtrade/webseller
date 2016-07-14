@@ -234,7 +234,7 @@ class SellModule extends AppModule{
         $flag = true;//是否继续保存未出售数据
         foreach($rst['rows'] as $k=>$item){
             if($k<$start) continue;
-            if(count($res)>=51){ //只取50条数据---now除去
+            if(count($res)>=51 && $flag){ //只取50条数据---now除去
                 $res['now'] = $k;//保存下次改取的位置
                 $flag = false;
             }
