@@ -111,7 +111,7 @@
             </div>
         </div>
         <div class="cg-cont">
-            <a class="cir qx-btn">换一批</a>
+            <a class="cir qx-btn" href="javascript:;" id="get_left" style="display: none">换一批</a>
         </div>
 
         <div class="amend-cont-all">
@@ -735,9 +735,9 @@
     //是否显示 换一批
     function is_show(){
         if(now){
-            $('#get_left').hide();
-        }else{
             $('#get_left').show();
+        }else{
+            $('#get_left').hide();
         }
     }
 

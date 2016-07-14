@@ -222,7 +222,7 @@ class SellModule extends AppModule{
                         }
                     }
                 }
-                $rst['rows'] = $aa;
+                $rst['rows'] = array_values($aa);
                 //缓存数据
                 $this->com('redis')->set('tmproposer'.$proposerId,$rst,7200);
             }
