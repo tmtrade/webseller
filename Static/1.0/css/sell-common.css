@@ -10,7 +10,7 @@ abbr,acronym { border:0}
 table {border-collapse: collapse;border-spacing: 0;}
 .fl{float: left}
 .fr{float: right}
-body{min-width: 1280px;}
+body{min-width: 1280px;min-height:700px;}
 table{width: 100%;}
 input{color: #666666;border-color:#d5d5d5;}
 select{
@@ -185,6 +185,7 @@ body,html{
     color: #ffffff !important;
     left: 260px;
     bottom: 10px;
+    cursor: pointer;
 }
 .qx-btn:hover{
     background: url("../images/qx-bg.png") repeat-x;
@@ -286,9 +287,10 @@ body,html{
     /*position:absolute;*/
     /*left: 0;*/
     /*top:0px;*/
-    position: fixed;
+    position:fixed;
     left: 0;
     top: 77px;
+    min-height: 800px;
 }
 .sell-rg-nav ul{
     width: 100%;
@@ -393,9 +395,11 @@ body,html{
 }
 
 .sell-qq-serve{
-    position: absolute;
-    bottom:15%;
+    position:absolute;
+    top:65%;
     left:9px;
+    /*text-align: center;*/
+    /*margin-top:100%;*/
 }
 .sell-qq-serve p{
     color: #bebebe;
@@ -673,7 +677,14 @@ body,html{
     background:#CCC !important;
     color:#fff !important;;
 }
-
+.layui-layer-setwin a{
+    width:26px !important;
+    height:26px !important;
+}
+.layui-layer-setwin{
+    right: 5px  !important;;
+    top:8px  !important;;
+}
 /*分页完*/
 
 
