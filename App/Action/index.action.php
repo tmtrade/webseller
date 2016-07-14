@@ -31,20 +31,24 @@ class IndexAction extends AppAction
 			if($res) $this->checkMsg();
 		}
 		//获取我的商品个各状态个数
-		$sell = $this->com('redisHtml')->get('sell_count');
+		$sell = $this->com('redisHtml')->get('sell_count_'.UID);
 		if(empty($sell)){
 		    $sell['one'] = $this->load('goods')->getSaleCount($this->userInfo['id'],1);//出售中
 		    $sell['two'] = $this->load('goods')->getSaleCount($this->userInfo['id'],2);//审核中
 		    $sell['three'] = $this->load('goods')->getSaleCancelCount($this->userInfo['id'],3);//未通过
 		    $sell['four'] = $this->load('goods')->getSaleCancelCount($this->userInfo['id'],1);//已失效
-		    $this->com('redisHtml')->set('sell_count', $sell, 60);
+		    $this->com('redisHtml')->set('sell_count_'.UID, $sell, 60);
 		}
 		$this->set("sellCount",$sell);
 		
 		//得到最近一个月的收益情况
-		$month_income = $this->load('income')->getMonthIncome();
+		$month_income = $this->com('redisHtml')->get('month_income_'.UID);
+		if(empty($month_income)){
+		    $month_income = $this->load('income')->getMonthIncome();
+		    $this->com('redisHtml')->set('month_income_'.UID, $month_income, 600);
+		}
 		$this->set('month_income',$month_income);
-
+		
 		//得到最近的四条站内信
 		$msg_list = $this->load('messege')->getSizeMsg(4);
 		$this->set('msg_list',$msg_list);

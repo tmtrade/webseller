@@ -150,6 +150,7 @@ class ExcelModule extends AppModule
 		$PHPExcel->getActiveSheet()->getStyle('A2')->getFont()->setSize(12);
 		$PHPExcel->getActiveSheet()->getStyle('A2')->getFont()->setBold(true);
 		$PHPExcel->getActiveSheet()->getStyle('A2')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID);
+		$PHPExcel->getActiveSheet()->getStyle('A2:H2')->getBorders()->getallBorders()->setBorderStyle(PHPExcel_Style_Border::BORDER_DASHED);
 		//设置居中
 		$PHPExcel->getActiveSheet()->getStyle('A2')->getAlignment()->setHorizontal(
 			PHPExcel_Style_Alignment::HORIZONTAL_CENTER
