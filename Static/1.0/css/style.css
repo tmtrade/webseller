@@ -563,10 +563,10 @@ div.desi a{
     border-left:1px solid #e8e8e8;
 }
 .list-mess .exp-ear{
-    max-width: 80px;
-    padding: 5px 12px 5px 6px;
-    margin-right:3px;
-    margin-left: 3px;
+    /*max-width: 80px;*/
+    /*padding: 5px 12px 5px 6px;*/
+    /*margin-right:3px;*/
+    /*margin-left: 3px;*/
 }
 .mess-top-dq{
     margin-top:5px;
@@ -596,38 +596,16 @@ div.desi a{
     width: 84px !important;
     top: 26px !important;
 }
-table.list-mess-main{
-    width: 100%;
-}
-table.list-mess-main tr th{
-    width: 11%;
-    text-align: center;
-}
-table.list-mess-main tr th.oper{
-    text-align: center;
-    padding-right: 42px;
-}
-table.list-mess-main tr td{
-    width: 11.2%;
-}
+/*出售列表的头部*/
 .list-mess-tit{
     border: 1px solid #e8e8e8;
     border-bottom: none;
 }
-
-table.list-mess-main tr{
-    width: 100%;
-    height: 68px;
-    border-bottom:1px solid #e8e8e8;
-}
-table.list-mess-main tr:hover  a.pic {
-    border: 2px solid #bbbbbb;
-}
 .tbl-tit{
     height: 38px !important;
 }
-.tbl-tit th:first-child {
-    text-indent:30px;
+.list-mess-tit tr th{
+    width: 11%;
 }
 .tbl-tit th:first-child input{
     display: inline-block;
@@ -635,9 +613,45 @@ table.list-mess-main tr:hover  a.pic {
     vertical-align:middle;
     margin-bottom: 3px;
 }
-/*.list-mess-pic-tit{*/
-    /*text-indent: 36px;*/
+.list-mess-tit tr th.exp-ear{
+    width: 20% !important;
+}
+.list-mess-tit tr th.oper{
+    width: 12.1% !important;
+}
+
+.list-mess-pic{
+    text-align: center;
+    text-indent: 0px;
+}
+.brand-list table tr .exp-ear{
+    width: 20% !important;
+}
+/*.brand-list table tr td.list-mess-pic{*/
+    /*width: 20% !important;*/
+    /*text-align: center;*/
 /*}*/
+
+/*table.list-mess-main tr th.oper{*/
+    /*text-align: center;*/
+    /*padding-right: 42px;*/
+/*}*/
+
+
+table.list-mess-main{
+    width: 100%;
+}
+
+table.list-mess-main tr{
+    width: 100%;
+    height: 68px;
+    border-bottom:1px solid #e8e8e8;
+}
+
+table.list-mess-main tr:hover  a.pic {
+    border: 2px solid #bbbbbb;
+}
+
 table.list-mess-main tr a.pic{
     display:table;
     width: 89px;
@@ -658,9 +672,10 @@ table.list-mess-main thead{
     text-indent: 20px;
     height:38px;
 }
+
 table.list-mess-main tr td{
-    /*text-indent: 20px;*/
-    text-align: center;
+    text-indent: 20px;
+    width: 11%;
     height: 68px;
 }
 table.list-mess-main tr  a{
@@ -708,6 +723,27 @@ table.list-mess-main tr .pri-num input{
     border-radius: 5px;
 
 }
+
+
+
+/*table.list-mess-main tr th{*/
+    /*width: 11%;*/
+    /*text-align: center;*/
+/*}*/
+
+/*table.list-mess-main tr td{*/
+    /*width: 11.2%;*/
+/*}*/
+
+
+/*.tbl-tit th:first-child {*/
+    /*text-indent:30px;*/
+/*}*/
+
+/*.list-mess-pic-tit{*/
+    /*text-indent: 36px;*/
+/*}*/
+
 
 .cg-cont{
     display:block;
@@ -807,7 +843,7 @@ table.list-mess-main tr .pri-num input{
     position:absolute;
     left:50%;
     top: 50%;
-    /*margin-left: -130px;*/
+    margin-left: -65px;
     margin-top: -76px;
     text-align: center;
 }
@@ -822,7 +858,7 @@ table.list-mess-main tr .pri-num input{
 /*æ¶ˆæ¯åˆ—è¡¨*/
 .comm-list-news{
     height:790px;
-    overflow-y: scroll;
+    overflow-y:auto;
 
 }
 /*.comm-list-news table tr td{*/
@@ -907,18 +943,6 @@ table.list-mess-main tr .pri-num input{
 }
 /*æ ¹æ®å•†æ ‡å·å‡ºå”®*/
 
-.brand-list table tr .exp-ear{
-    width: 25% !important;
-}
-table.list-mess-main tr th.exp-ear{
-    width: 25% !important;
-}
-table.list-mess-main tr th.list-mess-pic{
-    width:19.7% !important;
-}
-.brand-list table tr td.list-mess-pic{
-    width: 20% !important;
-}
 .brand-list table tr td.exp-ear input{
     width: 118px;
     height: 33px;
