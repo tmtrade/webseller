@@ -32,20 +32,37 @@
         <div class="pull-list choose-trade">
             <a class="cir all-tp-btn" index="1"><font id="size_income">仅查看未提交商标</font><i class="fa fa-chevron-down"></i></a>
             <ul class="all-tp-list" style="display: none;">
-                <li id="trade1" onmouseover="jc('trade',1,2)">仅查看未提交商标</li>
-                <li id="trade2" onmouseover="jc('trade',2,2)">仅查看已提交商标</li>
+                <li id="trade1" onclick="jc('trade',1,2)">仅查看未出售商标</li>
+                <li id="trade2" onclick="jc('trade',2,2)">仅查看已出售商标</li>
+
             </ul>
         </div>
         <div class="data-list-mess by-prop" style="display: block" id="con_trade_1">
             <div id="has-data">
+
+                <table class="list-mess-main list-mess-tit">
+                    <thead>
+                    <tr class="tbl-tit">
+                        <th><label><input type="checkbox" id="chooseall">全选</label></th>
+                        <th>序号</th>
+                        <th class="list-mess-pic">商标图形</th>
+                        <th>商标号  </th>
+                        <th>商标名称</th>
+                        <th class="exp-ear">期望获得收益</th>
+                        <th class="oper">操作</th>
+                    </tr>
+                    </thead>
+                </table>
                 <div class="comm-list-news blk  brand-list">
                     <form id="submit_number">
                         <table class="list-mess-main">
-                            <thead>
-                            <tr class="tbl-tit">
-                                <th><label><input type="checkbox" id="chooseall">全选</label></th> <th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>类别</th><th>期望获得收益    </th><th>操作</th>
-                            </tr>
-                            </thead>
+
+                            <!--<thead>-->
+                            <!--<tr class="tbl-tit">-->
+                                <!--<th><label><input type="checkbox" id="chooseall">全选</label></th> <th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>类别</th><th>期望获得收益    </th><th>操作</th>-->
+                            <!--</tr>-->
+                            <!--</thead>-->
+
                             <tbody class="list-mess" id="list_body"></tbody>
                         </table>
                     </form>
@@ -60,8 +77,25 @@
         </div>
         <div class="data-list-mess by-prop" id="con_trade_2">
             <div id="has-data2">
+                <table class="list-mess-main list-mess-tit">
+                    <thead>
+                    <tr class="tbl-tit">
+                       <th>序号</th>
+                        <th class="list-mess-pic">商标图形</th>
+                        <th>商标号  </th>
+                        <th>商标名称</th>
+                    </tr>
+                    </thead>
+                </table>
                 <div class="comm-list-news blk  brand-list">
                     <table class="list-mess-main">
+
+                        <!--<thead>-->
+                        <!--<tr class="tbl-tit">-->
+                           <!--<th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+
                         <thead>
                         <tr class="tbl-tit">
                            <th>序号</th><th class="list-mess-pic-tit">商标图形</th> <th>商标号  </th> <th>商标名称</th><th>类别</th>
@@ -76,6 +110,10 @@
                 <h4>暂无已售商标</h4>
             </div>
         </div>
+        <div class="cg-cont">
+            <a class="cir qx-btn">换一批</a>
+        </div>
+
         <div class="amend-cont-all">
             <? if($userInfo['mobile']): ?>
             <!--联系人信息完整可以修改-->
@@ -177,9 +215,9 @@
         <table class="pel-cent-th">
             <thead>
             <tr>
-                <td class="com-name" style="width:39.9%;">公司名称</td>
-                <td class="com-name">公司地址</td>
-                <td class="com-ope" style="width:16.9%;">操作</td>
+                <td class="com-name" style="width:39.9%;width/***/:38.9%\9;">公司名称</td>
+                <td class="com-name" style="width/***/:38.9%\9;">公司地址</td>
+                <td class="com-ope" style="width:16.9%;width/***/:16.4%\9;">操作</td>
             </tr>
             </thead>
         </table>
@@ -199,7 +237,18 @@
 </div>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/sell.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
+
+
+    var is_all = true;//当前商标是否为申请人下的所有商标
+    var now = 0;
+    var max_tmnum = 50;
+
+    var is_all = true;//当前商标是否为申请人下的所有商标
+    var now = 0;
+    var max_tmnum = 50;
+
     var now = 0;//0表示全部商标,大于0表示还有下一页数据
+
     var proposer_id = 0;
     var union_price = 0;
     var now_k = 0;
@@ -656,6 +705,7 @@
             $('#has-data2').show();
         }
     }
+
     //将提交的数据添加到已售列表中
     function putSubmitData(){
         var objs = $('#list_body tr');
@@ -690,5 +740,6 @@
             $('#get_left').show();
         }
     }
+
 </script>
 <? require(ViewDir.'/footer.html'); ?>
