@@ -20,7 +20,7 @@ class IncomeModule extends AppModule{
 
     /**
      * 得到我的收益分页数据
-     * @param $type int 商品类型 0混合,1商标,2专利
+     * @param $type int 商品类型 0商标,1专利,2混合
      * @param $start int 时间筛选的开始
      * @param $end int 时间筛选的结束
      * @param $page int 页码
@@ -69,7 +69,7 @@ class IncomeModule extends AppModule{
 
     /**
      * 得到对应商品类型的收益总额及商品出售数
-     * @param $type int 商品类型 0混合,1商标,2专利
+     * @param $type int 商品类型 0商标,1专利,2混合
      * @param $start int
      * @param $end int
      * @return int

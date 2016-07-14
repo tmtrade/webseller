@@ -132,15 +132,16 @@
         }
         //类型
         var type = $.trim($('#type_income').text());
-        if(type=='全部'){
-            type = 2;
-            myurl.set('type',type);
-        }else if(type=='专利'){
+        if(type=='专利'){
             type = 1;
             myurl.set('type',type);
-        }else{
+        }else if(type=='商标'){
             type = 0;
             myurl.remove('type');
+            myurl.set('type',type);
+        }else{
+            type = 2;
+            myurl.set('type',type);
         }
         //页码大小
         var size = $.trim($('#size_income').text());
