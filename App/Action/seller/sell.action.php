@@ -154,7 +154,8 @@ class SellAction extends AppAction{
         }else{
             $msg['msg']     = $obj->msg;
         }
-        $this->returnAjax($msg);
+	$this->set("msg",$msg);
+	$this->display("sell/sell.uploads.html");
     }
 
     //把文件里面的数据读取出来，然后组成一个数组返回  

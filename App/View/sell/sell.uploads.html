@@ -1,0 +1,54 @@
+<? require(ViewDir.'/header.html'); ?>
+<style type="text/css">
+    body,html{
+        background-color: #ffffff !important;
+    }
+</style>
+<div class="yzc-sell-main" style="">
+    <!--左侧菜单-->
+    <? require(ViewDir.'/left.html'); ?>
+    <!--右侧主体部分-->
+    <div class="sell-lf-main">
+        <div class="comm-list-tit sell-by-brand w-cont">
+            <h3 class="fl">商标出售 ><label>根据文档出售</label></h3>
+            <p class="fr">
+                您还可以选择:<a href="/sell/number">根据申请号出售 </a>|<a href="/sell/person">根据申请人出售</a>
+            </p>
+        </div>
+        <div class="comm-search-bg f-hidden">
+            <p class="docum-step">
+                <span class="one" >第一步&nbsp;|&nbsp;选择文档上传</span>
+                <i class="fa fa-chevron-right"></i>
+                <span class="two">第二步&nbsp;|&nbsp;自动提交商品</span>
+                <i class="fa fa-chevron-right"></i>
+                <span class=" on three">第三步&nbsp;|&nbsp;提交完成</span>
+            </p>
+        </div>
+        <div class="sub-result">
+            <!--提交完毕-->
+            <div class="sub-state" id="three" >
+                <div class="sub-state-pic" >
+                    <img src="<?=StaticDir?>1.0/images/sub-state-end.png">
+                </div>
+                <h3>
+                    提交完毕
+                </h3>
+		<?if($msg['code']==1){?>
+		    <p>
+			本次您导入了<span class="cFF0000" id="alldata"><?=$msg['alldata']?></span>条商品，
+			成功<span class="cFF0000" id="sucdata"><?=$msg['sucdata']?></span>条商品，
+			失败<span class="cFF0000" id="errdata"><?=$msg['errdata']?></span>条商品<br/>
+			<a href="<?=$msg['filepath']?>" id="downError">下载失败文档</a>
+		    </p>
+		    <?}else{?>
+		    <p>
+			<?=$msg['msg']?>
+		    </p>
+		    <?}?>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<? require(ViewDir.'/footer.html'); ?>

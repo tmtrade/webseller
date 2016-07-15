@@ -279,12 +279,6 @@ class ExcelModule extends AppModule
 		//$filenames = $filename . date('Ymd', time()) . $code; //防止乱码
 		$filenames = "errorexcel" . date('YmdHis', time()) . $code; //防止乱码
 		$objWriter = new PHPExcel_Writer_Excel5($PHPExcel);
-		header("Content-type:application/octet-stream");
-		header("Accept-Ranges:bytes");
-		header("Content-type:application/vnd.ms-excel");
-		header("Content-Disposition:attachment;filename=" . $filenames . ".xls");
-		header("Pragma: no-cache");
-		header("Expires: 0");
 		$savepath = UPLOADEXCEL.$filenames . ".xls";
 		$pathfile = UPLOADEXCELED.$filenames . ".xls";
 		$objWriter->save($savepath);

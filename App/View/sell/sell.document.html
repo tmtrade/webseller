@@ -33,7 +33,7 @@
                 <a class="sub-btn cir" >
                     选择上传文档
                 </a>
-		<form id='bzformupload' action='/sell/ajaxUploadExcel/' method='post' enctype='multipart/form-data'>
+		<form id='bzformupload' action='/sell/ajaxUploadExcel/' method='post'  enctype='multipart/form-data'>
 		    <input type="file"  name="fileName" id="upfile"  style="display:none;"/>
 		</form>
                 <p>
@@ -108,8 +108,12 @@
 		$(".docum-step .one").removeClass("on");
 		$("#one").hide();
 		$("#two").show();
-		$("#bzformupload").ajaxSubmit({
-			dataType:  'json',
+		$("#bzformupload").submit();
+		$.ajax({
+			type : 'post',
+			url  : '/sell/ajaxUploadExcel',
+			data : form,
+			dataType : 'json',
 			success: function(data) {
 				if (data.code == 1){
 					$('#alldata').text(data.alldata);
@@ -145,7 +149,7 @@
 			    $("#two").hide();
 			    $("#one").show();
 			}
-		});
+		    });
 	});
 	
 	//下载模板
