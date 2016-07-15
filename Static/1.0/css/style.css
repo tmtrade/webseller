@@ -511,7 +511,7 @@ div.desi a{
 }
 
 /* æœ¬ä¾‹å­css */
-.data-list-mess{width: 97%;margin:24px auto 0px;min-height: 500px;}
+.data-list-mess{width: 97%;margin:24px auto 0px;min-height: 500px;position: relative;}
 .comm-list-mess{width: 97%;margin:24px auto 0px;min-height: 500px;position: relative;}
 .comm-list-mess .slideTxtBox{ width:100%; text-align:left;  }
 .comm-list-mess .slideTxtBox .hd{ width:410px;   line-height:33px; position:relative;}
@@ -826,11 +826,11 @@ table.list-mess-main tr .pri-num input{
     min-width: 260px;
     min-height: 152px;
     background: url("../images/no-data.png") no-repeat center top;
-    position:absolute;
-    left:50%;
-    top: 35%;
-    margin-left: -35px;
-    margin-top: -76px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -135px;
+    margin-top: -86px;
     text-align: center;
 }
 .no-data h4{
@@ -843,7 +843,7 @@ table.list-mess-main tr .pri-num input{
 }
 /*æ¶ˆæ¯åˆ—è¡¨*/
 .comm-list-news{
-    min-height:400px;
+    min-height:500px;
     max-height:600px;
     overflow-y:auto;
 
@@ -1078,12 +1078,10 @@ cpm-pel-cent table tr td.com-name p{
     width: 14%;
 
 }
-.cpm-pel-cent table tr td.com-ope input{
+.cpm-pel-cent table tr td.com-ope a.xzk{
+    display: inline-block;
     width: 16px;
     height: 16px;
-    appearance:none;
-    -moz-appearance:none;
-    -webkit-appearance:none;
     background: url("../images/sell-ope.png") no-repeat center;
     background:none\9;
 

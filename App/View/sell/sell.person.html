@@ -227,41 +227,15 @@
         </div>
     </div>
 </div>
-<![if !IE]>
-     <script type="text/javascript">
-         //申请人列表选中效果相关js
-         $("#p_list").on("click",'tr',function(){
-             var oinx= $(this).attr("index");
-             if(oinx==1){
-                 $("#p_list").find("tr").css({"backgroundColor":"#ffffff"});
-                 $("#p_list").find("tr").find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
-                 $("#p_list").find("tr").attr("index","1");
-                 $(this).css({"backgroundColor":"#fff5e1"});
-                 $(this).find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
-                 $(this).attr("index","2");
-             }else{
-                 $(this).css({"backgroundColor":"#ffffff"});
-                 $(this).find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
-                 $(this).attr("index","1");
-             }
-             return false;
-         });
-     </script>
-<![endif]>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/sell.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
-
-
     var is_all = true;//当前商标是否为申请人下的所有商标
     var now = 0;
     var max_tmnum = 50;
-
     var is_all = true;//当前商标是否为申请人下的所有商标
     var now = 0;
     var max_tmnum = 50;
-
     var now = 0;//0表示全部商标,大于0表示还有下一页数据
-
     var proposer_id = 0;
     var union_price = 0;
     var now_k = 0;
@@ -309,7 +283,7 @@
                             <td class="com-name"><p>'+(data.list)[i]['address']+'</p></td>\
                             <td class="com-ope">\
                             <input type="hidden" class="proposer_id" value="'+(data.list)[i]['id']+'">\
-                            <input type="checkbox"/>\
+                             <a  class="xzk"></a>\
                             </td>\
                             </tr>';
                     }
@@ -573,6 +547,8 @@
             });
         });
 
+
+
         //批量删除；
         $(".batch-del").on("click",function(){
             var oips=$("#list_body").find("input:checked");
@@ -628,6 +604,23 @@
                 getLeft();
             }
         });
+    });
+
+    //申请人列表选中效果相关js
+    $("#p_list").on("click",'tr',function(){
+        var oinx= $(this).attr("index");
+        if(oinx==1){
+            $("#p_list").find("tr").css({"backgroundColor":"#ffffff"});
+            $("#p_list").find("tr").find("a.xzk").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
+            $("#p_list").find("tr").attr("index","1");
+            $(this).css({"backgroundColor":"#fff5e1"});
+            $(this).find("a.xzk").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
+            $(this).attr("index","2");
+        }else{
+            $(this).css({"backgroundColor":"#ffffff"});
+            $(this).find("a.xzk").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
+            $(this).attr("index","1");
+        }
     });
     //得到剩余的商标
     function getLeft(){
