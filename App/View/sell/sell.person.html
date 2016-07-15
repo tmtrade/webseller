@@ -1,9 +1,5 @@
 <? require(ViewDir.'/header.html'); ?>
-<style type="text/css">
-    body,html{
-        background-color: #ffffff !important;
-    }
-</style>
+
 <div class="yzc-sell-main" style="">
     <!--左侧菜单-->
     <? require(ViewDir.'/left.html'); ?>
@@ -213,7 +209,7 @@
             <tr>
                 <td class="com-name" style="width:39.9%;width/***/:38.9%\9;">公司名称</td>
                 <td class="com-name" style="width/***/:38.9%\9;">公司地址</td>
-                <td class="com-ope" style="width:16.9%;width/***/:16.4%\9;">操作</td>
+                <td class="com-ope" style="width:16.9%;width/***/:16.4%\9;text-indent: -10px;">操作</td>
             </tr>
             </thead>
         </table>
@@ -231,6 +227,27 @@
         </div>
     </div>
 </div>
+<![if !IE]>
+     <script type="text/javascript">
+         //申请人列表选中效果相关js
+         $("#p_list").on("click",'tr',function(){
+             var oinx= $(this).attr("index");
+             if(oinx==1){
+                 $("#p_list").find("tr").css({"backgroundColor":"#ffffff"});
+                 $("#p_list").find("tr").find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
+                 $("#p_list").find("tr").attr("index","1");
+                 $(this).css({"backgroundColor":"#fff5e1"});
+                 $(this).find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
+                 $(this).attr("index","2");
+             }else{
+                 $(this).css({"backgroundColor":"#ffffff"});
+                 $(this).find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
+                 $(this).attr("index","1");
+             }
+             return false;
+         });
+     </script>
+<![endif]>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/sell.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
 
@@ -555,6 +572,7 @@
                 content:$("#pri-cont-main")
             });
         });
+
         //批量删除；
         $(".batch-del").on("click",function(){
             var oips=$("#list_body").find("input:checked");
@@ -589,23 +607,7 @@
                 layer.closeAll();
             })
         });
-        //申请人列表选中效果相关js
-        $("#p_list").on("click",'tr',function(){
-            var oinx= $(this).attr("index");
-            if(oinx==1){
-                $("#p_list").find("tr").css({"backgroundColor":"#ffffff"});
-                $("#p_list").find("tr").find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
-                $("#p_list").find("tr").attr("index","1");
-                $(this).css({"backgroundColor":"#fff5e1"});
-                $(this).find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope-over.png')","backgroundRepeat":"no-repeat"});
-                $(this).attr("index","2");
-            }else{
-                $(this).css({"backgroundColor":"#ffffff"});
-                $(this).find("input[type=checkbox]").css({"backgroundImage":"url('<?=StaticDir?>1.0/images/sell-ope.png')","backgroundRepeat":"no-repeat"});
-                $(this).attr("index","1");
-            }
-            return false;
-        });
+
         //全选/全不选 事件
         $('#chooseall').click(function(){
             var flag = $(this).prop('checked');
@@ -682,6 +684,7 @@
         },'json');
     }
     //检查表格中是否有内容
+    var obj=$(".comm-list-news");
     function check_table(){
         var objs = $('#list_body tr').length;
         if(!objs){
@@ -700,6 +703,13 @@
             $('#no-data2').hide();
             $('#has-data2').show();
         }
+       if(obj.height()>=600){
+           $(".list-mess-tit tr th.oper").css({"width":"111.9px"})
+       }
+        else{
+           $(".list-mess-tit tr th.oper").css({"width":"100px"})
+       }
+
     }
 
     //将提交的数据添加到已售列表中

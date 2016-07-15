@@ -605,7 +605,7 @@ div.desi a{
     height: 38px !important;
 }
 .list-mess-tit tr th{
-    width: 11%;
+    width:100px;
 }
 .tbl-tit th:first-child input{
     display: inline-block;
@@ -614,29 +614,15 @@ div.desi a{
     margin-bottom: 3px;
 }
 .list-mess-tit tr th.exp-ear{
-    width: 20% !important;
+    width:245px !important;
 }
-.list-mess-tit tr th.oper{
-    width: 12.1% !important;
-}
-
 .list-mess-pic{
     text-align: center;
     text-indent: 0px;
 }
 .brand-list table tr .exp-ear{
-    width: 20% !important;
+    width: 245px !important;
 }
-/*.brand-list table tr td.list-mess-pic{*/
-    /*width: 20% !important;*/
-    /*text-align: center;*/
-/*}*/
-
-/*table.list-mess-main tr th.oper{*/
-    /*text-align: center;*/
-    /*padding-right: 42px;*/
-/*}*/
-
 
 table.list-mess-main{
     width: 100%;
@@ -675,7 +661,7 @@ table.list-mess-main thead{
 
 table.list-mess-main tr td{
     text-indent: 20px;
-    width: 11%;
+    width:100px;
     height: 68px;
 }
 table.list-mess-main tr  a{
@@ -842,8 +828,8 @@ table.list-mess-main tr .pri-num input{
     background: url("../images/no-data.png") no-repeat center top;
     position:absolute;
     left:50%;
-    top: 50%;
-    margin-left: -65px;
+    top: 35%;
+    margin-left: -35px;
     margin-top: -76px;
     text-align: center;
 }
@@ -857,7 +843,8 @@ table.list-mess-main tr .pri-num input{
 }
 /*æ¶ˆæ¯åˆ—è¡¨*/
 .comm-list-news{
-    height:790px;
+    min-height:400px;
+    max-height:600px;
     overflow-y:auto;
 
 }
@@ -1098,7 +1085,8 @@ cpm-pel-cent table tr td.com-name p{
     -moz-appearance:none;
     -webkit-appearance:none;
     background: url("../images/sell-ope.png") no-repeat center;
-    background: none/9;
+    background:none\9;
+
 }
 .cpm-pel-cent table tr:hover{
     background: #fff5e1 !important;
@@ -1366,11 +1354,12 @@ cpm-pel-cent table tr td.com-name p{
 }
 .int-score-rule h5{
     display: block;
-    width: 354px;
+    width:404px;
     height: 38px;
     line-height: 38px;
-    text-align: center;
+    text-indent: 15px;
     background: url("../images/int-score-tx.png") no-repeat top center;
+    background-size: 100% 100%;
     color: #ffffff;
     text-shadow: 1px 1px 1px #333;
 }
