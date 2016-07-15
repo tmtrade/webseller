@@ -933,6 +933,7 @@ table.list-mess-main tr .pri-num input{
 .brand-list table tr td.exp-ear input{
     width: 118px;
     height: 33px;
+    line-height: 33px;
     text-indent: 10px;
     margin-left: 5px;
     vertical-align:middle;
@@ -1005,7 +1006,8 @@ table.list-mess-main tr .pri-num input{
     color: #999999;
 }
 .common-cpm-cent input{
-    padding: 7px 55px 7px 8px;
+    width: 215px;
+    padding: 7px 7px 7px 8px;
     margin-left: 15px;
     margin-right: 5px;
 }
@@ -1083,8 +1085,6 @@ cpm-pel-cent table tr td.com-name p{
     width: 16px;
     height: 16px;
     background: url("../images/sell-ope.png") no-repeat center;
-    background:none\9;
-
 }
 .cpm-pel-cent table tr:hover{
     background: #fff5e1 !important;
