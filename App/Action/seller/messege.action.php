@@ -7,7 +7,7 @@
  */
 class MessegeAction extends AppAction{
 
-    public $size = 7;
+    public $size = 10;
 
     /**
      * 站内信列表
