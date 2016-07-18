@@ -688,6 +688,7 @@
     }
     //检查表格中是否有内容
     function check_table(){
+        support_placeholder();
         var objs = $('#list_body tr').length;
         if(!objs){
             $('#chooseall').prop('checked',false)//全选按钮失去勾选
