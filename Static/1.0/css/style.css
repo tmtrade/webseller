@@ -1551,7 +1551,9 @@ cpm-pel-cent table tr td.com-name p{
     min-width:94px;
 }
 .sell-cg-password-list li input{
+    display: inline-block;
     min-width: 236px;
+    width: 236px\9 ;
 }
 
 .sell-cg-password .sell-ts-blk{
