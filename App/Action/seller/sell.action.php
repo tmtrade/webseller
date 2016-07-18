@@ -96,7 +96,7 @@ class SellAction extends AppAction{
         if($rst[0]){
             $now = $rst[0]['now'];
             unset($rst[0]['now']);
-            $this->returnAjax(array('code'=>0,'list'=>$rst[0],'now'=>$now,'exist'=>$rst[1]));
+            $this->returnAjax(array('code'=>0,'list'=>$rst[0],'now'=>$now,'exist'=>$rst[1],'total'=>$rst[2]));
         }else{
             $this->returnAjax(array('code'=>1,'msg'=>'无有效商标信息'));
         }

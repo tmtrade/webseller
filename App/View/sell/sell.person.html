@@ -231,6 +231,8 @@
 <script type="text/javascript">
     var is_all = true;//当前商标是否为申请人下的所有商标
     var now = 0;//0表示全部商标,大于0表示还有下一页数据
+    var total_num = 0;//未出售商标
+    var other_num = 0;//除去当前页面剩余的未出售商标
     var proposer_id = 0;
     var union_price = 0;
     var now_k = 0;
@@ -263,6 +265,7 @@
                 $('#list_body2').empty();
                 $('#goods_num').text(0);
                 now_k = 0;
+                $('#trade1').click();
                 check_table();
             }
             //获得申请人模糊列表
@@ -328,6 +331,9 @@
                                     if(now){
                                         is_all = false;
                                     }
+                                    //商标总数
+                                    total_num = data.total;
+                                    other_num = total_num-data.list.length;
                                     is_show();
                                     //修改商标数量
                                     $('#goods_num').text(data.list.length);
@@ -483,6 +489,8 @@
                             location.reload();
                         });
                     }else{
+                        //计算剩余商标
+                        total_num -= num;
                         //将当前数据添加到已售中
                         putSubmitData();
                         layer.msg('提交成功,现加载剩余商标', {
@@ -579,6 +587,7 @@
                 $('#goods_num').text(0);
                 now_k = 0;
                 check_table();
+                $('#trade1').click();
                 layer.closeAll();
             })
         });
@@ -641,6 +650,8 @@
             if(data.code==0){
                 //下页的起点, 为0则无
                 now = data.now;
+                other_num = total_num-data.list.length;
+                is_show();
                 //追加商标数据
                 var html = '';
                 //组装内容
@@ -731,7 +742,7 @@
     }
     //是否显示 换一批
     function is_show(){
-        if(is_all==false){
+        if(other_num>0){
             $('#get_left').show();
         }else{
             $('#get_left').hide();

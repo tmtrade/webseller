@@ -253,7 +253,12 @@ class SellModule extends AppModule{
                 $res[] = $temp;
             }
         }
-        return array($res,$exist);
+        //得到第一次访问时的未出售商标总数
+        $total_num = 0;
+        if($start==0 && $f==false){
+            $total_num = count($rst['rows'])-count($exist);
+        }
+        return array($res,$exist,$total_num);
     }
 
 }
