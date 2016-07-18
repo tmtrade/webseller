@@ -376,7 +376,7 @@
                                                 <td title="'+(data.list)[i]['class']+'">'+(data.list)[i]['thumb']+'</td>\
                                                 <td class="exp-ear">\
                                                 <input type="hidden" name="number[]" value="'+(data.list)[i]['number']+'">\
-                                                我期望获益<input type="text" name="price[]" value="请填写底价" onfocus='"this.value="' onblur="this.value="请填写底价" class="cir blk tr_price" value="'+union_price+'"/>元\
+                                                我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk tr_price" value="'+union_price+'"/>元\
                                                 </td>\
                                                 <td class="dele">\
                                                 <a class="del-lis" href="javascript:;">删除</a>\
@@ -667,7 +667,7 @@
                         <td title="'+(data.list)[i]['class']+'">'+(data.list)[i]['thumb']+'</td>\
                         <td class="exp-ear">\
                         <input type="hidden" name="number[]" value="'+(data.list)[i]['number']+'">\
-                        我期望获益<input type="text" name="price[]"  value="请填写底价" class="cir blk tr_price" value="'+union_price+'"/>元\
+                        我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk tr_price" value="'+union_price+'"/>元\
                         </td>\
                         <td class="dele">\
                         <a class="del-lis" href="javascript:;">删除</a>\
@@ -713,15 +713,6 @@
        }
 
     }
-
-//    $(".tr_price").each(function(){
-//        $(this).focus(function(){
-//            $(this).value="";
-//        })
-//        $(this).blur(function(){
-//            $(this).value="请填写底价";
-//        })
-//    })
 
     //将提交的数据添加到已售列表中
     function putSubmitData(){
