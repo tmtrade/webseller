@@ -235,6 +235,11 @@ class SellModule extends AppModule{
         $flag = true;//是否继续保存未出售数据
         foreach($rst['rows'] as $k=>$item){
             if($k<$start) continue;
+            $ttt = $this->existContact($item['code'],UID);//检测商标是否在出售中
+            if(count($res)>=51 && $flag && !$ttt){ //只取50条数据---now除去
+                $res['now'] = $k;//保存下次改取的位置
+                $flag = false;
+            }
             $temp = array();
             $temp['number'] = $item['code'];
             $temp['class'] = $item['classId'];
@@ -243,13 +248,9 @@ class SellModule extends AppModule{
             $temp['imgUrl'] = $this->getImg($item['code']);
 //            $temp['tid'] = $item['id'];//可以组装一只蝉地址
 //            $temp['imgUrl'] = $item['imageUrl'];
-            if($this->existContact($item['code'],UID)){//该商标是否在出售中
+            if($ttt){//该商标是否在出售中
                 if($start==0 && $f==false) $exist[] = $temp;//第一次才保存已出售信息
             }else if($flag){
-                if(count($res)>=50 && $flag){ //只取50条数据---now除去
-                    $res['now'] = $k+1;//保存下次改取的位置
-                    $flag = false;
-                }
                 $res[] = $temp;
             }
         }
