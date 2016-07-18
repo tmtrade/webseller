@@ -230,11 +230,6 @@
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/sell.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
     var is_all = true;//当前商标是否为申请人下的所有商标
-    var now = 0;
-    var max_tmnum = 50;
-    var is_all = true;//当前商标是否为申请人下的所有商标
-    var now = 0;
-    var max_tmnum = 50;
     var now = 0;//0表示全部商标,大于0表示还有下一页数据
     var proposer_id = 0;
     var union_price = 0;
@@ -330,6 +325,9 @@
                                 if(data.code==0){
                                     //下页的起点, 为0则无
                                     now = data.now;
+                                    if(now){
+                                        is_all = false;
+                                    }
                                     is_show();
                                     //修改商标数量
                                     $('#goods_num').text(data.list.length);
@@ -478,7 +476,7 @@
             $.post('/sell/addPerson',data,function(dd){
                 layer.closeAll('loading');
                 if(dd.code==0){
-                    if(now==0){
+                    if(is_all){
                         layer.msg('提交成功', {
                             time: 1500
                         },function(){
@@ -598,7 +596,7 @@
         });
         //换一批功能
         $('#get_left').click(function(){
-            if(now==0){
+            if(is_all){
                 layer.msg('没有更多信息了',{time:1500});
             }else{
                 getLeft();
@@ -642,7 +640,6 @@
             if(data.code==0){
                 //下页的起点, 为0则无
                 now = data.now;
-                is_show();
                 //追加商标数据
                 var html = '';
                 //组装内容
@@ -734,7 +731,7 @@
     }
     //是否显示 换一批
     function is_show(){
-        if(now){
+        if(is_all==false){
             $('#get_left').show();
         }else{
             $('#get_left').hide();

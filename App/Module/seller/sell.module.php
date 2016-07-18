@@ -193,9 +193,10 @@ class SellModule extends AppModule{
      * 根据申请人id得到对应的商标数据
      * @param $proposerId int
      * @param $start int
+     * @param $f bool 默认第一次加载, 获得已出售, true,不活的
      * @return array
      */
-    public function getPersonTm($proposerId,$start = 0){
+    public function getPersonTm($proposerId,$start = 0,$f = false){
         //redis缓存接口查询数据
         $rst = $this->com('redis')->get('tmproposer'.$proposerId);
         if(!$rst){
@@ -247,7 +248,7 @@ class SellModule extends AppModule{
 //            $temp['tid'] = $item['id'];//可以组装一只蝉地址
 //            $temp['imgUrl'] = $item['imageUrl'];
             if($this->existContact($item['code'],UID)){//该商标是否在出售中
-                if($start==0) $exist[] = $temp;//第一次才保存已出售信息
+                if($start==0 && $f==false) $exist[] = $temp;//第一次才保存已出售信息
             }else if($flag){
                 $res[] = $temp;
             }

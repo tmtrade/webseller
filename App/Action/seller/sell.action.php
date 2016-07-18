@@ -88,10 +88,11 @@ class SellAction extends AppAction{
      */
     public function getPersonTm(){
         $proposer_id = $this->input('proposer_id','int');
+        $flag = isset($_POST['now']);//true 加载剩余, false 加载第一次
         $now = $this->input('now','int',0);
         if(!$proposer_id) return array('code'=>1,'msg'=>'申请人不能为空');
         //得到申请人商标数据
-        $rst = $this->load('sell')->getPersonTm($proposer_id,$now);
+        $rst = $this->load('sell')->getPersonTm($proposer_id,$now,$flag);
         if($rst[0]){
             $now = $rst[0]['now'];
             unset($rst[0]['now']);
