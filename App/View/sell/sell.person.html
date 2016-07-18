@@ -311,14 +311,14 @@
                             }
                             //是否设置通用价格
                             union_price = $('#union_price').val();
-                            if(union_price && checkPrice(union_price)==false){
+                            if(union_price && union_price!='请输入期望获益的价格' && checkPrice(union_price)==false){
                                 layer.msg('请输入正确的价格', {
                                     time: 1500
                                 });
                                 layer.closeAll('loading');
                                 return false;
                             }
-                            union_price = union_price?parseInt(union_price):'';
+                            union_price = (union_price && union_price!='请输入期望获益的价格')?parseInt(union_price):'';
                             //提交数据获得商标数据
                             $.post('/sell/getPersonTm',{'proposer_id':proposer_id},function(data){
                                 layer.closeAll('loading');
@@ -488,6 +488,7 @@
                         layer.msg('提交成功,现加载剩余商标', {
                             time: 1500
                         });
+                        $('#chooseall').prop('checked',false);
                         getLeft();
                     }
                 }else if(dd.code==1){
@@ -675,7 +676,6 @@
         },'json');
     }
     //检查表格中是否有内容
-    var obj=$(".comm-list-news");
     function check_table(){
         var objs = $('#list_body tr').length;
         if(!objs){
@@ -694,10 +694,10 @@
             $('#no-data2').hide();
             $('#has-data2').show();
         }
-       if(obj.height()>=600){
+        var obj=$(".comm-list-news");
+        if(obj.height()>=600){
            $(".list-mess-tit tr th.oper").css({"width":"111.9px"})
-       }
-        else{
+        }else{
            $(".list-mess-tit tr th.oper").css({"width":"100px"})
        }
 
