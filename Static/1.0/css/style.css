@@ -639,7 +639,8 @@ table.list-mess-main tr:hover  a.pic {
 }
 
 table.list-mess-main tr a.pic{
-    display:table;
+    display:table-cell;
+    display: inline-block\9;
     width: 89px;
     height:58px;
     vertical-align: middle;
