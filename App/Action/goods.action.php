@@ -8,6 +8,8 @@
  */
 class GoodsAction extends AppAction{
 
+    public $pageTitle   = "我的商品-一只蝉出售者平台";
+    
     public $size = 8;
 
     /**

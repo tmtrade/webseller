@@ -7,7 +7,8 @@
  * Time: 下午 14:10
  */
 class IncomeAction extends AppAction{
-
+    
+    public $pageTitle   = "我的收益-一只蝉出售者平台";
     /**
      * 得到收益列表数据
      */

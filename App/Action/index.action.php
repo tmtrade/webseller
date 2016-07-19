@@ -87,6 +87,8 @@ class IndexAction extends AppAction
 	 * 渲染修改密码页面
 	 */
 	public function changePassword(){
+		$this->pageTitle   = "我的资料-一只蝉出售者平台";
+		$this->set('title',$this->pageTitle);
 		$this->display();
 	}
 }

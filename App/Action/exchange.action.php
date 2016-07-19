@@ -7,7 +7,9 @@
  * Time: 下午 14:10
  */
 class ExchangeAction extends AppAction{
-
+    
+    public $pageTitle   = "奖励兑换-一只蝉出售者平台";
+    
     public $size = 15;
 
     /**
