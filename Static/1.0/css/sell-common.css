@@ -242,6 +242,15 @@ body,html{
 }
 .yzc-sell-head ul.head-nav li a{
     color:#666666;
+    text-decoration: none;
+}
+.yzc-sell-head ul.head-nav li a font{
+    display: inline-block;
+    margin-right:6px;
+}
+.yzc-sell-head ul.head-nav li a font:hover{
+    border-bottom: 1px solid #666;
+    padding-bottom: 3px;
 }
 .yzc-sell-head ul.head-nav li.yzc-sta-mess span{
     margin-top: -3px;
@@ -428,8 +437,8 @@ body,html{
     position: absolute;
     bottom: -8px;
     left: 0px;
-
 }
+
 .logo-bg{
     width: 100%;
     height: 608px;
@@ -596,6 +605,9 @@ body,html{
 
 }
 
+.pass-wd{
+    display: inline-block;
+}
 
 /*分页*/
 .mj-pages{

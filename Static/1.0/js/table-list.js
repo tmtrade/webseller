@@ -95,16 +95,19 @@ function stopPropagation(e) {
 }
 
 //table偶数行变色
-var otrs= $(".list-mess").find("tr");
-for(var i=0;i<=otrs.length;i++){
-    if(i%2==1)
-    {
-        $(otrs[i]).css({"backgroundColor":"#f5f5f5"})
-    }
-    else{
-        $(otrs[i]).css({"backgroundColor":"#ffffff"})
+function cg_tbcolor(){
+    var otrs= $(".list-mess").find("tr");
+    for(var i=0;i<=otrs.length;i++){
+        if(i%2==1)
+        {
+            $(otrs[i]).css({"backgroundColor":"#f5f5f5"})
+        }
+        else{
+            $(otrs[i]).css({"backgroundColor":"#ffffff"})
+        }
     }
 }
+
 //切换公用函数
 function jc(name,curr,n)
 {

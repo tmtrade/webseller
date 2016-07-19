@@ -67,11 +67,25 @@
     color: #c75756;
     text-decoration: underline;
 }
-
+.sell-per-head i{
+    width: 108px;
+    height: 108px;
+    border-radius:100px;
+    -webkit-border-radius:100px;
+    -moz-border-radius:100px;
+    -o-border-radius:100px;
+}
 
 .sell-per-head i img{
     max-width: 108px;
     max-height: 108px;
+    width: 108px\9;
+    height: 108px\9;
+    border-radius:100px;
+    -webkit-border-radius:100px;
+    -moz-border-radius:100px;
+    -o-border-radius:100px;
+
 }
 .sell-per-head-pic{
     display: inline-block;
@@ -94,8 +108,13 @@
     opacity: 0.6;
     filter:opacity(.6);
     -webkit-filter:opacity(.6);
+    border-radius:100px;
+    -webkit-border-radius:100px;
+    -moz-border-radius:100px;
+    -o-border-radius:100px;
     cursor: pointer;
     display:none;
+
 }
 .sell-per-head-pic span a{
     text-decoration: underline;
@@ -134,10 +153,12 @@
     font-family: "微软雅黑";
     margin: 10px auto 0px;
     border-radius: 5px;
+    cursor: pointer;
+
 }
-.sub-btn:hover{
-    cursor:pointer;
-}
+/*.sub-btn:hover{*/
+    /*cursor:pointer;*/
+/*}*/
 
 
 .sell-per-mdl,.sell-per-btm{
@@ -617,8 +638,9 @@ div.desi a{
     width:245px !important;
 }
 .list-mess-pic{
-    text-align: center;
-    text-indent: 0px;
+    /*text-align: center;*/
+    /*text-indent: 0px;*/
+    padding-left: 30px;
 }
 .brand-list table tr .exp-ear{
     width: 245px !important;
@@ -665,6 +687,9 @@ table.list-mess-main tr td{
     width:100px;
     height: 68px;
 }
+table.list-mess-main tr td.tick{
+    width: 55%;
+}
 table.list-mess-main tr  a{
     color: #666666;
 }
@@ -676,7 +701,7 @@ table.list-mess-main tr td.pri-num{
     width:18%;
 }
 table.list-mess-main tr td.cg-price{
-    width: 18%;
+    width: 20%;
 }
 table.list-mess-main tr p.price{
     margin-left: -10px;
@@ -1135,8 +1160,8 @@ cpm-pel-cent table tr td.com-name p{
 }
 /*è‡ªå®šä¹‰å¼¹çª—å…³é—­æŒ‰é’®*/
 .layui-layer-setwin .layui-layer-close2{
-    right:0px !important;
-    top:-5px !important;;
+    right:12px !important;
+    top:4px !important;;
 }
 .layui-layer-ico{
     background: url("../images/cpm-cha.png") no-repeat center top !important;;
