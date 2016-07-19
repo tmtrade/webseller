@@ -218,7 +218,7 @@
                         //变当前消息为已读
                         $(_this).attr('isfirst',1);
                         //消息数减1
-                        $('.sell-infor').text(function(i,n){
+                        $('.msg_t_num').text(function(i,n){
                             if(n==0){
                                 return 0;
                             }else{
@@ -230,8 +230,10 @@
                             time: 2000 //2秒关闭（如果不配置，默认是3秒）
                         });
                     }
+                    if(!bbbb){
+                        return false;
+                    }
                 },'json');
-                return false;
             }
         })
     });
