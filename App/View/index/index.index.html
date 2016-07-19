@@ -124,20 +124,17 @@
                                 if($item['type']==2){
                                     if($item['content']){
                                         $link_type = $item['content'];
-                                        $target = '_blank';
                                     }else{
                                         $link_type = 'javascript:;';
-                                        $target = '';
                                     }
                                 }else{
                                     $link_type = '/messege/view/?id='.$item['mid'];
-                                    $target = '';
                                 }
                             ?>
-                            <p class="fl"><a class="msg_a" mid="<?=$item['mid']?>" target="<?=$target?>" href="<?=$link_type?>"><?=$item['title']?></a></p>
+                            <p class="fl"><a class="msg_a" mid="<?=$item['mid']?>" target="_blank" href="<?=$link_type?>"><?=$item['title']?></a></p>
                             <label class="fr"><?=date('Y-m-d H:i:s',$item['date'])?></label>
                             <div style="display: none">
-                                <a class="msg_s" target="<?=$target?>" href="<?=$link_type?>">1</a>
+                                <a class="msg_s" target="_blank" href="<?=$link_type?>">1</a>
                             </div>
                         </li>
                         <? endforeach; ?>
@@ -195,18 +192,29 @@
 
     $(function(){
         //给链接类型消息添加已读功能
-        $(".msg_a[target=_blank]").click(function(){
+        $(".msg_a").click(function(){
             var id = $(this).attr('mid');
             if(id<=0 || id=='') return false;
+            var href = $(this).attr('href');
             var _this = this;
             //是否第一次点击
             var flag = $(this).attr('isfirst');
+            var bbbb = true;
+            if(href=='#'){
+                bbbb = false;
+            }
             if(flag){
-                $(_this).closest('li').find('.msg_s').click();
+                if(bbbb){
+                    $(_this).closest('li').find('.msg_s').click();
+                }else{
+                    return false;
+                }
             }else{
                 $.post('/messege/read',{'id':id},function(data){
                     if(data.code==0){
-                        $(_this).closest('td').find('.msg_s').click();
+                        if(bbbb){
+                            $(_this).closest('td').find('.msg_s').click();
+                        }
                         //变当前消息为已读
                         $(_this).attr('isfirst',1);
                         //消息数减1
@@ -223,6 +231,7 @@
                         });
                     }
                 },'json');
+                return false;
             }
         })
     });

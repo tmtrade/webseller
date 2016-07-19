@@ -263,8 +263,6 @@ class MessegeModule extends AppModule
      * @return array
      */
     public function viewMsg($mid){
-        //修改状态
-        $this->modifyMsg(UID,$mid);
         //返回结果
         $r = array();
         $r['eq']['id'] = $mid;

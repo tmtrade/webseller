@@ -24,22 +24,19 @@
                                 if($item['type']==2){
                                     if($item['content']){
                                         $link_type = $item['content'];
-                                        $target = '_blank';
                                     }else{
                                         $link_type = 'javascript:;';
-                                        $target = '';
                                     }
                                 }else{
                                     $link_type = '/messege/view/?id='.$item['mid'];
-                                    $target = '';
                                 }
                             ?>
                             <td class="tick">
                                 <p>
-                                    <a class="msg_a" mid="<?=$item['mid']?>" target="<?=$target?>" href="<?=$link_type?>"><i class="sell-ico <?=($item['status'])?'news-end':'news-str'?>"></i><?=$item['title']?></a>
+                                    <a class="msg_a" mid="<?=$item['mid']?>" target="_blank" href="<?=$link_type?>"><i class="sell-ico <?=($item['status'])?'news-end':'news-str'?>"></i><?=$item['title']?></a>
                                 </p>
                                 <div style="display: none">
-                                    <a class="msg_s" target="<?=$target?>" href="<?=$link_type?>">1</a>
+                                    <a class="msg_s" target="_blank" href="<?=$link_type?>">1</a>
                                 </div>
                             </td>
                             <td class="time"><?=date('Y-m-d H:i:s',$item['date'])?></td>
@@ -65,14 +62,25 @@
             var id = $(this).attr('mid');
             if(id<=0 || id=='') return false;
             var _this = this;
+            var href = $(this).attr('href');
+            var bbbb = true;
+            if(href=='#'){
+                bbbb = false;
+            }
             //是否第一次点击
             var flag = $(this).find('i').hasClass('news-str');
             if(!flag){
-                $(_this).closest('td').find('.msg_s').click();
+                if(bbbb) {
+                    $(_this).closest('td').find('.msg_s').click();
+                }else{
+                    return false;
+                }
             }else{
                 $.post('/messege/read',{'id':id},function(data){
                     if(data.code==0){
-                        $(_this).closest('td').find('.msg_s').click();
+                        if(bbbb){
+                            $(_this).closest('td').find('.msg_s').click();
+                        }
                         //变当前消息为已读
                         $(_this).find('i').removeClass('news-str').addClass('news-end');
                         //消息数减1
@@ -89,6 +97,7 @@
                         });
                     }
                 },'json');
+                return false;
             }
         })
     });
