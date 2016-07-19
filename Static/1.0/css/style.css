@@ -838,11 +838,12 @@ table.list-mess-main tr .pri-num input{
     margin-top: 10px;
 }
 .mess-earn-hj b{
+    display: inline-block;
     font-size: 30px;
     margin-left: 5px;
     margin-right: 5px;
     vertical-align: middle;
-    margin-bottom:3px;
+    margin-bottom:6px;
 }
 .earn-list-mess table{
     width: 100%;
