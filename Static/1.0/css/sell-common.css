@@ -69,12 +69,20 @@ a[href]:hover{
     line-height: 33px;
     text-indent: 10px;
     background: #ffffff;
+    background-position: 10px center;
+    background-repeat: no-repeat;
     color:#666666;
     border: 1px solid #e8e8e8;
     border-radius: 5px;
     -webkit-border-radius: 5px;
     -moz-border-radius:5px;
     -o-border-radius:5px;
+}
+#new_pass{
+    background-image: url("../images/ts1.png");
+}
+#pre_pass{
+    background-image: url("../images/ts2.png");
 }
 .common-cpm-sty{
     background: #ffffff !important;
@@ -107,6 +115,12 @@ a[href]:hover{
 .w-cont{
     padding-left: 26px;
     padding-right: 26px;
+}
+.new-pa{
+    background/***/: url("../images/ts1.png") no-repeat  10px center\9;
+}
+.rel-pa{
+    background/***/: url("../images/ts2.png") no-repeat  10px center\9;
 }
 .fa-chevron-down,.fa-chevron-up{
     color: #b0b0b0;
