@@ -32,9 +32,8 @@ class TotalModule extends AppModule
     //获取用户的蝉豆数
     public function getTotal($uid){
 	$r['eq'] = array('uid'=>$uid);
-	$r['col'] = array("amount");
         $res = $this->import('total')->find($r);
-	return $res['amount'];
+	return $res;
     }
     
 
@@ -97,9 +96,16 @@ class TotalModule extends AppModule
 		'pass_count'    => array('pass_count', 1),
 	    );
 	}else{
-	    $record = array(
-		'pass_count'    => array('pass_count', -1),
-	    );
+            $list = $this->getTotal($uid);
+            if( $list['pass_count'] <= 0 ){
+                $record = array(
+                    'pass_count'    => 0,
+                );                
+            }else{             
+                $record = array(
+                    'pass_count'    => array('pass_count', -1),
+                );
+            }
 	}
 	$res	 = $this->import("total")->modify($record, $r);
 	return $res;
@@ -113,4 +119,5 @@ class TotalModule extends AppModule
 	$res = $this->import('totalLog')->create($data);
 	return $res;
     }
+
 }

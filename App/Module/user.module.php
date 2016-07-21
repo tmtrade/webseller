@@ -80,7 +80,8 @@ class UserModule extends AppModule
 		$data['firstname']		= empty($data['nickname']) ? ( empty($data['name']) ? ( empty($data['mobile_hide']) ? $data['email_hide'] : $data['mobile_hide'] ) : $data['name'] ): $data['nickname'];
 
 		$data['specname']		= empty($data['nickname']) ? ( empty($data['name']) ? ( empty($data['mobile']) ? $data['email'] : $data['mobile'] ) : $data['name'] ): $data['nickname'];//不隐藏的用户名
-		$data['total'] = $this->load('total')->getTotal($data['id']);;
+		$tinfo = $this->load('total')->getTotal($data['id']);
+                $data['total'] = $tinfo['amount'];
 		return $data;
 	}
 
