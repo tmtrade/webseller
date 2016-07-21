@@ -1358,34 +1358,83 @@ cpm-pel-cent table tr td.com-name p{
 .int-score-rule{
     width: 60%;
     height: 148px;
-    background: #ffffff;
+    background:url("../images/yzc-jl-bg.png") no-repeat top center;
+    background-size: 100% 100%;
     float: right;
     margin: 6px;
     overflow: hidden;
     padding-left: 15px;
     padding-top: 10px;
+    text-align: center;
     border-radius: 0px 5px 5px 0px;
 }
 .int-score-rule h6{
-   margin-top: 5px;
-   border-bottom: 1px solid #f5f5f5;
-    padding-bottom: 5px;
+    padding-bottom:5px;
+    text-align:center;
+    font-size:15px;
+    color:#666666;
 }
 .int-score-rule font{
-    display: block;
-    padding-top: 10px;
+    display:inline-block;
+    border-top: 1px solid #f5f5f5;
+    padding-top:8px;
     padding-bottom: 7px;
+
 }
-.int-score-rule h5{
-    display: block;
-    width:404px;
-    height: 38px;
-    line-height: 38px;
-    text-indent: 15px;
-    background: url("../images/int-score-tx.png") no-repeat top center;
-    background-size: 100% 100%;
+.int-score-rule p{
+    text-align: center;
     color: #ffffff;
-    text-shadow: 1px 1px 1px #333;
+    font-size: 13px;
+    margin-top:14px;
+}
+/*.int-score-rule h5{*/
+    /*display: block;*/
+    /*width:404px;*/
+    /*height: 38px;*/
+    /*line-height: 38px;*/
+    /*text-indent: 15px;*/
+    /*background: url("../images/int-score-tx.png") no-repeat top center;*/
+    /*background-size: 100% 100%;*/
+    /*color: #ffffff;*/
+    /*text-shadow: 1px 1px 1px #333;*/
+/*}*/
+.int-score-prog {
+    margin-top:33px;
+    text-align: center;
+    font-size: 13px;
+    font-family: "宋体";
+}
+.int-score-prog label{
+    color: #ffffff;
+    margin-right: 40px;
+
+}
+.int-score-prog em{
+    color: #779bc0;
+}
+.int-score-prog span{
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom: 4px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 298px;
+    height: 12px;
+    background: url("../images/prog-not.png") repeat-x;
+    position: relative;
+    z-index: 2;
+
+}
+.int-score-prog span a{
+    display: inline-block;
+    width: 265px;
+    height: 11px;
+    background: url("../images/prog-ord.png") repeat-x;
+    position: absolute;
+    left: 0px;
+    top:0px;
+    z-index: 22;
+    transition:all 0.6s;
 }
 .int-score .int-score-num b{
     font-size: 40px;
