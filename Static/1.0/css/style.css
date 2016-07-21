@@ -1356,7 +1356,7 @@ cpm-pel-cent table tr td.com-name p{
     padding-bottom: 5px;
 }
 .int-score-rule{
-    width: 50%;
+    width:641px;
     height: 148px;
     background:url("../images/yzc-jl-bg.png") no-repeat top center;
     background-size: 100% 100%;
@@ -1399,14 +1399,15 @@ cpm-pel-cent table tr td.com-name p{
     /*text-shadow: 1px 1px 1px #333;*/
 /*}*/
 .int-score-prog {
-    margin-top:33px;
-    text-align: center;
+    margin-top: 33px;
+    text-align: left;
     font-size: 13px;
     font-family: "宋体";
+    text-indent:7px;
 }
 .int-score-prog label{
     color: #ffffff;
-    margin-right: 40px;
+    margin-right:30px;
 
 }
 .int-score-prog em{
@@ -1418,7 +1419,7 @@ cpm-pel-cent table tr td.com-name p{
     margin-bottom: 4px;
     margin-left: 10px;
     margin-right: 10px;
-    width: 298px;
+    width:304px;
     height: 12px;
     background: url("../images/prog-not.png") repeat-x;
     position: relative;
@@ -1428,7 +1429,7 @@ cpm-pel-cent table tr td.com-name p{
 .int-score-prog span a{
     display: inline-block;
     width: 265px;
-    height: 11px;
+    height: 12px;
     background: url("../images/prog-ord.png") repeat-x;
     position: absolute;
     left: 0px;
