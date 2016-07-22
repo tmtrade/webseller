@@ -72,7 +72,7 @@ class IndexAction extends AppAction
             );
 	    $image = $this->input('path', 'string');
 	    $images = new Images("file");
-	    $res = $images->thumb(".".$image,false,1);
+	    $res = $images->thumb(".".$image,0,0);
 	    $userInfoId	= $this->userInfo['id'];
 	    $saveinfo	= array('photo' => $res['big']);
 	    $isupdate	= $this->load('user')->setAvatar($userInfoId, $saveinfo);
