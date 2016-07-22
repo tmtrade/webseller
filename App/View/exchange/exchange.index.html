@@ -28,12 +28,15 @@
             <div class="int-score-rule">
                 <h6>奖励兑换规则</h6>
                 <font>平台每月发放一次广告资源，可通过蝉豆免费兑换（每月最多可申请2条）</font>
-                <p>每通过10条商品  或  有一件商品被销售  奖励 10 蝉豆</p>
+                <p class="tsy">每通过10条商品  或  有一件商品被销售  奖励 10 蝉豆</p>
                 <div class="int-score-prog">
                     <label>离本次奖励还差 <?=(10-$total_info['pass_count'])?> 条商品，加油！</label>
-                    <em>0</em>
-                    <span class="cir"><a class="cir cd-num<?=$total_info['pass_count']?>"></a></span>
-                    <em>10</em>
+                    <p>
+                        <em>0</em>
+                        <span class="cir"><a class="cir cd-num<?=$total_info['pass_count']?>"></a></span>
+                        <em>10</em>
+                    </p>
+
                 </div>
             </div>
         </div>
