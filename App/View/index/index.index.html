@@ -106,7 +106,7 @@
                         <b>暂无</b>
                         <? endif; ?>
                     </p>
-                    <a href=""></a>
+                    <a href="<?=SITE_URL?>"  target="_blank"></a>
                 </div>
             </div>
         </div>
@@ -149,7 +149,21 @@
                 <div class="sell-data-main">
                     <p>最近一个月用户热搜词：</p>
                     <div class="hot-ch" style="width:345px;">
-			<? foreach($keyword_list as $item): ?>
+			<? foreach($keyword_list as $item): 
+			if($item['keyword']=="?"){
+			    $item['keyword'] = "蜂蜜";
+			}
+			elseif($item['keyword']=="??"){
+			    $item['keyword'] = "食品";
+			}
+			elseif($item['keyword']=="???"){
+			    $item['keyword'] = "化妆品";
+			}
+			elseif($item['keyword']=="????"){
+			    $item['keyword'] = "棉";
+			}
+			?>
+			
                         <span class="cir"><?=$item['keyword']?></span>
 			<? endforeach; ?>
                     </div>
