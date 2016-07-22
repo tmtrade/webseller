@@ -70,6 +70,8 @@
 .sell-per-head i{
     width: 108px;
     height: 108px;
+    line-height: 108px;
+    text-align: center;
     border-radius:100px;
     -webkit-border-radius:100px;
     -moz-border-radius:100px;
@@ -77,6 +79,7 @@
 }
 
 .sell-per-head i img{
+    display: inline-block;
     max-width: 108px;
     max-height: 108px;
     width: 108px\9;
