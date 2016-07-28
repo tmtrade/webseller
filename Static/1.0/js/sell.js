@@ -24,7 +24,7 @@ $(function(){
     $('#list_body').on('blur','.tr_price',function(){
         var price = $(this).val();
         if(checkPrice(price)==false){
-            layer.msg('请填写正确的价格', {
+            layer.msg('请输入0以上的整数', {
                 time: 1500
             });
         }
@@ -98,5 +98,5 @@ function isName(name){
 }
 //验证价格
 function checkPrice(price){
-    return (/^\d+$/.test(price));
+    return (/^[123456789](\d)*$/.test(price));
 }

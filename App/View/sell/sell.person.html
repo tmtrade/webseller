@@ -315,7 +315,7 @@
                             //是否设置通用价格
                             union_price = $('#union_price').val();
                             if(union_price && union_price!='请输入期望获益的价格' && checkPrice(union_price)==false){
-                                layer.msg('请输入正确的价格', {
+                                layer.msg('请输入0以上的整数', {
                                     time: 1500
                                 });
                                 layer.closeAll('loading');
@@ -444,7 +444,7 @@
                 }
             });
             if(!flag){
-                layer.msg('请填写正确的价格', {
+                layer.msg('请输入0以上的整数', {
                     time: 1500
                 });
                 layer.closeAll('loading');
@@ -522,7 +522,7 @@
                     //价格
                     var price = parseInt($.trim($('#mass_price').val()));
                     if(checkPrice(price)==false){
-                        layer.msg('请填写正确的价格', {
+                        layer.msg('请输入0以上的整数', {
                             time: 1500
                         });
                         return false;
