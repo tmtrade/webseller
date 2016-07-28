@@ -175,6 +175,11 @@ class SellAction extends AppAction{
 					    $saleNotContact[] = $item;
 					    continue;
 				    }
+                                    $isPhone = isCheck($item['phone']);
+                                    if($isPhone!=2){
+                                        $saleNotContact[] = $item;
+                                        continue;
+                                    }
 				    $tmInfo = $this->load('sell')->getTmInfo($item['number']);
 				    if(!$tmInfo){//不存在该商标
 					    $saleNotHas[] = $item;

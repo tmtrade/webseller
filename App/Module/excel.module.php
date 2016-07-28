@@ -166,7 +166,7 @@ class ExcelModule extends AppModule
 		
 		$error = $numNotHas+$numNError+$numNotContact-$numSucess;
 		$PHPExcel->getActiveSheet()->setCellValue('A2',
-			"导入成功".$numSucess."条   共导入失败".$error."条  缺少联系人或缺少联系电话".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在商标".$numExists."条  不存在的商标".$numNotHas."条"
+			"导入成功".$numSucess."条   共导入失败".$error."条  缺少联系人或缺少联系电话,或者联系电话填写错误".$numNotContact."条 数据写入失败".$numNError."条  数据表已存在商标".$numExists."条  不存在的商标".$numNotHas."条"
 		);
 		//----------------全局---------------------------------------------
 		//设置单元格宽度
