@@ -11,6 +11,8 @@
 class IndexAction extends AppAction
 {
 
+	protected $onlineName = 'YzCoNlInE';
+
 	/**
 	 * 控制器默认方法
 	 * @author	void
@@ -91,5 +93,12 @@ class IndexAction extends AppAction
 		$this->set('title',$this->pageTitle);
 		$this->display();
 	}
+
+	public function getOnlineStatus()
+	{
+		$online = $this->com('redisQc')->get($this->onlineName);
+		$this->returnAjax(array('code'=>1,'msg'=>$online));
+	}
+	
 }
 ?>

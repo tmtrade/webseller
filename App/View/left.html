@@ -29,6 +29,19 @@
             <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes"><img border="0" src="/Static/1.0/images/QQser.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
                 
             
-            <p>您还可以<a href="javascript:;" onclick="window.open(&quot;http://p.qiao.baidu.com/im/index?siteid=7918603&amp;ucid=1268165&quot;);">联系在线客服</a></p>
+            <p>您还可以<a href="javascript:;" onclick="goChat();">联系在线客服</a></p>
         </div>
     </div>
+
+<script>
+//聊天函数
+function goChat(){
+    var type = _YZC_ONLINE_ ? _YZC_ONLINE_ : '';
+    if ( type=='yzc' )
+    {
+        window.open("http://p.qiao.baidu.com/cps/chat?siteId=9503594&userId=21149642");
+    }else{
+        window.open("http://chat.looyu.com/chat/chat/p.do?c=46344&f=123997&g=51817");
+    }
+}
+</script>

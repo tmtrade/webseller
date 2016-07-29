@@ -12,6 +12,23 @@
     <script type="text/javascript" src="<?=StaticDir?>1.0/js/laydate/laydate.js?v=<?=$static_version?>"></script>
     <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.SuperSlide.2.1.js?v=<?=$static_version?>"></script>
 </head>
+<script>
+    var _YZC_ONLINE_ = '';
+    $(document).ready(function(e) {
+    //获得登录相关的参数
+        $.ajax({
+            async: false,
+            type : 'post',
+            url  : '/index/getOnlineStatus/',
+            dataType : 'json',
+            success : function (data){
+                if (data.code){
+                    _YZC_ONLINE_ = data.msg;
+                }
+            }
+        });
+    });
+</script>
 <body>
 <!--共有头部-->
 <div class="yzc-sell-head f-clearfix">
