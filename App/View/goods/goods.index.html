@@ -55,6 +55,7 @@
                           <tr class="tbl-tit">
                             <th class="list-mess-pic">商品图片</th>
 			    <th>商品名称</th>
+			    <th>商标号</th>
 			    <th>提交时间</th>
 			    <?if($s['status']==1 || $s['status']==2){
 				echo "<th>期望获得收益</th>";
@@ -78,6 +79,7 @@
                                   <a class="pic" <?if(!empty($v['tid']) && $s['status']==1){?> href="<?=SITE_URL?>d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>"  onerror="this.src='/Static/1.0/images/img1.png'" width="90" height="60"></a>
                               </td>
                               <td><?=replaceSpace($v['name']);?></td>
+			      <td><?=$v['number']?></td>
                               <td><?=date("Y-m-d H:i",$v['date'])?></td>
                               
 			      <?if($s['status']==1 || $s['status']==2){
