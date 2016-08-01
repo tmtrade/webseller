@@ -165,7 +165,7 @@ class SellAction extends AppAction{
 	    /**商标已传的黑名单  不存在该商标      上传成功的  上传失败的 黑名单**/
 	    $saleExists = $saleNotHas = $saleSucess = $saleError = $saleNotContact = array();
 	    if($SBarr){
-		    if(isset($SBarr['statue']) && $SBarr['statue'] == 1){
+		    if(isset($SBarr['statue']) && $SBarr['statue'] == 1 && UID!=2325){
 			    $data['code']  = 0;
 			    $data['msg']   = '上传数量超过100条';
 		    }else{
