@@ -11,6 +11,7 @@ class GoodsAction extends AppAction{
     public $pageTitle   = "我的商品-一只蝉出售者平台";
     
     public $size = 8;
+     
 
     /**
      * 得到收益列表数据
@@ -33,6 +34,18 @@ class GoodsAction extends AppAction{
         //得到分页工具条
         $pager 	= $this->pagerNew($count, $size);
         $pageBar 	= empty($data) ? '' : getPageBarNew($pager);
+        
+        //获取我的商品个各状态个数
+        $sell = $this->com('redisHtml')->get('sell_count_'.UID);
+        if(empty($sell)){
+            $sell['three'] = $this->load('goods')->getSaleCancelCount($this->userInfo['id'],3);//未通过
+            $sell['four'] = $this->load('goods')->getSaleCancelCount($this->userInfo['id'],1);//已失效
+            $this->com('redisHtml')->set('sell_count_'.UID, $sell, 60);
+        }
+        $sell['one'] = $this->load('goods')->getSaleCount($this->userInfo['id'],1);//出售中
+        $sell['two'] = $this->load('goods')->getSaleCount($this->userInfo['id'],2);//审核中
+        $this->set("sellCount",$sell);
+        
         $this->set("pageBar",$pageBar);
         $this->set("list",$data);
 	$this->set("count",$count);
