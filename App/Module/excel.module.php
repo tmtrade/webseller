@@ -21,7 +21,7 @@ class ExcelModule extends AppModule
 	 * @author    Jeany
 	 * @since     2016-1-21
 	 */
-	public function PHPExcelToArr($filePath){
+	public function PHPExcelToArr($filePath, $count=100){
 		require_once(FILEDIR."/App/Util/PHPExcel.php");	
 		$filePath = FILEDIR.$filePath;
 		//建立reader对象  
@@ -45,7 +45,7 @@ class ExcelModule extends AppModule
 		$allRow = $currentSheet->getHighestRow();  
 		
 		$sbArr = array();
-		if($allRow-1 > 100){
+		if($allRow-1 > $count){
 			$sbArr['statue'] = 1;	
 		}else{
 			//循环读取每个单元格的内容。注意行从1开始，列从A开始  

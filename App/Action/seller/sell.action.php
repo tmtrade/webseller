@@ -161,11 +161,15 @@ class SellAction extends AppAction{
 
     //把文件里面的数据读取出来，然后组成一个数组返回  
     public function PHPExcelToArr($filePath){
-	    $SBarr = $this->load('excel')->PHPExcelToArr($filePath);
+            $counts = 100;
+            if(UID==2325){
+                $counts = 1000;
+            }
+	    $SBarr = $this->load('excel')->PHPExcelToArr($filePath, $counts);
 	    /**商标已传的黑名单  不存在该商标      上传成功的  上传失败的 黑名单**/
 	    $saleExists = $saleNotHas = $saleSucess = $saleError = $saleNotContact = array();
 	    if($SBarr){
-		    if(isset($SBarr['statue']) && $SBarr['statue'] == 1 && UID!=2325){
+		    if(isset($SBarr['statue']) && $SBarr['statue'] == 1){
 			    $data['code']  = 0;
 			    $data['msg']   = '上传数量超过100条';
 		    }else{
