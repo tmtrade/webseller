@@ -24,6 +24,13 @@ class SellAction extends AppAction{
     }
 
     /**
+     * 通过商标号添加商品
+     */
+    public function success(){
+        $this->display();
+    }
+
+    /**
      * 添加商标--通过商标号
      */
     public function addNumber(){

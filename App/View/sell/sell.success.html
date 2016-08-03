@@ -1,0 +1,203 @@
+<? require(ViewDir.'/header.html'); ?>
+
+<div class="yzc-sell-main" style="">
+    <!--左侧菜单-->
+    <? require(ViewDir.'/left.html'); ?>
+    <!--右侧主体部分-->
+    <div class="sell-lf-main">
+        <div class="comm-list-tit sell-by-brand w-cont">
+            <h3 class="fl">商标出售 ><label>根据商标号出售</label></h3>
+            <p class="fr">
+                您还可以选择:<a href="/sell/person">根据申请人出售 </a>|<a href="/sell/document">根据文档出售</a>
+            </p>
+        </div>
+
+
+        <!--未添加商标-->
+        <div id="no-data"  class="comm-list-mess">
+            <div class="no-data success">
+                <h4>商品提交成功</h4>
+                <label>您现在还可以<a>继续添加 </a>或者是<a>查看商品</a></label>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/sell.js?v=<?=$static_version?>"></script>
+<script type="text/javascript">
+    $(function(){
+        //添加商标事件
+        $('#addSell').click(function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
+            var number = $.trim($('#add_number').val());
+            if(number==''){
+                layer.msg('请输入商标号', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //商标数不能大于20
+            var num = $('#goods_num').text();
+            if(num>=20){
+                layer.msg('单次提交商标数不能大于20', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //检查列表中是否有此商标
+            var numbers = $('#list_body .number');
+            var tmp = '';
+            var flag = true;
+            numbers.each(function(i){
+                tmp = $.trim($(this).text());
+                if(tmp==number){
+                    flag = false;
+                    return false;
+                }
+            });
+            if(!flag){
+                layer.msg('该商标已在列表中', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //提交到服务器检查
+            $.post('/sell/getTminfo',{'number':number},function(data){
+                layer.closeAll('loading');
+                if(data.code==0){
+                    var html = '<tr>\
+                            <td class="list-mess-pic">\
+                            <a class="pic" href="javascript:;"><img src="'+data.img+'" onerror="this.src=\'/Static/1.0/images/img1.png\'"></a>\
+                            </td>\
+                            <td class="number">'+number+'</td>\
+                            <td>'+data.name+'</td>\
+                            <td title="'+data.class_str+'">'+data.thum+'</td>\
+                            <td class="exp-ear">\
+                            <input type="hidden" name="number[]" value="'+number+'">\
+                            我期望获益<input type="text" name="price[]" placeholder="请填写底价" class="cir blk tr_price"/>元\
+                            </td>\
+                            <td class="dele">\
+                            <a class="del-lis" href="javascript:;">删除</a>\
+                            </td>\
+                            </tr>';
+                    $('#list_body').append(html);
+                    $('#add_number').val('');//清空输入框
+                    $('#goods_num').text(function(i,v){
+                        return v-0+1;
+                    });
+                    check_table();
+                }else{
+                    layer.msg(data.msg, {
+                        time: 1500
+                    });
+                }
+            },'json');
+        });
+        //提交商品事件
+        $('#add_goods').click(function(){
+            layer.load(1, {
+                shade: [0.1,'#fff'] //0.1透明度的白色背景
+            });
+            var num = $('#goods_num').text();
+            if(num>20){
+                layer.msg('单次提交商标数不能大于20', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //检查商标价格
+            var prices = $('#list_body input[name*=price]');
+            if(prices.length==0){
+                layer.msg('请至少添加一条商标信息', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            var tmp = '';
+            var flag = true;
+            prices.each(function(i){
+                tmp = parseInt($.trim($(this).val()));
+                if(!tmp){
+                    flag = false;
+                    return false;
+                }
+            });
+            if(!flag){
+                layer.msg('请填写底价', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //序列化表单数据
+            var data = $('#submit_number').serialize();
+            //联系人信息
+            var mobile = $('.amend-cont-all .contact_mobile').text();
+            if(!isMobile(mobile)){
+                layer.msg('联系方式不正确', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            var name = $('.amend-cont-all .contact_name').text();
+            if(!name){
+                layer.msg('请输入联系人', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            if(!isName(name)){
+                layer.msg('联系人为30个字符内的中文或英文', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //组装联系人信息
+            data += ('&mobile='+mobile+'&name='+name);
+            //提交数据
+            $.post('/sell/addNumber',data,function(dd){
+                layer.closeAll('loading');
+                if(dd.code==0){
+                    layer.msg('提交成功', {
+                        time: 1500
+                    },function(){
+                        location.reload();
+                    });
+                }else if(dd.code==1){
+                    layer.msg(dd.msg, {
+                        time: 1500
+                    });
+                }else{
+                    //var msg = '出现错误, 请稍后再试';//线上
+                    var msg = dd.msg;
+                    layer.msg(msg, {
+                        time: 1500
+                    });
+                }
+            },'json');
+        });
+    });
+    //检查表格中是否有内容
+    function check_table(){
+        var objs = $('#list_body tr').length;
+        if(!objs){
+            $('#has-data').hide();
+            $('#no-data').show();
+        }else{
+            $('#no-data').hide();
+            $('#has-data').show();
+        }
+    }
+</script>
+<? require(ViewDir.'/footer.html'); ?>

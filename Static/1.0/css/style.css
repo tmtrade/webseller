@@ -878,13 +878,26 @@ table.list-mess-main tr .pri-num input{
     margin-top: -86px;
     text-align: center;
 }
+.success{
+    background: url("../images/sub-state-success.png") no-repeat 35px top;
+}
 .no-data h4{
     font-size: 16px;
-    margin-top:122px;
+    margin-top:128px;
 }
 .no-data label{
+    border-top:1px solid #e8e8e8;
+    padding-top: 15px;
     display: inline-block;
-    margin-top:24px;
+    margin-top:15px;
+}
+.no-data label a{
+    color: #424b5a;
+    text-decoration: underline;
+    font-weight: 600;
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
 }
 /*æ¶ˆæ¯åˆ—è¡¨*/
 .comm-list-news{
