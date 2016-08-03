@@ -266,7 +266,8 @@
                     layer.msg('提交成功', {
                         time: 1500
                     },function(){
-                        location.reload();
+//                        location.reload();
+                        location.href = '/sell/success'
                     });
                 }else if(dd.code==1){
                     layer.msg(dd.msg, {
