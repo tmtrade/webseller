@@ -773,7 +773,24 @@ body,html{
 .picScroll-top .bd ul li .title{ line-height:24px; }
 @media screen and (max-height: 901px){
     .picScroll-top .bd ul li div{
+
         background-position:center top;
+        background-size: 100% 100%;
+    }
+    .sell-ban2{
+        width:757px;
+        height:644px;
+        background-image: url("../images/lg-ban2.png");
+    }
+    .sell-ban3{
+        width:739px;
+        height:615px;
+        background-image: url("../images/lg-ban3.png");
+    }
+    .sell-ban4{
+        width:859px;
+        height:674px;
+        background-image: url("../images/lg-ban4.png");
     }
 }
 .sell-ban1{
