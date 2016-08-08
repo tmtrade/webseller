@@ -389,9 +389,9 @@
                         index=$(this).index();
                     }
                 })
-                index--;
-                if(index==-1){
-                    index=$(".picList li").length-1;
+                index++;
+                if(index==$(".picList li").length){
+                    index=0;
                 }
                 t=-h*index;
                 if($(".picList:animated").length==0){
@@ -399,6 +399,7 @@
                     $(".hd ul li").eq(index).siblings("li").removeClass("on");
                     $(".picList").animate({"top":t});
                 }
+
                 timer=setInterval(function(){
                     if(index==$(".picList li").length-1){
                         index=-1;
@@ -412,6 +413,7 @@
                     }
                 },3000);
 
+
             }
             if (e.detail< 0) { //当滑轮向下滚动时
                 clearInterval(timer);
@@ -420,9 +422,9 @@
                         index=$(this).index();
                     }
                 })
-                index++;
-                if(index==$(".picList li").length){
-                    index=0;
+                index--;
+                if(index==-1){
+                    index=$(".picList li").length-1;
                 }
                 t=-h*index;
                 if($(".picList:animated").length==0){
@@ -430,7 +432,6 @@
                     $(".hd ul li").eq(index).siblings("li").removeClass("on");
                     $(".picList").animate({"top":t});
                 }
-
                 timer=setInterval(function(){
                     if(index==$(".picList li").length-1){
                         index=-1;
