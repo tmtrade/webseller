@@ -32,7 +32,7 @@
 <div class="sell-lg-tp f-clearfix">
     <div class="sell-lg-cent">
         <div class="fl">
-            <a href="/"><img src="<?=StaticDir?>1.0/images/sell-lg-nw.png"></a>
+           <img src="<?=StaticDir?>1.0/images/sell-lg-nw.png">
         </div>
         <div class="fr">
             <a class="yzc-lj" target="_blank" href="<?=SITE_URL?>">去一只蝉看看</a>
@@ -65,16 +65,24 @@
     </div>
 </div>
 <!--图片轮播  end-->
-<div class="sell-btm-btn">
-    <div class="sell-btm f-clearfix">
+<div class="sell-btm-dw">
+      <div class="sell-btm-pos">
+          <div class="sell-btm f-clearfix"></div>
+          <div class="sell-btm-cet">
+              <a class="lg lg-reg" href="javascript:;" id="account_login"><img src="<?=StaticDir?>1.0/images/lg-ico1.png">账号登录</a>
+              <a class="reg lg-reg" href="javascript:;" id="account_register"><img src="<?=StaticDir?>1.0/images/lg-ico2.png">用户注册</a>
+          </div>
+      </div>
+
+    <div class="sell-btm-pos2">
+        <div class="sell-btm-opc f-clearfix"></div>
+        <p class="sell-btm-sm f-clearfix">ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016</p>
     </div>
-    <div class="sell-btm-cet">
-        <a class="lg lg-reg" href="javascript:;" id="account_login"><img src="<?=StaticDir?>1.0/images/lg-ico1.png">账号登录</a>
-        <a class="reg lg-reg" href="javascript:;" id="account_register"><img src="<?=StaticDir?>1.0/images/lg-ico2.png">用户注册</a>
-    </div>
+
+
 </div>
 
-<p class="sell-btm-sm f-clearfix">ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016</p>
+
 
 <!--登录弹出框-->
 
@@ -242,6 +250,7 @@
         var owh=$(window).height();
         var oh=owh-obte-obtm-otp;
         $(".picScroll-top").css({"height":oh});
+        $(" .picScroll-top .bd").css({"height":oh});
     }
     $(window).resize(function(){
         height();

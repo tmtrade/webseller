@@ -482,6 +482,10 @@ body,html{
 }
 .logo-cont a.sub-btn{
     margin-left:68px;
+
+}
+.logo-cont a.sub-btn:hover{
+    text-decoration: underline;
 }
 .logo-title{
     height:50px;
@@ -758,7 +762,7 @@ body,html{
 .picScroll-top .hd ul{ float:right; overflow:hidden; zoom:1;zoom:1;position: absolute;top:32%;}
 .picScroll-top .hd ul li{ width:17px; height:17px;margin-top: 17px; overflow:hidden; margin-right:5px; text-indent:-999px; cursor:pointer; background-color: #e7e7e7;border-radius: 50%; }
 .picScroll-top .hd ul li.on{ background-position:0 0;  background-color: #ff6262;}
-.tempWrap{overflow: hidden;position: relative;height:100%;}
+.tempWrap{overflow: hidden;position: relative;height:100%;max-height: 694px;overflow: hidden;top:5%;}
 .picScroll-top .bd{ padding:10px;  width: 960px;margin:auto;  }
 .picScroll-top .bd ul{ overflow:hidden; zoom:1;position: relative; }
 .picScroll-top .bd ul li{ text-align:center; zoom:1;}
@@ -770,26 +774,31 @@ body,html{
 
 .sell-ban1{
     width: 841px;
-    height: 663px;
+    /*height: 663px;*/
     background: url("../images/lg-ban1.png") no-repeat center top;
 }
 .sell-ban2{
     width:757px;
-    height:654px;
+    /*height:654px;*/
     background: url("../images/lg-ban2.png") no-repeat center top;
 }
 .sell-ban3{
     width:739px;
-    height:625px;
+    /*height:625px;*/
     background: url("../images/lg-ban3.png") no-repeat center top;
 }
 .sell-ban4{
     width:859px;
-    height:684px;
+    /*height:684px;*/
     background: url("../images/lg-ban4.png") no-repeat center top;
 }
-.sell-btm-btn{
-    position:relative;
+
+.sell-btm-dw{
+    width: 100%;
+    position:fixed;
+    bottom: 0px;
+    left: 0px;
+
 }
 .sell-btm{
     width: 100%;
@@ -801,16 +810,34 @@ body,html{
     z-index: 9;
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
+    /*position: relative;*/
+}
+.sell-btm-pos{
+    position:relative;
+    width: 100%;
+    height:66px;
+
+}
+.sell-btm-pos2{
+    position:relative;
+    width: 100%;
+    height:46px;
+
+}
+.sell-btm-opc{
+    width: 100%;
+    height:66px;
+    opacity:0.8;
+    -webkit-filter:opacity(.8);
+    filter:opacity(.8);
+    z-index: 9;
 }
 .sell-btm-cet{
-    position: absolute;
+    position:absolute;
     top:11px;
     left:50%;
-    margin-left: -178px;
-    /*padding-top: 12px;*/
-    /*padding-bottom: 12px;*/
-    /*left: 50%;*/
-    z-index: 99;
+    margin-left: -168px;
+    z-index: 9999;
     text-align:center;
 }
 .sell-btm-cet a{
@@ -843,11 +870,13 @@ body,html{
     text-shadow: 2px 2px 2px 2px #dfab0d;
 }
 .sell-btm-sm{
+    position: absolute;
+    left: 50%;
+    margin-left: -264px;
+    top:18px;
     color: #666666;
     font-size: 13px;
     text-align: center;
-    padding-bottom: 30px;
-    padding-top: 30px;
 }
 .layui-layer{
     min-width: 380px !important;
