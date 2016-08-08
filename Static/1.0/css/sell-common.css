@@ -448,24 +448,29 @@ body,html{
     padding-bottom: 80px;
 }
 /*Ã§â„¢Â»Ã¥Â½â€¢Ã§â€¢Å’Ã©ÂÂ¢*/
-.lg-xx{
-    position: absolute;
-    bottom: -8px;
-    left: 0px;
-}
+/*.lg-xx{*/
+    /*position: absolute;*/
+    /*bottom: -8px;*/
+    /*left: 0px;*/
+/*}*/
 
-.logo-bg{
-    width: 100%;
-    height: 608px;
-    background: #c9bdac url("../images/logo-bg.jpg") no-repeat center top;
-}
+/*.logo-bg{*/
+    /*width: 100%;*/
+    /*height: 608px;*/
+    /*background: #c9bdac url("../images/logo-bg.jpg") no-repeat center top;*/
+/*}*/
 .logo-main{
-    width: 362px;
-    background: #ffffff;
-    float: right;
-    margin-top: 60px;
-    margin-right:10%;
-    position: relative;
+    display: none;
+    /*width: 362px;*/
+    /*background: #ffffff;*/
+    /*float: right;*/
+    /*margin-top: 60px;*/
+    /*margin-right:10%;*/
+    /*position: relative;*/
+}
+.logo-main  .layui-layer-close2{
+    right: -14px !important;
+    top: -18px !important;
 }
 .logo-cont{
     padding-left: 25px;
@@ -715,9 +720,128 @@ body,html{
 }
 /*分页完*/
 
+/*改版一只蝉出售者平台的登录页面*/
 
+.sell-lg-tp{
+    width: 100%;
+    border-bottom: 1px solid #e5e5e5;
+}
+.sell-lg-cent{
+    padding:16px 50px 16px;
+    overflow: hidden;
+}
+.sell-lg-cent img{
+    vertical-align: middle;
+}
+.sell-lg-cent div.fl {
+    margin-top:8px;
+}
+.sell-lg-cent div.fr a{
+    color: #666666;
+}
+.sell-lg-cent div.fr a:hover{
+    text-decoration: underline;
+}
+.sell-lg-cent div.fr a.yzc-lj{
+    float: left;
+    display: inline-block;
+    margin-top:20px;
+    font-size: 13px;
+}
+.sell-lg-cent div.fr img{
+    margin-left: 25px;
+}
+/*图片轮播*/
+/* 本例子css */
+.picScroll-top{ margin:0 auto;  width:100%;  height: 700px; overflow:hidden; position:relative; }
+.picScroll-top .hd{ overflow:hidden; width:100px;height:100%;padding:0 10px; float:right;  position:relative;}
+.picScroll-top .hd ul{ float:right; overflow:hidden; zoom:1;zoom:1;position: absolute;top:32%;}
+.picScroll-top .hd ul li{ width:17px; height:17px;margin-top: 17px; overflow:hidden; margin-right:5px; text-indent:-999px; cursor:pointer; background-color: #e7e7e7;border-radius: 50%; }
+.picScroll-top .hd ul li.on{ background-position:0 0;  background-color: #ff6262;}
+.tempWrap{overflow: hidden;position: relative;height: 700px;}
+.picScroll-top .bd{ padding:10px;  width: 960px;margin:auto;  }
+.picScroll-top .bd ul{ overflow:hidden; zoom:1;position: relative; }
+.picScroll-top .bd ul li{ text-align:center; zoom:1;}
+.picScroll-top .bd ul li div{width: 960px;height:690px;}
+.picScroll-top .bd ul li .pic{ text-align:center; }
+.picScroll-top .bd ul li .pic img{ width:180px; height:90px; display:block;  padding:2px; border:1px solid #ccc; }
+.picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
+.picScroll-top .bd ul li .title{ line-height:24px; }
 
+.sell-ban1{
 
+    background: url("../images/lg-ban1.png") no-repeat center top;
+}
+.sell-ban2{
+
+    background: url("../images/lg-ban2.png") no-repeat center top;
+}
+.sell-ban3{
+
+    background: url("../images/lg-ban3.png") no-repeat center top;
+}
+.sell-ban4{
+
+    background: url("../images/lg-ban4.png") no-repeat center top;
+}
+.sell-btm{
+    /*position:relative;*/
+    width: 100%;
+    background: #ffffff;
+    /*opacity:0.8;*/
+    /*-webkit-filter:opacity(.8);*/
+    /*filter:opacity(.8);*/
+    z-index: 9;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+}
+.sell-btm-cet{
+    /*position: absolute;*/
+    padding-top: 12px;
+    padding-bottom: 12px;
+    left: 50%;
+    z-index: 99;
+    text-align:center;
+    margin-left: -10px;
+}
+.sell-btm-cet a{
+    display: inline-block;
+    text-align: left;
+    width: 150px;
+    height: 45px;
+    font-family: "微软雅黑";
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    line-height: 45px;
+    color: #ffffff;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.sell-btm-cet a img{
+    display: inline-block;
+    margin-left:14px;
+    margin-right:22px;
+    vertical-align: middle;
+    margin-bottom: 3px;
+}
+.sell-btm-cet a.lg{
+    background: #de6262;
+    text-shadow: 2px 2px 2px 2px #dc5b5b;
+}
+.sell-btm-cet a.reg{
+    background: #e7b419;
+    text-shadow: 2px 2px 2px 2px #dfab0d;
+}
+.sell-btm-sm{
+    color: #666666;
+    font-size: 13px;
+    text-align: center;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+.layui-layer{
+    min-width: 380px !important;
+}
 
 
 

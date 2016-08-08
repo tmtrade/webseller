@@ -29,27 +29,53 @@
 </head>
 <body>
 <!--共有头部-->
-<div class="yzc-sell-head f-clearfix">
-    <i class="lg-xx"><img src="<?=StaticDir?>1.0/images/lg-xx.png"></i>
-    <div class="head-lg fl">
-        <a class="lg-pic fl" href="<?=SELLER_URL?>"><img src="<?=StaticDir?>1.0/images/sell-lg.png"></a>
-        <em class="fl"></em>
-        <span class="lg-by fl">
-            <label>出售者平台</label><br/>
-            让无形资产流转起来
-        </span>
+<div class="sell-lg-tp f-clearfix">
+    <div class="sell-lg-cent">
+        <div class="fl">
+            <a target="_blank" href="<?=SELLER_URL?>"><img src="<?=StaticDir?>1.0/images/sell-lg-nw.png"></a>
+        </div>
+        <div class="fr">
+            <a class="yzc-lj" target="_blank" href="<?=SITE_URL?>">去一只蝉看看</a>
+            <a target="_blank" href=""><img src="<?=StaticDir?>1.0/images/zxkf.png"></a>
+        </div>
     </div>
-    <ul class="head-nav fr">
-        <li>
-           <a target="_blank" href="<?=MY_URL?>">我是买家</a>
-        </li>
-        <li class="yzc-head-line"></li>
-        <li>
-            <a target="_blank" href="<?=SITE_URL?>">去一只蝉看看</a>
-        </li>
-    </ul>
 </div>
-<div class="logo-bg">
+<!--图片轮播  start-->
+<div class="picScroll-top">
+    <div class="hd">
+        <ul></ul>
+    </div>
+    <div class="bd">
+        <div class="tempWrap">
+            <ul class="picList">
+                <li>
+                    <div class="sell-ban1"></div>
+                </li>
+                <li>
+                    <div class="sell-ban2"></div>
+                </li>
+                <li>
+                    <div class="sell-ban3"></div>
+                </li>
+                <li>
+                    <div class="sell-ban4"></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!--图片轮播  end-->
+<div class="sell-btm f-clearfix">
+    <div class="sell-btm-cet">
+        <a class="lg lg-reg"><img src="<?=StaticDir?>1.0/images/lg-ico1.png">账号登录</a>
+        <a class="reg lg-reg"><img src="<?=StaticDir?>1.0/images/lg-ico2.png">用户注册</a>
+    </div>
+</div>
+<p class="sell-btm-sm f-clearfix">ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016</p>
+
+<!--登录弹出框-->
+
+
     <div class="logo-main">
         <div class="logo-title">
             <p class="on"  id="lg1" onclick="jc('lg',1,2)">
@@ -112,16 +138,82 @@
             <a href="javascript:;" ctype="m" class="sub-btn cir" id="log2">登录</a>
         </div>
     </div>
-</div>
-<div class="logo-btm">
-    <p>
-        ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016
-    </p>
-</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="yzc-sell-head f-clearfix">-->
+    <!--<i class="lg-xx"><img src="<?=StaticDir?>1.0/images/lg-xx.png"></i>-->
+    <!--<div class="head-lg fl">-->
+        <!--<a class="lg-pic fl" href="<?=SELLER_URL?>"><img src="<?=StaticDir?>1.0/images/sell-lg.png"></a>-->
+        <!--<em class="fl"></em>-->
+        <!--<span class="lg-by fl">-->
+            <!--<label>出售者平台</label><br/>-->
+            <!--让无形资产流转起来-->
+        <!--</span>-->
+    <!--</div>-->
+    <!--<ul class="head-nav fr">-->
+        <!--<li>-->
+           <!--<a target="_blank" href="<?=MY_URL?>">我是买家</a>-->
+        <!--</li>-->
+        <!--<li class="yzc-head-line"></li>-->
+        <!--<li>-->
+            <!--<a target="_blank" href="<?=SITE_URL?>">去一只蝉看看</a>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</div>-->
+
+<!--<div class="logo-btm">-->
+    <!--<p>-->
+        <!--ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016-->
+    <!--</p>-->
+<!--</div>-->
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/tool.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/login.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
+   //调用登录
+    $(".lg-reg").on("click",function(){
+        layer.open({
+            type: 1,
+            area:["260px","328px"],
+            title: false, //不显示标题
+            content: $('.logo-main')
+    })
+    })
+
     //placeholder兼容IE
     function isPlaceholder() {
         var input = document.createElement('input');
@@ -174,6 +266,240 @@
         });
     }
 
+ //中间
+    function height(){
+        var otp=$(".sell-lg-tp").outerHeight();
+        var obtm=$(".sell-btm").outerHeight();
+        var obte=$(".sell-btm-sm").outerHeight();
+        var owh=$(window).height();
+        var oh=owh-obte-obtm-otp;
+        $(".picScroll-top").css({"height":oh});
+    }
+    $(window).resize(function(){
+        height();
+    });
+    $(document).ready(function(){
+        height();
+    })
+   //轮播焦点图
+    var timer="";
+    var i=0;
+    //添加按钮
+    var t="";
+    for(i=1;i<$(".picList li").length;i++){
+        if(i==1){
+            t+='<li class="on">'+i+'</li>';
+        }
+        t+='<li>'+i+'</li>';
+    }
+    $(".hd ul").append(t);
+
+    //获取图片高度
+    var h=$(".picList li").eq(0).height();
+
+    //焦点图
+    $(".hd li").each(function(i){
+        $(this).click(function(){
+            clearInterval(timer);
+            t=-h*i;
+            if($(".picList:animated").length==0){
+                $(this).addClass("on");
+                $(this).siblings("li").removeClass("on");
+                $(".picList").animate({"top":t});
+            }
+            timer=setInterval(function(){
+                if(i==$(".picList li").length-1){
+                    i=-1;
+                }
+                i++;
+                t=-h*i;
+                if($(".picList:animated").length==0){
+                    $(".hd ul li").eq(i).addClass("on");
+                    $(".hd ul li").eq(i).siblings("li").removeClass("on");
+                    $(".picList").animate({"top":t});
+                }
+            },3000);
+        });
+    })
+    var j=0;
+    timer=setInterval(function(){
+        if(j==$(".picList li").length-1){
+            j=-1;
+        }
+        j++;
+        t=-h*j;
+        if($(".picList:animated").length==0){
+            $(".hd ul li").eq(j).addClass("on");
+            $(".hd ul li").eq(j).siblings("li").removeClass("on");
+            $(".picList").animate({"top":t});
+        }
+    },3000);
+
+    var index=0;
+    var scrollFunc = function (e) {
+        e = e || window.event;
+        if (e.wheelDelta) {  //判断浏览器IE，谷歌滑轮事件
+
+            if (e.wheelDelta > 0) { //当滑轮向上滚动时
+                clearInterval(timer);
+                $(".hd li").each(function(){
+                    if($(this).hasClass("on")){
+                        index=$(this).index();
+                    }
+                })
+                index--;
+                if(index==-1){
+                    index=$(".picList li").length-1;
+                }
+                t=-h*index;
+                if($(".picList:animated").length==0){
+                    $(".hd ul li").eq(index).addClass("on");
+                    $(".hd ul li").eq(index).siblings("li").removeClass("on");
+                    $(".picList").animate({"top":t});
+                }
+                timer=setInterval(function(){
+                    if(index==$(".picList li").length-1){
+                        index=-1;
+                    }
+                    index++;
+                    t=-h*index;
+                    if($(".picList:animated").length==0){
+                        $(".hd ul li").eq(index).addClass("on");
+                        $(".hd ul li").eq(index).siblings("li").removeClass("on");
+                        $(".picList").animate({"top":t});
+                    }
+                },3000);
+            }
+            if (e.wheelDelta < 0) { //当滑轮向下滚动时
+                clearInterval(timer);
+                $(".hd li").each(function(){
+                    if($(this).hasClass("on")){
+                        index=$(this).index();
+                    }
+                })
+                index++;
+                if(index==$(".picList li").length){
+                    index=0;
+                }
+                t=-h*index;
+                if($(".picList:animated").length==0){
+                    $(".hd ul li").eq(index).addClass("on");
+                    $(".hd ul li").eq(index).siblings("li").removeClass("on");
+                    $(".picList").animate({"top":t});
+                }
+
+                timer=setInterval(function(){
+                    if(index==$(".picList li").length-1){
+                        index=-1;
+                    }
+                    index++;
+                    t=-h*index;
+                    if($(".picList:animated").length==0){
+                        $(".hd ul li").eq(index).addClass("on");
+                        $(".hd ul li").eq(index).siblings("li").removeClass("on");
+                        $(".picList").animate({"top":t});
+                    }
+                },3000);
+
+            }
+        } else if (e.detail) {  //Firefox滑轮事件
+            if (e.detail> 0) { //当滑轮向上滚动时
+                clearInterval(timer);
+                $(".hd li").each(function(){
+                    if($(this).hasClass("on")){
+                        index=$(this).index();
+                    }
+                })
+                index--;
+                if(index==-1){
+                    index=$(".picList li").length-1;
+                }
+                t=-h*index;
+                if($(".picList:animated").length==0){
+                    $(".hd ul li").eq(index).addClass("on");
+                    $(".hd ul li").eq(index).siblings("li").removeClass("on");
+                    $(".picList").animate({"top":t});
+                }
+                timer=setInterval(function(){
+                    if(index==$(".picList li").length-1){
+                        index=-1;
+                    }
+                    index++;
+                    t=-h*index;
+                    if($(".picList:animated").length==0){
+                        $(".hd ul li").eq(index).addClass("on");
+                        $(".hd ul li").eq(index).siblings("li").removeClass("on");
+                        $(".picList").animate({"top":t});
+                    }
+                },3000);
+
+            }
+            if (e.detail< 0) { //当滑轮向下滚动时
+                clearInterval(timer);
+                $(".hd li").each(function(){
+                    if($(this).hasClass("on")){
+                        index=$(this).index();
+                    }
+                })
+                index++;
+                if(index==$(".picList li").length){
+                    index=0;
+                }
+                t=-h*index;
+                if($(".picList:animated").length==0){
+                    $(".hd ul li").eq(index).addClass("on");
+                    $(".hd ul li").eq(index).siblings("li").removeClass("on");
+                    $(".picList").animate({"top":t});
+                }
+
+                timer=setInterval(function(){
+                    if(index==$(".picList li").length-1){
+                        index=-1;
+                    }
+                    index++;
+                    t=-h*index;
+                    if($(".picList:animated").length==0){
+                        $(".hd ul li").eq(index).addClass("on");
+                        $(".hd ul li").eq(index).siblings("li").removeClass("on");
+                        $(".picList").animate({"top":t});
+                    }
+                },3000);
+            }
+        }
+
+    }
+    //给页面绑定滑轮滚动事件
+    if (document.addEventListener) {
+        document.addEventListener('DOMMouseScroll', scrollFunc, false);
+    }
+    //滚动滑轮触发scrollFunc方法
+    window.onmousewheel = document.onmousewheel = scrollFunc;
+
+    //
+    var a=0;
+    $(".tempWrap").mouseenter(function(){
+        clearInterval(timer);
+    });
+    $(".tempWrap").mouseleave(function(){
+        clearInterval(timer);
+        $(".hd li").each(function(){
+            if($(this).hasClass("on")){
+                a=$(this).index();
+            }
+        })
+        timer=setInterval(function(){
+            if(a==$(".picList li").length-1){
+                a=-1;
+            }
+            a++;
+            t=-h*a;
+            if($(".picList:animated").length==0){
+                $(".hd ul li").eq(a).addClass("on");
+                $(".hd ul li").eq(a).siblings("li").removeClass("on");
+                $(".picList").animate({"top":t});
+            }
+        },3000);
+    });
 </script>
 </body>
 </html>

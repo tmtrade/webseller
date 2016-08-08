@@ -1191,9 +1191,14 @@ cpm-pel-cent table tr td.com-name p{
     padding: 7px 47px 7px 7px;
 }
 /*è‡ªå®šä¹‰å¼¹çª—å…³é—­æŒ‰é’®*/
-.layui-layer-setwin .layui-layer-close2{
-    right:12px !important;
-    top:4px !important;;
+/*.layui-layer-close2{*/
+    /*right:12px !important;*/
+    /*top:4px !important;;*/
+/*}*/
+
+ .layui-layer-setwin .layui-layer-close2{
+    right: -18px;
+    top: -18px;
 }
 .layui-layer-ico{
     background: url("../images/cpm-cha.png") no-repeat center top !important;;

@@ -462,8 +462,8 @@ html #layui_layer_skinlayercss {
 
 .layui-layer-setwin .layui-layer-close2 {
     position: absolute;
-    right: -28px;
-    top: -28px;
+    /*right: -28px;*/
+    /*top: -28px;*/
     width: 30px;
     height: 30px;
     margin-left: 0;
