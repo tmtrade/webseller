@@ -753,35 +753,39 @@ body,html{
 }
 /*图片轮播*/
 /* 本例子css */
-.picScroll-top{ margin:0 auto;  width:100%;  height: 700px; overflow:hidden; position:relative; }
+.picScroll-top{ margin:0 auto;  width:100%; min-height:684px;overflow:hidden; position:relative; }
 .picScroll-top .hd{ overflow:hidden; width:100px;height:100%;padding:0 10px; float:right;  position:relative;}
 .picScroll-top .hd ul{ float:right; overflow:hidden; zoom:1;zoom:1;position: absolute;top:32%;}
 .picScroll-top .hd ul li{ width:17px; height:17px;margin-top: 17px; overflow:hidden; margin-right:5px; text-indent:-999px; cursor:pointer; background-color: #e7e7e7;border-radius: 50%; }
 .picScroll-top .hd ul li.on{ background-position:0 0;  background-color: #ff6262;}
-.tempWrap{overflow: hidden;position: relative;height: 700px;}
+.tempWrap{overflow: hidden;position: relative;height:100%;}
 .picScroll-top .bd{ padding:10px;  width: 960px;margin:auto;  }
 .picScroll-top .bd ul{ overflow:hidden; zoom:1;position: relative; }
 .picScroll-top .bd ul li{ text-align:center; zoom:1;}
-.picScroll-top .bd ul li div{width: 960px;height:695px;}
+.picScroll-top .bd ul li div{width: 960px;min-height: 741px;}
 .picScroll-top .bd ul li .pic{ text-align:center; }
 .picScroll-top .bd ul li .pic img{ width:180px; height:90px; display:block;  padding:2px; border:1px solid #ccc; }
 .picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
 .picScroll-top .bd ul li .title{ line-height:24px; }
 
 .sell-ban1{
-
+    width: 841px;
+    height: 663px;
     background: url("../images/lg-ban1.png") no-repeat center top;
 }
 .sell-ban2{
-
+    width:757px;
+    height:654px;
     background: url("../images/lg-ban2.png") no-repeat center top;
 }
 .sell-ban3{
-
+    width:739px;
+    height:625px;
     background: url("../images/lg-ban3.png") no-repeat center top;
 }
 .sell-ban4{
-
+    width:859px;
+    height:684px;
     background: url("../images/lg-ban4.png") no-repeat center top;
 }
 .sell-btm-btn{
