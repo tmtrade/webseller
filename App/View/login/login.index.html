@@ -250,7 +250,9 @@
         var owh=$(window).height();
         var oh=owh-obte-obtm-otp;
         $(".picScroll-top").css({"height":oh});
-        $(" .picScroll-top .bd").css({"height":oh});
+        $(".tempWrap").css({"height":oh-50});
+        $(".picScroll-top .bd").css({"height":oh-50});
+        $(" .picScroll-top .bd ul li div").css({"height":oh-50});
     }
     $(window).resize(function(){
         height();
