@@ -772,10 +772,15 @@ body,html{
 .picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
 .picScroll-top .bd ul li .title{ line-height:24px; }
 @media screen and (max-height: 901px){
-    .picScroll-top .bd ul li div{
 
+    .picScroll-top .bd ul li div{
+        max-height: 674px;
         background-position:center top;
         background-size: 100% 100%;
+    }
+    .sell-ban1{
+        width: 841px;
+        background-image: url("../images/lg-ban1.png");
     }
     .sell-ban2{
         width:757px;
