@@ -6,8 +6,11 @@ $(document).ready(function(e) {
 	$('#log1_account,#log1_password,#umobile,#ucode').focus(function(){
 		success();
 	});
+	$('#account_login').click(function(){
+		$('#lg1').click();
+	});
 	//忘记密码
-	$('#miss_pass').click(function(){
+	$('#miss_pass,#account_register').click(function(){
 		$('#lg2').click();
 	});
 	//密码登录

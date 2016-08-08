@@ -32,11 +32,11 @@
 <div class="sell-lg-tp f-clearfix">
     <div class="sell-lg-cent">
         <div class="fl">
-            <a target="_blank" href="<?=SELLER_URL?>"><img src="<?=StaticDir?>1.0/images/sell-lg-nw.png"></a>
+            <a href="<?=SELLER_URL?>"><img src="<?=StaticDir?>1.0/images/sell-lg-nw.png"></a>
         </div>
         <div class="fr">
             <a class="yzc-lj" target="_blank" href="<?=SITE_URL?>">去一只蝉看看</a>
-            <a target="_blank" href=""><img src="<?=StaticDir?>1.0/images/zxkf.png"></a>
+            <a target="_blank" href="javascript:;" onclick="goChat()"><img src="<?=StaticDir?>1.0/images/zxkf.png"></a>
         </div>
     </div>
 </div>
@@ -67,8 +67,8 @@
 <!--图片轮播  end-->
 <div class="sell-btm f-clearfix">
     <div class="sell-btm-cet">
-        <a class="lg lg-reg"><img src="<?=StaticDir?>1.0/images/lg-ico1.png">账号登录</a>
-        <a class="reg lg-reg"><img src="<?=StaticDir?>1.0/images/lg-ico2.png">用户注册</a>
+        <a class="lg lg-reg" href="javascript:;" id="account_login"><img src="<?=StaticDir?>1.0/images/lg-ico1.png">账号登录</a>
+        <a class="reg lg-reg" href="javascript:;" id="account_register"><img src="<?=StaticDir?>1.0/images/lg-ico2.png">用户注册</a>
     </div>
 </div>
 <p class="sell-btm-sm f-clearfix">ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016</p>
@@ -204,6 +204,31 @@
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/tool.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/login.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
+    var _YZC_ONLINE_ = '';
+    $(document).ready(function(e) {
+        //获得登录相关的参数
+        $.ajax({
+            async: false,
+            type : 'post',
+            url  : '/index/getOnlineStatus/',
+            dataType : 'json',
+            success : function (data){
+                if (data.code){
+                    _YZC_ONLINE_ = data.msg;
+                }
+            }
+        });
+    });
+    //聊天函数
+    function goChat(){
+        var type = _YZC_ONLINE_ ? _YZC_ONLINE_ : '';
+        if ( type=='yzc' )
+        {
+            window.open("http://p.qiao.baidu.com/cps/chat?siteId=9503594&userId=21149642");
+        }else{
+            window.open("http://chat.looyu.com/chat/chat/p.do?c=46344&f=123997&g=51817");
+        }
+    }
    //调用登录
     $(".lg-reg").on("click",function(){
         layer.open({
@@ -211,8 +236,8 @@
             area:["260px","328px"],
             title: false, //不显示标题
             content: $('.logo-main')
-    })
-    })
+        })
+    });
 
     //placeholder兼容IE
     function isPlaceholder() {
