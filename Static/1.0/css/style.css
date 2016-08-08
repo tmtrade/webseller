@@ -158,9 +158,10 @@
     border-radius: 5px;
     cursor: pointer;
 }
-/*.sub-btn:hover{*/
-    /*cursor:pointer;*/
-/*}*/
+.sub-btn:hover{
+    cursor:pointer;
+    background: url("../images/btn-bg-1.png") repeat-x;
+}
 
 
 .sell-per-mdl,.sell-per-btm{
