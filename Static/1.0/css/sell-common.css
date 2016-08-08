@@ -766,7 +766,7 @@ body,html{
 .picScroll-top .bd{ padding:10px;  width: 960px;margin:auto;  }
 .picScroll-top .bd ul{ overflow:hidden; zoom:1;position: relative; }
 .picScroll-top .bd ul li{ text-align:center; zoom:1;max-height: 694px;overflow: hidden;}
-.picScroll-top .bd ul li div{width: 960px;min-height: 785px;background-position:center center;background-repeat: no-repeat;border: 1px solid red;}
+.picScroll-top .bd ul li div{width: 960px;min-height: 785px;background-position:center center;background-repeat: no-repeat;}
 .picScroll-top .bd ul li .pic{ text-align:center; }
 .picScroll-top .bd ul li .pic img{ width:180px; height:90px; display:block;  padding:2px; border:1px solid #ccc; }
 .picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
