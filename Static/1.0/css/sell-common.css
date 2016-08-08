@@ -762,7 +762,7 @@ body,html{
 .picScroll-top .bd{ padding:10px;  width: 960px;margin:auto;  }
 .picScroll-top .bd ul{ overflow:hidden; zoom:1;position: relative; }
 .picScroll-top .bd ul li{ text-align:center; zoom:1;}
-.picScroll-top .bd ul li div{width: 960px;height:690px;}
+.picScroll-top .bd ul li div{width: 960px;height:695px;}
 .picScroll-top .bd ul li .pic{ text-align:center; }
 .picScroll-top .bd ul li .pic img{ width:180px; height:90px; display:block;  padding:2px; border:1px solid #ccc; }
 .picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
@@ -784,25 +784,30 @@ body,html{
 
     background: url("../images/lg-ban4.png") no-repeat center top;
 }
+.sell-btm-btn{
+    position:relative;
+}
 .sell-btm{
-    /*position:relative;*/
     width: 100%;
+    height:66px;
     background: #ffffff;
-    /*opacity:0.8;*/
-    /*-webkit-filter:opacity(.8);*/
-    /*filter:opacity(.8);*/
+    opacity:0.8;
+    -webkit-filter:opacity(.8);
+    filter:opacity(.8);
     z-index: 9;
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
 }
 .sell-btm-cet{
-    /*position: absolute;*/
-    padding-top: 12px;
-    padding-bottom: 12px;
-    left: 50%;
+    position: absolute;
+    top:11px;
+    left:50%;
+    margin-left: -178px;
+    /*padding-top: 12px;*/
+    /*padding-bottom: 12px;*/
+    /*left: 50%;*/
     z-index: 99;
     text-align:center;
-    margin-left: -10px;
 }
 .sell-btm-cet a{
     display: inline-block;
@@ -816,6 +821,7 @@ body,html{
     color: #ffffff;
     margin-left: 10px;
     cursor: pointer;
+    font-size: 16px;
 }
 .sell-btm-cet a img{
     display: inline-block;

@@ -632,7 +632,8 @@ html #layui_layer_skinlayercss {
 .layui-layer-loading .layui-layer-loading1 {
     width: 37px;
     height: 37px;
-    background: url(default/loading-1.gif) no-repeat
+    background: url(default/loading-1.gif) no-repeat;
+    margin: auto;
 }
 
 .layui-layer-ico16, .layui-layer-loading .layui-layer-loading2 {
