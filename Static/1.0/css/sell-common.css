@@ -774,7 +774,7 @@ body,html{
 .picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
 .picScroll-top .bd ul li .title{ line-height:24px; }
 @media screen and (max-height: 901px){
-    .picScroll-top .bd ul li div img{max-height: 600px;}
+    .picScroll-top .bd ul li div img{max-height: 580px;}
 }
 .sell-ban1{
     /*width: 841px;*/
