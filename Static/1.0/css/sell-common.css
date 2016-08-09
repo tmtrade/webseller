@@ -774,7 +774,7 @@ body,html{
 .picScroll-top .bd ul li .title{ line-height:24px; }
 @media screen and (max-height: 901px){
     .picScroll-top .bd ul li div{
-        line-height:625px;
+        line-height:525px;
     }
 }
 .sell-ban1{
