@@ -768,13 +768,13 @@ body,html{
 .picScroll-top .bd ul{ overflow:hidden; zoom:1;position: relative; }
 .picScroll-top .bd ul li{ text-align:center; zoom:1;min-height: 600px;}
 .picScroll-top .bd ul li div{min-height: 745px;text-align:center;vertical-align:middle;width: 960px;background-position:center center;background-repeat: no-repeat;text-align: center;}
-.picScroll-top .bd ul li img{display: inline-block;vertical-align: middle;min-height: 560px;}
+.picScroll-top .bd ul li img{display: inline-block;vertical-align: middle;}
 .picScroll-top .bd ul li .pic{ text-align:center; }
-.picScroll-top .bd ul li .pic img{ width:180px; height:90px; display:block;  padding:2px; border:1px solid #ccc; }
+.picScroll-top .bd ul li .pic img{ width:180px; height:90px; display:block;  padding:2px;}
 .picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
 .picScroll-top .bd ul li .title{ line-height:24px; }
 @media screen and (max-height: 901px){
-    .picScroll-top .bd ul li div img{max-height: 580px;}
+    .picScroll-top .bd ul li img{max-height: 580px;}
 }
 .sell-ban1{
     /*width: 841px;*/
