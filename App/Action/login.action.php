@@ -9,7 +9,7 @@
 */
 class LoginAction extends AppAction
 {
-
+	protected $onlineName = 'YzCoNlInE';
 	/**
 	* 控制器默认方法 ---------- 弃用
 	* @author	void
@@ -344,6 +344,11 @@ class LoginAction extends AppAction
 		}
 		$result = array('code' => $code,'msg' => $msg,'data' => $netArray);
 		$this->setJson($result,$callback);
+	}
+	public function getOnlineStatus()
+	{
+		$online = $this->com('redisQc')->get($this->onlineName);
+		$this->returnAjax(array('code'=>1,'msg'=>$online));
 	}
 }
 ?>
