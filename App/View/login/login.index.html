@@ -49,24 +49,28 @@
         <div class="tempWrap">
             <ul class="picList">
                 <li>
-                    <div class="sell-ban1">
-                        <img src="<?=StaticDir?>1.0/images/lg-ban1.png">
-                    </div>
+                    <img src="<?=StaticDir?>1.0/images/lg-ban1.png">
+                    <!--<div class="sell-ban1">-->
+                        <!--<img src="<?=StaticDir?>1.0/images/lg-ban1.png">-->
+                    <!--</div>-->
                 </li>
                 <li>
-                    <div class="sell-ban2">
-                        <img src="<?=StaticDir?>1.0/images/lg-ban2.png">
-                    </div>
+                    <img src="<?=StaticDir?>1.0/images/lg-ban2.png">
+                    <!--<div class="sell-ban2">-->
+                        <!--<img src="<?=StaticDir?>1.0/images/lg-ban2.png">-->
+                    <!--</div>-->
                 </li>
                 <li>
-                    <div class="sell-ban3">
-                        <img src="<?=StaticDir?>1.0/images/lg-ban3.png">
-                    </div>
+                    <img src="<?=StaticDir?>1.0/images/lg-ban3.png">
+                    <!--<div class="sell-ban3">-->
+                        <!--<img src="<?=StaticDir?>1.0/images/lg-ban3.png">-->
+                    <!--</div>-->
                 </li>
                 <li>
-                    <div class="sell-ban4">
-                        <img src="<?=StaticDir?>1.0/images/lg-ban4.png">
-                    </div>
+                    <img src="<?=StaticDir?>1.0/images/lg-ban4.png">
+                    <!--<div class="sell-ban4">-->
+                        <!--<img src="<?=StaticDir?>1.0/images/lg-ban4.png">-->
+                    <!--</div>-->
                 </li>
             </ul>
         </div>
@@ -249,19 +253,15 @@
             }
         });
     }
-    var h;
-//    var otp=$(".sell-lg-tp").outerHeight();
-//    var obtm=$(".sell-btm").outerHeight();
-//    var obte=$(".sell-btm-sm").outerHeight();
-//    var owh=$(window).height();
-//    var oh=owh-obte-obtm-otp;
-//    $(".picScroll-top").css({"height":oh});
-//    $(".tempWrap").css({"height":oh});
-//    $(".picScroll-top .bd").css({"height":oh});
-//    $(".picScroll-top .bd ul li").css({"height":oh});
-//    $(".picScroll-top .bd ul li div").css({"height":oh});
 
-    $(window).resize(function(){
+ //中间
+    var otp=$(".sell-lg-tp").outerHeight();
+    var obtm=$(".sell-btm").outerHeight();
+    var obte=$(".sell-btm-sm").outerHeight();
+    var owh=$(window).height();
+    var oh=owh-obte-obtm-otp;
+    var h;
+    function height(){
         var otp=$(".sell-lg-tp").outerHeight();
         var obtm=$(".sell-btm").outerHeight();
         var obte=$(".sell-btm-sm").outerHeight();
@@ -269,27 +269,30 @@
         var oh=owh-obte-obtm-otp;
         $(".picScroll-top").css({"height":oh});
         $(".tempWrap").css({"height":oh});
-        $(".picScroll-top .bd").css({"height":oh});
+//        h= $(".picList li").eq(0).outerHeight();
+//        $(".picScroll-top .bd").css({"height":oh});
         $(".picScroll-top .bd ul li").css({"height":oh});
-        $(".picScroll-top .bd ul li div").css({"height":oh});
-        h=$(".picList li").eq(0).outerHeight();
-
+//        $(".picScroll-top .bd ul li div").css({"height":oh});
+        $(".picList li").css({"lineHeight":(h-45)+'px'});
+    }
+    $(window).resize(function(){
+        height();
+        h= $(".picList li").eq(0).outerHeight();
     });
     $(document).ready(function(){
-        var otp=$(".sell-lg-tp").outerHeight();
-        var obtm=$(".sell-btm").outerHeight();
-        var obte=$(".sell-btm-sm").outerHeight();
-        var owh=$(window).height();
-        var oh=owh-obte-obtm-otp;
-        $(".picScroll-top").css({"height":oh});
-        $(".tempWrap").css({"height":oh});
-        $(".picScroll-top .bd").css({"height":oh});
-        $(".picScroll-top .bd ul li").css({"height":oh});
-        $(".picScroll-top .bd ul li div").css({"height":oh});
-        h=$(".picList li").eq(0).outerHeight();
-
+        height();
+        h= $(".picList li").eq(0).outerHeight();
     })
-
+    var otp=$(".sell-lg-tp").outerHeight();
+    var obtm=$(".sell-btm").outerHeight();
+    var obte=$(".sell-btm-sm").outerHeight();
+    var owh=$(window).height();
+    var oh=owh-obte-obtm-otp;
+    $(".picScroll-top").css({"height":oh});
+    $(".tempWrap").css({"height":oh});
+//    $(".picScroll-top .bd").css({"height":oh});
+    $(".picScroll-top .bd ul li").css({"height":oh});
+//    $(".picScroll-top .bd ul li div").css({"height":oh});
    //轮播焦点图
     var timer="";
     var i=0;
@@ -304,8 +307,7 @@
     $(".hd ul").append(t);
 
     //获取图片高度
-    h=$(".picList li").eq(0).outerHeight();
-
+//    h= $(".picList li").eq(0).outerHeight();
     //焦点图
     $(".hd li").each(function(i){
         $(this).click(function(){
