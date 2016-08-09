@@ -828,6 +828,7 @@ body,html{
     position:relative;
     width: 100%;
     height:46px;
+    margin-top:2px;
 
 }
 .sell-btm-opc{
@@ -839,6 +840,7 @@ body,html{
     filter:opacity(.8);
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
     z-index: 9;
+    margin-top: 1px;
 }
 .sell-btm-cet{
     position:absolute;
