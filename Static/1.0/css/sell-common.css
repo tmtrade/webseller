@@ -758,7 +758,7 @@ body,html{
 }
 /*图片轮播*/
 /* 本例子css */
-.picScroll-top{ margin:0 auto;  width:100%; min-height:684px;overflow:hidden; position:relative; }
+.picScroll-top{ margin:0 auto;  width:100%; min-height:600px;overflow:hidden; position:relative; }
 .picScroll-top .hd{ overflow:hidden; width:100px;height:100%;padding:0 10px; float:right;  position:relative;}
 .picScroll-top .hd ul{ float:right; overflow:hidden; zoom:1;zoom:1;position: absolute;top:32%;}
 .picScroll-top .hd ul li{ width:17px; height:17px;margin-top: 17px; overflow:hidden; margin-right:5px; text-indent:-999px; cursor:pointer; background-color: #e7e7e7;border-radius: 50%; }
@@ -768,7 +768,7 @@ body,html{
 .picScroll-top .bd ul{ overflow:hidden; zoom:1;position: relative; }
 .picScroll-top .bd ul li{ text-align:center; zoom:1;min-height: 600px;overflow: hidden}
 .picScroll-top .bd ul li div{min-height: 745px;text-align:center;vertical-align:middle;width: 960px;background-position:center center;background-repeat: no-repeat;text-align: center;}
-.picScroll-top .bd ul li img{display: inline-block;vertical-align: middle;margin-top: 10px;margin-top/***/:0px\9;height/***/:580px\9;}
+.picScroll-top .bd ul li img{display: inline-block;vertical-align: middle;margin-top: 10px;margin-top/***/:-30px\9;height/***/:540px\9;}
 .picScroll-top .bd ul li .pic{ text-align:center; }
 .picScroll-top .bd ul li .pic img{ width:180px; height:90px; display:block;  padding:2px;}
 .picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
