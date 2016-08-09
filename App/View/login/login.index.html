@@ -49,16 +49,24 @@
         <div class="tempWrap">
             <ul class="picList">
                 <li>
-                    <div class="sell-ban1"></div>
+                    <div class="sell-ban1">
+                        <img src="<?=StaticDir?>1.0/images/lg-ban1.png">
+                    </div>
                 </li>
                 <li>
-                    <div class="sell-ban2"></div>
+                    <div class="sell-ban2">
+                        <img src="<?=StaticDir?>1.0/images/lg-ban2.png">
+                    </div>
                 </li>
                 <li>
-                    <div class="sell-ban3"></div>
+                    <div class="sell-ban3">
+                        <img src="<?=StaticDir?>1.0/images/lg-ban3.png">
+                    </div>
                 </li>
                 <li>
-                    <div class="sell-ban4"></div>
+                    <div class="sell-ban4">
+                        <img src="<?=StaticDir?>1.0/images/lg-ban4.png">
+                    </div>
                 </li>
             </ul>
         </div>
@@ -252,7 +260,8 @@
         $(".picScroll-top").css({"height":oh});
         $(".tempWrap").css({"height":oh-50});
         $(".picScroll-top .bd").css({"height":oh-50});
-        $(" .picScroll-top .bd ul li div").css({"height":oh-50});
+//        $(".picScroll-top .bd ul li").css({"height":oh-50});
+        $(".picScroll-top .bd ul li div").css({"height":oh-50});
     }
     $(window).resize(function(){
         height();
