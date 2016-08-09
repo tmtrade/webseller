@@ -162,7 +162,7 @@ input{
 }
 body,html{
     background-color: #ffffff;
-    font-family: "宋体","arial";
+    font-family:"arial","宋体";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smoothing: antialiased;
