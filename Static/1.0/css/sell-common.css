@@ -774,7 +774,7 @@ body,html{
 .picScroll-top .bd ul li .pic a:hover img{ border-color:#999;  }
 .picScroll-top .bd ul li .title{ line-height:24px; }
 @media screen and (max-height: 901px){
-    .picScroll-top .bd ul li img{max-height: 580px;margin-top: 20px;}
+    .picScroll-top .bd ul li img{max-height: 580px;max-height/***/: 540px\9;margin-top: 20px;margin-top/***/: 0px\9;}
 }
 .sell-ban1{
     /*width: 841px;*/
@@ -811,6 +811,7 @@ body,html{
     opacity:0.8;
     -webkit-filter:opacity(.8);
     filter:opacity(.8);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
     z-index: 9;
     border-bottom: 1px solid #e5e5e5;
     border-top: 1px solid #e5e5e5;
@@ -831,9 +832,11 @@ body,html{
 .sell-btm-opc{
     width: 100%;
     height:60px;
+    background-color: #ffffff;
     opacity:0.8;
     -webkit-filter:opacity(.8);
     filter:opacity(.8);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
     z-index: 9;
 }
 .sell-btm-cet{
