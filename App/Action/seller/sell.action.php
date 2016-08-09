@@ -221,6 +221,7 @@ class SellAction extends AppAction{
 						    }
 					    }
 				    }
+                                    usleep(100000);
 			    }
 			    $numSucess = count($saleSucess);
 			    $data['code']  = 1;
