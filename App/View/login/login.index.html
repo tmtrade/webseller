@@ -49,25 +49,25 @@
         <div class="tempWrap">
             <ul class="picList">
                 <li>
-                    <img src="<?=StaticDir?>1.0/images/lg-ban1.png">
+                    <img class="lazy" src="<?=StaticDir?>1.0/images/idx01.gif" data-original="<?=StaticDir?>1.0/images/lg-ban1.png">
                     <!--<div class="sell-ban1">-->
                         <!--<img src="<?=StaticDir?>1.0/images/lg-ban1.png">-->
                     <!--</div>-->
                 </li>
                 <li>
-                    <img src="<?=StaticDir?>1.0/images/lg-ban2.png">
+                    <img  src="<?=StaticDir?>1.0/images/lg-ban2.png">
                     <!--<div class="sell-ban2">-->
                         <!--<img src="<?=StaticDir?>1.0/images/lg-ban2.png">-->
                     <!--</div>-->
                 </li>
                 <li>
-                    <img src="<?=StaticDir?>1.0/images/lg-ban3.png">
+                    <img  src="<?=StaticDir?>1.0/images/lg-ban3.png">
                     <!--<div class="sell-ban3">-->
                         <!--<img src="<?=StaticDir?>1.0/images/lg-ban3.png">-->
                     <!--</div>-->
                 </li>
                 <li>
-                    <img src="<?=StaticDir?>1.0/images/lg-ban4.png">
+                    <img  src="<?=StaticDir?>1.0/images/lg-ban4.png">
                     <!--<div class="sell-ban4">-->
                         <!--<img src="<?=StaticDir?>1.0/images/lg-ban4.png">-->
                     <!--</div>-->
@@ -165,6 +165,7 @@
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/tool.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/login.js?v=<?=$static_version?>"></script>
+<script type="text/jscript" src="<?=StaticDir?>1.0/js/jquery.lazyload.min.js"></script>
 <script type="text/javascript">
     var _YZC_ONLINE_ = '';
     $(document).ready(function(e) {
@@ -253,7 +254,13 @@
             }
         });
     }
-
+    //图片延迟加载；
+    $(function() {
+        $(".picScroll-top .bd ul li img").lazyload({
+            placeholder : "<?=StaticDir?>1.0/images/idx01.gif",
+            effect: "fadeIn"
+        });
+    });
  //中间
     var otp=$(".sell-lg-tp").outerHeight();
     var obtm=$(".sell-btm").outerHeight();
