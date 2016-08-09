@@ -250,16 +250,16 @@
         });
     }
     var h;
-    var otp=$(".sell-lg-tp").outerHeight();
-    var obtm=$(".sell-btm").outerHeight();
-    var obte=$(".sell-btm-sm").outerHeight();
-    var owh=$(window).height();
-    var oh=owh-obte-obtm-otp;
-    $(".picScroll-top").css({"height":oh});
-    $(".tempWrap").css({"height":oh});
-    $(".picScroll-top .bd").css({"height":oh});
-    $(".picScroll-top .bd ul li").css({"height":oh});
-    $(".picScroll-top .bd ul li div").css({"height":oh});
+//    var otp=$(".sell-lg-tp").outerHeight();
+//    var obtm=$(".sell-btm").outerHeight();
+//    var obte=$(".sell-btm-sm").outerHeight();
+//    var owh=$(window).height();
+//    var oh=owh-obte-obtm-otp;
+//    $(".picScroll-top").css({"height":oh});
+//    $(".tempWrap").css({"height":oh});
+//    $(".picScroll-top .bd").css({"height":oh});
+//    $(".picScroll-top .bd ul li").css({"height":oh});
+//    $(".picScroll-top .bd ul li div").css({"height":oh});
 
     $(window).resize(function(){
         var otp=$(".sell-lg-tp").outerHeight();
@@ -305,7 +305,7 @@
 
     //获取图片高度
     h=$(".picList li").eq(0).outerHeight();
-   
+
     //焦点图
     $(".hd li").each(function(i){
         $(this).click(function(){
