@@ -40,7 +40,7 @@ class LoginAction extends AppAction
 
 		$callback   = $this->input('callback', 'string', '');//跨域使用
 		$expire   	= $this->input('expire', 'string', '');
-		if ( empty($account) || !in_array(isCheck($account),array(1,2))  ){
+		if ( empty($account) ||  isCheck($account)!==2  ){
 			$code   = 2;
 		}else{
 			$this->verifyAjax($callback);//跨域验证
