@@ -811,7 +811,7 @@ body,html{
     background: #ffffff;
     opacity:0.8;
     -webkit-filter:opacity(.8);
-    filter:opacity(.8);
+    filter:alpha(opacity=80);
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
     z-index: 9;
     border-bottom: 1px solid #e5e5e5;
@@ -837,7 +837,7 @@ body,html{
     background-color: #ffffff;
     opacity:0.8;
     -webkit-filter:opacity(.8);
-    filter:opacity(.8);
+    filter:alpha(opacity=80);
     filter: progid:DXImageTransform.Microsoft.Alpha(opacity=80);
     z-index: 9;
     margin-top: 1px;
