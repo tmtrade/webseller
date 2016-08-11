@@ -166,3 +166,10 @@ function placeholder(input){
         $(this).removeClass("phcolor");
     });
 }
+
+//position下的fixed兼容手机端
+
+if(navigator.platform == 'iPad' || navigator.platform == 'iPhone' || navigator.platform == 'iPod')
+{
+    $(".sell-btm-dw").css("position", "static");
+};
