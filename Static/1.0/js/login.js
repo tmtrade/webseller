@@ -21,14 +21,14 @@ $(document).ready(function(e) {
 		var ueaVal	= $.trim($('#log1_account').val());
 		var uepVal	= $.trim($('#log1_password').val());
 		if( ueaVal == '' ){
-			error('请输入邮箱或者手机号码',1);
-			$('.usertxt').html('请输入邮箱或者手机号码');
+			error('请输入手机号码',1);
+			$('.usertxt').html('请输入手机号码');
 			layer.closeAll('loading');
 			return false;
 		}
 		var uType	= getUserType(ueaVal);
 		if(uType == 0){
-			error('请输入正确邮箱或者手机号码',1);
+			error('请输入正确手机号码',1);
 			layer.closeAll('loading');
 			return false;
 		}
