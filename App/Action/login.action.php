@@ -10,6 +10,7 @@
 class LoginAction extends AppAction
 {
 	protected $onlineName = 'YzCoNlInE';
+        public $ptype = 7; 
 	/**
 	* 控制器默认方法 ---------- 弃用
 	* @author	void

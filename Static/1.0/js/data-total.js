@@ -30,6 +30,8 @@ function analyzePage(ptype){
             str = '奖励兑换';break;
         case '6':
             str = '我的消息';break;
+	case '6':
+            str = '登录首页';break;
         default:
             str = '未知';
     }
