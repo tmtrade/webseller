@@ -1,35 +1,35 @@
     <div class="sell-rg-nav" id="rg-nav">
         <ul class="nav-list">
             <li class="nav-list1">
-                <a href="/"><i class="sell-ico ico-bg1"></i>我的首页</a>
+                <a href="/" addmsg="我的首页" module='左侧导航'><i class="sell-ico ico-bg1" ></i>我的首页</a>
             </li>
             <li class="nav-list2">
-                <a href="/goods/index/"><i class="sell-ico ico-bg2"></i>我的商品</a>
+                <a href="/goods/index/" addmsg="我的商品" module='左侧导航'><i class="sell-ico ico-bg2"></i>我的商品</a>
             </li>
             <li class="nav-list3">
-                <a href="/sell/index/"><i class="sell-ico ico-bg3"></i>我要出售</a>
+                <a href="/sell/index/" addmsg="我要出售" module='左侧导航'><i class="sell-ico ico-bg3"></i>我要出售</a>
             </li>
             <li class="nav-list4">
-                <a href="/income/index/"><i class="sell-ico ico-bg4"></i>我的收益</a>
+                <a href="/income/index/" addmsg="我的收益" module='左侧导航'><i class="sell-ico ico-bg4"></i>我的收益</a>
             </li>
             <li class="nav-list5">
-                <a href="/exchange/index/"><i class="sell-ico ico-bg5"></i>奖励兑换</a>
+                <a href="/exchange/index/" addmsg="奖励兑换" module='左侧导航'><i class="sell-ico ico-bg5"></i>奖励兑换</a>
             </li>
 
             <li class="sell-pull-list">
-                <a class="pull-btn"><i class="sell-ico ico-bg6"></i>我的资料 <em class="fa fa-chevron-down" aria-hidden="true"></em></a>
+                <a class="pull-btn" addmsg="我的资料" module='左侧导航'><i class="sell-ico ico-bg6"></i>我的资料 <em class="fa fa-chevron-down" aria-hidden="true"></em></a>
                 <div class="xl-box">
                     <!--<p> <a href="/index/verify">我的认证</a></p>-->
-                    <p> <a target="_blank" href="<?=MY_URL?>user/main">基本信息</a></p>
-                    <p> <a target="_blank" href="<?=MY_URL?>user/changePwd/">密码修改</a></p>
+                    <p> <a target="_blank" addmsg="基本信息" module='左侧导航' href="<?=MY_URL?>user/main">基本信息</a></p>
+                    <p> <a target="_blank" addmsg="密码修改" module='左侧导航' href="<?=MY_URL?>user/changePwd/">密码修改</a></p>
                 </div>
             </li>
         </ul>
 	<div class="sell-qq-serve">
-            <a target="_blank" href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes"><img border="0" src="/Static/1.0/images/QQser.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
+            <a target="_blank" addmsg="点击这里给我发消息" module='左侧导航' href="http://wpa.qq.com/msgrd?v=3&amp;uin=<?=$qq_num?>&amp;site=qq&amp;menu=yes"><img border="0" src="/Static/1.0/images/QQser.png" alt="点击这里给我发消息" title="点击这里给我发消息"></a>
                 
             
-            <p>您还可以<a href="javascript:;" onclick="goChat();return false;">联系在线客服</a></p>
+            <p>您还可以<a href="javascript:;" onclick="goChat();return false;" addmsg="联系在线客服" module='左侧导航'>联系在线客服</a></p>
         </div>
     </div>
 

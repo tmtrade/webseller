@@ -11,6 +11,7 @@ class ExchangeAction extends AppAction{
     public $pageTitle   = "奖励兑换-一只蝉出售者平台";
     
     public $size = 15;
+    public $ptype = 5;
 
     /**
      * 得到收益列表数据

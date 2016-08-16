@@ -8,6 +8,8 @@
 class MessegeAction extends AppAction{
 
     public $size = 10;
+    
+    public $ptype = 6;
 
     /**
      * 站内信列表
@@ -23,6 +25,7 @@ class MessegeAction extends AppAction{
         $pageBar 	= empty($data) ? '' : getPageBarNew($pager);
         $this->set("pageBar",$pageBar);
         $this->set("list",$data);
+        $this->set("page",$page);
         $this->display();
     }
 

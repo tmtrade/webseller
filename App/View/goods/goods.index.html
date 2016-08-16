@@ -29,10 +29,10 @@
                <div class="list-mess-top">
                    <div class="hd fl">
                        <ul>
-			   <a href="/goods/index?status=1"><li <?if($s['status']==1) echo 'class="on"';?>>出售中<span class="cir sell-infor sb-mess"><?=$sellCount['one']?></span></li></a>
-			   <a href="/goods/index?status=2"><li <?if($s['status']==2) echo 'class="on"';?>>审核中<span class="cir sell-infor sb-mess"><?=$sellCount['two']?></span></li></a>
-			   <a href="/goods/index?status=3"><li <?if($s['status']==3) echo 'class="on"';?>>未通过<span class="cir sell-infor sb-mess"><?=$sellCount['three']?></span></li></a>
-			   <a href="/goods/index?status=4"><li <?if($s['status']==4) echo 'class="on"';?>>已失效<span class="cir sell-infor sb-mess"><?=$sellCount['four']?></span></li></a>
+			   <a href="/goods/index?status=1" addmsg="出售中" module='标题导航'><li <?if($s['status']==1) echo 'class="on"';?>>出售中<span class="cir sell-infor sb-mess"><?=$sellCount['one']?></span></li></a>
+			   <a href="/goods/index?status=2" addmsg="审核中" module='标题导航'><li <?if($s['status']==2) echo 'class="on"';?>>审核中<span class="cir sell-infor sb-mess"><?=$sellCount['two']?></span></li></a>
+			   <a href="/goods/index?status=3" addmsg="未通过" module='标题导航'><li <?if($s['status']==3) echo 'class="on"';?>>未通过<span class="cir sell-infor sb-mess"><?=$sellCount['three']?></span></li></a>
+			   <a href="/goods/index?status=4" addmsg="已失效" module='标题导航'><li <?if($s['status']==4) echo 'class="on"';?>>已失效<span class="cir sell-infor sb-mess"><?=$sellCount['four']?></span></li></a>
 		       </ul>
                    </div>
                    <div class="mess-top-dq fr">当前共有<label><?=$count?></label>条商品数据
@@ -76,7 +76,7 @@
 			<? foreach ($list as $k => $v) {?>
                           <tr id="re-<?=$v['number']?>">
                               <td class="list-mess-pic">
-                                  <a class="pic" <?if(!empty($v['tid']) && $s['status']==1){?> href="<?=SITE_URL?>d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>"  onerror="this.src='/Static/1.0/images/img1.png'" width="90" height="60"></a>
+                                  <a class="pic" addmsg="01-查看详情" module='第<?=$page?>页第<?=($k+1)?>条' <?if(!empty($v['tid']) && $s['status']==1){?> href="<?=SITE_URL?>d-<?=$v['tid']?>-<?=$v['class']?>.html" <?}?>target="_blank"><img src="<?=$v['pic']['embellish']?>"  onerror="this.src='/Static/1.0/images/img1.png'" width="90" height="60"></a>
                               </td>
                               <td><?=replaceSpace($v['name']);?></td>
 			      <td><?=$v['number']?></td>
@@ -92,14 +92,14 @@
 				<?if($s['status']==1){?>
 				  <td class="cg-price">
                                   <p class="price">
-				      <a class="revise" data-number="<?=$v['number']?>">修改价格</a><label>|</label>
-				      <a class="abo" data-number="<?=$v['number']?>" data-type="1">取消报价</a>
+				      <a class="revise" data-number="<?=$v['number']?>" addmsg="05-取消报价" module='第<?=$page?>页第<?=($k+1)?>条'>修改价格</a><label>|</label>
+				      <a class="abo" data-number="<?=$v['number']?>" data-type="1" addmsg="06-取消报价" module='第<?=$page?>页第<?=($k+1)?>条'>取消报价</a>
 				  </p>
 				  </td>
 				  <?}elseif($s['status']==2){?>
 				  <td class="cg-price">
 				  <p class="price">
-				      <a class="abo" data-number="<?=$v['number']?>" data-type="0">删除报价</a>
+				      <a class="abo" data-number="<?=$v['number']?>" data-type="0" addmsg="07-删除报价" module='第<?=$page?>页第<?=($k+1)?>条'>删除报价</a>
 				  </p>
 				  </td>
 				<?}?>
@@ -138,6 +138,7 @@ $(function(){
                 layer.tips('请输入商标名称', $(this),{tips: [2, '#78BA32']});
                 return false;
             }
+	    setEvent("立即搜索:",names);
             $("#seachForm").submit();
         });
 	
@@ -152,6 +153,7 @@ $(function(){
         $('.mess-top-dq li').click(function(){
             var size = $.trim($('#size_income').text());
 	    $("input[name=size]").val(size);
+	    setEvent("选择分页条数","每页显示"+size);
 	    $("#seachForm").submit();
         });
 });

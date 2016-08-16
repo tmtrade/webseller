@@ -8,7 +8,7 @@
         <div class="comm-list-tit sell-by-brand w-cont">
             <h3 class="fl">商标出售 ><label>根据文档出售</label></h3>
             <p class="fr">
-                您还可以选择:<a href="/sell/number">根据申请号出售 </a>|<a href="/sell/person">根据申请人出售</a>
+                您还可以选择:<a href="/sell/number" addmsg="根据商标号出售" module='根据文档出售'>根据申请号出售 </a>|<a href="/sell/person" addmsg="根据商标号出售" module='根据文档出售'>根据申请人出售</a>
             </p>
         </div>
         <div class="comm-search-bg f-hidden">
@@ -28,7 +28,7 @@
                 </div>
 
             <form id='bzformupload' action='/sell/ajaxUploadExcel/' method='post' enctype='multipart/form-data' style="cursor:pointer;">
-                <a class="sub-btn cir">
+                <a class="sub-btn cir" addmsg="选择上传文档" module='根据文档出售'>
                     选择上传文档
                 <input type="file"   name="fileName" id="upfile"  style="font-size:47px;overflow:hidden;cursor:pointer;border:0px;border-bottom-style:none;border-top-style:none;border-left-style:none;border-right-style:none;width:200px;height:45px; position:relative;top: -45px;line-height:45px; opacity: 0;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);"  />
                 </a>
@@ -36,7 +36,7 @@
 		
                 <p>
                     <label>一次最高不超过100条数据<br/>还没有模板？</label>
-                    <a href="javascript:void(0)" onclick="downModel()" >点这里 EXCEL模板下载</a>
+                    <a href="javascript:void(0)" onclick="downModel()" addmsg="点这里EXCEL模板下载" module='根据文档出售'>点这里 EXCEL模板下载</a>
                 </p>
             </div>
             <!--商品提交中-->
@@ -63,7 +63,7 @@
                     本次您导入了<span class="cFF0000" id="alldata"></span>条商品，
 		    成功<span class="cFF0000" id="sucdata"></span>条商品，
 		    失败<span class="cFF0000" id="errdata"></span>条商品<br/>
-		    <a href="javascript:void(0)" id="downError" style="display: none">下载失败文档</a>
+		    <a href="javascript:void(0)" id="downError" style="display: none" addmsg="下载失败文档" module='根据文档出售'>下载失败文档</a>
                 </p>
             </div>
         </div>

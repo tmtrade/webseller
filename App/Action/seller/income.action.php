@@ -9,6 +9,8 @@
 class IncomeAction extends AppAction{
     
     public $pageTitle   = "我的收益-一只蝉出售者平台";
+    
+    public $ptype = 4;
     /**
      * 得到收益列表数据
      */

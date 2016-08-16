@@ -12,7 +12,7 @@ class IndexAction extends AppAction
 {
 
 	protected $onlineName = 'YzCoNlInE';
-
+        public $ptype = 1;
 	/**
 	 * 控制器默认方法
 	 * @author	void

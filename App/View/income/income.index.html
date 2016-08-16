@@ -96,6 +96,8 @@
         });
         //每页大小改变
         $('.mess-top-dq li').click(function(){
+	    var size = $.trim($('#size_income').text());
+	    setEvent("选择分页条数","每页显示"+size);
             buildUrl();
         });
         //页码点击事件
@@ -130,6 +132,9 @@
         }else{
             myurl.remove('end');
         }
+	if(start || end){
+	    setEvent("搜索了时间段",start+"-"+end);
+	}
         //类型
         var type = $.trim($('#type_income').text());
         if(type=='专利'){

@@ -12,6 +12,7 @@ class GoodsAction extends AppAction{
     
     public $size = 8;
      
+    public $ptype = 2; 
 
     /**
      * 得到收益列表数据
@@ -50,6 +51,7 @@ class GoodsAction extends AppAction{
         $this->set("list",$data);
 	$this->set("count",$count);
 	$this->set("size",$size);
+        $this->set("page",$page);
 //	echo "<pre>";
 //	print_r($data);
 	$this->set("s",$params);

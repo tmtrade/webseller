@@ -9,6 +9,8 @@
 class SellAction extends AppAction{
     
     public $pageTitle   = "我要出售-一只蝉出售者平台";
+    
+    public $ptype = 3;
     /**
      * 加载首页
      */

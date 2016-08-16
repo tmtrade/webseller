@@ -65,7 +65,7 @@
                             <span>有效期:<?=date('Y-m-d',strtotime("$firstday +1 month"));?>至<?=date('Y-m-d',strtotime("$firstday +2 month -1 day"));?></span>
                             <p><?=$v['note']?></p>
 			    <?if($counts>0){?>
-			    <a class="free-exc" data-pages="<?=$k?>" data-amount="<?=$v['amount']?>">免费兑换</a>
+			    <a class="free-exc" data-pages="<?=$k?>" data-amount="<?=$v['amount']?>" addmsg="点击了免费兑换:<?=$v['name']?>" module='兑换列表'>免费兑换</a>
 			    <?}?>
                             
                         </div>

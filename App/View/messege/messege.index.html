@@ -17,7 +17,7 @@
                        </tr>
                     </thead>
                     <tbody class="list-mess">
-                        <? foreach($list as $item): ?>
+                        <? foreach($list as $k=>$item): ?>
                         <tr>
                             <?php
                                 //判断站内信的类型
@@ -33,7 +33,7 @@
                             ?>
                             <td class="tick">
                                 <p>
-                                    <a class="msg_a" mid="<?=$item['mid']?>" target="_blank" href="<?=$link_type?>"><i class="sell-ico <?=($item['status'])?'news-end':'news-str'?>"></i><?=$item['title']?></a>
+                                    <a class="msg_a" mid="<?=$item['mid']?>" target="_blank" href="<?=$link_type?>" addmsg="点击标题" module='第<?=$page?>页第<?=($k+1)?>条'><i class="sell-ico <?=($item['status'])?'news-end':'news-str'?>"></i><?=$item['title']?></a>
                                 </p>
                                 <div style="display: none">
                                     <a class="msg_s" target="_blank" href="<?=$link_type?>">1</a>
@@ -41,7 +41,7 @@
                             </td>
                             <td class="time"><?=date('Y-m-d H:i:s',$item['date'])?></td>
                             <td class="dele">
-                                <a href="javascript:;" onclick="delMsg(<?=$item['mid']?>)">删除</a>
+                                <a href="javascript:;" onclick="delMsg(<?=$item['mid']?>)" addmsg="删除" module='第<?=$page?>页第<?=($k+1)?>条'>删除</a>
                             </td>
                         </tr>
                         <? endforeach; ?>

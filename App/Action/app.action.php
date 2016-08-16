@@ -22,6 +22,8 @@ abstract class AppAction extends Action
 	public $token;
 	
 	public $pageTitle   = "一只蝉出售者平台 - 让无形资产流转起来";
+        
+        public $ptype        = 0;
 	/**
 	* 前置操作(框架自动调用)
 	* @author	void
@@ -64,6 +66,7 @@ abstract class AppAction extends Action
 		$this->set('static_version', 11383);
 		$this->set('current_url', '/'.$this->mod .'/' . $this->action.'/');
 		$this->set('title',$this->pageTitle);
+                $this->set('ptype',$this->ptype);//设置页面标识
 	}
 
 	/**
