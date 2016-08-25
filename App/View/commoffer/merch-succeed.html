@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../../../Static/1.0/css/sell-common.css?v=<?=$static_version?>">
+    <link rel="stylesheet" href="../../../Static/1.0/css/style.css?v=<?=$static_version?>">
+    <link rel="stylesheet" href="../../../Static/1.0/css/font-awesome.min.css?v=<?=$static_version?>">
+    <link rel="stylesheet" href="../../../Static/1.0/css/transfer.css">
+    <script type="text/javascript" src="../../../Static/1.0/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
+</head>
+<body>
+<div class="yzc-sell-main">
+    <div class="sell-lf-main">
+        <div class="comm-list-tit sell-by-brand w-cont">
+            <h3 class="fl">我的商品单 ><label>创建商品单</label></h3>
+        </div>
+        <!--没有商品数据的时候-->
+        <!--<div class="trans-cj f-clearfix f-hidden">-->
+            <div class="trans-no-data">
+                <div class="trans-ts-xx">
+                    <img src="../../../Static/1.0/images/sub-state-end.png">
+                    <h6>恭喜您创建成功</h6>
+                </div>
+                <label>现在就发给客户吧</label>
+            </div>
+        <!--</div>-->
+        <div class="merch-sce-cz">
+            <div class="merch-sce-ly">
+                <input class="oinp" type="text" id="oURL" placeholder="www.yizhchan.com/goos12340.html"/>
+                <a href="javascript:;" class="cir sear-btn batch-pric" id="cpywz">拷贝网址</a>
+                <a href="javascript:;" class="cir qx-btn batch-del">查看页面</a>
+            </div>
+            <p class="merch-sce-share">
+                <a><i><img src="../../../Static/1.0/images/dc-ico.png"></i>导出图片</a>
+
+                <em></em>
+                <a>微博</a>
+                <a>朋友圈</a>
+            </p>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../../../Static/1.0/js/ZeroClipboard.js"></script>
+<script type="text/javascript">
+    $(function(){
+        init();
+    });
+    function init() {
+        var clip = new ZeroClipboard.Client();
+        clip.setHandCursor( true );
+        clip.setText($('#oURL').val());
+        clip.addEventListener( "mouseUp", function(client) {
+            alert("复制成功！");
+        });
+        clip.glue("cpywz");
+    }
+</script>
+</body>
+</html>
