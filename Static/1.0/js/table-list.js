@@ -58,7 +58,7 @@ cbtn.each(function(){
         if(dinx==1){
             $(this).siblings("ul").slideDown();
             $(this).attr("index","2");
-
+            $(this).parent(".pull-list").css({"zIndex":"9999"})
             $(this).find("i").css({"transform":"rotate(180deg)"})
 
         }
@@ -67,6 +67,7 @@ cbtn.each(function(){
             $(this).attr("index","1");
 
             $(this).find("i").css({"transform":"rotate(0deg)"})
+            $(this).parent(".pull-list").css({"zIndex":"9"})
         }
     })
     $(this).siblings("ul.all-tp-list").find("li").each(function(){
@@ -75,6 +76,7 @@ cbtn.each(function(){
             $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text());
             $(this).parent().siblings("a.all-tp-btn").attr("index","1");
             $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+
         })
     })
 })
