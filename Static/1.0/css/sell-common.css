@@ -351,6 +351,10 @@ body,html{
 .sell-pull-list:hover .ico-bg6{
     background-image: url("../images/data_icon_h.png");
 }
+.nav-list7:hover .ico-bg7{
+    background-image: url("../images/comm_ico_h.png");
+    background-position:center center ;
+}
 .ico-bg1{
     background-image: url("../images/home_icon.png");
 }
@@ -369,7 +373,10 @@ body,html{
 .ico-bg6{
     background-image: url("../images/data_icon.png");
 }
-
+.ico-bg7{
+    background-image: url("../images/comm_ico.png");
+    background-position:center center ;
+}
 
 .sell-rg-nav ul li a{
     display: block;

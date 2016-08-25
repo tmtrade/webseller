@@ -1951,7 +1951,7 @@ p .btn {
     height:88px;
     background: #424b5a url("../images/trans-ind-cj.png") no-repeat left top;
     margin-top: 12px;
-    margin-bottom: 12px;
+    margin-bottom: 18px;
 }
 
 .trans-ind-cj .fl{
@@ -1961,6 +1961,9 @@ p .btn {
 }
 .trans-ind-cj .fl h3{
      font-size: 16px;
+}
+.trans-ind-cj .fl p{
+    margin-top:5px;
 }
 .trans-ind-cj .fl label{
     display: inline-block;
