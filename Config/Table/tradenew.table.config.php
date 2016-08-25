@@ -98,6 +98,21 @@ $tbl['totalLog'] = array(
 	'dbId'		=> $dbId,
 	'configFile'=> $configFile,
 );
+$tbl['quotation'] = array(
+	'name'		=> $prefix2.'quotation',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+$tbl['quotationItems'] = array(
+	'name'		=> $prefix2.'quotation_items',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
+$tbl['userImage'] = array(
+	'name'		=> $prefix2.'user_image',
+	'dbId'		=> $dbId,
+	'configFile'=> $configFile,
+);
 $tbl['keywordCount'] = array(
 	'name'		=> $prefix.'keyword_count',
 	'dbId'		=> $dbId,

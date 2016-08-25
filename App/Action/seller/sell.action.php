@@ -205,9 +205,10 @@ class SellAction extends AppAction{
 						    //如果没有这个联系人，就写入这个联系人信息
 						    if(!$saleBContact){
 							    $result = $this->load('sell')->documentAddSell($item);
-							    if($result){
+							    if($result['code']==999){
 								$saleSucess[] = $item;
 							    }else{
+                                                                $item['memo'] = $item['memo'].$result['code'];
 								$saleError[] = $item;
 							    }
 						    }else{
@@ -216,9 +217,10 @@ class SellAction extends AppAction{
 					    }else{
 						    //开始写入商标
 						    $result = $this->load('sell')->documentAddSell($item);
-						    if($result){
+						    if($result['code']==999){
 							    $saleSucess[] = $item;
 						    }else{
+                                                            $item['memo'] = $item['memo'].$result['code'];
 							    $saleError[] = $item;
 						    }
 					    }

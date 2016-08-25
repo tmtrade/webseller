@@ -151,10 +151,8 @@ class SellModule extends AppModule{
 		'memo'		=> $params['memo'],
             );
             $rst = $this->importBi('sale')->addSale($tmp);
-            if($rst['code']!=999){
-                return false;
-            }
-        return true;
+            
+            return $rst;
     }
 
 
