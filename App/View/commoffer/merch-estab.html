@@ -9,7 +9,6 @@
     <!--新加的CSS-->
     <link rel="stylesheet" href="../../../Static/1.0/css/transfer.css">
     <script type="text/javascript" src="../../../Static/1.0/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
-
 </head>
 <body>
 <div class="yzc-sell-main">
@@ -61,7 +60,7 @@
                                 <span>
                                      <img src="../../../Static/1.0/images/lb-pic.jpg">
                                 </span>
-                                <a>上传图片</a>
+                                <a>1上传图片</a>
                             </div>
                             <em></em>
                         </td>
@@ -101,7 +100,7 @@
                                 <span>
                                      <img src="../../../Static/1.0/images/lb-pic.jpg">
                                 </span>
-                                <a>上传图片</a>
+                                <a>2上传图片</a>
                             </div>
                             <em></em>
                         </td>
@@ -141,7 +140,7 @@
                                 <span>
                                      <img src="../../../Static/1.0/images/lb-pic.jpg">
                                 </span>
-                                <a>上传图片</a>
+                                <a>3上传图片</a>
                             </div>
                             <em></em>
                         </td>
@@ -181,7 +180,7 @@
                                 <span>
                                      <img src="../../../Static/1.0/images/lb-pic.jpg">
                                 </span>
-                                <a>上传图片</a>
+                                <a>4上传图片</a>
                             </div>
                             <em></em>
                         </td>
@@ -221,7 +220,7 @@
                                 <span>
                                      <img src="../../../Static/1.0/images/lb-pic.jpg">
                                 </span>
-                                <a>上传图片</a>
+                                <a>5上传图片</a>
                             </div>
                             <em></em>
                         </td>
@@ -261,7 +260,7 @@
                                 <span>
                                      <img src="../../../Static/1.0/images/lb-pic.jpg">
                                 </span>
-                                <a>上传图片</a>
+                                <a>6上传图片</a>
                             </div>
                             <em></em>
                         </td>
@@ -413,52 +412,50 @@
         </div>
     </div>
 </div>
+
 <script type="text/javascript" src="../../../Static/1.0/js/table-list.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="../../../Static/1.0/js/sell.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
-    //删除
-    $(".remove").live("click",function(){
-        $(this).parents("tr").remove();
-    })
-   //通过点击复选框改变议价状态
-   var oinps=$(".tras-tab2").find("input[type='radio']");
-       oinps.attr("judge","1");
-       oinps.each(function(){
-           $(this).live("click",function(){
-               var ojdg=oinps.attr("judge");
-               if(ojdg==1){
-                   $(this).attr("checked",false);
-                   $(this).parents().siblings(".pre").css({"display":"none"});
-                   $(this).parents().siblings(".yj").css({"display":"block"});
-                   oinps.attr("judge","2");
-               }
-               if(ojdg==2){
-                   $(this).attr("checked",true);
-                   $(this).parents().siblings(".pre").css({"display":"block"});
-                   $(this).parents().siblings(".yj").css({"display":"none"});
-                   oinps.attr("judge","1");
-               }
-           })
-       })
-   //点击向上 向上 移动
-   function upDown(){
-       var otr=$(".otab").find("tr");
-       otr.each(function(e){
-           var othis=$(this);
-           var obf=othis.prev();
-           var oaf=othis.next();
-           var oup=$(this).find("a.z-up");
-           var odown=$(this).find("a.z-down");
-           oup.live("click",function(){
-               obf.before(othis);
-           })
-           odown.live("click",function(){
-               oaf.after(othis);
-           })
-       })
-   }
-   upDown();
-
+    $(function(){
+            //删除
+            $(".remove").live("click",function(){
+                $(this).parents("tr").remove();
+            })
+           //通过点击复选框改变议价状态
+           var oinps=$(".tras-tab2").find("input[type='radio']");
+               oinps.attr("judge","1");
+               oinps.each(function(){
+                   $(this).live("click",function(){
+                       var ojdg=oinps.attr("judge");
+                       if(ojdg==1){
+                           $(this).attr("checked",false);
+                           $(this).parents().siblings(".pre").css({"display":"none"});
+                           $(this).parents().siblings(".yj").css({"display":"block"});
+                           oinps.attr("judge","2");
+                       }
+                       if(ojdg==2){
+                           $(this).attr("checked",true);
+                           $(this).parents().siblings(".pre").css({"display":"block"});
+                           $(this).parents().siblings(".yj").css({"display":"none"});
+                           oinps.attr("judge","1");
+                       }
+                   })
+               })
+        //通过点击向上向下操作
+        $(".z-down").each(function(i){
+            $(this).live("click",function(){
+                var n=$(this).parents("tr").next();
+                $(this).parents("tr").before(n);
+            });
+        })
+        $(".z-up").each(function(i){
+            $(this).live("click",function(){
+                var p=$(this).parents("tr").prev();
+                $(this).parents("tr").after(p);
+            });
+        })
+    });
 </script>
+
 </body>
 </html>
