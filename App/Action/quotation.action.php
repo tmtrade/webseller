@@ -18,8 +18,16 @@ class QuotationAction extends AppAction{
      * 商品报价单首页
      */
     public function index(){
-
-        $this->display();
+        $params['name']   = $this->input('name', 'string', '');
+        $page = $this->input('page','int',1);
+        //得到分页数据
+        $res = $this->load('quotation')->getList($params, $page, $this->size);
+        if($res['total']>0){
+            $this->display();
+        }else{
+            $this->display("quotation/quotation.addindex.html");
+        }
+        
     }
     
     

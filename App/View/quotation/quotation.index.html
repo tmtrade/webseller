@@ -1,12 +1,130 @@
 <? require(ViewDir.'/header.html'); ?>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
+ <link rel="stylesheet" href="<?=StaticDir?>1.0/css/transfer.css">
  <style type="text/css">
 	a{color:#000;}
   </style>
 <div class="yzc-sell-main">
 <!--公用左边导航-->
 <? require(ViewDir.'/left.html'); ?>
-1111
-</div>
+<div class="sell-lf-main">
+        <div class="comm-list-tit w-cont">
+            <h3>我的商品单</h3>
+        </div>
+        <div class="comm-search-bg">
+            <div class="desi w-cont">
+                <label>商品名称</label>
+                <input type="text" class="cir" />
+                <a  class="cir sear-btn">立刻搜索</a>
+                <!--当该商标失效-->
+                <!--<a class="eff-brand hint-bg cir"><i></i>改商标已失效</a>-->
+            </div>
+        </div>
+        <div class="tras-box">
+            <div class="list-mess-top f-clearfix">
+                <div class="mess-top-dq fr">当前共有<label>23145</label>条商品数据
+                    <div class="pull-list paging">
+                        <a class="cir all-tp-btn" index="1"><font>每页20</font><i class="fa fa-chevron-down"></i></a>
+                        <ul class="all-tp-list" style="display: none;top:25px !important;">
+                            <li>
+                                1111111
+                            </li>
+                            <li>
+                                222222
+                            </li>
+                            <li>
+                                222222
+                            </li>
+                            <li>
+                                222222
+                            </li>
+                        </ul>
+                    </div>
 
+                </div>
+            </div>
+            <div class="tras-blk f-hidden f-clearfix">
+                <table class="tras-tab">
+                    <thead>
+                    <th>商品单标题</th> <th>包含商品</th> <th>创建时间</th> <th style="text-indent: 24px;">操作</th>
+                    </thead>
+                    <tbody class="list-mess">
+                        <tr>
+                            <td>为河北的张先生推荐的商品</td>
+                            <td>10</td>
+                            <td>2015-05-25 12:25</td>
+                            <td class="oper">
+                                <a><i><img src="../../../Static/1.0/images/dc-ico.png"></i>导出图片</a>
+                                <a><i><img src="../../../Static/1.0/images/list-tr-yl.png"></i>预览</a>
+                                <a>拷贝网址</a>
+                                <a>微博</a>
+                                <a>朋友圈</a>
+                                <em></em>
+                                <a>编辑 </a>
+                                <a class="remove">删除</a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>为河北的张先生推荐的商品</td>
+                            <td>10</td>
+                            <td>2015-05-25 12:25</td>
+                            <td class="oper">
+                                <a><i><img src="../../../Static/1.0/images/dc-ico.png"></i>导出图片</a>
+                                <a><i><img src="../../../Static/1.0/images/list-tr-yl.png"></i>预览</a>
+                                <a>拷贝网址</a>
+                                <a>微博</a>
+                                <a>朋友圈</a>
+                                <em></em>
+                                <a>编辑 </a>
+                                <a class="remove">删除</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tras-list-btm f-clearfix ">
+                <div class="fl">
+                    <a class="sub-btn cir" href="">
+                        创建商品单
+                    </a>
+                </div>
+                <div class="comm-list-page fr">
+                    <p>
+                        <a><i class="fa fa-angle-left"></i></a>
+                        <a>1</a>
+                        <a>2</a>
+                        <a>3</a>
+                        <a>4</a>
+                        <a><i class="fa fa-angle-right"></i></a>
+                    </p>
+                    <div class="skip">
+                        <input type="text"/>
+                        <a>跳转</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<script type="text/javascript">
+    //table偶数行变色
+    cg_tbcolor();
+    //删除
+    $(".remove").live("click",function(){
+        $(this).parents("tr").remove();
+    })
+    $(function(){
+        init();
+    });
+    function init() {
+        var clip = new ZeroClipboard.Client();
+        clip.setHandCursor( true );
+        clip.setText($('#oURL').val());
+        clip.addEventListener( "mouseUp", function(client) {
+            alert("复制成功！");
+        });
+        clip.glue("cpywz");
+    }
+</script>
 <? require(ViewDir.'/footer.html'); ?>
