@@ -326,6 +326,14 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     margin-top: 10px;
     margin-bottom: 10px;
 }
+.trans-ts-xx h6 i{
+    display: inline-block;
+    color: #1d9d74;
+    font-size: 28px;
+    vertical-align: middle;
+    margin-bottom:7px;
+    margin-right: 3px;
+}
 .amend-cont-all{
     margin-bottom:0px;
     margin-left:0px;
