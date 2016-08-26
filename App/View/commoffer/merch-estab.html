@@ -69,9 +69,13 @@
                             <em></em>
                         </td>
                         <td class="tras-bd-oper">
-                            <p class="rad">
-                                <input type="radio" checked="true"/>
-                            </p>
+                            <div class="pull-list paging">
+                                <a class="cir all-tp-btn"><font id="size_income">定价</font><i class="fa fa-chevron-down"></i></a>
+                                <ul class="all-tp-list" style="display: none;">
+                                    <li class="yj-btn">议价</li>
+                                    <li class="dj-btn">定价</li>
+                                </ul>
+                            </div>
                             <p class="yj">议价</p>
                             <p class="pre">
                                 价格:<input type="text" class="sell-ip-box"/>元
@@ -422,25 +426,37 @@
                 $(this).parents("tr").remove();
             })
            //通过点击复选框改变议价状态
-           var oinps=$(".tras-tab2").find("input[type='radio']");
-               oinps.attr("judge","1");
-               oinps.each(function(){
-                   $(this).live("click",function(){
-                       var ojdg=oinps.attr("judge");
-                       if(ojdg==1){
-                           $(this).attr("checked",false);
-                           $(this).parents().siblings(".pre").css({"display":"none"});
-                           $(this).parents().siblings(".yj").css({"display":"block"});
-                           oinps.attr("judge","2");
-                       }
-                       if(ojdg==2){
-                           $(this).attr("checked",true);
-                           $(this).parents().siblings(".pre").css({"display":"block"});
-                           $(this).parents().siblings(".yj").css({"display":"none"});
-                           oinps.attr("judge","1");
-                       }
-                   })
-               })
+        $(".yj-btn").each(function(){
+            $(this).live("click",function(){
+               $(this).parents(".tras-bd-oper").find(".yj").css({"display":"block"});
+               $(this).parents(".tras-bd-oper").find(".pre").css({"display":"none"});
+            })
+        })
+        $(".dj-btn").each(function(){
+            $(this).live("click",function(){
+                $(this).parents(".tras-bd-oper").find(".yj").css({"display":"none"});
+                $(this).parents(".tras-bd-oper").find(".pre").css({"display":"block"});
+            })
+        })
+//           var oinps=$(".tras-tab2").find("input[type='radio']");
+//               oinps.attr("judge","1");
+//               oinps.each(function(){
+//                   $(this).live("click",function(){
+//                       var ojdg=oinps.attr("judge");
+//                       if(ojdg==1){
+//                           $(this).attr("checked",false);
+//                           $(this).parents().siblings(".pre").css({"display":"none"});
+//                           $(this).parents().siblings(".yj").css({"display":"block"});
+//                           oinps.attr("judge","2");
+//                       }
+//                       if(ojdg==2){
+//                           $(this).attr("checked",true);
+//                           $(this).parents().siblings(".pre").css({"display":"block"});
+//                           $(this).parents().siblings(".yj").css({"display":"none"});
+//                           oinps.attr("judge","1");
+//                       }
+//                   })
+//               })
         //通过点击向上向下操作
         $(".z-down").each(function(i){
             $(this).live("click",function(){

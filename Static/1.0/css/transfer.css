@@ -453,11 +453,13 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     margin-bottom: 1px;
 
 }
-
+.tras-list-btm div.fl{
+    margin-top:15px;
+}
 /*分页样式*/
 .comm-list-page{
     display: block;
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     height: 33px;
 
 }
@@ -664,9 +666,14 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     text-decoration: underline;
     cursor: pointer;
 }
+
 .tras-pic-show{
+    min-width: 105px;
     text-align: center;
     vertical-align: middle;
+}
+.tras-bd-det{
+    min-width: 105px;
 }
 .tras-pic-show div{
     display: inline-block;
