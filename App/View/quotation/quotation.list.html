@@ -1,0 +1,205 @@
+<? require(ViewDir.'/header.html'); ?>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
+<link rel="stylesheet" href="<?=StaticDir?>/1.0/css/transfer.css?v=<?=$static_version?>">
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/url.js?v=<?=$static_version?>"></script>
+<style type="text/css">
+	a{color:#000;}
+  </style>
+<div class="yzc-sell-main">
+    <!--公用左边导航-->
+    <? require(ViewDir.'/left.html'); ?>
+    <!--内容-->
+    <div class="sell-lf-main">
+        <div class="comm-list-tit w-cont">
+            <h3>我的商品单</h3>
+        </div>
+        <div class="comm-search-bg">
+            <div class="desi w-cont">
+                <label>商品单名称</label>
+                <input type="text" class="cir goods_name" />
+                <a href="javascript:;"  class="cir sear-btn">立刻搜索</a>
+                <!--当该商标失效-->
+                <!--<a class="eff-brand hint-bg cir"><i></i>改商标已失效</a>-->
+            </div>
+        </div>
+        <div class="tras-box">
+            <div class="list-mess-top f-clearfix">
+                <div class="mess-top-dq fr">当前共有<label><?=$total?></label>条商品数据
+                    <div class="pull-list paging">
+                        <a class="cir all-tp-btn" index="1"><font>每页<span class="now_size">20</span></font><i class="fa fa-chevron-down"></i></a>
+                        <ul class="all-tp-list" style="display: none;top:25px !important;">
+                            <li>
+                                40
+                            </li>
+                            <li>
+                                60
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="tras-blk f-hidden f-clearfix">
+                <table class="tras-tab">
+                    <thead>
+                    <th>商品单标题</th> <th>包含商品</th> <th>创建时间</th> <th style="text-indent: 24px;">操作</th>
+                    </thead>
+                    <tbody class="list-mess">
+                    <? foreach($list as $v): ?>
+                    <tr>
+                        <td><?=$v['title']?></td>
+                        <td><?=($v['count']?:0)?></td>
+                        <td><?=$v['created']?></td>
+                        <td class="oper">
+                            <input type="hidden" class="view_url" value="<?=$v['view_url']?>">
+                            <input type="hidden" class="now_id" value="<?=$v['id']?>">
+                            <a href="/quotation/getPdf/?id=<?=$v['id']?>" target="_blank" class="to_img"><i><img src="<?=StaticDir?>/1.0/images/dc-ico.png"></i>导出图片</a>
+                            <a href="<?=$v['view_url']?>" target="_blank" class="to_view"><i><img src="<?=StaticDir?>/1.0/images/list-tr-yl.png"></i>预览</a>
+                            <a href="javascript:;" class="to_copy">拷贝网址</a>
+                            <a href="javascript:;" class="to_sina">微博</a>
+                            <a href="javascript:;" class="to_weixn">朋友圈</a>
+                            <em></em>
+                            <a href="/quotation/edit">编辑</a>
+                            <a href="javascript:;" class="remove">删除</a>
+                        </td>
+                    </tr>
+                    <? endforeach; ?>
+                    </tbody>
+                </table>
+            </div>
+            <div class="tras-list-btm f-clearfix ">
+                <div class="fl">
+                    <a class="sub-btn cir" href="/quotation/add">
+                        创建商品单
+                    </a>
+                </div>
+                <div class="comm-list-page fr">
+                    <div class="mj-pages">
+                        <?=$pageBar?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script type="text/javascript" src="<?=StaticDir?>/1.0/js/table-list.js?v=<?=$static_version?>"></script>
+<script type="text/javascript" src="<?=StaticDir?>/1.0/js/simple-share.min.js?v=<?=$static_version?>"></script>
+<script type="text/javascript" src="<?=StaticDir?>/1.0/js/ZeroClipboard.js?v=<?=$static_version?>"></script>
+    <script type="text/javascript">
+    $(function(){
+        var title = document.title;
+        var content = '';
+        var pic = '';
+        //table偶数行变色
+        cg_tbcolor();
+        //删除
+        $(".remove").live("click",function(){
+            var _this = this;
+            layer.confirm('您确定删除选中的报价单吗?',{btn: ['确定','取消']},function(){
+                var id = $(_this).closest('.oper').find('.now_id').val();
+                if(id){
+                    //删除商品单
+                    $.post('/quotation/remove',{id:id},function(data){
+                        if(data.code==0){
+                            layer_success('删除成功');
+                            $(_this).closest('.oper').remove();
+                        }else{
+                            layer_error(data.msg);
+                        }
+                    },'json');
+                }
+            });
+        });
+        //搜索
+        $('.sear-btn').click(function(){
+            buildUrl();
+        });
+        //每页大小改变
+        $('.mess-top-dq li').click(function(){
+            var size = $.trim($('.now_size').text());
+            setEvent("选择分页条数","每页显示"+size);
+            buildUrl();
+        });
+        //页码点击事件
+        $('.mj-pages a').click(function(){
+            var href = $(this).attr('href');
+            if(href=='javascript:;'){
+                return false;
+            }else{
+                var page = href.split('=');
+                var index_page = page.length-1;
+                page = page[index_page];
+                buildUrl(page);
+                return false;
+            }
+        });
+        //分享事件-微博
+        $('.to_sina').click(function(){
+            var url = $(this).closest('.oper').find('.view_url').val();
+            share_event({url:url,title:title,content:content,pic:pic});
+        });
+        //分享事件-朋友圈
+        $('.to_weixn').click(function(){
+            var url = $(this).closest('.oper').find('.view_url').val();
+            share_event({url:url,title:title,content:content,pic:pic},1);
+        });
+        //复制事件
+        $('.to_copy').click(function(){
+            var url = $(this).closest('.oper').find('.view_url').val();
+            //复制
+            copy_url(url);
+        });
+    });
+    //复制
+    function copy_url(content) {
+        var clip = new ZeroClipboard.Client();
+        clip.setHandCursor( true );
+        clip.setText(content);
+        clip.addEventListener( "mouseUp", function(client) {
+            layer_success("复制成功！");
+        });
+        clip.glue("cpywz");
+    }
+    //url处理跳转
+    function buildUrl(){
+        var page = arguments[0] ? arguments[0] : null;
+        var myurl = new objURL(location.href);//url处理对象
+        //商品名
+        var name = $.trim($('.goods_name').text());
+        if(name){
+            myurl.set('name',name);
+        }else{
+            myurl.remove('name');
+        }
+        //页码大小
+        var size = $.trim($('.now_size').text());
+        if(size==20){
+            myurl.remove('size');
+        }else{
+            myurl.set('size',size);
+        }
+        //分页
+        if(page===null || page<=1){
+            myurl.remove('page');
+        }else{
+            myurl.set('page',page);
+        }
+        location.href=myurl.url();
+    }
+    //分享事件
+    function share_event(obj,type){
+        if(typeof type=='undefined') type=0;
+        var share = new SimpleShare({
+            url: obj.url,
+            title: obj.title,
+            content: obj.content,
+            pic: obj.pic
+        });
+        if(type==0){
+            share.weibo();
+        }else{
+            share.weixin(function(qr){
+                alert(qr);
+            })
+        }
+    }
+</script>
+<? require(ViewDir.'/footer.html'); ?>

@@ -1,3 +1,24 @@
+/*---cook操作---*/
+function addCookie(objName,objValue,objHours){
+    var str = objName + "=" + escape(objValue);
+    if(objHours > 0){//爲時不設定過期時間，浏覽器關閉時cookie自動消失
+        var date 	= new Date();
+        var ms 		= objHours*3600*1000;
+        date.setTime(date.getTime() + ms);
+        str += "; expires=" + date.toGMTString();
+    }
+    var cook=str+";path=/";
+    document.cookie = cook;
+}
+function getCookie(name){
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+    if(arr != null) return unescape(arr[2]); return null;
+}
+function delCookie(name){
+    var date = new Date();
+    date.setTime(date.getTime() - 10000);
+    document.cookie = name + "=a; expires=" + date.toGMTString()+";path=/";
+}
 //piwik设置事件
 function setEvent(module,name,page){
     if(typeof page == 'undefined'){

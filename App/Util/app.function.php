@@ -811,4 +811,19 @@ function replaceSpace($str) {
   return $str;
 
 }
+
+/**
+ * 网页转换成pdf
+ * @author   haydn
+ * @since    2016-01-27
+ * @param    string  $file		网页地址
+ * @param    string  $filepdf	pdf文件保存地址
+ * @return   int		$success	返回（0：成功 1：失败）
+ */
+function makePDF($file,$filepdf)
+{
+	$pdfexe = C('HTMLTOPDF');
+	exec("{$pdfexe} {$file} {$filepdf}",$out,$success);
+	return $success;
+}
 ?>
