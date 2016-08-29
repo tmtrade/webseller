@@ -16,10 +16,8 @@
         <div class="comm-search-bg">
             <div class="desi w-cont">
                 <label>商品单名称</label>
-                <input type="text" class="cir goods_name" />
+                <input type="text" class="cir goods_name" value="<?=$name?>"/>
                 <a href="javascript:;"  class="cir sear-btn">立刻搜索</a>
-                <!--当该商标失效-->
-                <!--<a class="eff-brand hint-bg cir"><i></i>改商标已失效</a>-->
             </div>
         </div>
         <div class="tras-box">
@@ -163,7 +161,7 @@
         var page = arguments[0] ? arguments[0] : null;
         var myurl = new objURL(location.href);//url处理对象
         //商品名
-        var name = $.trim($('.goods_name').text());
+        var name = $.trim($('.goods_name').val());
         if(name){
             myurl.set('name',name);
         }else{

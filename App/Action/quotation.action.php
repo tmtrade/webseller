@@ -23,13 +23,14 @@ class QuotationAction extends AppAction{
         $size = $this->input('size','int',$this->size);
         //得到分页数据
         $res = $this->load('quotation')->getList($params, $page, $size);
-        if($res['total']>0){
+        if($res['total']>0 || $params['name']){
             //得到分页工具条
             $pager 	= $this->pagerNew($res['total'], $size);
             $pageBar 	= empty($res['rows']) ? '' : getPageBarNew($pager);
             $this->set("pageBar",$pageBar);
             $this->set('total',$res['total']);
             $this->set('list',$res['rows']);
+            $this->set('name',$params['name']);
             $this->display("quotation/quotation.list.html");
         }else{
             $this->display();
