@@ -41,29 +41,30 @@ class QuotationAction extends AppAction{
      *删除报价单
      */
     public function remove(){
-        $id = $this->input('id','$id',0);
+        $id = $this->input('id','int');
+        if(!$id) $this->returnAjax(array('code'=>1,'msg'=>'参数异常'));
         $rst = $this->load('quotation')->delete($id);
         if($rst){
-            $this->returnAjax(array('code'==0));
+            $this->returnAjax(array('code'=>0));
         }else{
-            $this->returnAjax(array('code'==1,'msg'=>'删除报价单失败'));
+            $this->returnAjax(array('code'=>1,'msg'=>'删除报价单失败'));
         }
     }
 
     /**
-     * 得到pdf文件
+     * 得到图片文件
      * @return bool
      */
-    public function getPdf(){
+    public function getImg(){
         $id = $this->input('id','int');
         if(!$id) exit('非法参数');
         //得到当前报价单的title
         $title = $this->load('quotation')->getTitle($id);
         if(!$title) exit('数据异常,请稍候再试');
         //得到pdf名
-        $file = $this->findPdf($id);
+        $file = $this->findImg($id);
         //下载文件
-        $this->startDownPDF($file,'报价单-'.$title);
+        $this->startDown($file,'报价单-'.$title);
     }
 
     /**
@@ -71,15 +72,15 @@ class QuotationAction extends AppAction{
      * @param $id
      * @return string
      */
-    private function findPdf($id){
-        $file = StaticDir.'pdf/'.UID.'/'.$id.'.pdf';
+    private function findImg($id){
+        $file = StaticDir.'png/'.UID.'/'.$id.'.png';
         $dir = dirname($file);
         !file_exists($dir) && mkdirs($dir);//创建文件夹
         //得到文件内容
         if(!is_file($file)){
             $contents 	= file_get_contents(SITE_URL.'quotation/?id='.$id);
-            $isPdf	= makePDF($contents,$file);
-            $isPdf	== 1 && exit('生成PDF失败');
+            $isPdf	= makePng($contents,$file);
+            $isPdf	== 1 && exit('生成图片失败');
         }
         return $file;
     }
@@ -90,14 +91,14 @@ class QuotationAction extends AppAction{
      * @param	string	$pdffile	下载路径
      * @param	string	$downname	文件名称
      */
-    private function startDownPDF($pdffile,$downname){
+    private function startDown($pdffile,$downname){
         $fp		= fopen($pdffile,"r");
         $size	= filesize($pdffile);
         $name	= iconv('utf-8', 'gbk',$downname);
-        header("Content-type: application/pdf");
+        header("Content-type: image/png");
         header("Accept-Ranges: bytes");
         header("Accept-Length: ".$size);
-        header("Content-Disposition: attachment; filename=".$name.".pdf"); // 输出文件内容
+        header("Content-Disposition: attachment; filename=".$name.".png"); // 输出文件内容
         echo fread($fp,$size);
         fclose($fp);
     }

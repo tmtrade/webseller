@@ -6,6 +6,7 @@
 $checkhost = include(ConfigDir . '/checkhost.config.php');
 $define = array(
     'HTMLTOPDF' 	=> '/usr/bin/wkhtmltopdf',//pdf生成软件位置
+    'HTMLTOIMG' 	=> '/usr/bin/wkhtmltoimage',//image生成软件位置
     'qq_num' => 3406987180,
  //    'searchapi' => array(
     // 'key' => '89eb637c610f94b9d281c458bca42421',

@@ -826,4 +826,19 @@ function makePDF($file,$filepdf)
 	exec("{$pdfexe} {$file} {$filepdf}",$out,$success);
 	return $success;
 }
+
+/**
+ * 网页转换成png
+ * @author   dower
+ * @since    2016-01-27
+ * @param    string  $file		网页地址
+ * @param    string  $filepng	png文件
+ * @return   int		$success	返回（0：成功 1：失败）
+ */
+function makePng($file,$filepng)
+{
+	$pdfexe = C('HTMLTOIMG');
+	exec("{$pdfexe} {$file} {$filepng}",$out,$success);
+	return $success;
+}
 ?>

@@ -51,7 +51,13 @@ class quotationModule extends AppModule
      */
     public function delete($id){
         //删除报价pdf文件
-        unlink(StaticDir.'pdf/'.UID.'/'.$id.'.pdf');
+        $path = StaticDir.'png/'.UID.'/'.$id.'.png';
+        if(is_file($path)){
+            $rst = unlink($path);
+            if(!$rst) return false;
+        }
+        //同时删除报价单相关表
+        ///TODO///
         return $this->import('quotation')->remove(array('eq'=>array('uid'=>UID,'id'=>$id)));
     }
 

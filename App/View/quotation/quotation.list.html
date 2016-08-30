@@ -42,7 +42,7 @@
                     <th>商品单标题</th> <th>包含商品</th> <th>创建时间</th> <th style="text-indent: 24px;">操作</th>
                     </thead>
                     <tbody class="list-mess">
-                    <? foreach($list as $v): ?>
+                    <? foreach($list as $k=>$v): ?>
                     <tr>
                         <td><?=$v['title']?></td>
                         <td><?=($v['count']?:0)?></td>
@@ -50,9 +50,9 @@
                         <td class="oper">
                             <input type="hidden" class="view_url" value="<?=$v['view_url']?>">
                             <input type="hidden" class="now_id" value="<?=$v['id']?>">
-                            <a href="/quotation/getPdf/?id=<?=$v['id']?>" target="_blank" class="to_img"><i><img src="<?=StaticDir?>/1.0/images/dc-ico.png"></i>导出图片</a>
+                            <a href="/quotation/getImg/?id=<?=$v['id']?>" target="_blank" class="to_img"><i><img src="<?=StaticDir?>/1.0/images/dc-ico.png"></i>导出图片</a>
                             <a href="<?=$v['view_url']?>" target="_blank" class="to_view"><i><img src="<?=StaticDir?>/1.0/images/list-tr-yl.png"></i>预览</a>
-                            <a href="javascript:;" class="to_copy">拷贝网址</a>
+                            <a href="javascript:;" class="to_copy" id="copy<?=$k?>">拷贝网址</a>
                             <a href="javascript:;" class="to_sina">微博</a>
                             <a href="javascript:;" class="to_weixn">朋友圈</a>
                             <em></em>
@@ -80,12 +80,19 @@
     </div>
 <script type="text/javascript" src="<?=StaticDir?>/1.0/js/table-list.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>/1.0/js/simple-share.min.js?v=<?=$static_version?>"></script>
-<script type="text/javascript" src="<?=StaticDir?>/1.0/js/ZeroClipboard.js?v=<?=$static_version?>"></script>
+<script type="text/javascript" src="<?=StaticDir?>/1.0/js/copy/ZeroClipboard.js?v=<?=$static_version?>"></script>
     <script type="text/javascript">
     $(function(){
         var title = document.title;
         var content = '';
         var pic = '';
+        //给按钮绑定复制事件
+        var copys = $('.to_copy');
+        copys.each(function(){
+            var url = $(this).closest('.oper').find('.view_url').val();
+            var id = $(this).attr('id');
+            clipboard(id,url);
+        });
         //table偶数行变色
         cg_tbcolor();
         //删除
@@ -97,10 +104,10 @@
                     //删除商品单
                     $.post('/quotation/remove',{id:id},function(data){
                         if(data.code==0){
-                            layer_success('删除成功');
-                            $(_this).closest('.oper').remove();
+                            layer.msg('删除成功');
+                            $(_this).closest('tr').remove();
                         }else{
-                            layer_error(data.msg);
+                            layer.msg(data.msg);
                         }
                     },'json');
                 }
@@ -139,22 +146,35 @@
             var url = $(this).closest('.oper').find('.view_url').val();
             share_event({url:url,title:title,content:content,pic:pic},1);
         });
-        //复制事件
-        $('.to_copy').click(function(){
-            var url = $(this).closest('.oper').find('.view_url').val();
-            //复制
-            copy_url(url);
-        });
     });
-    //复制
-    function copy_url(content) {
-        var clip = new ZeroClipboard.Client();
-        clip.setHandCursor( true );
-        clip.setText(content);
-        clip.addEventListener( "mouseUp", function(client) {
-            layer_success("复制成功！");
-        });
-        clip.glue("cpywz");
+    //复制事件
+    function clipboard(button,text) {
+        if (window.clipboardData) {    //for ie
+            var copyBtn = document.getElementById(button);
+            copyBtn.onclick = function () {
+                window.clipboardData.setData('text', text);
+                layer.msg('复制成功!',{
+                    time:1500
+                });
+            }
+        } else {
+            var client = new ZeroClipboard($("#" + button));
+            client.on('ready', function (event) {
+                client.on('copy', function (event) {
+                    event.clipboardData.setData("text/plain", text);
+                    layer.msg('复制成功!',{
+                        time:1500
+                    });
+                });
+            });
+            client.on('error', function (event) {
+                layer.msg('复制失败!',{
+                    time:1500
+                });
+                ZeroClipboard.destroy();
+            });
+        }
+        return false;
     }
     //url处理跳转
     function buildUrl(){
