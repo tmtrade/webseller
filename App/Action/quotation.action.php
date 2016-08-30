@@ -51,7 +51,57 @@ class QuotationAction extends AppAction{
         }
     }
 
+    
+    //添加商品页面
+    public function addgoods(){
+         $this->display();
+        
+    }
+    
     /**
+     * 获取商标信息
+     */
+    public function getTminfo()
+    {
+        $number	= $this->input("number","string");
+        if ( empty($number) ) $this->returnAjax(array('code'=>1,'msg'=>'商标号不能为空'));
+        
+        //判断商标是否存在
+        $info   = $this->load('sell')->getTmInfo($number);
+        if ( empty($info) ) $this->returnAjax(array('code'=>3,'msg'=>'找不到对应商标，请查证重新输入'));
+        
+        
+        //不能出售的商标
+        $status = array('商标已无效','冻结中');//module里也有一处
+        foreach ($status as $s) {
+            if( in_array($s, $info['second']) ){
+                $this->returnAjax(array('code'=>4,'msg'=>'该商标状态不太适合出售呢'));
+            }
+        }
+        //正常状态结果
+        $data['number']       = $number;
+        $data['name']       = $info['name'];
+        $data['img']        = $info['imgUrl'];
+        $data['class_str']  = $info['class'];
+        $data['thum']       = mbSub($info['class'],0,18);
+        $data['is_tminfo'] = $this->load('sale')->getSaleTmByNumber($number);
+        $this->set('info',$data);
+        $tm = $this->fetch();
+        $this->returnAjax(array('code'=>0,'msg'=>$tm));
+    }
+    
+    /**
+     * 添加商标--通过商标号
+     */
+    public function addNumber(){
+        $data = $this->getFormData();	
+        $rst = $this->load('quotation')->insertQuotation($data,12);
+        $this->returnAjax($rst);
+    }
+
+
+    /**
+     * 
      * 得到图片文件
      * @return bool
      */
@@ -101,6 +151,33 @@ class QuotationAction extends AppAction{
         header("Content-Disposition: attachment; filename=".$name.".png"); // 输出文件内容
         echo fread($fp,$size);
         fclose($fp);
+    }
+    
+     //图片上传
+    public function ajaxUploadPic()
+    {
+    	$kb = $this->input('size', 'int', 0);
+        $msg = array(
+            'code'  => 0,
+            'msg'   => '',
+            'img'   => '',
+            );
+        if ( empty($_FILES) || empty($_FILES['fileName']) ) {
+            $msg['msg'] = '请上传图片';
+            $this->returnAjax($msg);
+        }
+        if ( $kb > 0 && ($kb*1024 < $_FILES['fileName']['size']) ){
+        	$msg['msg'] = "文件大小超过 $kb KB限制";
+        	$this->returnAjax($msg);
+        }
+        $obj = $this->load('upload')->uploadAdPic('fileName', 'img');
+        if ( $obj->_imgUrl_ ){
+            $msg['code']    = 1;
+            $msg['img']     = $obj->_imgUrl_;
+        }else{
+            $msg['msg']     = $obj->msg;
+        }
+        $this->returnAjax($msg);
     }
 
 }

@@ -950,7 +950,7 @@ table.list-mess-main tr .pri-num input{
 }
 
 .amend-cont{
-    width: 570px;
+    width: 730px;
     padding-top: 8px;
     padding-bottom: 8px;
     overflow: hidden;
@@ -958,7 +958,7 @@ table.list-mess-main tr .pri-num input{
     border: 1px solid #e8e8e8;
 
 }
-.cg-cont-tel,.cg-cont-name{
+.cg-cont-tel,.cg-cont-name,.cg-cont-qq{
     float: left;
 }
 .cg-cont input{

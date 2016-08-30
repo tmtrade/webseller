@@ -1,0 +1,51 @@
+<tr>
+    <td class="tras-pic-show">
+        <form action='/quotation/ajaxUploadPic/' method='post' enctype='multipart/form-data'>
+            <div class="add-form">
+                <span>
+                    <img src="<?=$info['img']?>" style="max-width: 90px;max-height: 60px;">
+                </span>
+                <a >上传图片</a>
+                <input type="file"   name="fileName" class="upfile"  style="font-size:47px;overflow:hidden;cursor:pointer;border:0px;border-bottom-style:none;border-top-style:none;border-left-style:none;border-right-style:none;width:38px;height:17px; position:relative;top: 3px;left:-48px;line-height:45px; opacity: 0;filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);"  />
+                <input type="hidden" name="size" value="2048" style="display: none;"/>
+            </div>
+        </form>
+        <input type="hidden" name="image[]" value="" class="img_input">
+    </td>
+    <td class="tras-bd-det">
+        <p>商标号：<label class="number"><?=$info['number']?> </label><label>商标名称:<?=$info['name']?></label><label title="<?=$info['class_str']?>">商标分类：<?=$info['thum']?>类</label> </p>
+        <input type="hidden" name="number[]" value="<?=$info['number']?>">
+        <em></em>
+    </td>
+    <td class="tras-bd-oper">
+        <div class="pull-list paging">
+            <a class="cir qt-tp-btn" index='1'><font >定价</font><i class="fa fa-chevron-down"></i></a>
+            <ul class="all-tp-list" style="display: none;">
+                <li class="dj-btn">定价</li>
+                <li class="yj-btn">议价</li>
+            </ul>
+            <input type="hidden" name="price[]" class="price-list" data-type="1" value="0"/>
+        </div>
+        <p class="yj">议价</p>
+        <p class="pre">
+            价格:<input type="text" class="sell-ip-box" />元
+        </p>
+        <div class="pull-list paging">
+            <a class="cir qt-tp-btn" index='1'><font >选择标签</font><i class="fa fa-chevron-down"></i></a>
+            <ul class="all-tp-list x-label" style="display: none;">
+                <li data-type="1">推荐</li>
+                <li data-type="2">热门</li>
+                <li data-type="3">性价比高</li>
+            </ul>
+            <input type="hidden" name="label[]" class="label-list" value="0"/>
+        </div>
+        <p class="down-up">
+            <a class="z-up">向上1</a>
+            <a class="z-down">向下1</a>
+        </p>
+        <em></em>
+    </td>
+    <td class="del">
+        <a class="remove">删除</a>
+    </td>
+</tr>

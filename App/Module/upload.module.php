@@ -65,17 +65,17 @@ class UploadModule extends AppModule
 	 * @since     
 	 * @copyright
 	 */
-    public function uploadAdPic($name, $size=10000000, $type='all')
+    public function uploadAdPic($name, $type='all', $size=10000000)
     {
         if ($type == 'img') $this->type = 'jpeg|jpg|gif|png|bmp';
     	$filename    = $_FILES[$name]['name'];
         $up          = $this->com('upload');
         $up->maxSize = $size;
-        $up->path    = './'.StaticDir.$this->path;//包装图片
+        $up->path    = './'.StaticDir.$this->path.'/quotation/';//包装图片
         $up->upType  = $this->type;
         $up->upload($_FILES[$name]);
         if ( empty($up->msg) ){
-            $up->_imgUrl_ = StaticDir.$this->path.'/'.$up->upFile;
+            $up->_imgUrl_ = StaticDir.$this->path.'/quotation/'.$up->upFile;
         }else{
             $up->_imgUrl_ = '';
         }        

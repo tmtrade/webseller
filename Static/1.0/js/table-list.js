@@ -81,9 +81,7 @@ cbtn.each(function(){
     })
 })
 //下拉列表点空白的时候消失
-$(".pull-list").bind('click',function(e){
-    stopPropagation(e);
-});
+
 $(document).bind('click',function(){
     $(".all-tp-list").slideUp();
     $(".all-tp-btn").attr("index","1");

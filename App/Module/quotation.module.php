@@ -43,6 +43,106 @@ class quotationModule extends AppModule
         }
         return $res;
     }
+    
+    /**
+     * 添加页面提交的报价单内容
+     * @param type $data
+     * @param type $num 限制个数
+     * @return 
+     */
+    public function insertQuotation($data,$num){
+        $number_count = count($data['number']);
+        if($number_count>$num) return array('code'=>1,'msg'=>'提交数大于'.$num);
+        $mobile = $data['mobile'];
+        $name = $data['name'];
+        $tmp = array(
+                'title'         => $data['title'],
+                'desc'          => $data['desc'],
+                'uid'           => UID,
+                'phone'         => $mobile,
+                'contact'       => $name,
+                'qq'            => $data['qq'],
+                'style'         => $data['style'],
+                'avatar'        => $data['avatar'],
+            );
+        $quotationId = $this->addQuotation($tmp);
+        if(!$quotationId) return array('code'=>1,'msg'=>'报价单添加失败');
+        foreach($data['number'] as $k=>$v){
+            $item = array(
+                'qid'           => $quotationId,
+                'number'        => $v,
+                'price'         => $data['price'][$k],
+                'label'         =>  $data['label'][$k],
+                'sort'          =>  $number_count-$k,
+            );
+            $this->begin('quotationItems');
+            $rst = $this->addQuotationItems($item);
+            $rstImg = true;
+            if(!empty($data['image'][$k])){
+                $images = array(
+                    'uid'           => UID,
+                    'number'        => $v,
+                    'image'         => $data['image'][$k],
+                );
+                $rstImg = $this->addUserImage($images);
+            }
+            
+            //判断有用户是否已出售过 没有就添加到sale表
+            $resSell = true;
+            $isSale         = $this->load("sell")->existContact($v,0);
+            if(!$isSale){
+                //开始写入商标
+                $tmps = array(
+                    'number'        => $v,
+                    'phone'         => $mobile,
+                    'name'          => $name,
+                    'price'         => $data['price'][$k],
+                    'memo'          => "报价单添加商品",
+                );
+                $resSell = $this->load('sell')->documentAddSell($tmps);
+                if($resSell['code']!=999){
+                    $resSell = false;
+                }
+            }
+            
+                
+            if($resSell && $rstImg && $rst){
+                    $this->commit('quotationItems');
+            }else{
+                $this->rollBack('quotationItems');
+                return array('code'=>2,'msg'=>"写入数据库失败");
+            }
+        }
+        return array('code'=>0);
+    }
+
+        /**
+     * 添加商品单数据
+     * @param array $data
+     */
+    public function addQuotation($data){
+        $res = $this->import('quotation')->create($data);
+        return $res;
+    }
+    
+    /**
+     * 添加商品单商标数据
+     * @param array $data
+     */
+    public function addQuotationItems($data){
+        $res = $this->import('quotationItems')->create($data);
+        return $res;
+    }
+    
+    /**
+     * 添加用户上传商品图片数据
+     * @param array $data
+     */
+    public function addUserImage($data){
+        $res = $this->import('userImage')->create($data);
+        return $res;
+    }
+
 
     /**
      * 删除商品单,当前登录用户

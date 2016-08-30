@@ -68,7 +68,8 @@ class SellModule extends AppModule{
         if(empty($info) || empty($info['tid'])) return array();
         $info['second'] = $this->getSecond($info['tid']);
         //得到商标图片
-        $info['imgUrl'] = $this->getImg($number);
+        $em = $this->load('sale')->getSaltTminfoByNumber($number);
+        $info['imgUrl'] = $em['embellish'];
         return $info;
     }
     
@@ -148,7 +149,7 @@ class SellModule extends AppModule{
                 'price'         => $params['price'],
                 'type'          => 1,
                 'source'        => 4,
-		'memo'		=> $params['memo'],
+                'memo'		=> $params['memo'],
             );
             $rst = $this->importBi('sale')->addSale($tmp);
             

@@ -1,0 +1,383 @@
+<? require(ViewDir.'/header.html'); ?>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
+<link rel="stylesheet" href="<?=StaticDir?>1.0/css/transfer.css">
+<div class="yzc-sell-main">
+    <!--公用左边导航-->
+    <? require(ViewDir.'/left.html'); ?>
+    <form action='/quotation/addNumber/' method='post' id="submit_number">
+        <div class="sell-lf-main">
+            <div class="comm-list-tit sell-by-brand w-cont">
+                <h3 class="fl">我的商品单 ><label>创建商品单</label></h3>
+            </div>
+            <ul class="trans-brand-de w-cont">
+                <li>
+                    <label><em>*</em>商品单名称</label>
+                    <div>
+                        <input placeholder="如：为客户XX推荐的商品列表 " type="text" name="title"/>
+                        <!--<span>用于您自行查看所用，比如“<font>为客户xx创建的推荐商品列表</font>”</span>-->
+                    </div>
+                </li>
+                <li>
+                    <label><em>*</em>商品单描述</label>
+                    <div>
+                        <textarea name="desc" id="desc" placeholder="感谢支持，以下是特意为您选择的商标，敬请查看"></textarea>
+                        <span>吸引客户的开场白，最多可输入30字</span>
+                    </div>
+                </li>
+            </ul>
+            <div class="trans-box">
+                <div class="add-brand">
+                    <label class="fl">请输入商标号</label>
+                    <div class="add-brand-lf">
+                        <p>
+                            <input type="text" id="add_number"/><a class="trans-btn" id="addSell">添加商标</a>
+                        </p>
+                        <span>每条商品单最多可添加12条商品，商标号之间可以空格进行区分，例如：123456 231456</span>
+                    </div>
+                </div>
+                <div class="trans-bd-list">
+                    <!--没有商品数据的时候-->
+                    <!--<div class="trans-no-data">-->
+                    <!--<div class="trans-ts-xx">-->
+                    <!--<img src="<?=StaticDir?>1.0/images/trans-no-data.png">-->
+                    <!--<h6>您还未添加商标</h6>-->
+                    <!--</div>-->
+                    <!--<label>请先输入商标号，并点击 添加商标 按钮</label>-->
+                    <!--</div>-->
+                    <!--有数据 数据列表-->
+
+                    <table class="tras-tab2 otab" id="list_body">
+                        
+                    </table>
+
+                </div>
+            </div>
+            <!--创建商品单-->
+            <div class="trans-bd-form">
+                <div class="amend-cont-all f-clearfix f-hidden">
+                    <!--联系人信息完整可以修改-->
+                    <div class="amend-cont cir">
+                        <label style="margin-top: 0px;">联系电话：</label>
+                        <div class="cg-cont-tel">
+                            <span class="contact_mobile"><?=$userInfo['mobile']?></span>
+                        </div>
+                        <label style="margin-top: 0px;">QQ客服：</label>
+                        <div class="cg-cont-qq">
+                            <span class="contact_qq">848456598</span>
+                        </div>
+                        <label>联系人：</label>
+                        <div class="cg-cont-name">
+                            <span class="contact_name"><?=$userInfo['name']?></span>
+                        </div>
+                        <div class="cg-tel">
+                            <a href="javascript:;" class="xg_mobile" addmsg="修改联系方式" module="根据商标号出售">修改联系方式</a>
+                        </div>
+                    </div>
+                    <div class="cir tran-set-head">
+                        <label>头像设置：</label>
+                        <span><input type="radio" name="avatar" value="1"/>默认头像女</span>
+                        <span><input type="radio" name="avatar" value="2"/>默认头像男</span>
+                        <span><input type="radio" name="avatar" value="3"/>无需头像</span>
+                        <span><input type="radio" name="avatar" value="4"/>使用我当前头像</span>
+                    </div>
+                    <div class="cir tran-set-head">
+                        <label>表单风格：</label>
+                        <span><input type="radio" name="style" value="1"/>商务风格</span>
+                        <span><input type="radio" name="style" value="2"/>现代风格</span>
+                    </div>
+                </div>
+                <div id="nicaicai" style="display: none">
+                    <!--显示内容-->
+                    <div class="cc1 ">
+                        <label>联系电话：</label>
+                        <div class="cg-cont-tel">
+                            <span class="contact_mobile"><?=$userInfo['mobile']?></span>
+                        </div>
+                        <label style="margin-top: 0px;">QQ客服：</label>
+                        <div class="cg-cont-qq">
+                            <span class="contact_qq">848456598</span>
+                        </div>
+                        <label>联系人：</label>
+                        <div class="cg-cont-name">
+                            <span class="contact_name"><?=$userInfo['name']?></span>
+                        </div>
+                        <div class="cg-tel">
+                            <a href="javascript:;" class="xg_mobile" addmsg="修改联系方式" module="根据商标号出售">修改联系方式</a>
+                        </div>
+                    </div>
+                    <!--修改框-->
+                    <div class="cc2">
+                        <div class="incomp f-hidden">
+                            <label>联系电话：</label>
+                            <div class="cg-cont-tel">
+                                <input  class="cir blk c_tel" type="text">
+                            </div>
+                            <label style="margin-top: 0px;">QQ客服：</label>
+                            <div class="cg-cont-qq">
+                                <input class="cir blk c_qq" type="text">
+                            </div>
+                            <label>联系人：</label>
+                            <div class="cg-cont-name">
+                                <input class="cir blk c_name" type="text">
+                            </div>
+                            <div class="cg-tel">
+                                <a class="cir sear-btn cg-sear">确定修改</a><a class="cir qx-btn cg-qx">取消</a>
+                            </div>
+                            <p class="cir blk inc-ts" style="display: none">请至少添加一条商标数据</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="tr-btn-sub f-clearfix f-hidden">
+                    <a class="sub-btn cir" id="add_goods">
+                        创建商品单
+                    </a>
+                    <a class="cir qx-btn batch-del tr-yl">
+                        <img src="<?=StaticDir?>1.0/images/tr-yl.png">预览
+                    </a>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/quotation.js?v=<?=$static_version?>"></script>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.form.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $(".add-form").wrap("<form action='/quotation/ajaxUploadPic/' method='post' enctype='multipart/form-data'></form>");
+
+        //删除
+        $(".remove").live("click", function() {
+            $(this).parents("tr").remove();
+        })
+
+        //通过点击复选框改变议价状态
+            $(".yj-btn").live("click", function() {
+                $(this).parents(".tras-bd-oper").find(".yj").css({"display": "block"});
+                $(this).parents(".tras-bd-oper").find(".pre").css({"display": "none"});
+                $(this).parent().parent().find("input").val(0);
+                $(this).parent().parent().find("input").data("type", 2);
+            });
+             $(".dj-btn").live("click", function() {
+                $(this).parents(".tras-bd-oper").find(".yj").css({"display": "none"});
+                $(this).parents(".tras-bd-oper").find(".pre").css({"display": "block"});
+                $(this).parent().parent().parent().find(".pre input").val(0);
+                $(this).parent().parent().parent().find(".pre input").data("type", 1);
+            });
+
+        //通过点击向上向下操作
+           $(".z-down").live("click", function() {
+                var n = $(this).parents("tr").next();
+                $(this).parents("tr").before(n);
+            });
+            
+            $(".z-up").live("click", function() {
+                var p = $(this).parents("tr").prev();
+                $(this).parents("tr").after(p);
+            });
+    });
+
+    //添加商标事件
+    $('#addSell').click(function() {
+        layer.load(1, {
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
+        var number = $.trim($('#add_number').val());
+        if (number == '') {
+            layer.msg('请输入商标号', {
+                time: 1500
+            });
+            layer.closeAll('loading');
+            return false;
+        }
+        //商标数不能大于20
+        var num = $('#list_body td').length;
+        if (num > 12) {
+            layer.msg('单次提交商标数不能大于12', {
+                time: 1500
+            });
+            layer.closeAll('loading');
+            return false;
+        }
+        //检查列表中是否有此商标
+        var numbers = $('#list_body .number');
+        var tmp = '';
+        var flag = true;
+        numbers.each(function(i) {
+            tmp = $.trim($(this).text());
+            if (tmp == number) {
+                flag = false;
+                return false;
+            }
+        });
+        if (!flag) {
+            layer.msg('该商标已在列表中', {
+                time: 1500
+            });
+            layer.closeAll('loading');
+            return false;
+        }
+        setEvent("报价单添加商标", "输入了商标号:" + number);
+        //提交到服务器检查
+        $.post('/quotation/getTminfo', {'number': number}, function(data) {
+            layer.closeAll('loading');
+            if (data.code != 0) {
+                layer.msg(data.msg, {
+                    time: 1500
+                });
+            } else {
+                $('#list_body').append(data.msg);
+                $('#add_number').val('');//清空输入框
+            }
+        }, 'json');
+        layer.closeAll('loading');
+    });
+
+    //提交商品事件
+    $('#add_goods').click(function() {
+        //检查商标价格
+        var prices = $('#list_body input[name*=price]');
+        var tmp = '';
+        prices.each(function(i) {
+            var price_type = $(this).data("type");
+            tmp = parseInt($.trim($(this).val()));
+            if (!tmp && price_type == 1) {
+                layer.msg('请在第' + (i + 1) + '个商品填写定价价格!', {
+                    time: 1500
+                });
+                return false;
+            }
+        });
+
+        //检查标签
+        var label = $('#list_body input[name*=label]');
+        label.each(function(i) {
+            if ($(this).val() == 0) {
+                layer.msg('请在第' + (i + 1) + '个商品处选择标签类别!', {
+                    time: 1500
+                });
+                return false;
+            }
+        });
+
+        //表单信息验证
+        var title = $('.sell-lf-main input[name=title]').val();
+        if (title === "") {
+            layer.msg('请填写商品单名称!', {
+                time: 1500
+            });
+            return false;
+        }
+        
+        var desc = $('#desc').val();
+        if (desc === "") {
+            layer.msg('请填写商品单描述!', {
+                time: 1500
+            });
+            return false;
+        }
+        
+        var avatar = $('.sell-lf-main input[name=avatar]:checked ').val();
+        if (avatar == undefined) {
+            layer.msg('请选择头像设置风格!', {
+                time: 1500
+            });
+            return false;
+        }
+        
+         var style = $('.sell-lf-main input[name=style]:checked').val();
+        if (style == undefined) {
+            layer.msg('请选择表单风格!', {
+                time: 1500
+            });
+            return false;
+        }
+        //序列化表单数据
+        var data = $('#submit_number').serialize();
+
+        //联系人信息
+        var mobile = $('.amend-cont-all .contact_mobile').text();
+        var name = $('.amend-cont-all .contact_name').text();
+        var qq = $('.amend-cont-all .contact_qq').text();
+        if (mobile === "" || name === "" || qq === "") {
+            layer.msg('请完善底部的联系方式信息!', {
+                time: 1500
+            });
+            return false;
+        }
+        //组装联系人信息
+        data += ('&mobile=' + mobile + '&name=' + name + '&qq=' + qq);
+        
+//        layer.load(1, {
+//            shade: [0.1, '#fff'] //0.1透明度的白色背景
+//        });
+        //提交数据
+        $.post('/quotation/addNumber', data, function(dd) {
+            layer.closeAll('loading');
+            if (dd.code == 0) {
+                layer.msg('提交成功', {
+                    time: 1500
+                }, function() {
+//                        location.reload();
+                    location.href = '/quotation/index/'
+                });
+            }else {
+                var msg = dd.msg;
+                layer.msg(msg, {
+                    time: 1500
+                });
+            }
+        }, 'json');
+    });
+
+    //图片上传
+    var errMsg = "上传的附件文件不能超过2M！！！";
+    var errFile = "可选择一张图片（仅支持后缀名为 .jpg .gif 文件）。文件最大不可超过 ( 10M ) ";
+    //检查文件类型
+    function checkfileType(fileInput) {
+        var flag = true;
+        var extStart = fileInput.lastIndexOf(".");
+        var ext = fileInput.substring(extStart, fileInput.length).toUpperCase(); //wenjian 
+        var fileType = new Array(".JPG", ".JPEG", ".GIF");
+        if ($.inArray(ext, fileType) == -1) {
+            layer.msg(errFile, {
+                time: 2000 //2秒关闭（如果不配置，默认是3秒）
+            });
+            flag = 0;
+            return false;
+        }
+        return flag;
+    }
+    //上传头像图片
+    $(".upfile").live("change", function() {
+        var obj = $(this);
+        var fileInput = obj.val();
+        var result = checkfileType(fileInput);
+        if (!result) {
+            obj.val('');
+            return false;
+        }
+        obj.parent().parent().parent().find("form").ajaxSubmit({
+            dataType: 'json',
+            success: function(data) {
+                if (data.code == 1) {
+                    obj.parent().find("img").attr('src', data.img);
+                    obj.parent().parent().parent().find(".img_input").val(data.img);
+                } else {
+                    layer.msg(data.msg, {
+                        time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                    });
+                }
+            },
+            error: function(xhr) {
+                $(this).val('');
+                layer.msg('图片格式不正确或图片过大，请重新上传！', {
+                    time: 2000 //2秒关闭（如果不配置，默认是3秒）
+                });
+            }
+        });
+    });
+    
+</script>
+
+
+<? require(ViewDir.'/footer.html'); ?>
