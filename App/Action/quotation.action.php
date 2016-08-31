@@ -45,7 +45,9 @@ class QuotationAction extends AppAction{
         if(!$id) $this->returnAjax(array('code'=>1,'msg'=>'参数异常'));
         $rst = $this->load('quotation')->delete($id);
         if($rst){
+            $this->load('quotation')->delQuotationItems($id);
             $this->returnAjax(array('code'=>0));
+            
         }else{
             $this->returnAjax(array('code'=>1,'msg'=>'删除报价单失败'));
         }
@@ -58,19 +60,32 @@ class QuotationAction extends AppAction{
         
     }
     
+     //修改商品页面
+    public function editgoods(){
+         $id = $this->input('id','int');
+         $info = $this->load('quotation')->getQuotationInfo($id);
+         $number_list = $this->load('quotation')->getQuotationItemByQid($id);
+         
+         $this->set('info',$info);
+         $this->set('number_list',json_encode($number_list['rows']));
+         $this->set('id',$id);
+         $this->display("quotation/quotation.addgoods.html");
+        
+    }
+    
     /**
      * 获取商标信息
      */
     public function getTminfo()
     {
         $number	= $this->input("number","string");
-        if ( empty($number) ) $this->returnAjax(array('code'=>1,'msg'=>'商标号不能为空'));
+        $qid	= $this->input("qid","int");
         
+        if ( empty($number) ) $this->returnAjax(array('code'=>1,'msg'=>'商标号不能为空'));
         //判断商标是否存在
         $info   = $this->load('sell')->getTmInfo($number);
         if ( empty($info) ) $this->returnAjax(array('code'=>3,'msg'=>'找不到对应商标，请查证重新输入'));
-        
-        
+
         //不能出售的商标
         $status = array('商标已无效','冻结中');//module里也有一处
         foreach ($status as $s) {
@@ -78,14 +93,30 @@ class QuotationAction extends AppAction{
                 $this->returnAjax(array('code'=>4,'msg'=>'该商标状态不太适合出售呢'));
             }
         }
+        if(!empty($qid)){
+            $itemInfo = $this->load('quotation')->getQuotationItemInfo($qid,$number);
+        }
+        
+        
         //正常状态结果
-        $data['number']       = $number;
+        $data['number']     = $number;
         $data['name']       = $info['name'];
-        $data['img']        = $info['imgUrl'];
         $data['class_str']  = $info['class'];
         $data['thum']       = mbSub($info['class'],0,18);
-        $data['is_tminfo'] = $this->load('sale')->getSaleTmByNumber($number);
+        
+        //判断是否有包装图
+        $is_tminfo = $this->load('sale')->getSaleTmByNumber($number);
+        $data['is_tminfo'] = $is_tminfo;
+        if(!$is_tminfo){
+            $img = $this->load('quotation')->getUserImage($number);
+            if(!empty($img)){
+                $info['imgUrl'] = $img;
+            }
+        }
+        $data['img']        = $info['imgUrl'];
+        
         $this->set('info',$data);
+        $this->set('itemInfo',$itemInfo);
         $tm = $this->fetch();
         $this->returnAjax(array('code'=>0,'msg'=>$tm));
     }
@@ -95,10 +126,9 @@ class QuotationAction extends AppAction{
      */
     public function addNumber(){
         $data = $this->getFormData();	
-        $rst = $this->load('quotation')->insertQuotation($data,12);
+        $rst = $this->load('quotation')->insertQuotation($data,12,$data['id']);
         $this->returnAjax($rst);
     }
-
 
     /**
      * 

@@ -15,6 +15,7 @@ class QuotationAddNumberForm extends AppForm
      * 字段映射(建立表单字段与程序字段或数据表字段的关联)
      */
     protected $map = array(
+        'id'        => array( 'field' => 'id', 'method' => 'fieldInt', ),
         'title' 	=> array( 'field' => 'title', 'method' => 'fieldString', ),
         'desc'    	=> array( 'field' => 'desc', 'method' => 'fieldString', ),
         'number' 	=> array( 'field' => 'number', 'method' => 'fieldName', ),

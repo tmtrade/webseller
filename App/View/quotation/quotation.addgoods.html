@@ -5,6 +5,7 @@
     <!--公用左边导航-->
     <? require(ViewDir.'/left.html'); ?>
     <form action='/quotation/addNumber/' method='post' id="submit_number">
+        <input type="hidden" name="id"  value="<?=$id?$id:0;?>"/>
         <div class="sell-lf-main">
             <div class="comm-list-tit sell-by-brand w-cont">
                 <h3 class="fl">我的商品单 ><label>创建商品单</label></h3>
@@ -13,14 +14,14 @@
                 <li>
                     <label><em>*</em>商品单名称</label>
                     <div>
-                        <input placeholder="如：为客户XX推荐的商品列表 " type="text" name="title"/>
+                        <input placeholder="如：为客户XX推荐的商品列表 " type="text" name="title" value="<?=$info['title']?>"/>
                         <!--<span>用于您自行查看所用，比如“<font>为客户xx创建的推荐商品列表</font>”</span>-->
                     </div>
                 </li>
                 <li>
                     <label><em>*</em>商品单描述</label>
                     <div>
-                        <textarea name="desc" id="desc" placeholder="感谢支持，以下是特意为您选择的商标，敬请查看"></textarea>
+                        <textarea name="desc" id="desc" placeholder="感谢支持，以下是特意为您选择的商标，敬请查看"><?=$info['desc']?></textarea>
                         <span>吸引客户的开场白，最多可输入30字</span>
                     </div>
                 </li>
@@ -59,15 +60,15 @@
                     <div class="amend-cont cir">
                         <label style="margin-top: 0px;">联系电话：</label>
                         <div class="cg-cont-tel">
-                            <span class="contact_mobile"><?=$userInfo['mobile']?></span>
+                            <span class="contact_mobile"><?=$info['phone']?$info['phone']:$userInfo['mobile'];?></span>
                         </div>
                         <label style="margin-top: 0px;">QQ客服：</label>
                         <div class="cg-cont-qq">
-                            <span class="contact_qq">848456598</span>
+                            <span class="contact_qq"><?=$info['qq']?$info['qq']:$userInfo['qq'];?></span>
                         </div>
                         <label>联系人：</label>
                         <div class="cg-cont-name">
-                            <span class="contact_name"><?=$userInfo['name']?></span>
+                            <span class="contact_name"><?=$info['contact']? $info['contact']:$userInfo['name'];?></span>
                         </div>
                         <div class="cg-tel">
                             <a href="javascript:;" class="xg_mobile" addmsg="修改联系方式" module="根据商标号出售">修改联系方式</a>
@@ -75,15 +76,15 @@
                     </div>
                     <div class="cir tran-set-head">
                         <label>头像设置：</label>
-                        <span><input type="radio" name="avatar" value="1"/>默认头像女</span>
-                        <span><input type="radio" name="avatar" value="2"/>默认头像男</span>
-                        <span><input type="radio" name="avatar" value="3"/>无需头像</span>
-                        <span><input type="radio" name="avatar" value="4"/>使用我当前头像</span>
+                        <span><input type="radio" name="avatar" value="1" <?if($info['avatar']==1) echo 'checked="checked"';?>/>默认头像女</span>
+                        <span><input type="radio" name="avatar" value="2" <?if($info['avatar']==2) echo 'checked="checked"';?>/>默认头像男</span>
+                        <span><input type="radio" name="avatar" value="3" <?if($info['avatar']==3) echo 'checked="checked"';?>/>无需头像</span>
+                        <span><input type="radio" name="avatar" value="4" <?if($info['avatar']==4) echo 'checked="checked"';?>/>使用我当前头像</span>
                     </div>
                     <div class="cir tran-set-head">
                         <label>表单风格：</label>
-                        <span><input type="radio" name="style" value="1"/>商务风格</span>
-                        <span><input type="radio" name="style" value="2"/>现代风格</span>
+                        <span><input type="radio" name="style" value="1" <?if($info['style']==1) echo 'checked="checked"';?>/>商务风格</span>
+                        <span><input type="radio" name="style" value="2" <?if($info['style']==2) echo 'checked="checked"';?>/>现代风格</span>
                     </div>
                 </div>
                 <div id="nicaicai" style="display: none">
@@ -91,15 +92,15 @@
                     <div class="cc1 ">
                         <label>联系电话：</label>
                         <div class="cg-cont-tel">
-                            <span class="contact_mobile"><?=$userInfo['mobile']?></span>
+                            <span class="contact_mobile"><?=$info['phone']?$info['phone']:$userInfo['mobile'];?></span>
                         </div>
                         <label style="margin-top: 0px;">QQ客服：</label>
                         <div class="cg-cont-qq">
-                            <span class="contact_qq">848456598</span>
+                            <span class="contact_qq"><?=$info['qq']?$info['qq']:$userInfo['qq'];?></span>
                         </div>
                         <label>联系人：</label>
                         <div class="cg-cont-name">
-                            <span class="contact_name"><?=$userInfo['name']?></span>
+                            <span class="contact_name"><?=$info['contact']? $info['contact']:$userInfo['name'];?></span>
                         </div>
                         <div class="cg-tel">
                             <a href="javascript:;" class="xg_mobile" addmsg="修改联系方式" module="根据商标号出售">修改联系方式</a>
@@ -129,7 +130,7 @@
                 </div>
                 <div class="tr-btn-sub f-clearfix f-hidden">
                     <a class="sub-btn cir" id="add_goods">
-                        创建商品单
+                        保存商品单
                     </a>
                     <a class="cir qx-btn batch-del tr-yl">
                         <img src="<?=StaticDir?>1.0/images/tr-yl.png">预览
@@ -143,7 +144,7 @@
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.form.js"></script>
 <script type="text/javascript">
     $(function() {
-        $(".add-form").wrap("<form action='/quotation/ajaxUploadPic/' method='post' enctype='multipart/form-data'></form>");
+        //$(".add-form").wrap("<form action='/quotation/ajaxUploadPic/' method='post' enctype='multipart/form-data'></form>");
 
         //删除
         $(".remove").live("click", function() {
@@ -190,7 +191,7 @@
             return false;
         }
         //商标数不能大于20
-        var num = $('#list_body td').length;
+        var num = $('#list_body tr').length;
         if (num > 12) {
             layer.msg('单次提交商标数不能大于12', {
                 time: 1500
@@ -237,28 +238,34 @@
         //检查商标价格
         var prices = $('#list_body input[name*=price]');
         var tmp = '';
+        var msg_price = '';
         prices.each(function(i) {
             var price_type = $(this).data("type");
             tmp = parseInt($.trim($(this).val()));
             if (!tmp && price_type == 1) {
-                layer.msg('请在第' + (i + 1) + '个商品填写定价价格!', {
-                    time: 1500
-                });
+                msg_price = '第' + (i + 1) + '个商品没有填写定价价格!';
                 return false;
             }
         });
-
+        if(msg_price){
+            layer.msg(msg_price, {time: 1500});
+            return false;
+        }
+                
         //检查标签
         var label = $('#list_body input[name*=label]');
+        var msg_label = '';
         label.each(function(i) {
             if ($(this).val() == 0) {
-                layer.msg('请在第' + (i + 1) + '个商品处选择标签类别!', {
-                    time: 1500
-                });
+                msg_label = '第' + (i + 1) + '个商品没有选择标签类别!';
                 return false;
             }
         });
-
+        if(msg_label){
+            layer.msg(msg_label, {time: 1500});
+            return false;
+        }
+        
         //表单信息验证
         var title = $('.sell-lf-main input[name=title]').val();
         if (title === "") {
@@ -307,9 +314,9 @@
         //组装联系人信息
         data += ('&mobile=' + mobile + '&name=' + name + '&qq=' + qq);
         
-//        layer.load(1, {
-//            shade: [0.1, '#fff'] //0.1透明度的白色背景
-//        });
+        layer.load(1, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+        });
         //提交数据
         $.post('/quotation/addNumber', data, function(dd) {
             layer.closeAll('loading');
@@ -376,6 +383,27 @@
             }
         });
     });
+    
+    //修改商品
+    var numbers = '<?=$number_list?>';
+    var qid = '<?=$id?>';
+    if(numbers){
+        var _numbers = eval(numbers);
+        jQuery.each( _numbers, function(i, field){
+            $.post('/quotation/getTminfo', {'number': field.number,'qid': qid}, function(data) {
+                layer.closeAll('loading');
+                if (data.code != 0) {
+                    layer.msg(data.msg, {
+                        time: 1500
+                    });
+                } else {
+                    $('#list_body').append(data.msg);
+                    $('#add_number').val('');//清空输入框
+                }
+            }, 'json');
+        });
+    }
+    
     
 </script>
 

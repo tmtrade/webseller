@@ -50,12 +50,12 @@ class quotationModule extends AppModule
      * @param type $num 限制个数
      * @return 
      */
-    public function insertQuotation($data,$num){
-        $number_count = count($data['number']);
-        if($number_count>$num) return array('code'=>1,'msg'=>'提交数大于'.$num);
+    public function insertQuotation($data,$num, $quotationId=0){
+        if(count($data['number'])>$num) return array('code'=>1,'msg'=>'提交数大于'.$num);
         $mobile = $data['mobile'];
         $name = $data['name'];
-        $tmp = array(
+        if($quotationId==0){
+            $tmp = array(
                 'title'         => $data['title'],
                 'desc'          => $data['desc'],
                 'uid'           => UID,
@@ -65,27 +65,56 @@ class quotationModule extends AppModule
                 'style'         => $data['style'],
                 'avatar'        => $data['avatar'],
             );
-        $quotationId = $this->addQuotation($tmp);
-        if(!$quotationId) return array('code'=>1,'msg'=>'报价单添加失败');
+            $quotationId = $this->addQuotation($tmp);
+            if(!$quotationId) return array('code'=>1,'msg'=>'报价单添加失败');
+        }else{
+            //edit
+            $tmp = array(
+                'title'         => $data['title'],
+                'desc'          => $data['desc'],
+                'phone'         => $data['mobile'],
+                'contact'       => $data['name'],
+                'qq'            => $data['qq'],
+                'style'         => $data['style'],
+                'avatar'        => $data['avatar'],
+            );
+            $this->load('quotation')->editQuotation($tmp, $quotationId);
+            $this->load('quotation')->delQuotationItems($quotationId);
+        }
+        
         foreach($data['number'] as $k=>$v){
+            //图片
+            $rstImg = 0;
+            if(!empty($data['image'][$k])){
+                $img = $this->load('quotation')->getUserImage($v);
+                if(!empty($img) && $img!=$data['image'][$k]){
+                    $tmp_img = array(
+                        'image'         => $data['image'][$k],
+                    );
+                    $rstImg = $this->load('quotation')->editUserImage($tmp_img,$v);
+                }else{
+                    $images = array(
+                        'uid'           => UID,
+                        'number'        => $v,
+                        'image'         => $data['image'][$k],
+                    );
+                    $rstImg = $this->addUserImage($images);
+                }
+            }
+            
+            //商品
             $item = array(
                 'qid'           => $quotationId,
                 'number'        => $v,
                 'price'         => $data['price'][$k],
                 'label'         =>  $data['label'][$k],
-                'sort'          =>  $number_count-$k,
+                'sort'          =>  ($k+1),
+                'imgId'         =>  $rstImg,
+                
             );
             $this->begin('quotationItems');
             $rst = $this->addQuotationItems($item);
-            $rstImg = true;
-            if(!empty($data['image'][$k])){
-                $images = array(
-                    'uid'           => UID,
-                    'number'        => $v,
-                    'image'         => $data['image'][$k],
-                );
-                $rstImg = $this->addUserImage($images);
-            }
+            
             
             //判断有用户是否已出售过 没有就添加到sale表
             $resSell = true;
@@ -105,8 +134,7 @@ class quotationModule extends AppModule
                 }
             }
             
-                
-            if($resSell && $rstImg && $rst){
+            if($resSell && $rst){
                     $this->commit('quotationItems');
             }else{
                 $this->rollBack('quotationItems');
@@ -116,7 +144,7 @@ class quotationModule extends AppModule
         return array('code'=>0);
     }
 
-        /**
+      /**
      * 添加商品单数据
      * @param array $data
      */
@@ -179,11 +207,87 @@ class quotationModule extends AppModule
      */
     public function getTitle($id){
         $r = array();
-        $r['eq'] = array('id'=>$id);
-        $r['eq'] = array('uid'=>UID);
+        $r['eq']['id'] = $id;
+        $r['eq']['uid'] = UID;
         $r['col'] = array('title');
         $rst =  $this->import('quotation')->find($r);
         return $rst?$rst['title']:'';
     }
+    
+     /**
+     * 得到报价单的信息
+     * @param $id
+     * @return string
+     */
+    public function getQuotationInfo($id){
+        $r = array();
+        $r['eq']['id'] = $id;
+        $r['eq']['uid'] = UID;
+        $res = $this->import('quotation')->find($r);
+        return $res;
+    }
+    
+     /**
+     * 得到报价单商标信息
+     * @param $id
+     * @return string
+     */
+    public function getQuotationItemByQid($qid){
+        $r = array();
+        $r['eq'] = array('qid'=>$qid);
+        $r['limit'] = 12;
+        $r['col'] = array('qid','number');
+        $r['order'] = array('sort'=>'asc');
+        $rst =  $this->import('quotationItems')->findAll($r);
+        return $rst;
+    }
+    
+    /**
+     * 得到报价单商标信息
+     * @param $id
+     * @return string
+     */
+    public function getQuotationItemInfo($qid,$number){
+        $r = array();
+        $r['eq'] = array('qid'=>$qid,'number'=>$number);
+        $rst =  $this->import('quotationItems')->find($r);
+        return $rst;
+    }
+    /**
+     * 得到报价单的标题
+     * @param $id
+     * @return string
+     */
+    public function getUserImage($number){
+        $r = array();
+        $r['eq']['number'] = $number;
+        $r['eq']['uid'] = UID;
+        $r['col'] = array('image');
+        $rst =  $this->import('userImage')->find($r);
+        return $rst?$rst['image']:'';
+    }
+    
+    //添加子分类 edit
+	public function editUserImage($data, $number)
+	{
+		$rc['eq'] = array('number' => $number,'uid'=>UID);
+		$res      = $this->import('userImage')->modify($data, $rc);
+		return $res;
+	}
+    //添加子分类 edit
+	public function editQuotation($data, $id)
+	{
+		$rc['eq'] = array('id' => $id);
+		$res      = $this->import('quotation')->modify($data, $rc);
+		return $res;
+	}
+
+	//添加子分类 del  对应 items
+	public function delQuotationItems($id)
+	{
+		$rc['eq'] = array('qid' => $id);
+		$res      = $this->import('quotationItems')->remove($rc);
+		return $res;
+	}
 }
 ?>
