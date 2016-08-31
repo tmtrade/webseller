@@ -38,7 +38,7 @@ class quotationModule extends AppModule
         if($res['rows']){
             foreach($res['rows'] as $k=>$v){
                 $res['rows'][$k]['count'] = $this->getQuotationNumber($v['id']);
-                $res['rows'][$k]['view_url'] = SITE_URL.'quotation/?id='.$v['id'];//一只蝉地址
+                $res['rows'][$k]['view_url'] = SITE_URL.'quotation/?id='.$v['id'].'&u='.UID;//一只蝉地址
             }
         }
         return $res;
