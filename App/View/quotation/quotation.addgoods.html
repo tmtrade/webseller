@@ -48,7 +48,6 @@
                     <!--有数据 数据列表-->
 
                     <table class="tras-tab2 otab" id="list_body">
-                        
                     </table>
 
                 </div>
@@ -389,19 +388,26 @@
     var qid = '<?=$id?>';
     if(numbers){
         var _numbers = eval(numbers);
+        var strs ="";
         jQuery.each( _numbers, function(i, field){
-            $.post('/quotation/getTminfo', {'number': field.number,'qid': qid}, function(data) {
-                layer.closeAll('loading');
-                if (data.code != 0) {
-                    layer.msg(data.msg, {
-                        time: 1500
-                    });
-                } else {
-                    $('#list_body').append(data.msg);
-                    $('#add_number').val('');//清空输入框
+                $.ajax({
+                async: false,
+                type : 'post',
+                url  : '/quotation/getTminfo',
+                data : 'number='+field.number+'&qid='+qid,
+                dataType : 'json',
+                success : function (data){
+                    if (data.code != 0) {
+                        layer.msg(data.msg, {
+                            time: 1500
+                        });
+                    } else {
+                        strs+=data.msg;
+                    }
                 }
-            }, 'json');
+            });
         });
+        $('#list_body').append(strs);
     }
     
     
