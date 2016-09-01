@@ -336,7 +336,7 @@ class quotationModule extends AppModule
         $rst = $this->import('quotation')->find($r);
         if($rst){
             //得到头像地址
-            $rst['avatar'] = $this->getAvatar($rst['avatar'],$uid);
+            $rst['avatar_path'] = $this->getAvatar($rst['avatar'],$uid);
             //得到报价单详细数据
             $rst['data'] = $this->handleData($id,$uid);
         }
@@ -351,9 +351,9 @@ class quotationModule extends AppModule
      */
     public function getAvatar($avatar,$uid){
         if($avatar==1){
-            return '';//默认女
+            return StaticDir.'1.0/images/mr-s-head.png';//默认女
         }elseif($avatar==2){
-            return '';//默认男
+            return StaticDir.'1.0/images/mr-m-head.png';//默认男
         }elseif($avatar==4){
             //用户头像
             return $this->import('user')->get($uid,'photo');

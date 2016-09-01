@@ -12,11 +12,7 @@
 </head>
 <body>
 <div class="trans-top">
-    <a class="fl" href="/">
-        <? if($list['avatar']): ?>
-          <img src="<?=$list['avatar']?>">
-        <? endif; ?>
-    </a>
+    <a class="fl" href="/"><img src="<?=StaticDir?>1.0/images/sell-lg.png"></a>
     <div class="top-nav fr">
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico1.png"></i><a target="_blank" href="<?=SELLER_URL?>">出售者平台</a></p>
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico2.png"></i><a target="_blank" href="<?=CHECK_URL?>">商标质量检测工具</a></p>
@@ -74,19 +70,22 @@
             <label>Contact us</label>
         </h3>
         <div class="user-head">
+            <? if($list['avatar']==2): ?>
             <!--默认男头像-->
-            <!--<span class="mr-m">-->
-               <!--<img src="<?=StaticDir?>1.0/images/mr-m-head.png">-->
-            <!--</span>-->
-            <!--默认男头像-->
-            <!--<span class="mr-s">-->
-               <!--<img src="<?=StaticDir?>1.0/images/mr-s-head.png">-->
-            <!--</span>-->
+            <span class="mr-m">
+                <img src="<?=$list['avatar_path']?>">
+            </span>
+            <? elseif($list['avatar']==1): ?>
+            <!--默认女头像-->
+            <span class="mr-s">
+                <img src="<?=$list['avatar_path']?>">
+            </span>
+            <? elseif($list['avatar']==3 && $list['avatar_path']): ?>
             <!--自定义头像-->
             <span class="zdy">
-                 <img src="<?=StaticDir?>1.0/images/zdy-head.png">
+                 <img src="<?=$list['avatar_path']?>">
             </span>
-
+            <? endif; ?>
         </div>
         <div class="tel-qq">
             <h4><em>.</em>我们竭诚为您服务<em>.</em></h4>
