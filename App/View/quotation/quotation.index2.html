@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="<?=StaticDir?>1.2/css/import-comm.css?v=<?=$static_version?>">
+    <link rel="stylesheet" href="<?=StaticDir?>1.2/css/font-awesome.min.css?v=<?=$static_version?>">
+    <!--新加的CSS-->
+    <link rel="stylesheet" href="<?=StaticDir?>1.2/css/transfer.css?v=<?=$static_version?>">
+    <script type="text/javascript" src="<?=StaticDir?>1.2/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
+</head>
+<body>
+<div class="trans-top">
+    <a class="fl" href="/"><img src="<?=StaticDir?>1.2/images/sell-lg.png"></a>
+    <div class="top-nav fr">
+        <p><i><img src="<?=StaticDir?>1.2/images/top-ico1.png"></i><a target="_blank" href="<?=SELLER_URL?>">出售者平台</a></p>
+        <p><i><img src="<?=StaticDir?>1.2/images/top-ico2.png"></i><a target="_blank" href="<?=CHECK_URL?>">商标质量检测工具</a></p>
+        <p><i><img src="<?=StaticDir?>1.2/images/top-ico3.png"></i><a target="_blank" href="<?=SELLER_URL?>">商品清单生成工具</a></p>
+        <p><i><img src="<?=StaticDir?>1.2/images/top-ico4.png"></i><a href="">分享</a></p>
+        <!--<p><i><img src="<?=StaticDir?>1.2/images/top-ico5.png"></i><a href="">收藏该清单</a></p>-->
+    </div>
+</div>
+<div class="trans-comm-lx">
+   <div class="comm-lx-cet">
+       <h3>商品单<br/><font>Commodity list</font></h3>
+       <label><?=$list['desc']?></label>
+       <p>联系电话：<b><?=$list['phone']?></b>在线QQ：<b><?=$list['qq']?></b></p>
+   </div>
+</div>
+<div class="trans-brand-list f-clearfix">
+    <ul class="f-clearfix">
+        <? foreach($list['data'] as $k=>$v): ?>
+        <li>
+            <div class="br-details">
+                <? if($v['label']): ?>
+                <span class="tj-hot"><?=$label[$v['label']]?></span>
+                <? endif; ?>
+                <div class="pic-show">
+                    <img src="<?=StaticDir?>1.2/images/trans-pic.jpg">
+                </div>
+                <div class="brand-ms">
+                    <h3><?=$v['trademark']?></h3>
+                    <font>28类-健身器材  注册日期：<?=$v['apply_date']?></font>
+                    <label class="xq-ms"><?=$v['goods']?></label>
+                </div>
+                <p class="bar">
+                    售价：<a><b><?=$v['price']?></b></a>元
+                </p>
+            </div>
+        </li>
+        <? endforeach; ?>
+    </ul>
+</div>
+<div class="trans-btm trans-btm2">
+    <p>本功能由<a href="<?=SELLER_URL?>" target="_blank" class="csz"> 一只蝉出售者平台</a>提供 <a target="_blank" href="<?=SELLER_URL?>" class="btn">我想制作商品单</a></p>
+    <label>ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016</label>
+</div>
+</body>
+</html>

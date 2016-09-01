@@ -210,4 +210,22 @@ class QuotationAction extends AppAction{
         $this->returnAjax($msg);
     }
 
+    /**
+     * 报价单详情
+     */
+    public function view(){
+        $id = $this->input('id','int');
+        $uid = $this->input('u','int');
+        if(!$id || !$uid) exit('参数不合法');
+        //得到详情数据
+        $res = $this->load('quotation')->getDetail($id,$uid);
+        $this->set('list',$res);
+        $this->set('label',C('QUOTATION_LABEL'));
+        if($res['style']==1){
+            $this->display('quotation/quotation.index1.html');
+        }else{
+            $this->display('quotation/quotation.index2.html');
+        }
+    }
+
 }

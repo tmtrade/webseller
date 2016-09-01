@@ -39,6 +39,7 @@ abstract class AppAction extends Action
 			'login'			=> '*',
 			'test'			=> '*',
 			'index'			=> array('index'),
+			'quotation'	    => array('view'),
 		);
 		//验证用户是否登录
 		$allow  = false;
