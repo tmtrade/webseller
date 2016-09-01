@@ -220,11 +220,16 @@ class QuotationAction extends AppAction{
         //得到详情数据
         $res = $this->load('quotation')->getDetail($id,$uid);
         $this->set('list',$res);
-        $this->set('label',C('QUOTATION_LABEL'));
-        if($res['style']==1){
-            $this->display('quotation/quotation.index1.html');
+        if(!is_mobile_request()){
+            $this->set('label',C('QUOTATION_LABEL2'));
+            $this->display('quotation/quotation.wap.html');
         }else{
-            $this->display('quotation/quotation.index2.html');
+            $this->set('label',C('QUOTATION_LABEL'));
+            if($res['style']==1){
+                $this->display('quotation/quotation.index1.html');
+            }else{
+                $this->display('quotation/quotation.index2.html');
+            }
         }
     }
 

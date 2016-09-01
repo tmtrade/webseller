@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><?=$title?></title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="<?=StaticDir?>1.0/style/common.css">
+    <link rel="stylesheet" href="<?=StaticDir?>1.0/style/trans.css">
+    <script type="text/javascript" src="<?=StaticDir?>1.0/script/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
+    <script type="text/javascript">
+        //适配rem的兼容代码
+        (function(doc, win) {
+            var docEl = doc.documentElement,
+                    resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+                    recalc = function() {
+                        var clientWidth = docEl.clientWidth;
+                        if (!clientWidth)
+                            return;
+                        if (clientWidth >= 770) {
+                            docEl.style.fontSize = '100px';
+                        } else {
+                            docEl.style.fontSize = 100 * (clientWidth / 770) + 'px';
+                        }
+                        $("body").css({"opacity":"1"})
+                    };
+            if (!doc.addEventListener)
+                return;
+            win.addEventListener(resizeEvt, recalc, false);
+            doc.addEventListener('DOMContentLoaded', recalc, false);
+        })(document, window);
+    </script>
+</head>
+<body>
+   <div class="qu-ban">
+      <span>
+          <img src="<?=StaticDir?>1.0/images/trans-head.png">
+      </span>
+       <h4>商品单<br/><label>Commodity list</label></h4>
+       <h3><?=$list['desc']?></h3>
+       <p>
+           <a href="tel:18618427998">
+             <img src="<?=StaticDir?>1.0/images/trans-tel.png"><?=$list['phone']?>
+           </a>
+           <a href="tel:18618427998">
+               <img src="<?=StaticDir?>1.0/images/trans-qq.png"><?=$list['qq']?>
+           </a>
+       </p>
+   </div>
+   <div class="trans-detal">
+       <? foreach($list['data'] as $k=>$v): ?>
+       <? if($k): ?>
+       <div class="trans-earth">
+       </div>
+       <? endif; ?>
+       <div class="trans-tit">
+           <h2><?=$v['trademark']?></h2>
+           <h5>商标分类第1类 - 化工原料</h5>
+       </div>
+       <div class="trans-tj-pic">
+           <? if($v['label']): ?>
+           <span><?=$label[$v['label']]?></span>
+           <? endif; ?>
+           <img src="<?=$v['img']?>">
+       </div>
+       <p class="des">
+           <?=$v['goods']?>
+       </p>
+       <? endforeach; ?>
+       <div class="trans-earth">
+           <span>到底了噢</span>
+       </div>
+   </div>
+</body>
+</html>

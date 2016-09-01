@@ -20,6 +20,7 @@ class quotationModule extends AppModule
         'userImage'         => 'userImage',
         'tminfo'            => 'saleTminfo',
         'tm'		        => 'trademark',
+        'class'             => 'tmClass',
     );
     
     //获取报价商品的数据
@@ -41,7 +42,7 @@ class quotationModule extends AppModule
         if($res['rows']){
             foreach($res['rows'] as $k=>$v){
                 $res['rows'][$k]['count'] = $this->getQuotationNumber($v['id']);
-                $res['rows'][$k]['view_url'] = SITE_URL.'quotation/?id='.$v['id'].'&u='.UID;//一只蝉地址
+                $res['rows'][$k]['view_url'] = '/quotation/view/?id='.$v['id'].'&u='.UID;//一只蝉地址
             }
         }
         return $res;
@@ -230,7 +231,7 @@ class quotationModule extends AppModule
         $rst = $this->import('quotation')->find($r);
         if($rst){
             foreach($rst as $k=>$v){
-                $rst[$k]['view_url'] = SITE_URL.'quotation/?id='.$v['id'].'&u='.UID;//一只蝉地址
+                $rst[$k]['view_url'] = '/quotation/view/?id='.$v['id'].'&u='.UID;//一只蝉地址
             }
         }
         return $rst?:array();
@@ -362,8 +363,7 @@ class quotationModule extends AppModule
      */
     private function getClass(){
         if(!$this->class){
-            $class = $this->load('search')->getClassGroup(0,0);
-            $this->class = $class?$class[0]:array();
+            $this->class = $this->getTmClass();
         }
         return $this->class;
     }
@@ -420,6 +420,24 @@ class quotationModule extends AppModule
         }
         $info['class'] = $temp;
         return $info;
+    }
+
+    /**
+     * 得到商标分类
+     * @return array
+     */
+    private function getTmClass(){
+        $r['eq'] = array('parent'=>0);
+        $r['limit'] = 100;
+        $r['col'] = array('number','name','title');
+        $res = $this->import('class')->find($r);
+        if(!$res) return array();
+        $tmp = array();
+        foreach($res as $k=>$v){
+            $tmp[$k] = empty($v['title']) ? $v['name'] : $v['title'];
+        }
+        ksort($tmp);
+        return $tmp;
     }
 }
 ?>
