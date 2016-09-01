@@ -24,6 +24,7 @@ class IndexAction extends AppAction
 	public function index()
 	{
 		if(!$this->isLogin){
+			$this->set('ptype',7);
 			$this->display('login/login.index.html');
 			exit;
 		}

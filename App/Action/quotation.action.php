@@ -224,18 +224,20 @@ class QuotationAction extends AppAction{
      * 报价单详情
      */
     public function view(){
-        $id = $this->input('id','int');
-        $uid = $this->input('u','int');
+        $tag = $this->input('short', 'string', '');
+        //获取参数
+        if ( strpos($tag, '-') === false ) exit('参数错误');
+        list($id, $uid) = explode('-', $tag);
         if(!$id || !$uid) exit('参数不合法');
         //得到详情数据
         $res = $this->load('quotation')->getDetail($id,$uid);
         $this->set('list',$res);
-        if(is_mobile_request()){
+        if(is_mobile_request()){ //判断是否手机来源
             $this->set('label',C('QUOTATION_LABEL2'));
             $this->display('quotation/quotation.wap.html');
         }else{
             $this->set('label',C('QUOTATION_LABEL'));
-            if($res['style']==1){
+            if($res['style']==1){ //判断报价单风格
                 $this->display('quotation/quotation.index1.html');
             }else{
                 $this->display('quotation/quotation.index2.html');

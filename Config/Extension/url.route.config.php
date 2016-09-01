@@ -3,30 +3,11 @@
  * 重新定义url规则
  */
 
+//定义商标详情规则(旧规则，需要支持)
 $rules[] = array(
-	'#/list/#',
-	array('mod' => 'article', 'action' => 'index'),
-	array(
-		'cateId' => '#/(\d+)/#',
-		'page' => '#/page-(\d+)\.html#',
-		),
+    '#/p-#',
+    array('mod' => 'quotation', 'action' => 'view'),
+    array(
+        'short' => '#(\d+-\d+)#',
+        ),
 );
-
-$rules[] = array(
-	'#/data/#',
-	array('mod' => 'article', 'action' => 'detail'),
-	array(
-		'id' => '#(\d+).html#',
-		),
-);
-
-$rules[] = array(
-	'#/article/change/#',
-	array('mod' => 'article', 'action' => 'edit'),
-	array(
-		'id' => '#/articleId/(\d+)/#',
-		'cateId' => '#/categoryId/(\d+)/#',
-		),
-);
-
-?>

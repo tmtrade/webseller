@@ -31,9 +31,11 @@
 </head>
 <body>
    <div class="qu-ban">
+       <? if($list['avatar']): ?>
       <span>
-          <img src="<?=StaticDir?>1.0/images/trans-head.png">
+          <img src="<?=$list['avatar']?>">
       </span>
+       <? endif; ?>
        <h4>商品单<br/><label>Commodity list</label></h4>
        <h3><?=$list['desc']?></h3>
        <p>
@@ -53,7 +55,7 @@
        <? endif; ?>
        <div class="trans-tit">
            <h2><?=$v['trademark']?></h2>
-           <h5>商标分类第1类 - 化工原料</h5>
+           <h5>商标分类第<? $str = array_keys($v['class']);echo $str[0]; ?>类 - <?=array_pop($v['class'])?></h5>
        </div>
        <div class="trans-tj-pic">
            <? if($v['label']): ?>

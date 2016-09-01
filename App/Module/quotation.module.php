@@ -15,12 +15,13 @@ class quotationModule extends AppModule
      * 引用业务模型
      */
     public $models = array(
-        'quotation'         => 'quotation',
-        'quotationItems'    => 'quotationItems',
-        'userImage'         => 'userImage',
-        'tminfo'            => 'saleTminfo',
-        'tm'		        => 'trademark',
-        'class'             => 'tmClass',
+        'quotation' => 'quotation',
+        'quotationItems' => 'quotationItems',
+        'userImage' => 'userImage',
+        'tminfo' => 'saleTminfo',
+        'tm' => 'trademark',
+        'class' => 'tmClass',
+        'user' => 'user',
     );
     
     //获取报价商品的数据
@@ -42,7 +43,7 @@ class quotationModule extends AppModule
         if($res['rows']){
             foreach($res['rows'] as $k=>$v){
                 $res['rows'][$k]['count'] = $this->getQuotationNumber($v['id']);
-                $res['rows'][$k]['view_url'] = '/quotation/view/?id='.$v['id'].'&u='.UID;//一只蝉地址
+                $res['rows'][$k]['view_url'] = SELLER_URL.'p-'.$v['id'].'-'.UID.'.html';
             }
         }
         return $res;
@@ -188,9 +189,18 @@ class quotationModule extends AppModule
             $rst = unlink($path);
             if(!$rst) return false;
         }
-        //同时删除报价单相关表
-        ///TODO///
-        return $this->import('quotation')->remove(array('eq'=>array('uid'=>UID,'id'=>$id)));
+        //删除报价单详情
+        $this->begin('quotation');
+        $rst = $this->import('quotationItems')->remove(array('eq'=>array('qid'=>$id)));
+        if($rst){
+            //删除报价单表
+            $rst = $this->import('quotation')->remove(array('eq'=>array('uid'=>UID,'id'=>$id)));
+            if($rst){
+                return $this->commit('quotation');
+            }
+        }
+        $this->rollBack('quotation');
+        return false;
     }
 
     /**
@@ -231,7 +241,7 @@ class quotationModule extends AppModule
         $rst = $this->import('quotation')->find($r);
         if($rst){
             foreach($rst as $k=>$v){
-                $rst[$k]['view_url'] = '/quotation/view/?id='.$v['id'].'&u='.UID;//一只蝉地址
+                $rst[$k]['view_url'] = SELLER_URL.'p-'.$v['id'].'-'.UID.'.html';
             }
         }
         return $rst?:array();
@@ -325,10 +335,29 @@ class quotationModule extends AppModule
         $r['col'] = array('desc','phone','qq','style','avatar');
         $rst = $this->import('quotation')->find($r);
         if($rst){
+            //得到头像地址
+            $rst['avatar'] = $this->getAvatar($rst['avatar'],$uid);
             //得到报价单详细数据
             $rst['data'] = $this->handleData($id,$uid);
         }
         return $rst?:array();
+    }
+
+    /**
+     * 得到报价单头像
+     * @param $avatar
+     * @param $uid
+     * @return string
+     */
+    public function getAvatar($avatar,$uid){
+        if($avatar==1){
+            return '';//默认女
+        }elseif($avatar==2){
+            return '';//默认男
+        }elseif($avatar==4){
+            //用户头像
+            return $this->import('user')->get($uid,'photo');
+        }
     }
 
     /**
@@ -433,8 +462,8 @@ class quotationModule extends AppModule
         $res = $this->import('class')->find($r);
         if(!$res) return array();
         $tmp = array();
-        foreach($res as $k=>$v){
-            $tmp[$k] = empty($v['title']) ? $v['name'] : $v['title'];
+        foreach($res as $v){
+            $tmp[$v['number']] = empty($v['title']) ? $v['name'] : $v['title'];
         }
         ksort($tmp);
         return $tmp;
