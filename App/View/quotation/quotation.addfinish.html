@@ -1,0 +1,76 @@
+<? require(ViewDir.'/header.html'); ?>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
+<link rel="stylesheet" href="<?=StaticDir?>/1.0/css/transfer.css?v=<?=$static_version?>"> 
+<style type="text/css">
+	a{color:#000;}
+  </style>
+<div class="yzc-sell-main">
+    <!--公用左边导航-->
+    <? require(ViewDir.'/left.html'); ?>
+    <!--内容-->
+    <div class="sell-lf-main">
+        <div class="comm-list-tit sell-by-brand w-cont">
+            <h3 class="fl">我的商品单 ><label>创建商品单</label></h3>
+        </div>
+        <!--没有商品数据的时候-->
+        <!--<div class="trans-cj f-clearfix f-hidden">-->
+            <div class="trans-no-data">
+                <div class="trans-ts-xx">
+                    <img src="<?=StaticDir?>/1.0/images/sub-state-end.png">
+                    <h6>创建成功<i class="fa fa-check"></i></h6>
+                </div>
+                <label>现在就发给客户吧</label>
+            </div>
+        <!--</div>-->
+        <div class="merch-sce-cz">
+            <div class="merch-sce-ly">
+                <input class="oinp" type="text" id="oURL" placeholder="www.yizhchan.com/goos12340.html" value="<?=$id?>"/>
+                <a href="javascript:;" class="cir sear-btn batch-pric" id="cpywz">拷贝网址</a>
+                <a href="javascript:;" class="cir qx-btn batch-del">查看页面</a>
+            </div>
+            <p class="merch-sce-share">
+                <a><i><img src="<?=StaticDir?>/1.0/images/dc-ico.png"></i>导出图片</a>
+                <em></em>
+                <a>微博</a>
+                <a>朋友圈</a>
+            </p>
+        </div>
+    </div>
+</div>
+<!--添加复制功能的插件-->
+<script type="text/javascript" src="<?=StaticDir?>/1.0/js/copy/ZeroClipboard.js?v=<?=$static_version?>"></script>
+<script type="text/javascript">
+     $(function(){
+         clipboard('cpywz',$("#oURL").val());
+    });
+    //复制事件
+    function clipboard(button,text) {
+        if (window.clipboardData) {    //for ie
+            var copyBtn = document.getElementById(button);
+            copyBtn.onclick = function () {
+                window.clipboardData.setData('text', text);
+                layer.msg('复制成功!',{
+                    time:1500
+                });
+            }
+        } else {
+            var client = new ZeroClipboard($("#" + button));
+            client.on('ready', function (event) {
+                client.on('copy', function (event) {
+                    event.clipboardData.setData("text/plain", text);
+                    layer.msg('复制成功!',{
+                        time:1500
+                    });
+                });
+            });
+            client.on('error', function (event) {
+                layer.msg('复制失败!',{
+                    time:1500
+                });
+                ZeroClipboard.destroy();
+            });
+        }
+        return false;
+    }
+</script>
+<? require(ViewDir.'/footer.html'); ?>

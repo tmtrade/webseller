@@ -29,7 +29,7 @@ $(function() {
             });
             return false;
         } else {
-            $(this).parent().parent().find(".pull-list input").val(price);
+            $(this).parent().parent().find(".price-list").val(price);
         }
 
     });
@@ -47,9 +47,9 @@ $(function() {
     });
 
     //选择标签
-    $('.x-label').on('click', 'li', function() {
+    $('.x-label li').live('click', function() {
         var type = $(this).data("type");
-        $(this).parent().parent().find("input").val(type);
+        $(this).parent().parent().find(".label-list").val(type);
     });
 });
 

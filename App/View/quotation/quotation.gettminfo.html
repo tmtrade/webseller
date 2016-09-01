@@ -28,23 +28,23 @@
     </td>
     <td class="tras-bd-oper">
         <div class="pull-list paging">
-            <a class="cir all-tp-btn" index="1"><font >定价</font><i class="fa fa-chevron-down"></i></a>
+            <a class="cir all-tp-btn" index="1"><font ><?if(!empty($itemInfo) && $itemInfo['price']==0)echo "议价";else echo "定价";?></font><i class="fa fa-chevron-down"></i></a>
             <ul class="all-tp-list" style="display: none;">
                 <li class="dj-btn">定价</li>
                 <li class="yj-btn">议价</li>
             </ul>
-            <input type="hidden" name="price[]" class="price-list" data-type="1" value="<?=$itemInfo['price']?>"/>
+            <input type="hidden" name="price[]" class="price-list" data-type="<?if(!empty($itemInfo) && $itemInfo['price']==0)echo 2;else echo 1;?>" value="<?=$itemInfo['price']?>"/>
         </div>
-        <p class="yj">议价</p>
-        <p class="pre">
+        <p class="yj" <?if(!empty($itemInfo) && $itemInfo['price']==0) echo 'style="display:block;"';?>>议价</p>
+        <p class="pre" <?if(!empty($itemInfo) && $itemInfo['price']==0) echo 'style="display:none;"';?>>
             价格:<input type="text" class="sell-ip-box" value="<?=$itemInfo['price']?>"/>元
         </p>
         <div class="pull-list paging">
-            <a class="cir all-tp-btn" index="1"><font>选择标签</font><i class="fa fa-chevron-down"></i></a>
+            <a class="cir all-tp-btn" index="1"><font><?if(!empty($itemInfo))echo $label[$itemInfo['label']];else echo "选择标签";?></font><i class="fa fa-chevron-down"></i></a>
             <ul class="all-tp-list x-label" style="display: none;">
-                <li data-type="1">推荐</li>
-                <li data-type="2">热门</li>
-                <li data-type="3">性价比高</li>
+            <? foreach($label as $k=>$v): ?>
+                <li data-type="<?=$k?>"><?=$v?></li>
+            <? endforeach; ?>
             </ul>
             <input type="hidden" name="label[]" class="label-list" value="<?=$itemInfo['label']?>"/>
         </div>

@@ -117,6 +117,7 @@ class QuotationAction extends AppAction{
         
         $this->set('info',$data);
         $this->set('itemInfo',$itemInfo);
+        $this->set('label',C('QUOTATION_LABEL'));
         $tm = $this->fetch();
         $this->returnAjax(array('code'=>0,'msg'=>$tm));
     }
@@ -128,6 +129,15 @@ class QuotationAction extends AppAction{
         $data = $this->getFormData();	
         $rst = $this->load('quotation')->insertQuotation($data,12,$data['id']);
         $this->returnAjax($rst);
+    }
+    
+    /**
+     * 添加商标成功页面
+     */
+    public function addFinish(){
+        $id = $this->input('id','int');
+        $this->set('id',$id);
+        $this->display();
     }
 
     /**

@@ -200,14 +200,12 @@ $define = array(
     ),
     //报价单标签
     'QUOTATION_LABEL'=>array(
-        0=>'无标签',
         1=>'推荐',
         2=>'热门',
         3=>'性价比高',
     ),
     //报价单标签
     'QUOTATION_LABEL2'=>array(
-        0=>'无标签',
         1=>'推荐/Recommend',
         2=>'热门/Hot',
         3=>'性价比高/Cost-Effective',

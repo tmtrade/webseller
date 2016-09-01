@@ -122,8 +122,8 @@ class quotationModule extends AppModule
             
             //判断有用户是否已出售过 没有就添加到sale表
             $resSell = true;
-            $isSale         = $this->load("sell")->existContact($v,0);
-            if(!$isSale){
+            $sale         = $this->load("sale")->getSaleInfo($v);
+            if(empty($sale)){
                 //开始写入商标
                 $tmps = array(
                     'number'        => $v,
@@ -142,10 +142,10 @@ class quotationModule extends AppModule
                     $this->commit('quotationItems');
             }else{
                 $this->rollBack('quotationItems');
-                return array('code'=>2,'msg'=>"写入数据库失败");
+                return array('code'=>1,'msg'=>"写入数据库失败");
             }
         }
-        return array('code'=>0);
+        return array('code'=>$quotationId);
     }
 
       /**
