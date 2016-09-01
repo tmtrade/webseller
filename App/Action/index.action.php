@@ -53,7 +53,9 @@ class IndexAction extends AppAction
 		//得到最近的四条站内信
 		$msg_list = $this->load('messege')->getSizeMsg(4);
 		$this->set('msg_list',$msg_list);
-		
+		//得到最近的3天报价单
+		$quotation = $this->load('quotation')->getQuotation(3);
+		$this->set('quotation',$quotation);
 		//得到最近热搜词
 		$keyword_list = $this->com('redisHtml')->get('keyword_count');
 		if(empty($keyword_list)){

@@ -29,6 +29,7 @@ class quotationModule extends AppModule
         $r['limit'] = $limit;
         $r['col']   = array('id','title','created');
         $r['eq'] = array('uid'=>UID);
+        $r['order'] = array('created'=>'asc');
         if ( !empty($params['name']) ){
             $r['like']['title'] = $params['name'];
         } 
@@ -212,6 +213,25 @@ class quotationModule extends AppModule
         $r['col'] = array('title');
         $rst =  $this->import('quotation')->find($r);
         return $rst?$rst['title']:'';
+    }
+
+    /**
+     * 得到指定数量的报价单
+     * @param int $num
+     * @return array
+     */
+    public function getQuotation($num = 3){
+        $r['col']   = array('id','title','created');
+        $r['eq'] = array('uid'=>UID);
+        $r['order'] = array('created'=>'desc');
+        $r['limit'] = $num;
+        $rst = $this->import('quotation')->find($r);
+        if($rst){
+            foreach($rst as $k=>$v){
+                $rst[$k]['view_url'] = SITE_URL.'quotation/?id='.$v['id'].'&u='.UID;//一只蝉地址
+            }
+        }
+        return $rst?:array();
     }
     
      /**
