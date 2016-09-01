@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="../../../Static/1.0/css/sell-common.css?v=<?=$static_version?>">
+    <link rel="stylesheet" href="../../../Static/1.0/css/font-awesome.min.css?v=<?=$static_version?>">
+    <!--新加的CSS-->
+    <link rel="stylesheet" href="../../../Static/1.0/css/search.css">
+    <link rel="stylesheet" href="../../../Static/1.0/css/animate.min.css">
+    <script type="text/javascript" src="../../../Static/1.0/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
+</head>
+<body>
+<div class="sea-head">
+    <div class="w1300">
+        <div class="fl">
+            <a class="s-lg" href=""><img src="../../../Static/1.0/images/sell-lg-nw.png"></a>
+            <a href="">
+                <i class="ico s-tp1"></i>
+                商标出售
+            </a>
+            <a href="">
+                <i class="ico s-tp2"></i>
+                数据共享
+            </a>
+            <a href="">
+                <i class="ico s-tp3"></i>
+                商标报价单工具
+            </a>
+            <a href="">
+                <i class="ico s-tp4"></i>
+                商标安全检测工具
+            </a>
+        </div>
+        <div class="fr">
+            <a>去一只蝉看看</a>
+            <a><img src="../../../Static/1.0/images/s-tp-tel.png"></a>
+        </div>
+    </div>
+</div>
+<div class="gen-ban-bg1 page_1">
+    <div class="gen-ban1 w1300">
+        <div class="gen-pic1 fadeInDown animated">
+            <img src="../../../Static/1.0/images/gen-pic1.png">
+        </div>
+        <div class="gen-ban-des">
+            <h3 class="bounceInLeft animated ">告别繁琐的操作，极速生成报价单</h3>
+            <p class="bounceInRight animated ">
+                <label>零门槛：企业和个人均可免费使用 </label><label>易操作：输入商标号即可在线生成</label><label> 随时用：不占电脑内存家里也能用</label>
+            </p>
+            <a href="" class="pulse infinite  animated">登录免费使用</a>
+        </div>
+    </div>
+</div>
+<div class="gen-ban-bg2 page_2">
+    <div class="gen-ban2"></div>
+    <div class="gen-ban-des2">
+        <h3 class="">报价单也可以很美观</h3>
+        <p class="">
+            免费使用，无需安装任何插件<br/>
+            超简单，输入商标号即可直接生成<br/>
+            多种设计风格，美观大方，给买家最好的体验<br/>
+        </p>
+        <a class="yl-btn "><i><img src="../../../Static/1.0/images/pre-ico.png"></i>看看样例</a>
+    </div>
+</div>
+<div class="gen-ban-bg3 page_3">
+    <div class="gen-ban3 fadeInLeft animated"></div>
+    <div class="gen-ban-des3">
+        <h3 class="">支持你的所有设备</h3>
+        <p class="">
+            可在所有设备直接查看使用<br/>
+            iPhone / Mac / PC / Android 智能机全覆盖<br/>
+            随时随地，一“点”就看<br/>
+        </p>
+        <a class="yl-btn flipInX animated "><i><img src="../../../Static/1.0/images/pre-ico.png"></i>看看样例</a>
+    </div>
+</div>
+<script type="text/javascript" src="../../../Static/1.0/js/jquery.mousewheel.js"></script>
+<script type="text/javascript">
+    var mouseTodo = false;
+    $(document).on("mousewheel", function(event, delta, deltaX, deltaY) {
+        if (mouseTodo) {
+            return false
+        }
+        var winStop = $(window).scrollTop();
+        var winH = $(window).height();
+        if (delta < 0) {
+            if (winStop < 956) {
+                $("html,body").animate({
+                    scrollTop: "956px"
+                }, 2000, function() {
+                    mouseTodo = false;
+
+                })
+                mouseTodo = true
+            }
+            if (winStop < 1828 && winStop >= 956) {
+                $("html,body").animate({
+                    scrollTop: $(".page_3").offset().top + "px"
+                }, 2000, function() {
+                    mouseTodo = false
+                })
+                mouseTodo = true
+            }
+
+
+        }
+    });
+
+    $(document).on("scroll", function(e) {
+        var scrollTop = $(window).scrollTop();
+        var WinH = $(window).height();
+        console.log(scrollTop);
+        if (scrollTop+800< $(".page_2").offset().top) {
+            $(".gen-ban2,.gen-ban-des2").css({"opacity":"0"});
+            $(".gen-ban3,.gen-ban-des3").css({"opacity":"0"});
+            console.log(scrollTop);
+        }
+        if (scrollTop<$(".page_3").offset().top && scrollTop>= $(".page_2").offset().top-2) {
+            $(".gen-ban2").addClass("slideInDown animated3");
+            $(".gen-ban-des2").addClass("slideInRight animated3");
+            $(".gen-ban2,.gen-ban-des2").css({"opacity":"1"});
+        }
+
+        if (scrollTop >= $(".page_3").offset().top - 100) {
+            $(".gen-ban3").addClass("slideInRight animated");
+            $(".gen-ban-des3").addClass("slideInLeft animated");
+            $(".gen-ban3,.gen-ban-des3").css({"opacity":"1"});
+        }
+    });
+</script>
+</body>
+</html>

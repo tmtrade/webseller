@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8"/>
+    <!--新加的CSS-->
+    <link rel="stylesheet" href="../../../Static/1.0/css/transfer.css">
+    <script type="text/javascript" src="../../../Static/1.0/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
+    <style>
+        .test{text-align:center;width:300px;height:30px;line-height:30px;background:#f60;position:absolute;}
+        .test:hover{cursor:move;}
+    </style>
+</head>
+<body>
+<div class="main" style="width: 400px;height: 400px;border: 1px solid red;margin: auto">
+<div class="test">测试</div>
+<br/><br/>
+<h1>如果无效请刷新下页面..</h1>
+</div>
+<script>
+    ;$(function(){
+        var isMove=false;
+        $(".test").mousedown(function(){isMove=true;}).mouseup(function(){isMove=false;});
+        $(".main").mousemove(function(e){
+            if(!isMove){return;};
+            var X=e.clientX-parseInt($(".test").width()/2);
+            var Y=e.clientY-parseInt($(".test").height()/2);
+            $(".test").css({"left":X,"top":Y,"cursor":"move"});
+        });
+    });
+</script>
+</body>
+</html>

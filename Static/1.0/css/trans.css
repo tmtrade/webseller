@@ -1,0 +1,149 @@
+body{
+    opacity:1;
+}
+.qu-ban{
+    width: 100%;
+    height: 3.67rem;
+    background: #1f1f1f url("../images/trans-ban-bg.png") no-repeat  top center;
+    text-align: center;
+}
+.qu-ban span{
+    display: inline-block;
+    width: 1.1rem;
+    height: 1.1rem;
+    border: 0.05rem solid #db8d8d;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    margin-top: 0.1rem;
+}
+.qu-ban span img{
+    max-width: 1.1rem;
+    max-height: 1.1rem;
+}
+.qu-ban h4{
+    color: #ffffff;
+    font-size: 0.3rem;
+    text-align: center;
+    line-height: 0.32rem;
+    margin-top: 0.1rem;
+}
+.qu-ban h4 label{
+    font-size:0.23rem;
+}
+.qu-ban h3{
+    color: #999999;
+    font-size:0.28rem;
+}
+.qu-ban p{
+    width: 80%;
+    margin: auto;
+    margin-top: 0.2rem;
+}
+.qu-ban p a{
+    display: inline-block;
+    width: 49.74688888%;
+    float: left;
+    height: 0.75rem;
+    line-height: 0.75rem;
+    border: 1px solid #393939;
+    text-align: center;
+    color: #ffffff;
+}
+.qu-ban p a img{
+    display: inline-block;
+    vertical-align: middle;
+    margin-bottom:11px;
+    margin-right: 4px;
+    color: #ffffff;
+    font-size:0.28rem;
+    font-weight: bold;
+}
+.trans-detal{
+    padding-left: 0.34rem;
+    padding-right: 0.34rem;
+}
+
+.trans-detal{
+    width: 80%;
+    margin: auto;
+}
+.trans-detal p.des{
+    font-size: 0.23rem;
+    color: #666666;
+    line-height: 0.46rem;
+    margin-top: 0.4rem;
+    text-align: center;
+}
+.trans-tj-pic{
+    width:6rem;
+    text-align: center;
+    height:4.1rem;
+    line-height: 4.1rem;
+    border:0.2rem solid #d7d7d7;
+    background:#ffffff;
+    margin: auto;
+    margin-top: 0.33rem;
+    position: relative;
+}
+.trans-tj-pic img{
+    display: inline-block;
+    max-width:6rem;
+    max-height:4.1rem;
+    vertical-align: middle;
+
+}
+.trans-tj-pic span{
+    display: inline-block;
+    min-width: 1.9rem;
+    padding-right:26px;
+    padding-left: 10px;
+    height: 0.51rem;
+    line-height: 0.51rem;
+    background: url("../images/trans-tj-bg.png") no-repeat  top center;
+    background-size: 100% 100%;
+    color: #ffffff;
+    font-size:0.2rem;
+    text-indent:0rem;
+    position: absolute;
+    left:-0.2rem;
+    top:0.2rem;
+}
+.trans-tj-pic span label{
+    font-size: 0.15rem;
+}
+.trans-earth{
+    width: 100%;
+    height: 1px;
+    background: #cccccc;
+    position: relative;
+    margin-top: 0.45rem;
+}
+.trans-earth span{
+    display: inline-block;
+    width: 1.2rem;
+    text-align: center;
+    height: 0.26rem;
+    line-height: 0.26rem;
+    font-size: 0.18rem;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    background: #cccccc;
+    color: #ffffff;
+    position: absolute;
+    left: 50%;
+    margin-left: -0.6rem;
+    margin-top: -12px;
+}
+.trans-tit{
+    margin-top: 0.45rem;
+    text-align: center;
+}
+.trans-tit h2{
+    color: #666666;
+    font-size: 0.35rem;
+}
+.trans-tit h5{
+    color: #999999;
+    font-size: 0.28rem;
+    margin-top: 0.16rem;
+}

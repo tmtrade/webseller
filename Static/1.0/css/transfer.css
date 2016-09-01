@@ -54,6 +54,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .trans-brand-list ul li{
     width: 311px;
     min-height:362px;
+    background: #ffffff;
     color: #666666;
     font-size: 13px;
     float: left;
@@ -86,6 +87,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     width: 280px;
     height: 217px;
     line-height: 217px;
+    text-align: center;
     margin:auto;
     border-bottom: 1px solid #e6e6e6;
 }
@@ -117,7 +119,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .trans-brand-list  div.brand-ms label{
     display: inline-block;
     width: 100%;
-    margin-top: 5px;
+    margin-top:8px;
     line-height: 20px;
     text-align: left;
 }
@@ -153,6 +155,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 
 .trans-brand-list ul li:hover .br-details{
+    background-color: #ffffff;
     border: 3px  solid #ad2e21;
     width: 310px;
     left: -2px;
@@ -174,8 +177,23 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     margin-top: 12px;
     background: url("../images/lx-ban.png") no-repeat top center;
     position: relative;
+    overflow: hidden;
 }
-
+.trans-xl-ban h3{
+    font-size: 24px;
+    color: #ffffff;
+    line-height: 22px;
+    margin-top: 25px;
+    margin-left: 124px;
+}
+.trans-xl-ban h3 label{
+    font-size:17px;
+}
+.trans-xl-ban .user-head{
+    position: absolute;
+    left: 180px;
+    top:0px;
+}
 .trans-xl-ban  label{
     position: absolute;
     color: #fff2b1;
@@ -454,6 +472,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .tras-box{
     width: 97%;
     margin-top: 20px;
+    margin-left: 26px;
 }
 .tras-blk{
     margin-top: 20px;
