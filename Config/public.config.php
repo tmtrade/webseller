@@ -198,6 +198,13 @@ $define = array(
         '11' => '用户中心',
         '12' => '出售者平台',
     ),
+    //报价单标签
+    'QUOTATION_LABEL'=>array(
+        0=>'无标签',
+        1=>'推荐',
+        2=>'热门',
+        3=>'性价比高',
+    ),
 );
 if (is_array($checkhost)) {
     $define = array_merge($define, $checkhost);
