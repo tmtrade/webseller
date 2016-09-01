@@ -1,5 +1,4 @@
 <? require(ViewDir.'/header.html'); ?>
-<script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
 <link rel="stylesheet" href="<?=StaticDir?>1.0/css/transfer.css">
 <div class="yzc-sell-main">
     <!--公用左边导航-->
@@ -26,6 +25,7 @@
                     </div>
                 </li>
             </ul>
+
             <div class="trans-box">
                 <div class="add-brand">
                     <label class="fl">请输入商标号</label>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <!--创建商品单-->
-            <div class="trans-bd-form">
+            <div class="trans-bd-form w-cont">
                 <div class="amend-cont-all f-clearfix f-hidden">
                     <!--联系人信息完整可以修改-->
                     <div class="amend-cont cir">
@@ -142,6 +142,7 @@
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/quotation.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.form.js"></script>
 <script type="text/javascript">
+
     $(function() {
         //$(".add-form").wrap("<form action='/quotation/ajaxUploadPic/' method='post' enctype='multipart/form-data'></form>");
 
@@ -227,6 +228,7 @@
             } else {
                 $('#list_body').append(data.msg);
                 $('#add_number').val('');//清空输入框
+
             }
         }, 'json');
         layer.closeAll('loading');
@@ -382,7 +384,7 @@
             }
         });
     });
-    
+
     //修改商品
     var numbers = '<?=$number_list?>';
     var qid = '<?=$id?>';
@@ -408,10 +410,38 @@
             });
         });
         $('#list_body').append(strs);
+
+
     }
-    
-    
+
+    $("#list_body").on("click",".all-tp-btn",function(){
+        var dinx=$(this).attr("index");
+        if(dinx==1){
+            console.log("111")
+            $(this).siblings("ul.all-tp-list").show();
+            $(this).attr("index","2");
+            $(this).parent(".pull-list").css({"zIndex":"9999"})
+            $(this).find("i").css({"transform":"rotate(180deg)"})
+        }
+        else if(dinx==2){
+            console.log(222);
+            $(this).siblings("ul.all-tp-list").hide();
+            $(this).attr("index","1");
+            $(this).find("i").css({"transform":"rotate(0deg)"})
+            $(this).parent(".pull-list").css({"zIndex":"9"})
+        }
+        $(this).siblings("ul.all-tp-list").find("li").each(function(){
+            $(this).live("click",function(){
+                $(this).parent().slideUp();
+                $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text());
+                $(this).parent().siblings("a.all-tp-btn").attr("index","1");
+                $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+
+            })
+        })
+    })
+
 </script>
 
 
-<? require(ViewDir.'/footer.html'); ?>
+    <!--<? require(ViewDir.'/footer.html'); ?>-->

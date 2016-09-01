@@ -160,7 +160,26 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 
 .trans-xl-ban{
+    width: 972px;
+    height: 102px;
     margin-top: 12px;
+    background: url("../images/lx-ban.png") no-repeat top center;
+    position: relative;
+}
+
+.trans-xl-ban  label{
+    position: absolute;
+    color: #fff2b1;
+    font-size: 22px;
+    margin-left: 110px;
+}
+.trans-xl-ban  label.pos1{
+    bottom: 15px;
+    right:334px;
+}
+.trans-xl-ban  label.pos2{
+    bottom: 15px;
+    right:144px;
 }
 .trans-btm{
     width: 100%;
@@ -211,6 +230,10 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .trans-brand-de li label em{
     color: #ce0000;
+    font-weight: bold;
+    vertical-align: middle;
+    margin-top:6px;
+    margin-right:10px;
 }
 .trans-brand-de li div{
     float: left;
@@ -218,20 +241,26 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .trans-brand-de li div input{
     display: block;
     width: 450px;
-    height: 28px;
+
+    height: 33px;
+    line-height: 33px;
     border: 1px solid #e8e8e8;
     border-radius: 5px;
     -webkit-border-radius: 5px;
-    padding: 5px;
+
+    text-indent: 12px;
 }
 .trans-brand-de li div textarea{
     display: block;
     width: 450px;
-    min-height: 28px;
+    height: 33px;
+    line-height: 33px;
+
     border: 1px solid #e8e8e8;
     border-radius: 5px;
     -webkit-border-radius: 5px;
-    padding: 5px;
+
+    text-indent: 12px;
 }
 .trans-brand-de li div span{
     display: inline-block;
@@ -248,6 +277,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     border: 1px solid #e8e8e8;
     margin-top: 20px;
     position: relative;
+    margin-left:26px;
 }
 .trans-box .add-brand{
     width: 100%;
@@ -261,9 +291,9 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .add-brand label.fl{
     display:inline-block;
-    width: 94px;
+    width:94px;
     color: #666666;
-    margin-left: 26px;
+    margin-left:14px;
     margin-top: 16px;
 }
 
@@ -280,6 +310,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     border: 1px solid #e8e8e8;
     border-radius: 5px;
     -webkit-border-radius: 5px;
+    text-indent: 12px;
 }
 .add-brand-lf p a{
     display: inline-block;
@@ -287,6 +318,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     height: 35px;
     line-height: 35px;
     margin-left: 12px;
+    cursor: pointer;
 }
 .trans-btn{
     background: url("../images/tj-btn.png") no-repeat top center;
@@ -693,6 +725,8 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     cursor: pointer;
     text-align: center;
     margin-top: 5px;
+    cursor: pointer;
+    text-indent: 12px;
 }
 .tras-tab2 tr:hover .tras-pic-show span{
     border:2px solid #bbbbbb;
