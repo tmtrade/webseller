@@ -220,7 +220,7 @@ class QuotationAction extends AppAction{
         //得到详情数据
         $res = $this->load('quotation')->getDetail($id,$uid);
         $this->set('list',$res);
-        if(!is_mobile_request()){
+        if(is_mobile_request()){
             $this->set('label',C('QUOTATION_LABEL2'));
             $this->display('quotation/quotation.wap.html');
         }else{

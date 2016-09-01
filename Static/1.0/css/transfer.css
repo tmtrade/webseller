@@ -53,7 +53,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 
 .trans-brand-list ul li{
     width: 311px;
-    min-height: 361px;
+    min-height:362px;
     color: #666666;
     font-size: 13px;
     float: left;
@@ -100,6 +100,8 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     padding-left: 5px;
     padding-right: 5px;
     text-align: center;
+    height: 80px;
+    overflow: hidden;
 
 }
 .trans-brand-list  div.brand-ms h3{
@@ -110,21 +112,26 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .trans-brand-list  div.brand-ms font{
     display: inline-block;
     width: 100%;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 .trans-brand-list  div.brand-ms label{
     display: inline-block;
     width: 100%;
-
     margin-top: 5px;
     line-height: 20px;
     text-align: left;
+}
+.trans-brand-list  div.brand-ms span{
+    display: inline-block;
+    width: 100%;
+    margin-top:10px;
+}
+.trans-brand-list  div.brand-ms span em{
+    color: #ff6600;
+    margin-left: 5px;
+    margin-right: 5px;
+}
 
-}
-.xq-ms{
-    height: 15px;
-    overflow: hidden;
-}
 .trans-brand-list  p.bar{
     width: 100%;
     height: 53px;
@@ -151,12 +158,14 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     left: -2px;
     top:-2px;
 }
-.trans-brand-list ul  li:hover .xq-ms{
+.trans-brand-list ul  li:hover .brand-ms{
     height:auto;
     overflow: inherit;
+
 }
 .trans-brand-list ul li:hover {
     z-index: 999;
+    border-bottom-color: #ffffff;
 }
 
 .trans-xl-ban{
@@ -611,31 +620,44 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     color: #ffffff;
     overflow: hidden;
 }
+.comm-lx-cet span{
+    display: inline-block;
+    width: 83px;
+    height: 83px;
+    border:4px solid #2b3644;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    margin-top:0px;
+}
 .comm-lx-cet h3{
     color: #ffffff;
     font-size: 24px;
-    margin-top: 12px;
+    margin-top: 21px;
+    line-height: 22px;
 }
 .comm-lx-cet h3 font{
     font-size: 17px;
 }
 .comm-lx-cet label{
     display: inline-block;
-    margin-top: 113px;
+    width: 100%;
+    margin-top:12px;
 }
 .comm-lx-cet p{
     margin-top: 10px;
 }
 .comm-lx-cet p  b{
+     display: inline-block;
     color: #ffdf99;
     font-size: 22px;
     margin-left: 3px;
     margin-right: 15px;
     vertical-align: middle;
+    margin-top: -4px;
 }
 .trans-btm2{
     width: 100%;
-    height: 178px;
+    height:136px;
     background: #4e607a;
 }
 .merch-sce-cz{
