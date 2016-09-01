@@ -68,19 +68,28 @@
         </li>
         <? endforeach; ?>
     </ul>
-    <div class="trans-xl-ban">
+    <div class="trans-xl-ban f-clearfix">
         <h3>
             联系我们<br/>
             <label>Contact us</label>
         </h3>
         <div class="user-head">
-            <span>
-
+            <!--默认男头像-->
+            <!--<span class="mr-m">-->
+               <!--<img src="<?=StaticDir?>1.0/images/mr-m-head.png">-->
+            <!--</span>-->
+            <!--默认男头像-->
+            <!--<span class="mr-s">-->
+               <!--<img src="<?=StaticDir?>1.0/images/mr-s-head.png">-->
+            <!--</span>-->
+            <!--自定义头像-->
+            <span class="zdy">
+                 <img src="<?=StaticDir?>1.0/images/zdy-head.png">
             </span>
 
         </div>
-        <div>
-            <h4><em>&nup;</em>我们竭诚为您服务<em>&nup;</em></h4>
+        <div class="tel-qq">
+            <h4><em>.</em>我们竭诚为您服务<em>.</em></h4>
             <p>联系电话：<label class="pos1"><?=$list['phone']?></label>/   在线QQ：    <label class="pos2"><?=$list['qq']?></label></p>
         </div>
 
