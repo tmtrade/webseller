@@ -385,6 +385,29 @@ class quotationModule extends AppModule
         }
         return $rst;
     }
+    
+    /**
+     * 获取预览的具体数据
+     * @param type $data
+     * @return type
+     */
+    function getPreviemInfo($data){
+        foreach($data['number'] as $k=>$v){
+            $rst[$k]['number'] = $v;
+            $rst[$k]['price'] = $data['price'][$k];
+            $rst[$k]['label'] = $data['label'][$k];
+            //得到图片
+            if(!empty($data['image'][$k])){
+                $rst[$k]['img'] = $data['image'][$k];
+            }else{
+                $rst[$k]['img'] = $this->getImg($v,UID);
+            }
+            //得到商品-分类-申请时间信息
+            $tmp = $this->getTm($v);
+            $rst[$k] = array_merge($rst[$k],$tmp);
+        }
+        return $rst;
+    }
 
     /**
      * 得到商标的分类名数组

@@ -245,5 +245,30 @@ class QuotationAction extends AppAction{
             }
         }
     }
+    
+    /**
+     * 报价单编辑时预览
+     */
+    public function preview(){
+       $data = $this->getFormData();
+        //得到详情数据
+        $res['desc']    = $data['desc'];
+        $res['phone']  = $data['mobile'];
+        $res['qq']      = $data['qq'];
+        $res['style']   = $data['style'];
+        $res['avatar']  = $data['avatar'];
+        $res['avatar_path'] = $this->load('quotation')->getAvatar($data['avatar'],UID);
+        //得到报价单详细数据
+        $res['data'] = $this->load('quotation')->getPreviemInfo($data);
+        
+        $this->set('list',$res);
+        $this->set('label',C('QUOTATION_LABEL'));
+        if($res['style']==1){ //判断报价单风格
+            $tm = $this->fetch('quotation/quotation.index1.html');
+        }else{
+            $tm = $this->fetch('quotation/quotation.index2.html');
+        }
+        $this->returnAjax(array('code'=>0,'msg'=>$tm));
+    }
 
 }

@@ -39,11 +39,11 @@
                 <div class="trans-bd-list">
                     <!--没有商品数据的时候-->
                     <div class="trans-no-data" <?if(!empty($id)) echo 'style="display:none;"'?>>
-                    <div class="trans-ts-xx">
-                    <img src="<?=StaticDir?>1.0/images/trans-no-data.png">
-                    <h6>您还未添加商标</h6>
-                    </div>
-                    <label>请先输入商标号，并点击 添加商标 按钮</label>
+                         <div class="trans-ts-xx">
+                            <img src="<?=StaticDir?>1.0/images/trans-no-data.png">
+                            <h6>您还未添加商标</h6>
+                        </div>
+                        <label>请先输入商标号，并点击 添加商标 按钮</label>
                     </div>
                     <!--有数据 数据列表-->
 
@@ -131,7 +131,7 @@
                     <a class="sub-btn cir" id="add_goods">
                         保存商品单
                     </a>
-                    <a class="cir qx-btn batch-del tr-yl">
+                    <a class="cir qx-btn batch-del tr-yl" id="preview">
                         <img src="<?=StaticDir?>1.0/images/tr-yl.png">预览
                     </a>
                 </div>
@@ -151,29 +151,29 @@
         })
 
         //通过点击复选框改变议价状态
-            $(".yj-btn").live("click", function() {
-                $(this).parents(".tras-bd-oper").find(".yj").css({"display": "block"});
-                $(this).parents(".tras-bd-oper").find(".pre").css({"display": "none"});
-                $(this).parent().parent().find("input").val(0);
-                $(this).parent().parent().find("input").data("type", 2);
-            });
-             $(".dj-btn").live("click", function() {
-                $(this).parents(".tras-bd-oper").find(".yj").css({"display": "none"});
-                $(this).parents(".tras-bd-oper").find(".pre").css({"display": "block"});
-                $(this).parent().parent().parent().find(".pre input").val('');
-                $(this).parent().parent().parent().find(".pre input").data("type", 1);
-            });
+        $(".yj-btn").live("click", function() {
+            $(this).parents(".tras-bd-oper").find(".yj").css({"display": "block"});
+            $(this).parents(".tras-bd-oper").find(".pre").css({"display": "none"});
+            $(this).parent().parent().find("input").val(0);
+            $(this).parent().parent().find("input").data("type", 2);
+        });
+        $(".dj-btn").live("click", function() {
+            $(this).parents(".tras-bd-oper").find(".yj").css({"display": "none"});
+            $(this).parents(".tras-bd-oper").find(".pre").css({"display": "block"});
+            $(this).parent().parent().parent().find(".pre input").val('');
+            $(this).parent().parent().parent().find(".pre input").data("type", 1);
+        });
 
         //通过点击向上向下操作
-           $(".z-down").live("click", function() {
-                var n = $(this).parents("tr").next();
-                $(this).parents("tr").before(n);
-            });
-            
-            $(".z-up").live("click", function() {
-                var p = $(this).parents("tr").prev();
-                $(this).parents("tr").after(p);
-            });
+        $(".z-down").live("click", function() {
+            var n = $(this).parents("tr").next();
+            $(this).parents("tr").before(n);
+        });
+
+        $(".z-up").live("click", function() {
+            var p = $(this).parents("tr").prev();
+            $(this).parents("tr").after(p);
+        });
     });
 
     //添加商标事件
@@ -237,14 +237,14 @@
     $('#add_goods').click(function() {
         //商标数判断
         var num = $('#list_body tr').length;
-        if (num <=0) {
+        if (num <= 0) {
             layer.msg('请补充报价单的商品', {
                 time: 1500
             });
             layer.closeAll('loading');
             return false;
         }
-        
+
         //检查商标价格
         var prices = $('#list_body input[name*=price]');
         var tmp = '';
@@ -257,11 +257,11 @@
                 return false;
             }
         });
-        if(msg_price){
+        if (msg_price) {
             layer.msg(msg_price, {time: 1500});
             return false;
         }
-                
+
         //检查标签
         var label = $('#list_body input[name*=label]');
         var msg_label = '';
@@ -271,11 +271,11 @@
                 return false;
             }
         });
-        if(msg_label){
+        if (msg_label) {
             layer.msg(msg_label, {time: 1500});
             return false;
         }
-        
+
         //表单信息验证
         var title = $('.sell-lf-main input[name=title]').val();
         if (title === "") {
@@ -284,7 +284,7 @@
             });
             return false;
         }
-        
+
         var desc = $('#desc').val();
         if (desc === "") {
             layer.msg('请填写商品单描述!', {
@@ -292,7 +292,7 @@
             });
             return false;
         }
-        
+
         var avatar = $('.sell-lf-main input[name=avatar]:checked ').val();
         if (avatar == undefined) {
             layer.msg('请选择头像设置风格!', {
@@ -300,8 +300,8 @@
             });
             return false;
         }
-        
-         var style = $('.sell-lf-main input[name=style]:checked').val();
+
+        var style = $('.sell-lf-main input[name=style]:checked').val();
         if (style == undefined) {
             layer.msg('请选择表单风格!', {
                 time: 1500
@@ -323,9 +323,9 @@
         }
         //组装联系人信息
         data += ('&mobile=' + mobile + '&name=' + name + '&qq=' + qq);
-        
+
         layer.load(1, {
-                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+            shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         //提交数据
         $.post('/quotation/addNumber', data, function(dd) {
@@ -335,19 +335,124 @@
                     time: 1500
                 }, function() {
 //                        location.reload();
-                    if(qid){
+                    if (qid) {
                         location.href = '/quotation/index/';
-                    }else{
-                         location.href = '/quotation/addFinish/?id='+dd.code;
+                    } else {
+                        location.href = '/quotation/addFinish/?id=' + dd.code;
                     }
                 });
-            }else {
+            } else {
                 var msg = dd.msg;
                 layer.msg(msg, {
                     time: 1500
                 });
             }
         }, 'json');
+    });
+
+    //预览
+    $('#preview').click(function() {
+        //商标数判断
+        var num = $('#list_body tr').length;
+        if (num <= 0) {
+            layer.msg('请补充报价单的商品', {
+                time: 1500
+            });
+            layer.closeAll('loading');
+            return false;
+        }
+
+        //检查商标价格
+        var prices = $('#list_body input[name*=price]');
+        var tmp = '';
+        var msg_price = '';
+        prices.each(function(i) {
+            var price_type = $(this).data("type");
+            tmp = parseInt($.trim($(this).val()));
+            if (!tmp && price_type == 1) {
+                msg_price = '第' + (i + 1) + '个商品没有填写定价价格!';
+                return false;
+            }
+        });
+        if (msg_price) {
+            layer.msg(msg_price, {time: 1500});
+            return false;
+        }
+
+        //检查标签
+        var label = $('#list_body input[name*=label]');
+        var msg_label = '';
+        label.each(function(i) {
+            if ($(this).val() == 0) {
+                msg_label = '第' + (i + 1) + '个商品没有选择标签类别!';
+                return false;
+            }
+        });
+        if (msg_label) {
+            layer.msg(msg_label, {time: 1500});
+            return false;
+        }
+
+        //表单信息验证
+        var title = $('.sell-lf-main input[name=title]').val();
+        if (title === "") {
+            layer.msg('请填写商品单名称!', {
+                time: 1500
+            });
+            return false;
+        }
+
+        var desc = $('#desc').val();
+        if (desc === "") {
+            layer.msg('请填写商品单描述!', {
+                time: 1500
+            });
+            return false;
+        }
+
+        var avatar = $('.sell-lf-main input[name=avatar]:checked ').val();
+        if (avatar == undefined) {
+            layer.msg('请选择头像设置风格!', {
+                time: 1500
+            });
+            return false;
+        }
+
+        var style = $('.sell-lf-main input[name=style]:checked').val();
+        if (style == undefined) {
+            layer.msg('请选择表单风格!', {
+                time: 1500
+            });
+            return false;
+        }
+        //序列化表单数据
+        var data = $('#submit_number').serialize();
+
+        //联系人信息
+        var mobile = $('.amend-cont-all .contact_mobile').text();
+        var name = $('.amend-cont-all .contact_name').text();
+        var qq = $('.amend-cont-all .contact_qq').text();
+        if (mobile === "" || name === "" || qq === "") {
+            layer.msg('请完善底部的联系方式信息!', {
+                time: 1500
+            });
+            return false;
+        }
+        //组装联系人信息
+        data += ('&mobile=' + mobile + '&name=' + name + '&qq=' + qq);
+        //提交数据
+        $.post('/quotation/preview', data, function(data) {
+            layer.open({
+                content: data.msg,
+                area: ['1200px', '700px'],
+                scrollbar: false,
+                closeBtn: 1, //不显示关闭按钮
+                shift: 2,
+                shadeClose: true, //开启遮罩关闭
+                title: "商品单预览",
+            });
+        }, 'json');
+
     });
 
     //图片上传
@@ -400,23 +505,23 @@
 
     //修改商品
     var numbers = '<?=$number_list?>';
-    if(numbers){
+    if (numbers) {
         var _numbers = eval(numbers);
-        var strs ="";
-        jQuery.each( _numbers, function(i, field){
-                $.ajax({
+        var strs = "";
+        jQuery.each(_numbers, function(i, field) {
+            $.ajax({
                 async: false,
-                type : 'post',
-                url  : '/quotation/getTminfo',
-                data : 'number='+field.number+'&qid='+qid,
-                dataType : 'json',
-                success : function (data){
+                type: 'post',
+                url: '/quotation/getTminfo',
+                data: 'number=' + field.number + '&qid=' + qid,
+                dataType: 'json',
+                success: function(data) {
                     if (data.code != 0) {
                         layer.msg(data.msg, {
                             time: 1500
                         });
                     } else {
-                        strs+=data.msg;
+                        strs += data.msg;
                     }
                 }
             });
@@ -426,28 +531,28 @@
 
     }
 
-    $("#list_body").on("click",".all-tp-btn",function(){
-        var dinx=$(this).attr("index");
-        if(dinx==1){
+    $("#list_body").on("click", ".all-tp-btn", function() {
+        var dinx = $(this).attr("index");
+        if (dinx == 1) {
             console.log("111")
             $(this).siblings("ul.all-tp-list").show();
-            $(this).attr("index","2");
-            $(this).parent(".pull-list").css({"zIndex":"9999"})
-            $(this).find("i").css({"transform":"rotate(180deg)"})
+            $(this).attr("index", "2");
+            $(this).parent(".pull-list").css({"zIndex": "9999"})
+            $(this).find("i").css({"transform": "rotate(180deg)"})
         }
-        else if(dinx==2){
+        else if (dinx == 2) {
             console.log(222);
             $(this).siblings("ul.all-tp-list").hide();
-            $(this).attr("index","1");
-            $(this).find("i").css({"transform":"rotate(0deg)"})
-            $(this).parent(".pull-list").css({"zIndex":"9"})
+            $(this).attr("index", "1");
+            $(this).find("i").css({"transform": "rotate(0deg)"})
+            $(this).parent(".pull-list").css({"zIndex": "9"})
         }
-        $(this).siblings("ul.all-tp-list").find("li").each(function(){
-            $(this).live("click",function(){
+        $(this).siblings("ul.all-tp-list").find("li").each(function() {
+            $(this).live("click", function() {
                 $(this).parent().slideUp();
                 $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text());
-                $(this).parent().siblings("a.all-tp-btn").attr("index","1");
-                $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+                $(this).parent().siblings("a.all-tp-btn").attr("index", "1");
+                $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform": "rotate(0deg)"})
 
             })
         })
@@ -456,4 +561,4 @@
 </script>
 
 
-    <!--<? require(ViewDir.'/footer.html'); ?>-->
+<? require(ViewDir.'/footer.html'); ?>
