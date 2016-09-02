@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="<?=StaticDir?>1.0/css/transfer.css?v=<?=$static_version?>">
     <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
     <script type="text/javascript" src="<?=StaticDir?>1.0/js/layer/layer.js?v=<?=$static_version?>"></script>
+    <script type="text/javascript" src="<?=StaticDir?>1.0/js/data-total.js?v=<?=$static_version?>"></script>
+    <script type="text/javascript" src="http://data.chanshu.wang/data.js?v=<?=$static_version?>"> </script>
 </head>
 <body>
 <div class="trans-top">
@@ -59,7 +61,7 @@
                     <label class="xq-ms"><?=$v['goods']?></label>
                 </div>
                 <p class="bar">
-                    售价：<a><b><?=$v['price']?></b></a>元
+                    售价：<a><b><?=$v['price']?:'议价'?></b></a><? if($v['price']): ?>元<? endif; ?>
                 </p>
             </div>
         </li>
@@ -119,6 +121,7 @@
 </div>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/simple-share.min.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
+    var ptype = '<?=$ptype?>';//页面标识
     function addFavorite(title){
         try{
             window.external.addFavorite(location.href,title);
