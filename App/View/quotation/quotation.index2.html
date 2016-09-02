@@ -8,6 +8,7 @@
     <!--新加的CSS-->
     <link rel="stylesheet" href="<?=StaticDir?>1.0/css/transfer.css?v=<?=$static_version?>">
     <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
+    <script type="text/javascript" src="<?=StaticDir?>1.0/js/layer/layer.js?v=<?=$static_version?>"></script>
 </head>
 <body>
 <div class="trans-top">
@@ -16,7 +17,7 @@
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico1.png"></i><a target="_blank" href="<?=SELLER_URL?>">出售者平台</a></p>
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico2.png"></i><a target="_blank" href="<?=CHECK_URL?>">商标质量检测工具</a></p>
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico3.png"></i><a target="_blank" href="<?=SELLER_URL?>">商品清单生成工具</a></p>
-        <p><i><img src="<?=StaticDir?>1.0/images/top-ico4.png"></i><a href="">分享</a></p>
+        <p><i><img src="<?=StaticDir?>1.0/images/top-ico4.png"></i><a id="share" href="javascript:;">分享</a></p>
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico5.png"></i><a href="javascript:;" onclick="addFavorite('<?=$title?>')">收藏该清单</a></p>
     </div>
 </div>
@@ -43,7 +44,7 @@
                 <span class="tj-hot"><?=$label[$v['label']]?></span>
                 <? endif; ?>
                 <div class="pic-show">
-                    <img src="<?=$v['img']?>">
+                    <img src="<?=$v['img']?>" onerror="this.src='<?=StaticDir?>images/img1.png'">
                 </div>
                 <div class="brand-ms">
                     <h3><?=$v['trademark']?></h3>
@@ -82,9 +83,9 @@
     <div class="yzc-share-bg"></div>
     <h3>我要把网页分享到</h3>
     <ul class="yzc-share-main">
-        <li><a title="分享到QQ好友" href="javascript:share.qzone();setEvent('顶部7','分享QQ空间');" class="btn_qzone layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/qqkj.png"><br/>QQ空间</span></a></li>
-        <li><a title="分享到新浪微博" href="javascript:share.weibo();setEvent('顶部7','分享微博');" class="btn_sina layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/wb.png"><br/>微博</span></a></li>
-        <li><a id="aaa" title="分享到微信" href="javascript:share.weixin(function(qr){$('.wxt').attr('src',qr);tc();});setEvent('顶部7','分享微信');" class='btn_weixin layui-layer-close'><span><img src="<?=StaticDir?>1.0/images/wx.png"><br/>微信</span></a></li>
+        <li><a title="分享到QQ空间" href="javascript:share.qzone();" class="btn_qzone layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/qqkj.png"><br/>QQ空间</span></a></li>
+        <li><a title="分享到新浪微博" href="javascript:share.weibo();" class="btn_sina layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/wb.png"><br/>微博</span></a></li>
+        <li><a id="aaa" title="分享到微信" href="javascript:share.weixin(function(qr){$('.wxt').attr('src',qr);tc();});" class='btn_weixin layui-layer-close'><span><img src="<?=StaticDir?>1.0/images/wx.png"><br/>微信</span></a></li>
     </ul>
 </div>
 </div>
@@ -134,9 +135,7 @@
     //分享
     var share = new SimpleShare({
         url: location.href,
-//        title: '',
-//        content: '',
-        pic: '<?=$share_img?>'
+        pic: '<?=SELLER_URL.StaticDir?>1.0/images/share.jpg'
     });
 </script>
 </body>

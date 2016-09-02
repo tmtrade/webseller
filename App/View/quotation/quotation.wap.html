@@ -67,7 +67,7 @@
            <? if($v['label']): ?>
            <span><?=$label[$v['label']]?></span>
            <? endif; ?>
-           <img src="<?=$v['img']?>">
+           <img src="<?=$v['img']?>" onerror="this.src='<?=StaticDir?>images/img1.png'">
        </div>
        <p class="des">
            <?=$v['goods']?>

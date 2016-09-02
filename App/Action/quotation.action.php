@@ -168,8 +168,9 @@ class QuotationAction extends AppAction{
         !file_exists($dir) && mkdirs($dir);//创建文件夹
         //得到文件内容
         if(!is_file($file)){
-            $contents 	= file_get_contents(SITE_URL.'quotation/?id='.$id);
-            $isPdf	= makePng($contents,$file);
+//            $contents 	= file_get_contents(SITE_URL.'quotation/?id='.$id);
+            $url 	= SELLER_URL.'p-'.$id.'-'.UID.'.html';
+            $isPdf	= makePng($url,$file);
             $isPdf	== 1 && exit('生成图片失败');
         }
         return $file;
