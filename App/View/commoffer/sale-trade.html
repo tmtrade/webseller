@@ -18,11 +18,11 @@
                <h6 class="flipInX  timer2">为用户提供全方位的一站式服务</h6>
                <p class="flipInX  timer3">
                    <label><i class="s-num">30</i>万闲置资源</label><br/>
-                   <label><i class="s-num">30</i>年代理资源积累</label><br/>
+                   <label><i class="s-num">14</i>年代理资源积累</label><br/>
                    <label><i class="s-num">30</i>家合作机构</label><br/>
-                   <label><i class="s-num">30</i>倍资源高于其他平台</label><br/>
+                   <label><i class="s-num">15</i>倍资源高于其他平台</label><br/>
                </p>
-               <a href="" class="yl-btn pulse  timer4 infinite">去一只蝉看看</a>
+               <a href="" class="yl-btn pulse timer4 infinite">去一只蝉看看</a>
            </div>
        </div>
        <div class="s-pic1 bounceInRight  timer1"></div>
@@ -43,16 +43,16 @@
    <div class="s-trade3 page_3">
        <div class="w1300 f-clearfix">
            <div class="s-des3 com-des">
-               <h3 class="flipInX  timer4">商标·专利·版权</h3>
-               <p class="flipInX  timer5 ">
+               <h3 class="timer2">商标·专利·版权</h3>
+               <p class="timer4">
                    针对手机在线的用户，特意开发移动版<br/>
                    使得用户随时可查看，无需特意开启电脑和办公软件<br/>
                    不受时间和设备限制<br/>
                </p>
-               <a href="" class="yl-btn pulse  timer5 infinite"><i><img src="../../../Static/1.0/images/pre-ico.png"></i>去一只蝉看看</a>
+               <a href="" class="yl-btn   timer5 infinite"><i><img src="../../../Static/1.0/images/pre-ico.png"></i>去一只蝉看看</a>
            </div>
        </div>
-       <div class="s-pic3 fadeInRightBig  timer1"></div>
+       <div class="s-pic3  timer3"></div>
    </div>
    <script type="text/javascript" src="../../../Static/1.0/js/jquery.mousewheel.js"></script>
    <script type="text/javascript">
@@ -87,30 +87,35 @@
 
            }
        });
-
+       var scrollTop = $(window).scrollTop();
+       $(document).ready(function(){
+           if(scrollTop==0){
+               $(".s-des2,.s-pic2").css({"opacity":"0"});
+               $(".s-des3,.s-pic3").css({"opacity":"0"})
+           }
+       })
        $(document).on("scroll", function(e) {
            var scrollTop = $(window).scrollTop();
-           var WinH = $(window).height();
-
            if (scrollTop< $(".page_2").offset().top){
-               $(".page_2").css({"opacity":"0"});
-//               $(".page_3").css({"opacity":"0"});
-               console.log(scrollTop);
-
+               $(".s-des2 h3").removeClass("bounceInLeft");
+               $(".s-des2 h6").removeClass("bounceInRight");
+               $(".s-pic2 span").removeClass("flipInY");
+               $(".s-pic1").addClass("bounceInRight");
+               $(".s-pic3").removeClass("fadeInRightBig");
+               $(".s-trade3 h3,.s-des3 p").removeClass("bounceInLeft");
            }
            if (scrollTop<$(".page_3").offset().top && scrollTop>= $(".page_2").offset().top-2) {
-               $(".page_2").css({"opacity":"1"});
+               $(".s-des2,.s-pic2").css({"opacity":"1"});
                $(".s-des2 h3").addClass("bounceInLeft");
                $(".s-des2 h6").addClass("bounceInRight");
                $(".s-pic2 span").addClass("flipInY");
-
-
+               $(".s-pic1").removeClass("bounceInRight");
            }
 
            if (scrollTop >= $(".page_3").offset().top - 100) {
-               $(".page_3").css({"opacity":"1"});
+               $(".s-des3,.s-pic3").css({"opacity":"1"})
                $(".s-pic3").addClass("fadeInRightBig");
-               $(".s-trade3 h3,").addClass("fadeInRightBig");
+               $(".s-trade3 h3,.s-des3 p").addClass("bounceInLeft");
            }
        });
    </script>

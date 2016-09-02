@@ -31,11 +31,13 @@
 </head>
 <body>
    <div class="qu-ban">
-       <? if($list['avatar_path']): ?>
-      <span>
-          <img src="<?=$list['avatar_path']?>">
-      </span>
-       <? endif; ?>
+       <div class="trans-head">
+           <? if($list['avatar']): ?>
+                <span>
+                      <img src="<?=$list['avatar']?>">
+                </span>
+           <? endif; ?>
+       </div>
        <h4>商品单<br/><label>Commodity list</label></h4>
        <h3><?=$list['desc']?></h3>
        <p>

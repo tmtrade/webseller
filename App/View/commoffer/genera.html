@@ -108,14 +108,23 @@
         }
     });
 
+    var scrollTop = $(window).scrollTop();
+    $(document).ready(function(){
+        if(scrollTop==0){
+            $(".gen-ban2,.gen-ban-des2").css({"opacity":"0"});
+            $(".gen-ban3,.gen-ban-des3").css({"opacity":"0"})
+        }
+    })
+
     $(document).on("scroll", function(e) {
         var scrollTop = $(window).scrollTop();
-        var WinH = $(window).height();
-        console.log(scrollTop);
-        if (scrollTop+800< $(".page_2").offset().top) {
-            $(".gen-ban2,.gen-ban-des2").css({"opacity":"0"});
-            $(".gen-ban3,.gen-ban-des3").css({"opacity":"0"});
-            console.log(scrollTop);
+        if (scrollTop< $(".page_2").offset().top) {
+            $(".s-des2 h3").removeClass("bounceInLeft");
+            $(".s-des2 h6").removeClass("bounceInRight");
+            $(".s-pic2 span").removeClass("flipInY");
+            $(".s-pic1").addClass("bounceInRight");
+            $(".s-pic3").removeClass("fadeInRightBig");
+            $(".s-trade3 h3,.s-des3 p").removeClass("bounceInLeft");
         }
         if (scrollTop<$(".page_3").offset().top && scrollTop>= $(".page_2").offset().top-2) {
             $(".gen-ban2").addClass("slideInDown animated3");

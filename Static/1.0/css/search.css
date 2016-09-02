@@ -46,6 +46,11 @@ body,html{font-family: "微软雅黑";}
     padding-left: 10px;
 
 }
+.sea-head a:hover{
+    text-decoration:none;
+    border-bottom: 1px solid #ffa7a7;
+    padding-bottom: 4px;
+}
 .sea-head .fl{
     border-left: 1px solid #e5e5e5;
 }
@@ -347,7 +352,7 @@ body,html{font-family: "微软雅黑";}
     font-size: 18px;
     color: #ffffff;
     margin-right: 8px;
-
+    font-style: normal;
 }
 .s-pic1{
     position: absolute;
@@ -424,6 +429,7 @@ body,html{font-family: "微软雅黑";}
 }
 .s-trade3{
     height: 900px;
+    background: url("../images/gen-ban-bg3.png") repeat-x;
     position: relative;
     overflow: hidden;
 }

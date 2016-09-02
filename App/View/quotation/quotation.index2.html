@@ -23,11 +23,13 @@
 <div class="trans-comm-lx">
    <div class="comm-lx-cet">
        <h3>商品单<br/><font>Commodity list</font></h3>
-       <? if($list['avatar_path']): ?>
-      <span>
-          <img src="<?=$list['avatar_path']?>">
-      </span>
-       <? endif; ?>
+       <div class="trans-head">
+           <? if($list['avatar_path']): ?>
+              <span>
+                  <img src="<?=$list['avatar_path']?>">
+              </span>
+           <? endif; ?>
+       </div>
        <label><?=$list['desc']?></label>
        <p>联系电话：<b><?=$list['phone']?></b>在线QQ：<b><?=$list['qq']?></b></p>
    </div>
@@ -53,7 +55,7 @@
                         <?php
                         $arr = array();
                         foreach($v['class'] as $k0=>$v0){
-                        $arr[] = $k0.'类';
+                        $arr[] = '<a href="javascript:">'.$k0.'类'.'</a>';
                         }
                         echo implode(' ',$arr);
                         ?>
@@ -75,6 +77,25 @@
     <p>本功能由<a href="<?=SELLER_URL?>" target="_blank" class="csz"> 一只蝉出售者平台</a>提供 <a target="_blank" href="<?=SELLER_URL?>" class="btn">我想制作商品单</a></p>
     <label>ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016</label>
 </div>
+<!--分享弹窗-->
+<div class="yzc-share">
+    <div class="yzc-share-bg"></div>
+    <h3>我要把网页分享到</h3>
+    <ul class="yzc-share-main">
+        <li><a title="分享到QQ好友" href="javascript:share.qzone();setEvent('顶部7','分享QQ空间');" class="btn_qzone layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/qqkj.png"><br/>QQ空间</span></a></li>
+        <li><a title="分享到新浪微博" href="javascript:share.weibo();setEvent('顶部7','分享微博');" class="btn_sina layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/wb.png"><br/>微博</span></a></li>
+        <li><a id="aaa" title="分享到微信" href="javascript:share.weixin(function(qr){$('.wxt').attr('src',qr);tc();});setEvent('顶部7','分享微信');" class='btn_weixin layui-layer-close'><span><img src="<?=StaticDir?>1.0/images/wx.png"><br/>微信</span></a></li>
+    </ul>
+</div>
+</div>
+<!--分享微信弹窗-->
+<div class="wx-tc">
+   <span>
+        <img class="wxt" src="" />
+   </span>
+    <p>分享到微信朋友圈</p>
+</div>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/simple-share.min.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
     function addFavorite(title){
         try{
@@ -88,6 +109,35 @@
             }
         }
     }
+    function tc(){
+        layer.open({
+            area:["542px","415px"],
+            type: 1,
+            title: false,
+            closeBtn:1,
+            shadeClose:false,
+            content:$(".wx-tc")
+        });
+    }
+    //弹窗
+    $("#share").live("click",function(){
+        layer.open({
+            area:["642px","515px"],
+            type: 1,
+            title: false,
+            closeBtn:1,
+            shadeClose:false,
+            content:$(".yzc-share")
+
+        });
+    });
+    //分享
+    var share = new SimpleShare({
+        url: location.href,
+//        title: '',
+//        content: '',
+        pic: '<?=$share_img?>'
+    });
 </script>
 </body>
 </html>
