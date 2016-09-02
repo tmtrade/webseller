@@ -24,25 +24,44 @@
         <!--</div>-->
         <div class="merch-sce-cz">
             <div class="merch-sce-ly">
-                <input class="oinp" type="text" id="oURL" placeholder="www.yizhchan.com/goos12340.html" value="<?=$id?>"/>
+                <input class="oinp" type="text" id="oURL" placeholder="www.yizhchan.com/goos12340.html" value="<?=SELLER_URL.'p-'.$id.'-'.UID?>.html"/>
                 <a href="javascript:;" class="cir sear-btn batch-pric" id="cpywz">拷贝网址</a>
-                <a href="javascript:;" class="cir qx-btn batch-del">查看页面</a>
+                <a href="<?='p-'.$id.'-'.UID?>.html" target="_blank" class="cir qx-btn batch-del">查看页面</a>
             </div>
             <p class="merch-sce-share">
-                <a><i><img src="<?=StaticDir?>/1.0/images/dc-ico.png"></i>导出图片</a>
+                <a href="/quotation/getImg/?id=<?=$id?>" target="_blank"><i><img src="<?=StaticDir?>/1.0/images/dc-ico.png"></i>导出图片</a>
                 <em></em>
-                <a>微博</a>
-                <a>朋友圈</a>
+                 <a href="javascript:;" class="to_sina">微博</a>
+                <a href="javascript:;" class="to_weixn">朋友圈</a>
             </p>
         </div>
     </div>
 </div>
 <!--添加复制功能的插件-->
+<script type="text/javascript" src="<?=StaticDir?>/1.0/js/table-list.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>/1.0/js/copy/ZeroClipboard.js?v=<?=$static_version?>"></script>
+<script type="text/javascript" src="<?=StaticDir?>/1.0/js/simple-share.min.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
      $(function(){
-         clipboard('cpywz',$("#oURL").val());
+        var url =$("#oURL").val();
+         
+        var title = document.title;
+        var content = '';
+        var pic = '<?=SELLER_URL.StaticDir?>1.0/images/share.jpg';
+         //分享事件-微博
+        $('.to_sina').click(function(){
+            share_event({url:url,title:title,content:content,pic:pic});
+        });
+        //分享事件-朋友圈
+        $('.to_weixn').click(function(){
+            share_event({url:url,title:title,content:content,pic:pic},1);
+        });
+        
+        
+        clipboard('cpywz',url);
     });
+    
+    
     //复制事件
     function clipboard(button,text) {
         if (window.clipboardData) {    //for ie
@@ -71,6 +90,24 @@
             });
         }
         return false;
+    }
+    
+    //分享事件
+    function share_event(obj,type){
+        if(typeof type=='undefined') type=0;
+        var share = new SimpleShare({
+            url: obj.url,
+            title: obj.title,
+            content: obj.content,
+            pic: obj.pic
+        });
+        if(type==0){
+            share.weibo();
+        }else{
+            share.weixin(function(qr){
+                alert(qr);
+            })
+        }
     }
 </script>
 <? require(ViewDir.'/footer.html'); ?>
