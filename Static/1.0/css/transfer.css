@@ -932,8 +932,9 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     display: none;
 }
 .yzc-share-bg{
-    width: 100%;
+    width: 95%;
     height:187px;
+    margin: auto;
     overflow: hidden;
     background: url("../images/fx-bg.png") no-repeat top center;
     /*background-size: 100% auto;*/
@@ -944,8 +945,8 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .yzc-share a span{
     display: inline-block;
-    width: 126px;
-    height: 126px;
+    width: 96px;
+    height: 96px;
 }
 .yzc-share h3{
     color: #666666;
@@ -957,7 +958,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .yzc-share-main{
     width: 80%;
-    margin:25px auto;
+    margin:10px auto;
     overflow: hidden;
     border-top:1px solid #e3e3e3;
     padding-top: 15px;
@@ -967,7 +968,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     float: left;
     text-align: center;
     color: #999999;
-    font-size:28px;
+    font-size:20px;
 }
 .yzc-share-main .layui-layer-close{
     position:relative !important;
