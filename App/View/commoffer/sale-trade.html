@@ -61,7 +61,7 @@
                    <label><i class="s-num">30</i>家合作机构</label><br/>
                    <label><i class="s-num">15</i>倍资源高于其他平台</label><br/>
                </p>
-               <a href="" class="yl-btn pulse timer4 infinite">去一只蝉看看</a>
+               <a href="" class="yl-btn pulse animated infinite timer5">去一只蝉看看</a>
            </div>
        </div>
        <div class="s-pic1 bounceInRight  timer1"></div>
@@ -71,7 +71,7 @@
                <h3 class=" timer1"><a>免费推标</a>精准覆盖全网 48.91% 的买家，让您的商标早日售出</h3>
                <h6 class=" timer2">价值挖掘  ·  logo美化  ·  优惠促销</h6>
 
-               <a href="" class="yl-btn flipInX  timer3 infinite">我要参加</a>
+               <a href="" class="yl-btn pulse animated infinite timer5">我要参加</a>
            </div>
            <div class="s-pic2">
                <span class="lit-pic1  timer4"></span>
@@ -142,12 +142,12 @@
        $(document).on("scroll", function(e) {
            var scrollTop = $(window).scrollTop();
            if (scrollTop< $(".page_2").offset().top-150){
-//               $(".s-des2 h3").removeClass("bounceInLeft");
-//               $(".s-des2 h6").removeClass("bounceInRight");
-//               $(".s-pic2 span").removeClass("flipInY");
+               $(".s-des2 h3").removeClass("bounceInLeft");
+               $(".s-des2 h6").removeClass("bounceInRight");
+               $(".s-pic2 span").removeClass("flipInY");
                $(".s-pic1").addClass("bounceInRight");
-//               $(".s-pic3").removeClass("fadeInRightBig");
-//               $(".s-trade3 h3,.s-des3 p").removeClass("bounceInLeft");
+               $(".s-pic3").removeClass("fadeInRightBig");
+               $(".s-trade3 h3,.s-des3 p").removeClass("fadeInLeft");
            }
            if (scrollTop<$(".page_3").offset().top+200 && scrollTop>= $(".page_2").offset().top-200) {
                $(".s-des2,.s-pic2").css({"opacity":"1"});

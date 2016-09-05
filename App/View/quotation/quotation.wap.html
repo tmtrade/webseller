@@ -36,18 +36,11 @@
 <body>
 <header class="list-head">
     <div class="main">
-        <a class="fl" module="顶部6" addmsg="返回" href="javascript:;" onclick="if(document.referrer){history.go(-1);}else{location.href='/'};"><i></i><?=$page_title?></a>
+        <!--<a class="fl" module="顶部6" addmsg="返回" href="javascript:;" onclick="if(document.referrer){history.go(-1);}else{location.href='/'};"><i></i><?=$page_title?></a>-->
+        <a class="wap-head fl"><img src="<?=StaticDir?>1.0/images/wap-lg.png"></a>
         <div class="fr">
             <a id="share"><img src="<?=StaticDir?>1.0/images/arrw-ico1.png"></a>
             <a id="menu" module="顶部5" addmsg="菜单"><img src="<?=StaticDir?>1.0/images/arrw-ico2.png"></a>
-            <!--点击菜单出现导航弹窗，默认影藏-->
-            <div class="menu-box" id="menu-box">
-                <a href="/" module="菜单1" addmsg="首页">一只蝉首页</a>
-                <a href="/sell" module="菜单2" addmsg="我要出售">我要出售</a>
-                <a href="/buy" module="菜单3" addmsg="购买登记">购买登记</a>
-                <a href="<?=UC_URL?>" module="菜单4" addmsg="我的蝉窝">我的蝉窝</a>
-                <a href="<?=SELLER_URL?>" module="菜单5" addmsg="出售者平台">出售者平台</a>
-            </div>
         </div>
     </div>
 </header>

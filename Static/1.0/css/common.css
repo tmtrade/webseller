@@ -383,6 +383,9 @@ a:focus{
 	vertical-align: middle;
     margin-bottom: 4px;
 }
+.wap-head{
+    margin-top:27px;
+}
 .list-head div.fr {
 	height: 0.86rem;
     margin-right: -0.23rem;

@@ -126,17 +126,17 @@
         var scrollTop = $(window).scrollTop();
         if (scrollTop< $(".page_2").offset().top-150) {
             $(".gen-pic1").addClass("fadeInDown");
-//            $(".gen-ban2").removeClass("fadeInLeft");
-//            $(".gen-ban-des2 h3,.gen-ban-des2 p").removeClass("slideInRight");
+            $(".gen-ban2").removeClass("fadeInLeftBig");
+            $(".gen-ban-des2 h3,.gen-ban-des2 p").removeClass("slideInRight");
             $(".yl-btn").addClass("pulse");
-//            $(".gen-ban3").removeClass("slideInRight");
-//            $(".gen-ban3").removeClass("fadeInRightBig");
-//            $(".gen-ban-des3 h3,.gen-ban-des3 p").removeClass("slideInLeft");
-//            $(".gen-ban-des3 a").removeClass("slideInLeft");
+            $(".gen-ban3").removeClass("slideInRight");
+            $(".gen-ban3").removeClass("fadeInRightBig");
+            $(".gen-ban-des3 h3,.gen-ban-des3 p").removeClass("slideInLeft");
+            $(".gen-ban-des3 a").removeClass("slideInLeft");
 
         }
         if (scrollTop<$(".page_3").offset().top+200 && scrollTop>= $(".page_2").offset().top-200) {
-            $(".gen-ban2").addClass("fadeInLeft");
+            $(".gen-ban2").addClass("fadeInLeftBig");
             $(".gen-ban-des2 h3,.gen-ban-des2 p").addClass("slideInRight");
             $(".gen-pic1").removeClass("fadeInDown");
             $(".gen-ban2,.gen-ban-des2").css({"opacity":"1"});
