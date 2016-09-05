@@ -172,54 +172,60 @@
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         var number = $.trim($('#add_number').val());
-        if (number == '') {
-            layer.msg('请输入商标号', {
-                time: 1500
-            });
-            layer.closeAll('loading');
-            return false;
-        }
-        //商标数不能大于20
-        var num = $('#list_body tr').length;
-        if (num > 12) {
-            layer.msg('单次提交商标数不能大于12', {
-                time: 1500
-            });
-            layer.closeAll('loading');
-            return false;
-        }
-        //检查列表中是否有此商标
-        var numbers = $('#list_body .number');
-        var tmp = '';
-        var flag = true;
-        numbers.each(function(i) {
-            tmp = $.trim($(this).text());
-            if (tmp == number) {
-                flag = false;
-                return false;
-            }
-        });
-        if (!flag) {
-            layer.msg('该商标已在列表中', {
-                time: 1500
-            });
-            layer.closeAll('loading');
-            return false;
-        }
-        setEvent("报价单添加商标", "输入了商标号:" + number);
-        //提交到服务器检查
-        $.post('/quotation/getTminfo', {'number': number}, function(data) {
-            layer.closeAll('loading');
-            if (data.code != 0) {
-                layer.msg(data.msg, {
+        var arr=number.split(' ');//注split可以用字符或字符串分割
+        for(var i=0;i<arr.length;i++)
+        {
+            if (arr[i] == '') {
+                layer.msg('请输入商标号', {
                     time: 1500
                 });
-            } else {
-                $('#list_body').append(data.msg);
-                $('#add_number').val('');//清空输入框
-                $('.trans-no-data').hide();
+                layer.closeAll('loading');
+                return false;
             }
-        }, 'json');
+            //商标数不能大于20
+            var num = $('#list_body tr').length;
+            if (num >= 12) {
+                layer.msg('单次提交商标数不能大于12', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            //检查列表中是否有此商标
+            var numbers = $('#list_body .number');
+            var tmp = '';
+            var flag = true;
+            numbers.each(function(i) {
+                tmp = $.trim($(this).text());
+                if (tmp == arr[i]) {
+                    flag = false;
+                    return false;
+                }
+            });
+            if (!flag) {
+                layer.msg(arr[i]+'该商标已在列表中', {
+                    time: 1500
+                });
+                layer.closeAll('loading');
+                return false;
+            }
+            setEvent("报价单添加商标", "输入了商标号:" + arr[i]);
+            //提交到服务器检查
+            $.post('/quotation/getTminfo', {'number': arr[i]}, function(data) {
+                layer.closeAll('loading');
+                if (data.code != 0) {
+                    layer.msg(data.msg, {
+                        time: 1500
+                    });
+                    return false;
+                } else {
+                    $('#list_body').append(data.msg);
+                }
+            }, 'json');
+        }
+        
+        $('#add_number').val('');//清空输入框
+        $('.trans-no-data').hide();
         layer.closeAll('loading');
     });
 

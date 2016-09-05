@@ -84,13 +84,13 @@ class QuotationAction extends AppAction{
         if ( empty($number) ) $this->returnAjax(array('code'=>1,'msg'=>'商标号不能为空'));
         //判断商标是否存在
         $info   = $this->load('sell')->getTmInfo($number);
-        if ( empty($info) ) $this->returnAjax(array('code'=>3,'msg'=>'找不到对应商标，请查证重新输入'));
+        if ( empty($info) ) $this->returnAjax(array('code'=>3,'msg'=>$number.'找不到对应商标，请查证重新输入'));
 
         //不能出售的商标
         $status = array('商标已无效','冻结中');//module里也有一处
         foreach ($status as $s) {
             if( in_array($s, $info['second']) ){
-                $this->returnAjax(array('code'=>4,'msg'=>'该商标状态不太适合出售呢'));
+                $this->returnAjax(array('code'=>4,'msg'=>$number.'该商标状态不太适合出售呢'));
             }
         }
         if(!empty($qid)){
