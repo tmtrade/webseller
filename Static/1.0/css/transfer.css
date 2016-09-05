@@ -808,12 +808,18 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     min-width: 105px;
     text-align: center;
     vertical-align: middle;
+    padding-right: 10px;
 }
 .tras-bd-det{
     min-width: 105px;
 }
 .tras-pic-show div{
     display: inline-block;
+}
+.add-form{
+    float: left;
+    margin-left: 15px;
+    padding-right: 10px;
 }
 .tras-pic-show span{
     display:block;
@@ -831,7 +837,10 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     text-align: center;
     margin-top: 5px;
     cursor: pointer;
-    text-indent: 12px;
+    text-indent:20px;
+}
+.tras-pic-show  em{
+    /*margin-top: 12px;*/
 }
 .tras-tab2 tr:hover .tras-pic-show span{
     border:2px solid #bbbbbb;
@@ -847,6 +856,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     height: 66px;
     background: #e8e8e8;
     float:right;
+    vertical-align: middle;
 }
 .tras-bd-det p{
     vertical-align:middle;
