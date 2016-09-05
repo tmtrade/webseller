@@ -812,9 +812,14 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     text-align: center;
     vertical-align: middle;
     padding-right: 10px;
+    min-width: 140px;
+
+}
+.tras-bd-oper{
+    min-width: 512px;
 }
 .tras-bd-det{
-    min-width: 105px;
+    min-width:374px;
 }
 .tras-pic-show div{
     display: inline-block;
@@ -823,6 +828,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     float: left;
     margin-left: 15px;
     padding-right: 10px;
+    border-right:1px solid  #e8e8e8;
 }
 .tras-pic-show span{
     display:block;
@@ -865,6 +871,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     vertical-align:middle;
     display: inline-block;
     margin-top: 25px;
+    max-width: 370px;
 }
 .all-tp-btn{
     position: relative;

@@ -513,8 +513,8 @@ a:focus{
     height: 1.87rem;
     overflow: hidden;
     background: url("../images/fx-bg.png") no-repeat top center;
-    background-size: 100% auto;
-    margin-top: -20px;
+    /*background-size: 100% auto;*/
+    margin-top: -9px;
 }
 .yzc-share h3{
     color: #666666;

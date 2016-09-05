@@ -20,7 +20,7 @@
             </form>
             <input type="hidden" name="image[]" value="" class="img_input">
         <?}?>
-        <em></em>
+
     </td>
     <td class="tras-bd-det">
         <p>商标号：<label class="number"><?=$info['number']?> </label><label>商标名称:<?=$info['name']?></label><label title="<?=$info['class_str']?>">商标分类：<?=$info['thum']?>类</label> </p>
@@ -29,10 +29,10 @@
     </td>
     <td class="tras-bd-oper">
         <div class="pull-list paging">
-            <a class="cir lb-tp-btn cha-show" index="1"><font ><?if(!empty($itemInfo) && $itemInfo['price']==0)echo "议价";else echo "定价";?></font><i class="fa fa-chevron-down"></i></a>
+            <a class="cir lb-tp-btn cha-show" index="1" onclick="select($(this))"><font ><?if(!empty($itemInfo) && $itemInfo['price']==0)echo "议价";else echo "定价";?></font><i class="fa fa-chevron-down"></i></a>
             <ul class="all-tp-list" style="display: none;">
-                <li class="dj-btn">定价</li>
-                <li class="yj-btn">议价</li>
+                <li class="dj-btn" onclick="dj($(this))">定价</li>
+                <li class="yj-btn" onclick="yj($(this))">议价</li>
             </ul>
             <input type="hidden" name="price[]" class="price-list" data-type="<?if(!empty($itemInfo) && $itemInfo['price']==0)echo 2;else echo 1;?>" value="<?=$itemInfo['price']?>"/>
         </div>
@@ -41,10 +41,10 @@
             价格:<input type="text" class="sell-ip-box" value="<?=$itemInfo['price']?>"/>元
         </p>
         <div class="pull-list paging">
-            <a class="cir lb-tp-btn cho-tag" index="1"><font><?if(!empty($itemInfo))echo $label[$itemInfo['label']];else echo "选择标签";?></font><i class="fa fa-chevron-down"></i></a>
+            <a class="cir lb-tp-btn cho-tag" index="1" onclick="select($(this))"><font><?if(!empty($itemInfo))echo $label[$itemInfo['label']];else echo "选择标签";?></font><i class="fa fa-chevron-down"></i></a>
             <ul class="all-tp-list x-label" style="display: none;">
             <? foreach($label as $k=>$v): ?>
-                <li data-type="<?=$k?>"><?=$v?></li>
+                <li data-type="<?=$k?>" onclick="hs($(this))"><?=$v?></li>
             <? endforeach; ?>
             </ul>
             <input type="hidden" name="label[]" class="label-list" value="<?=$itemInfo['label']?>"/>

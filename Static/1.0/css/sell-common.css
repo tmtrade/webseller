@@ -10,7 +10,7 @@ abbr,acronym { border:0}
 table {border-collapse: collapse;border-spacing: 0;}
 .fl{float: left}
 .fr{float: right}
-body{min-width: 1340px;min-height:700px;}
+body{min-width: 1340px;min-height:800px;}
 table{width: 100%;}
 input{color: #666666;border-color:#d5d5d5;outline:none;}
 select{

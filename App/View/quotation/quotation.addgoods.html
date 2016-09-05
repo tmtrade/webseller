@@ -5,55 +5,54 @@
     <? require(ViewDir.'/left.html'); ?>
     <form action='/quotation/addNumber/' method='post' id="submit_number">
         <input type="hidden" name="id"  value="<?=$id?$id:0;?>"/>
-        <div class="sell-lf-main">
+        <div class="sell-lf-main" style="overflow: auto">
             <div class="comm-list-tit sell-by-brand w-cont">
                 <h3 class="fl">我的商品单 ><label>创建商品单</label></h3>
             </div>
-            <ul class="trans-brand-de w-cont">
-                <li>
-                    <label><em>*</em>商品单名称</label>
-                    <div>
-                        <input placeholder="如：为客户XX推荐的商品列表 " type="text" name="title" value="<?=$info['title']?>"/>
-                        <!--<span>用于您自行查看所用，比如“<font>为客户xx创建的推荐商品列表</font>”</span>-->
-                    </div>
-                </li>
-                <li>
-                    <label><em>*</em>商品单描述</label>
-                    <div>
-                        <textarea name="desc" id="desc" placeholder="感谢支持，以下是特意为您选择的商标，敬请查看"><?=$info['desc']?></textarea>
-                        <span>吸引客户的开场白，最多可输入30字</span>
-                    </div>
-                </li>
-            </ul>
-
-            <div class="trans-box">
-                <div class="add-brand">
-                    <label class="fl">请输入商标号</label>
-                    <div class="add-brand-lf">
-                        <p>
-                            <input type="text" id="add_number"/><a class="trans-btn" id="addSell">添加商标</a>
-                        </p>
-                        <span>每条商品单最多可添加12条商品，商标号之间可以空格进行区分，例如：123456 231456</span>
-                    </div>
-                </div>
-                <div class="trans-bd-list">
-                    <!--没有商品数据的时候-->
-                    <div class="trans-no-data" <?if(!empty($id)) echo 'style="display:none;"'?>>
-                         <div class="trans-ts-xx">
-                            <img src="<?=StaticDir?>1.0/images/trans-no-data.png">
-                            <h6>您还未添加商标</h6>
+                <ul class="trans-brand-de w-cont">
+                    <li>
+                        <label><em>*</em>商品单名称</label>
+                        <div>
+                            <input placeholder="如：为客户XX推荐的商品列表 " type="text" name="title" value="<?=$info['title']?>"/>
+                            <!--<span>用于您自行查看所用，比如“<font>为客户xx创建的推荐商品列表</font>”</span>-->
                         </div>
-                        <label>请先输入商标号，并点击 添加商标 按钮</label>
+                    </li>
+                    <li>
+                        <label><em>*</em>商品单描述</label>
+                        <div>
+                            <textarea name="desc" id="desc" placeholder="感谢支持，以下是特意为您选择的商标，敬请查看"><?=$info['desc']?></textarea>
+                            <span>吸引客户的开场白，最多可输入30字</span>
+                        </div>
+                    </li>
+                </ul>
+                <div class="trans-box">
+                    <div class="add-brand">
+                        <label class="fl">请输入商标号</label>
+                        <div class="add-brand-lf">
+                            <p>
+                                <input type="text" id="add_number"/><a class="trans-btn" id="addSell">添加商标</a>
+                            </p>
+                            <span>每条商品单最多可添加12条商品，商标号之间可以空格进行区分，例如：123456 231456</span>
+                        </div>
                     </div>
-                    <!--有数据 数据列表-->
+                    <div class="trans-bd-list">
+                        <!--没有商品数据的时候-->
+                        <div class="trans-no-data" <?if(!empty($id)) echo 'style="display:none;"'?>>
+                             <div class="trans-ts-xx">
+                                <img src="<?=StaticDir?>1.0/images/trans-no-data.png">
+                                <h6>您还未添加商标</h6>
+                            </div>
+                            <label>请先输入商标号，并点击 添加商标 按钮</label>
+                        </div>
+                        <!--有数据 数据列表-->
 
-                    <table class="tras-tab2 otab" id="list_body">
-                    </table>
+                        <table class="tras-tab2 otab" id="list_body">
+                        </table>
 
-                </div>
-            </div>
+                    </div>
+
             <!--创建商品单-->
-            <div class="trans-bd-form w-cont">
+            <div class="trans-bd-form">
                 <div class="amend-cont-all f-clearfix f-hidden">
                     <!--联系人信息完整可以修改-->
                     <div class="amend-cont cir">
@@ -456,7 +455,7 @@
                 closeBtn: 1, //不显示关闭按钮
                 shift: 2,
                 shadeClose: true, //开启遮罩关闭
-                title: "商品单预览",
+                title: "商品单预览"
             });
         }, 'json');
 
@@ -538,47 +537,32 @@
 
     }
 
+    function  hs(obj){
+        obj.parent().slideUp();
+        obj.parent().siblings("a.lb-tp-btn").find("font").text(obj.text());
+        obj.parent().siblings("a.lb-tp-btn").attr("index","1");
+        obj.parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+        console.log("111");
+    }
 
-    //列表下来框
-
-    $("#list_body").on("click",".cha-show",function(){
-        select($(this));
-    })
-    $("#list_body").on("click",".cho-tag",function(){
-        select($(this));
-        $(this).siblings("ul.all-tp-list").find("li").each(function(){
-            $(this).live("click",function(){
-                $(this).parent().slideUp();
-                $(this).parent().siblings("a.lb-tp-btn").find("font").text($(this).text());
-                $(this).parent().siblings("a.lb-tp-btn").attr("index","1");
-                $(this).parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
-
-            })
-        })
-    })
-    $("#list_body").on('click',".pull-list",function(e){
-        stopPropagation(e);
-        $(this).find(".yj-btn").live("click", function() {
-            $(this).parent().slideUp();
-            $(this).parent().siblings("a.lb-tp-btn").attr("index","1");
-            $(this).parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
-            $(this).parents(".tras-bd-oper").find(".yj").css({"display": "block"});
-            $(this).parents(".tras-bd-oper").find(".pre").css({"display": "none"});
-            $(this).parent().parent().find("input").val(0);
-            $(this).parent().parent().find("input").data("type", 2);
-        });
-        $(this).find(".dj-btn").live("click", function() {
-            $(this).parent().slideUp();
-            $(this).parent().siblings("a.lb-tp-btn").attr("index","1");
-            $(this).parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
-            $(this).parents(".tras-bd-oper").find(".yj").css({"display": "none"});
-            $(this).parents(".tras-bd-oper").find(".pre").css({"display": "block"});
-            $(this).parent().parent().parent().find(".pre input").val('');
-            $(this).parent().parent().parent().find(".pre input").data("type", 1);
-        });
-
-    });
-
+    function  yj(obj){
+        obj.parent().slideUp();
+        obj.parent().siblings("a.lb-tp-btn").attr("index","1");
+        obj.parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+        obj.parents(".tras-bd-oper").find(".yj").css({"display": "block"});
+        obj.parents(".tras-bd-oper").find(".pre").css({"display": "none"});
+        obj.parent().parent().find("input").val(0);
+        obj.parent().parent().find("input").data("type", 2);
+    }
+    function dj(obj){
+        obj.parent().slideUp();
+        obj.parent().siblings("a.lb-tp-btn").attr("index","1");
+        obj.parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+        obj.parents(".tras-bd-oper").find(".yj").css({"display": "none"});
+        obj.parents(".tras-bd-oper").find(".pre").css({"display": "block"});
+        obj.parent().parent().parent().find(".pre input").val('');
+        obj.parent().parent().parent().find(".pre input").data("type", 1);
+    }
 </script>
 
  <? require(ViewDir.'/footer.html'); ?>
