@@ -187,7 +187,7 @@ class quotationModule extends AppModule
      */
     public function delete($id){
         //删除报价pdf文件
-        $path = StaticDir.'png/'.UID.'/'.$id.'.png';
+        $path = './Data/'.UID.'/'.$id.'.jpg';
         if(is_file($path)){
             $rst = unlink($path);
             if(!$rst) return false;

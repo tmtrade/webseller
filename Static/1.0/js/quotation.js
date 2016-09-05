@@ -47,9 +47,8 @@ $(function() {
     });
 
     //选择标签
-    $('.x-label li').live('click', function() {
+    $('.x-label li').on('click', function() {
         var type = $(this).data("type");
-        alert($(this).parent().parent());
         $(this).parent().parent().find(".label-list").val(type);
     });
 });
