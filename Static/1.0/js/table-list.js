@@ -89,7 +89,7 @@ $(".pull-list").live('click',function(e){
 $(document).bind('click',function(){
     $(".all-tp-list").slideUp();
     $(".lb-tp-btn,.all-tp-btn").attr("index","1");
-    $(".all-tp-btn").find("i").css({"transform":"rotate(0deg)"});
+    $(".lb-tp-btn,.all-tp-btn").find("i").css({"transform":"rotate(0deg)"});
 });
 
 

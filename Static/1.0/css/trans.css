@@ -171,3 +171,6 @@ body{
     font-size: 0.28rem;
     margin-top: 0.16rem;
 }
+#newBridge{
+   z-index: 2 !important;
+}
