@@ -329,17 +329,17 @@ a:focus{
 	font-size: 0.2rem;
 }
 .menu-box{
-	width: 2.5rem;
-	height: 3.25rem;
-	border:1px solid #dfdfdf;
-	border-top:none;
-	background: #f4f4f4;
-	border-radius:10px;
-	-webkit-border-radius:10px;
-	position: fixed;
-	right: 0.10rem;
+    width: 2.9rem;
+    height: 2.85rem;
+    border: 1px solid #dfdfdf;
+    border-top: none;
+    background: #f4f4f4;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    position: fixed;
+    right: 0.10rem;
     top: 0.85rem;
-	display: none;
+    display: none;
     z-index: 99;
 }
 .menu-box a{
@@ -349,7 +349,7 @@ a:focus{
 	line-height: 0.64rem;
 	border-top:1px solid #dfdfdf;
 	color: #5e5e5e;
-	text-indent: 0.4rem;
+	text-indent: 0.3rem;
 	margin-left: 0px !important;
     text-align: left;
 }
