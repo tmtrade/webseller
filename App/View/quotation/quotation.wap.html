@@ -64,14 +64,6 @@
     </ul>
 </div>
 </div>
-<!--分享微信弹窗-->
-<div class="wx-tc">
-   <span>
-        <img class="wxt" src="" />
-   </span>
-    <p>分享到微信朋友圈</p>
-</div>
-
    <div class="qu-ban">
        <div class="trans-head">
            <? if($list['avatar_path']): ?>
@@ -169,6 +161,16 @@
         else
             e.cancelBubble = true;
     }
+    function tc(){
+        layer.open({
+            area:["542px","415px"],
+            type: 1,
+            title: false,
+            closeBtn:1,
+            shadeClose:false,
+            content:$(".wx-tc")
+        });
+    }
     //选项卡函数
     $("#share").live("click",function(){
         layer.open({
@@ -181,16 +183,11 @@
 
         });
     });
-    function tc(){
-        layer.open({
-            area:["80%","5.57rem"],
-            type: 1,
-            title: false,
-            closeBtn:1,
-            shadeClose:false,
-            content:$(".wx-tc")
-        });
-    }
+    //分享
+    var share = new SimpleShare({
+        url: location.href,
+        pic: '<?=SELLER_URL.StaticDir?>1.0/images/share.jpg'
+    });
 </script>
 </body>
 </html>

@@ -623,3 +623,10 @@ a:focus{
     height: 3.5rem;
     margin: auto;
 }
+.layui-layer{
+    height: 605px !important;
+}
+.layui-layer-setwin{
+    right: 18px !important;
+    top: -9px !important;
+}
