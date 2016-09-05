@@ -51,6 +51,11 @@ $(function() {
         var type = $(this).data("type");
         $(this).parent().parent().find(".label-list").val(type);
     });
+    //选择标签
+    $('.x-label li').live('click', function() {
+        var type = $(this).data("type");
+        $(this).parent().parent().find(".label-list").val(type);
+    });
 });
 
 //编辑联系人
