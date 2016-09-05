@@ -24,8 +24,11 @@
             <div class="list-mess-top f-clearfix">
                 <div class="mess-top-dq fr">当前共有<label><?=$total?></label>条商品数据
                     <div class="pull-list paging">
-                        <a class="cir all-tp-btn" index="1"><font>每页<span class="now_size">20</span></font><i class="fa fa-chevron-down"></i></a>
+                        <a class="cir all-tp-btn" index="1">每页<font class="now_size"><?=$size?></font><i class="fa fa-chevron-down"></i></a>
                         <ul class="all-tp-list" style="display: none;top:25px !important;">
+                            <li>
+                                20
+                            </li>
                             <li>
                                 40
                             </li>
@@ -143,9 +146,8 @@
         });
         //每页大小改变
         $('.mess-top-dq li').click(function(){
-            var size = $.trim($('.now_size').text());
-            setEvent("选择分页条数","每页显示"+size);
-            buildUrl();
+            var size = $.trim($(this).text());
+            buildUrl({size:size});
         });
         //页码点击事件
         $('.mj-pages a').click(function(){
@@ -156,7 +158,7 @@
                 var page = href.split('=');
                 var index_page = page.length-1;
                 page = page[index_page];
-                buildUrl(page);
+                buildUrl({page:page});
                 return false;
             }
         });
@@ -201,8 +203,9 @@
         return false;
     }
     //url处理跳转
-    function buildUrl(){
-        var page = arguments[0] ? arguments[0] : null;
+    function buildUrl(obj){
+        var page = obj.page;
+        var size = obj.size;
         var myurl = new objURL(location.href);//url处理对象
         //商品名
         var name = $.trim($('.goods_name').val());
@@ -212,14 +215,16 @@
             myurl.remove('name');
         }
         //页码大小
-        var size = $.trim($('.now_size').text());
+        if(size===undefined){
+            size = $.trim($('.now_size').text());
+        }
         if(size==20){
             myurl.remove('size');
         }else{
             myurl.set('size',size);
         }
         //分页
-        if(page===null || page<=1){
+        if(page===undefined || page<=1){
             myurl.remove('page');
         }else{
             myurl.set('page',page);

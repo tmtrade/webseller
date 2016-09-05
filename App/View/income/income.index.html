@@ -96,9 +96,9 @@
         });
         //每页大小改变
         $('.mess-top-dq li').click(function(){
-	    var size = $.trim($('#size_income').text());
+	    var size = $.trim($(this).text());
 	    setEvent("选择分页条数","每页显示"+size);
-            buildUrl();
+            buildUrl({size:size});
         });
         //页码点击事件
         $('.mj-pages a').click(function(){
@@ -109,15 +109,16 @@
                 var page = href.split('=');
                 var index_page = page.length-1;
                 page = page[index_page];
-                buildUrl(page);
+                buildUrl({page:page});
                 return false;
             }
         });
     });
 
     //url处理跳转
-    function buildUrl(){
-        var page = arguments[0] ? arguments[0] : null;
+    function buildUrl(obj){
+        var page = obj.page;
+        var size = obj.size;
         var myurl = new objURL(location.href);//url处理对象
         //时间
         var start = $.trim($('#start_income').text());
@@ -149,14 +150,16 @@
             myurl.set('type',type);
         }
         //页码大小
-        var size = $.trim($('#size_income').text());
+        if(size===undefined){
+            size = $.trim($('#size_income').text());
+        }
         if(size==20){
             myurl.remove('size');
         }else{
             myurl.set('size',size);
         }
         //分页
-        if(page===null || page<=1){
+        if(page===undefined || page<=1){
             myurl.remove('page');
         }else{
             myurl.set('page',page);

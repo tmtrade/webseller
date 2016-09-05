@@ -31,6 +31,7 @@ class QuotationAction extends AppAction{
             $this->set('total',$res['total']);
             $this->set('list',$res['rows']);
             $this->set('name',$params['name']);
+            $this->set('size',$size);
             $this->display("quotation/quotation.list.html");
         }else{
             $this->display();
