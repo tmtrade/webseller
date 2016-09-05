@@ -163,7 +163,7 @@ class QuotationAction extends AppAction{
      * @return string
      */
     private function findImg($id){
-        $file = StaticDir.'png/'.UID.'/'.$id.'.png';
+        $file = WebDir.'/Data/'.UID.'/'.$id.'.png';
         $dir = dirname($file);
         !file_exists($dir) && mkdirs($dir);//创建文件夹
         //得到文件内容
