@@ -186,10 +186,10 @@ class QuotationAction extends AppAction{
         $fp		= fopen($pdffile,"r");
         $size	= filesize($pdffile);
         $name	= iconv('utf-8', 'gbk',$downname);
-        header("Content-type: image/png");
+        header("Content-type: image/jpg");
         header("Accept-Ranges: bytes");
         header("Accept-Length: ".$size);
-        header("Content-Disposition: attachment; filename=".$name.".png"); // 输出文件内容
+        header("Content-Disposition: attachment; filename=".$name.".jpg"); // 输出文件内容
         echo fread($fp,$size);
         fclose($fp);
     }
