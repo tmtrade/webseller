@@ -121,7 +121,11 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     width: 100%;
     margin-top:8px;
     line-height: 20px;
-
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display:-webkit-box;
+    -webkit-line-clamp:6;
+    -webkit-box-orient: vertical;
 }
 .trans-brand-list  div.brand-ms label a{
 
@@ -254,8 +258,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     display: inline-block;
     color: #fff2b1;
     font-size: 22px;
-    margin-right: 10px;
-
+    margin-right: 5px;
 }
 
 .trans-btm{

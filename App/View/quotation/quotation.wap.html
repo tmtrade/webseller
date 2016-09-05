@@ -105,12 +105,15 @@
            <h5>商标分类第<? $str = array_keys($v['class']);echo $str[0]; ?>类 - <?=array_pop($v['class'])?></h5>
            <? endif; ?>
        </div>
-       <div class="trans-tj-pic">
-           <? if($v['label']): ?>
-           <span><?=$label[$v['label']]?></span>
-           <? endif; ?>
-           <img src="<?=$v['img']?>" onerror="this.src='<?=StaticDir?>images/img1.png'">
-       </div>
+       <a href="">
+           <div class="trans-tj-pic">
+               <? if($v['label']): ?>
+               <span><?=$label[$v['label']]?></span>
+               <? endif; ?>
+               <img src="<?=$v['img']?>" onerror="this.src='<?=StaticDir?>images/img1.png'">
+           </div>
+       </a>
+
        <p class="d-pri">售价：<b>35000</b>元</p>
        <p class="des">
            <?=$v['goods']?>

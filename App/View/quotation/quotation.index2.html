@@ -45,9 +45,12 @@
                 <? if($v['label']): ?>
                 <span class="tj-hot"><?=$label[$v['label']]?></span>
                 <? endif; ?>
-                <div class="pic-show">
-                    <img src="<?=$v['img']?>" onerror="this.src='<?=StaticDir?>images/img1.png'">
-                </div>
+                <a href="/">
+                    <div class="pic-show">
+                        <img src="<?=$v['img']?>" onerror="this.src='<?=StaticDir?>images/img1.png'">
+                    </div>
+                </a>
+
                 <div class="brand-ms">
                     <h3><?=$v['trademark']?></h3>
                     <? if(count($v['class'])>1): ?>
