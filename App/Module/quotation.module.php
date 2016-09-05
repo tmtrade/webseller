@@ -69,6 +69,7 @@ class quotationModule extends AppModule
                 'qq'            => $data['qq'],
                 'style'         => $data['style'],
                 'avatar'        => $data['avatar'],
+                'isLink'        => $data['isLink'],
             );
             $quotationId = $this->addQuotation($tmp);
             if(!$quotationId) return array('code'=>1,'msg'=>'报价单添加失败');
@@ -82,6 +83,7 @@ class quotationModule extends AppModule
                 'qq'            => $data['qq'],
                 'style'         => $data['style'],
                 'avatar'        => $data['avatar'],
+                'isLink'        => $data['isLink'],
             );
             $this->load('quotation')->editQuotation($tmp, $quotationId);
             $this->load('quotation')->delQuotationItems($quotationId);
@@ -332,7 +334,7 @@ class quotationModule extends AppModule
     public function getDetail($id,$uid){
         $r = array();
         $r['eq']['id'] = $id;
-        $r['col'] = array('desc','phone','qq','style','avatar');
+        $r['col'] = array('desc','phone','qq','style','avatar','isLink');
         $rst = $this->import('quotation')->find($r);
         if($rst){
             //得到头像地址

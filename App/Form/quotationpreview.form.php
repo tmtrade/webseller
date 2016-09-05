@@ -29,6 +29,7 @@ class QuotationPreviewForm extends AppForm
         'avatar'        => array( 'field' => 'avatar', 'method' => 'fieldInt', ),
         'style'         => array( 'field' => 'style', 'method' => 'fieldInt', ),
         'is_add'        => array( 'field' => 'is_add', 'method' => 'fieldInt', ),
+        'isLink'        => array( 'field' => 'isLink', 'method' => 'fieldInt', ),
         
     );
 
