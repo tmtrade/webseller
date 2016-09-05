@@ -11,6 +11,7 @@
 class quotationModule extends AppModule
 {
     private $class = null;
+    private $isLink = 2;
     /**
      * 引用业务模型
      */
@@ -339,6 +340,8 @@ class quotationModule extends AppModule
         if($rst){
             //得到头像地址
             $rst['avatar_path'] = $this->getAvatar($rst['avatar'],$uid);
+            //是否连接到一只蝉详情
+            $this->isLink = $rst['isLink'];
             //得到报价单详细数据
             $rst['data'] = $this->handleData($id,$uid);
         }
@@ -461,7 +464,7 @@ class quotationModule extends AppModule
     private function getTm($number){
         $r = array();
         $r['eq']['id'] = $number;
-        $r['col'] = array('goods','apply_date','class','trademark');
+        $r['col'] = array('goods','apply_date','class','trademark','auto');
         $r['limit'] = 50;//多类问题
         $rst = $this->import('tm')->find($r);
         if(!$rst) return array();
@@ -473,6 +476,12 @@ class quotationModule extends AppModule
             $temp[$v] = $className[$v];
         }
         $info['class'] = $temp;
+        //得到一只蝉详情地址
+        $info['view'] = ' href="javascript:;" ';
+        if($this->isLink==1){
+            $_class = array_shift($class);
+            $info['view'] = ' href="'.SITE_URL.'d-'.$info['auto'].'-'.$_class.'.html'.'" target="_blank"';
+        }
         return $info;
     }
 

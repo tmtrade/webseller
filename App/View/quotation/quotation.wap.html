@@ -98,7 +98,7 @@
            <h5>商标分类第<? $str = array_keys($v['class']);echo $str[0]; ?>类 - <?=array_pop($v['class'])?></h5>
            <? endif; ?>
        </div>
-       <a href="">
+       <a <?=$v['view']?>>
            <div class="trans-tj-pic">
                <? if($v['label']): ?>
                <span><?=$label[$v['label']]?></span>

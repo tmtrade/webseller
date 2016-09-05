@@ -37,7 +37,7 @@
                 <? if($v['label']): ?>
                 <span class="tj-hot"><?=$label[$v['label']]?></span>
                 <? endif; ?>
-                <a href="/">
+                <a <?=$v['view']?>>
                     <div class="pic-show">
 
                         <img src="<?=$v['img']?>" onerror="this.src='<?=StaticDir?>images/img1.png'">

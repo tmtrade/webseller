@@ -18,7 +18,7 @@ define('SITE_URL', 'http://t.chofn.net/');
 //蝉窝
 define('MY_URL', 'http://my.test.chofn.net/');
 //蝉检测
-define('CHECK_URL', 'http://jingling.yizhchan.com/');
+define('CHECK_URL', 'http://ce.chanshu.im/');
 define('CRM_URL', 'http://demo.chofn.com:88/');
 define('CRM_EXPORT','http://crmwin.chofn.net/Api/jsontoexcel.php');
 ?>
