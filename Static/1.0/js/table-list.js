@@ -82,7 +82,7 @@ function stopPropagation(e) {
         e.cancelBubble = true;
 }
 //下拉列表点空白的时候消失
-$(".pull-list").bind('click',function(e){
+$(".pull-list").live('click',function(e){
     stopPropagation(e);
 });
 

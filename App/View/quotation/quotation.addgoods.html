@@ -536,13 +536,13 @@
 
 
     }
+    //下拉列表点空白的时候消失
 
     function  hs(obj){
         obj.parent().slideUp();
         obj.parent().siblings("a.lb-tp-btn").find("font").text(obj.text());
         obj.parent().siblings("a.lb-tp-btn").attr("index","1");
         obj.parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
-        console.log("111");
     }
 
     function  yj(obj){
@@ -563,6 +563,7 @@
         obj.parent().parent().parent().find(".pre input").val('');
         obj.parent().parent().parent().find(".pre input").data("type", 1);
     }
+
 </script>
 
  <? require(ViewDir.'/footer.html'); ?>

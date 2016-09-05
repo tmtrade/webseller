@@ -1,5 +1,4 @@
 <? require(ViewDir.'/header.html'); ?>
-<script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
 <link rel="stylesheet" href="<?=StaticDir?>/1.0/css/transfer.css?v=<?=$static_version?>"> 
 <style type="text/css">
 	a{color:#000;}
@@ -32,16 +31,33 @@
                 <a href="/quotation/getImg/?id=<?=$id?>" target="_blank"><i><img src="<?=StaticDir?>/1.0/images/dc-ico.png"></i>导出图片</a>
                 <em></em>
                  <a href="javascript:;" class="to_sina">微博</a>
-                <a href="javascript:;" class="to_weixn">朋友圈</a>
+                <a href="javascript:share.weixin(function(qr){$('.wxt').attr('src',qr);tc();});" class="to_weixn">朋友圈</a>
             </p>
         </div>
     </div>
 </div>
+<!--分享微信弹窗-->
+<div class="wx-tc">
+   <span>
+        <img class="wxt" src="" />
+   </span>
+    <p>分享到微信朋友圈</p>
+</div>
 <!--添加复制功能的插件-->
-<script type="text/javascript" src="<?=StaticDir?>/1.0/js/table-list.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>/1.0/js/copy/ZeroClipboard.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>/1.0/js/simple-share.min.js?v=<?=$static_version?>"></script>
 <script type="text/javascript">
+    //分享事件-朋友圈
+    function tc(){
+        layer.open({
+            area:["542px","415px"],
+            type: 1,
+            title: false,
+            closeBtn:1,
+            shadeClose:false,
+            content:$(".wx-tc")
+        });
+    }
      $(function(){
         var url =$("#oURL").val();
          

@@ -53,7 +53,7 @@
                             <a href="<?=$v['view_url']?>" target="_blank" class="to_view"><i><img src="<?=StaticDir?>/1.0/images/list-tr-yl.png"></i>预览</a>
                             <a href="javascript:;" class="to_copy" id="copy<?=$k?>">拷贝网址</a>
                             <a href="javascript:;" class="to_sina">微博</a>
-                            <a href="javascript:;" class="to_weixn">朋友圈</a>
+                            <a href="javascript:share.weixin(function(qr){$('.wxt').attr('src',qr);tc();});" class="to_weixn">朋友圈</a>
                             <em></em>
                             <a href="/quotation/editgoods/?id=<?=$v['id']?>">编辑</a>
                             <a href="javascript:;" class="remove">删除</a>
@@ -78,11 +78,29 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="<?=StaticDir?>/1.0/js/table-list.js?v=<?=$static_version?>"></script>
+<!--分享微信弹窗-->
+<div class="wx-tc">
+   <span>
+        <img class="wxt" src="" />
+   </span>
+    <p>分享到微信朋友圈</p>
+</div>
 <script type="text/javascript" src="<?=StaticDir?>/1.0/js/simple-share.min.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>/1.0/js/copy/ZeroClipboard.js?v=<?=$static_version?>"></script>
     <script type="text/javascript">
-    $(function(){
+        //分享事件-朋友圈
+        function tc(){
+            layer.open({
+                area:["542px","415px"],
+                type: 1,
+                title: false,
+                closeBtn:1,
+                shadeClose:false,
+                content:$(".wx-tc")
+            });
+        }
+
+        $(function(){
         var title = document.title;
         var content = '';
         var pic = '<?=SELLER_URL.StaticDir?>1.0/images/share.jpg';
@@ -220,4 +238,4 @@
         }
     }
 </script>
-    <!--<? require(ViewDir.'/footer.html'); ?>-->
+    <? require(ViewDir.'/footer.html'); ?>
