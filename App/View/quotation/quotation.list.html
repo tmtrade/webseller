@@ -89,6 +89,11 @@
 
 <script type="text/javascript" src="<?=StaticDir?>/1.0/js/copy/ZeroClipboard.js?v=<?=$static_version?>"></script>
     <script type="text/javascript">
+        //分享
+        var share = new SimpleShare({
+            url: location.href,
+            pic: '<?=SELLER_URL.StaticDir?>1.0/images/share.jpg'
+        });
         //分享事件-朋友圈
         function tc(){
             layer.open({

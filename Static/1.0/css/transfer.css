@@ -1003,7 +1003,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     width: 100%;
     height: auto;
 }
-.layui-layer-setwin{
+.layui-layer-setwin .layui-layer-setwin{
     right: 35px !important;
     top: 6px !important;
 }
