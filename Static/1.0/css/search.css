@@ -1,4 +1,5 @@
 body,html{font-family: "微软雅黑";}
+
 .w1300{
     width: 1300px;
     margin: auto;
@@ -46,16 +47,20 @@ body,html{font-family: "微软雅黑";}
     padding-left: 10px;
 
 }
-.sea-head a:hover{
-    text-decoration:none;
-    border-bottom: 1px solid #ffa7a7;
-    padding-bottom: 4px;
-}
 .sea-head .fl{
     border-left: 1px solid #e5e5e5;
 }
 .sea-head .fl a{
     border-right: 1px solid #e5e5e5;
+}
+.sea-head .fl a  label{
+    display: inline-block;
+
+}
+.sea-head .fl a:hover label{
+    text-decoration:none;
+    border-bottom: 2px solid #ffa7a7;
+    padding-bottom: 4px;
 }
 .sea-head .fr img{
    vertical-align: middle;
@@ -86,7 +91,7 @@ body,html{font-family: "微软雅黑";}
 .sear-main{
     width: 100%;
     overflow: hidden;
-    background: url("../images/search-bg.png") repeat-x;
+    background: url("../images/search-ban-bg.png") repeat-x;
     min-height: 1055px;
     position: relative;
 }
@@ -152,6 +157,10 @@ body,html{font-family: "微软雅黑";}
     margin: 40px auto 0px;
     font-size: 25px;
     font-family: "微软雅黑";
+
+}
+.imm-expe:hover{
+    text-decoration: none !important;
 }
 .search-btm{
     text-align: center;
@@ -159,7 +168,7 @@ body,html{font-family: "微软雅黑";}
 }
 .search-btm label{
     display: inline-block;
-    color: #cacaca;
+    color: #666666;
     margin-top: 35px;
 }
 .search-btm p{
@@ -283,7 +292,7 @@ body,html{font-family: "微软雅黑";}
     height:789px;
     background: url("../images/gen-pic3.png") no-repeat top center;
     position: absolute;
-    right: 5%;
+    right: 8%;
     bottom:0px;
 }
 .gen-ban-des3{
@@ -384,7 +393,7 @@ body,html{font-family: "微软雅黑";}
     height: 650px;
     background: url("../images/s-pic2.png") no-repeat center top;
     position: absolute;
-    right: 0px;
+    right:-145px;
     top:-85px;
     z-index:9;
 }

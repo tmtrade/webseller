@@ -11,6 +11,45 @@
     <script type="text/javascript" src="../../../Static/1.0/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
 </head>
 <body>
+<div class="sea-head">
+    <div class="w1300">
+        <div class="fl">
+            <a class="s-lg" href=""><img src="../../../Static/1.0/images/sell-lg-nw.png"></a>
+            <a href="">
+                <label>
+                    <i class="ico s-tp1"></i>
+                    商标出售
+                </label>
+
+            </a>
+            <a href="">
+                <label>
+                    <i class="ico s-tp2"></i>
+                    数据共享
+                </label>
+
+            </a>
+            <a href="">
+                <label>
+                    <i class="ico s-tp3"></i>
+                    商标报价单工具
+                </label>
+
+            </a>
+            <a href="">
+                <label>
+                    <i class="ico s-tp4"></i>
+                    商标安全检测工具
+                </label>
+
+            </a>
+        </div>
+        <div class="fr">
+            <a>去一只蝉看看</a>
+            <a><img src="../../../Static/1.0/images/s-tp-tel.png"></a>
+        </div>
+    </div>
+</div>
    <div class="s-trade1 com-pos page_1">
        <div class="w1300 f-clearfix">
            <div class="s-des1 com-des">
@@ -49,11 +88,17 @@
                    使得用户随时可查看，无需特意开启电脑和办公软件<br/>
                    不受时间和设备限制<br/>
                </p>
-               <a href="" class="yl-btn   timer5 infinite"><i><img src="../../../Static/1.0/images/pre-ico.png"></i>去一只蝉看看</a>
+               <a href="" class="yl-btn pulse animated infinite timer5"><i><img src="../../../Static/1.0/images/pre-ico.png"></i>去一只蝉看看</a>
            </div>
        </div>
        <div class="s-pic3  timer3"></div>
    </div>
+<div class="search-btm">
+    <label>ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016</label>
+    <p>
+        <a href="">一只蝉</a> | <a href="">出售者平台  </a> |<a href="">商标报价单工具  </a>| <a href="">商标安全检测工具</a>
+    </p>
+</div>
    <script type="text/javascript" src="../../../Static/1.0/js/jquery.mousewheel.js"></script>
    <script type="text/javascript">
        var mouseTodo = false;
@@ -96,15 +141,15 @@
        })
        $(document).on("scroll", function(e) {
            var scrollTop = $(window).scrollTop();
-           if (scrollTop< $(".page_2").offset().top){
-               $(".s-des2 h3").removeClass("bounceInLeft");
-               $(".s-des2 h6").removeClass("bounceInRight");
-               $(".s-pic2 span").removeClass("flipInY");
+           if (scrollTop< $(".page_2").offset().top-150){
+//               $(".s-des2 h3").removeClass("bounceInLeft");
+//               $(".s-des2 h6").removeClass("bounceInRight");
+//               $(".s-pic2 span").removeClass("flipInY");
                $(".s-pic1").addClass("bounceInRight");
-               $(".s-pic3").removeClass("fadeInRightBig");
-               $(".s-trade3 h3,.s-des3 p").removeClass("bounceInLeft");
+//               $(".s-pic3").removeClass("fadeInRightBig");
+//               $(".s-trade3 h3,.s-des3 p").removeClass("bounceInLeft");
            }
-           if (scrollTop<$(".page_3").offset().top && scrollTop>= $(".page_2").offset().top-2) {
+           if (scrollTop<$(".page_3").offset().top+200 && scrollTop>= $(".page_2").offset().top-200) {
                $(".s-des2,.s-pic2").css({"opacity":"1"});
                $(".s-des2 h3").addClass("bounceInLeft");
                $(".s-des2 h6").addClass("bounceInRight");
@@ -112,10 +157,10 @@
                $(".s-pic1").removeClass("bounceInRight");
            }
 
-           if (scrollTop >= $(".page_3").offset().top - 100) {
+           if (scrollTop >= $(".page_3").offset().top - 200) {
                $(".s-des3,.s-pic3").css({"opacity":"1"})
                $(".s-pic3").addClass("fadeInRightBig");
-               $(".s-trade3 h3,.s-des3 p").addClass("bounceInLeft");
+               $(".s-trade3 h3,.s-des3 p").addClass("fadeInLeft");
            }
        });
    </script>

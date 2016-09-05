@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="<?=StaticDir?>1.0/css/common.css">
     <link rel="stylesheet" href="<?=StaticDir?>1.0/css/trans.css">
     <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
+    <script type="text/javascript" src="<?=StaticDir?>1.0/js/layer/layer.js?v=<?=$static_version?>"></script>
     <script type="text/javascript" src="<?=StaticDir?>1.0/js/data-total.js?v=<?=$static_version?>"></script>
     <script type="text/javascript" src="http://data.chanshu.wang/data.js?v=<?=$static_version?>"> </script>
     <script type="text/javascript">
@@ -33,6 +34,43 @@
     </script>
 </head>
 <body>
+<header class="list-head">
+    <div class="main">
+        <a class="fl" module="顶部6" addmsg="返回" href="javascript:;" onclick="if(document.referrer){history.go(-1);}else{location.href='/'};"><i></i><?=$page_title?></a>
+        <div class="fr">
+            <a id="share"><img src="<?=StaticDir?>1.0/images/arrw-ico1.png"></a>
+            <a id="menu" module="顶部5" addmsg="菜单"><img src="<?=StaticDir?>1.0/images/arrw-ico2.png"></a>
+            <!--点击菜单出现导航弹窗，默认影藏-->
+            <div class="menu-box" id="menu-box">
+                <a href="/" module="菜单1" addmsg="首页">一只蝉首页</a>
+                <a href="/sell" module="菜单2" addmsg="我要出售">我要出售</a>
+                <a href="/buy" module="菜单3" addmsg="购买登记">购买登记</a>
+                <a href="<?=UC_URL?>" module="菜单4" addmsg="我的蝉窝">我的蝉窝</a>
+                <a href="<?=SELLER_URL?>" module="菜单5" addmsg="出售者平台">出售者平台</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!--分享弹窗-->
+<div class="yzc-share">
+    <div class="yzc-share-bg"></div>
+    <h3>我要把网页分享到</h3>
+    <ul class="yzc-share-main">
+        <li><a title="分享到QQ好友" href="javascript:share.qzone();setEvent('顶部7','分享QQ空间');" class="btn_qzone layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/qqkj.png"><br/>QQ空间</span></a></li>
+        <li><a title="分享到新浪微博" href="javascript:share.weibo();setEvent('顶部7','分享微博');" class="btn_sina layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/wb.png"><br/>微博</span></a></li>
+        <li><a id="aaa" title="分享到微信" href="javascript:share.weixin(function(qr){$('.wxt').attr('src',qr);tc();});setEvent('顶部7','分享微信');" class='btn_weixin layui-layer-close'><span><img src="<?=StaticDir?>1.0/images/wx.png"><br/>微信</span></a></li>
+    </ul>
+</div>
+</div>
+<!--分享微信弹窗-->
+<div class="wx-tc">
+   <span>
+        <img class="wxt" src="" />
+   </span>
+    <p>分享到微信朋友圈</p>
+</div>
+
    <div class="qu-ban">
        <div class="trans-head">
            <? if($list['avatar']): ?>
@@ -73,6 +111,7 @@
            <? endif; ?>
            <img src="<?=$v['img']?>" onerror="this.src='<?=StaticDir?>images/img1.png'">
        </div>
+       <p class="d-pri">售价：<b>35000</b>元</p>
        <p class="des">
            <?=$v['goods']?>
        </p>
@@ -81,5 +120,18 @@
            <span>到底了噢</span>
        </div>
    </div>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/simple-share.min.js?v=<?=$static_version?>"></script>
+<script type="text/javascript">
+    function tc(){
+        layer.open({
+            area:["80%","5.57rem"],
+            type: 1,
+            title: false,
+            closeBtn:1,
+            shadeClose:false,
+            content:$(".wx-tc")
+        });
+    }
+</script>
 </body>
 </html>

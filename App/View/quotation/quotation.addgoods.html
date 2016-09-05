@@ -150,20 +150,6 @@
             $(this).parents("tr").remove();
         })
 
-        //通过点击复选框改变议价状态
-        $(".yj-btn").live("click", function() {
-            $(this).parents(".tras-bd-oper").find(".yj").css({"display": "block"});
-            $(this).parents(".tras-bd-oper").find(".pre").css({"display": "none"});
-            $(this).parent().parent().find("input").val(0);
-            $(this).parent().parent().find("input").data("type", 2);
-        });
-        $(".dj-btn").live("click", function() {
-            $(this).parents(".tras-bd-oper").find(".yj").css({"display": "none"});
-            $(this).parents(".tras-bd-oper").find(".pre").css({"display": "block"});
-            $(this).parent().parent().parent().find(".pre input").val('');
-            $(this).parent().parent().parent().find(".pre input").data("type", 1);
-        });
-
         //通过点击向上向下操作
         $(".z-down").live("click", function() {
             var n = $(this).parents("tr").next();
@@ -531,34 +517,51 @@
 
     }
 
-    $("#list_body").on("click", ".all-tp-btn", function() {
-        var dinx = $(this).attr("index");
-        if (dinx == 1) {
-            console.log("111")
-            $(this).siblings("ul.all-tp-list").show();
-            $(this).attr("index", "2");
-            $(this).parent(".pull-list").css({"zIndex": "9999"})
-            $(this).find("i").css({"transform": "rotate(180deg)"})
-        }
-        else if (dinx == 2) {
-            console.log(222);
-            $(this).siblings("ul.all-tp-list").hide();
-            $(this).attr("index", "1");
-            $(this).find("i").css({"transform": "rotate(0deg)"})
-            $(this).parent(".pull-list").css({"zIndex": "9"})
-        }
-        $(this).siblings("ul.all-tp-list").find("li").each(function() {
-            $(this).live("click", function() {
+
+    //列表下来框
+
+    $("#list_body").on("click",".cha-show",function(){
+        select($(this));
+    })
+    $("#list_body").on("click",".cho-tag",function(){
+        select($(this));
+        $(this).siblings("ul.all-tp-list").find("li").each(function(){
+            $(this).live("click",function(){
                 $(this).parent().slideUp();
-                $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text());
-                $(this).parent().siblings("a.all-tp-btn").attr("index", "1");
-                $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform": "rotate(0deg)"})
+                $(this).parent().siblings("a.lb-tp-btn").find("font").text($(this).text());
+                $(this).parent().siblings("a.lb-tp-btn").attr("index","1");
+                $(this).parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
 
             })
         })
     })
+    $("#list_body").on('click',".pull-list",function(e){
+        stopPropagation(e);
+        $(this).find(".yj-btn").live("click", function() {
+            $(this).parent().slideUp();
+            $(this).parent().siblings("a.lb-tp-btn").attr("index","1");
+            $(this).parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+            $(this).parents(".tras-bd-oper").find(".yj").css({"display": "block"});
+            $(this).parents(".tras-bd-oper").find(".pre").css({"display": "none"});
+            $(this).parent().parent().find("input").val(0);
+            $(this).parent().parent().find("input").data("type", 2);
+        });
+        $(this).find(".dj-btn").live("click", function() {
+            $(this).parent().slideUp();
+            $(this).parent().siblings("a.lb-tp-btn").attr("index","1");
+            $(this).parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+            $(this).parents(".tras-bd-oper").find(".yj").css({"display": "none"});
+            $(this).parents(".tras-bd-oper").find(".pre").css({"display": "block"});
+            $(this).parent().parent().parent().find(".pre input").val('');
+            $(this).parent().parent().parent().find(".pre input").data("type", 1);
+        });
+
+    });
 
 </script>
 
 
-<? require(ViewDir.'/footer.html'); ?>
+<<<<<<< .mine
+ <? require(ViewDir.'/footer.html'); ?>||||||| .r12167
+    <!--<? require(ViewDir.'/footer.html'); ?>-->=======
+<? require(ViewDir.'/footer.html'); ?>>>>>>>> .r12265

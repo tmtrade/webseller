@@ -85,13 +85,27 @@
     <div class="yzc-share-bg"></div>
     <h3>我要把网页分享到</h3>
     <ul class="yzc-share-main">
-        <li><a title="分享到QQ空间" href="javascript:share.qzone();" class="btn_qzone layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/qqkj.png"><br/>QQ空间</span></a></li>
-        <li><a title="分享到新浪微博" href="javascript:share.weibo();" class="btn_sina layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/wb.png"><br/>微博</span></a></li>
+        <li><a title="分享到QQ空间" href="javascript:share.qzone(function(qr){$('.wxt').attr('src',qr);tc();});" class="btn_qzone layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/qqkj.png"><br/>QQ空间</span></a></li>
+        <li><a title="分享到新浪微博" href="javascript:share.weibo(function(qr){$('.wxt').attr('src',qr);tc();});" class="btn_sina layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/wb.png"><br/>微博</span></a></li>
         <li><a id="aaa" title="分享到微信" href="javascript:share.weixin(function(qr){$('.wxt').attr('src',qr);tc();});" class='btn_weixin layui-layer-close'><span><img src="<?=StaticDir?>1.0/images/wx.png"><br/>微信</span></a></li>
     </ul>
 </div>
 
 <!--分享微信弹窗-->
+<div class="wx-tc">
+   <span>
+        <img class="wxt" src="" />
+   </span>
+    <p>分享到微信朋友圈</p>
+</div>
+<!--分享微博弹窗-->
+<div class="wx-tc">
+   <span>
+        <img class="wxt" src="" />
+   </span>
+    <p>分享到微信朋友圈</p>
+</div>
+<!--分享朋友圈弹窗-->
 <div class="wx-tc">
    <span>
         <img class="wxt" src="" />

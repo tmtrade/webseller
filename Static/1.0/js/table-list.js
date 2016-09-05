@@ -46,88 +46,41 @@ $("#yzc-port").hover(function(){
 },function(){
     $(".yzc-entr-list").fadeOut("2000");
 })
+
 function  select(cbtn){
-    cbtn.attr("index","1");
-    var dinx=cbtn.attr("index");
-    console.log(dinx)
-    if(dinx==1){
-        console.log("5555")
-        $(this).siblings("ul").slideDown();
-        $(this).attr("index","2");
-        $(this).parent(".pull-list").css({"zIndex":"9999"})
-        $(this).find("i").css({"transform":"rotate(180deg)"})
-    }
-    else if(dinx==2){
-        $(this).siblings("ul.all-tp-list").slideUp();
-        $(this).attr("index","1");
-        $(this).find("i").css({"transform":"rotate(0deg)"})
-        $(this).parent(".pull-list").css({"zIndex":"9"})
-    }
-    $(this).siblings("ul.all-tp-list").find("li").each(function(){
-        $(this).live("click",function(){
-            $(this).parent().slideUp();
-            $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text());
-            $(this).parent().siblings("a.all-tp-btn").attr("index","1");
-            $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform":"rotate(0deg)"})
-
-        })
-    })
+        var dinx=cbtn.attr("index");
+        if(dinx==1){
+            cbtn.siblings("ul").slideDown();
+            cbtn.attr("index","2");
+            cbtn.parent(".pull-list").css({"zIndex":"9999"})
+            cbtn.find("i").css({"transform":"rotate(180deg)"})
+        }
+        else if(dinx==2){
+            cbtn.siblings("ul.all-tp-list").slideUp();
+            cbtn.attr("index","1");
+            cbtn.find("i").css({"transform":"rotate(0deg)"})
+            cbtn.parent(".pull-list").css({"zIndex":"9"})
+        }
 }
-//function  select(cbtn){
-//        cbtn.attr("index","1");
-//        var dinx=cbtn.attr("index");
-//        if(dinx==1){
-//            console.log("5555")
-//            cbtn.siblings("ul").slideDown();
-//            cbtn.attr("index","2");
-//            cbtn.parent(".pull-list").css({"zIndex":"9999"})
-//            cbtn.find("i").css({"transform":"rotate(180deg)"})
-//        }
-//        else if(dinx==2){
-//            cbtn.siblings("ul.all-tp-list").slideUp();
-//            cbtn.attr("index","1");
-//            cbtn.find("i").css({"transform":"rotate(0deg)"})
-//            cbtn.parent(".pull-list").css({"zIndex":"9"})
-//        }
-//    cbtn.siblings("ul.all-tp-list").find("li").each(function(){
-//        cbtn.live("click",function(){
-//            cbtn.parent().slideUp();
-//                $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text());
-//                $(this).parent().siblings("a.all-tp-btn").attr("index","1");
-//                $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform":"rotate(0deg)"})
-//
-//            })
-//        })
-//}
-//var cbtn=$(".all-tp-btn");
-//cbtn.attr("index","1");
-//$(".all-tp-btn").on("click",function(){
-//        var dinx=cbtn.attr("index");
-//         console.log(dinx)
-//        if(dinx==1){
-//            console.log("5555")
-//            $(this).siblings("ul").slideDown();
-//            $(this).attr("index","2");
-//            $(this).parent(".pull-list").css({"zIndex":"9999"})
-//            $(this).find("i").css({"transform":"rotate(180deg)"})
-//        }
-//        else if(dinx==2){
-//            $(this).siblings("ul.all-tp-list").slideUp();
-//            $(this).attr("index","1");
-//            $(this).find("i").css({"transform":"rotate(0deg)"})
-//            $(this).parent(".pull-list").css({"zIndex":"9"})
-//        }
-//        $(this).siblings("ul.all-tp-list").find("li").each(function(){
-//            $(this).live("click",function(){
-//                $(this).parent().slideUp();
-//                $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text());
-//                $(this).parent().siblings("a.all-tp-btn").attr("index","1");
-//                $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform":"rotate(0deg)"})
-//
-//            })
-//        })
-//    })
+$(".all-tp-btn").on("click",function(){
+    select($(this));
+    $(this).siblings("ul.all-tp-list").find("li").each(function(){
+            $(this).live("click",function(){
+                $(this).parent().slideUp();
+                $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text());
+                $(this).parent().siblings("a.all-tp-btn").attr("index","1");
+                $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform":"rotate(0deg)"})
 
+            })
+        })
+})
+
+function stopPropagation(e) {
+    if (e.stopPropagation)
+        e.stopPropagation();
+    else
+        e.cancelBubble = true;
+}
 //下拉列表点空白的时候消失
 $(".pull-list").bind('click',function(e){
     stopPropagation(e);
@@ -135,15 +88,10 @@ $(".pull-list").bind('click',function(e){
 
 $(document).bind('click',function(){
     $(".all-tp-list").slideUp();
-    $(".all-tp-btn").attr("index","1");
+    $(".lb-tp-btn,.all-tp-btn").attr("index","1");
     $(".all-tp-btn").find("i").css({"transform":"rotate(0deg)"});
 });
-function stopPropagation(e) {
-    if (e.stopPropagation)
-        e.stopPropagation();
-    else
-        e.cancelBubble = true;
-}
+
 
 //table偶数行变色
 function cg_tbcolor(){

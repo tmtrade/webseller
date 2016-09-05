@@ -43,12 +43,12 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     overflow: hidden;
 }
 .trans-brand-list{
-    width: 980px;
+    width: 1040px;
     margin: auto;
     /*overflow: hidden;*/
 }
 .trans-brand-list ul{
-    margin-left: -13px;
+    margin-left: -46px;
 }
 
 .trans-brand-list ul li{
@@ -59,7 +59,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     font-size: 13px;
     float: left;
     border: 2px solid #dadada;
-    margin-left: 13px;
+    margin-left: 46px;
     position: relative;
     margin-top: 30px;
     z-index:9;

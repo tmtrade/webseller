@@ -445,6 +445,11 @@
     display: block;
     position: relative;
 }
+.pull-list  a.lb-tp-btn{
+    display: block;
+    position: relative;
+    cursor: pointer;
+}
 .pull-list a.all-tp-btn i{
     color:#b0b0b0;
     font-size: 12px;
@@ -454,7 +459,15 @@
     text-indent: 0px;
     transition:all 0.4s;
 }
-
+.pull-list a.lb-tp-btn i{
+    color:#b0b0b0;
+    font-size: 12px;
+    position: absolute;
+    right:10px;
+    top:10px;
+    text-indent: 0px;
+    transition:all 0.4s;
+}
 .pull-list  a.all-tp-btn:hover{
     cursor: pointer;
 }
