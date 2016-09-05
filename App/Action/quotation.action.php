@@ -165,7 +165,7 @@ class QuotationAction extends AppAction{
     private function findImg($id){
         $file = WebDir.'/Data/'.UID.'/'.$id.'.png';
         $dir = dirname($file);
-        !file_exists($dir) && mkdirs($dir);//创建文件夹
+        !file_exists($dir) && mkdirs($dir,0777);//创建文件夹
         //得到文件内容
         if(!is_file($file)){
 //            $contents 	= file_get_contents(SITE_URL.'quotation/?id='.$id);
