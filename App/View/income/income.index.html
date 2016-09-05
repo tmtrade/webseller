@@ -117,6 +117,7 @@
 
     //url处理跳转
     function buildUrl(obj){
+        if(typeof obj == 'undefined') obj = {};
         var page = obj.page;
         var size = obj.size;
         var myurl = new objURL(location.href);//url处理对象
