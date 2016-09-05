@@ -37,10 +37,10 @@
 <header class="list-head">
     <div class="main">
         <!--<a class="fl" module="顶部6" addmsg="返回" href="javascript:;" onclick="if(document.referrer){history.go(-1);}else{location.href='/'};"><i></i><?=$page_title?></a>-->
-        <a class="wap-head fl"><img src="<?=StaticDir?>1.0/images/wap-lg.png"></a>
+        <a class="wap-head fl" href="<?=SITE_URL?>"><img src="<?=StaticDir?>1.0/images/wap-lg.png"></a>
         <div class="fr">
             <a id="share"><img src="<?=StaticDir?>1.0/images/arrw-ico1.png"></a>
-            <a id="menu" module="顶部5" addmsg="菜单"><img src="<?=StaticDir?>1.0/images/arrw-ico2.png"></a>
+            <a id="menu"><img src="<?=StaticDir?>1.0/images/arrw-ico2.png"></a>
         </div>
     </div>
 </header>
@@ -50,9 +50,9 @@
     <div class="yzc-share-bg"></div>
     <h3>我要把网页分享到</h3>
     <ul class="yzc-share-main">
-        <li><a title="分享到QQ好友" href="javascript:share.qzone();setEvent('顶部7','分享QQ空间');" class="btn_qzone layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/qqkj.png"><br/>QQ空间</span></a></li>
-        <li><a title="分享到新浪微博" href="javascript:share.weibo();setEvent('顶部7','分享微博');" class="btn_sina layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/wb.png"><br/>微博</span></a></li>
-        <li><a id="aaa" title="分享到微信" href="javascript:share.weixin(function(qr){$('.wxt').attr('src',qr);tc();});setEvent('顶部7','分享微信');" class='btn_weixin layui-layer-close'><span><img src="<?=StaticDir?>1.0/images/wx.png"><br/>微信</span></a></li>
+        <li><a title="分享到QQ好友" href="javascript:share.qzone();" class="btn_qzone layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/qqkj.png"><br/>QQ空间</span></a></li>
+        <li><a title="分享到新浪微博" href="javascript:share.weibo();" class="btn_sina layui-layer-close"><span><img src="<?=StaticDir?>1.0/images/wb.png"><br/>微博</span></a></li>
+        <li><a id="aaa" title="分享到微信" href="javascript:share.weixin(function(qr){$('.wxt').attr('src',qr);tc();})" class='btn_weixin layui-layer-close'><span><img src="<?=StaticDir?>1.0/images/wx.png"><br/>微信</span></a></li>
     </ul>
 </div>
 </div>
@@ -66,19 +66,19 @@
 
    <div class="qu-ban">
        <div class="trans-head">
-           <? if($list['avatar']): ?>
+           <? if($list['avatar_path']): ?>
                 <span>
-                      <img src="<?=$list['avatar']?>">
+                      <img src="<?=$list['avatar_path']?>">
                 </span>
            <? endif; ?>
        </div>
        <h4>商品单<br/><label>Commodity list</label></h4>
        <h3><?=$list['desc']?></h3>
        <p>
-           <a href="tel:18618427998">
+           <a href="tel:<?=$list['phone']?>">
              <img src="<?=StaticDir?>1.0/images/trans-tel.png"><?=$list['phone']?>
            </a>
-           <a href="tel:18618427998">
+           <a href="javascript:;">
                <img src="<?=StaticDir?>1.0/images/trans-qq.png"><?=$list['qq']?>
            </a>
        </p>
@@ -107,7 +107,7 @@
            </div>
        </a>
 
-       <p class="d-pri">售价：<b>35000</b>元</p>
+       <p class="d-pri">售价：<b><b><?=$v['price']?:'议价'?></b></b><? if($v['price']): ?>元<? endif; ?></p>
        <p class="des">
            <?=$v['goods']?>
        </p>
