@@ -480,7 +480,12 @@ class quotationModule extends AppModule
         $info['view'] = ' href="javascript:;" ';
         if($this->isLink==1){
             $_class = array_shift($class);
-            $info['view'] = ' href="'.SITE_URL.'d-'.$info['auto'].'-'.$_class.'.html'.'" target="_blank"';
+            if(is_mobile_request()){
+                //移动版地址
+                $info['view'] = ' href="'.WAP_URL.'d-'.$info['auto'].'-'.$_class.'.html'.'" target="_blank"';
+            }else{
+                $info['view'] = ' href="'.SITE_URL.'d-'.$info['auto'].'-'.$_class.'.html'.'" target="_blank"';
+            }
         }
         return $info;
     }

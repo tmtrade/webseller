@@ -15,6 +15,8 @@ define('TRADE_URL', 'http://tr2.chofn.net/');
 define('SELLER_URL', 'http://seller.chofn.net/');
 //一只蝉URL
 define('SITE_URL', 'http://t.chofn.net/');
+//一只蝉移动版URL
+define('WAP_URL', 'http://m.test.chofn.net/');
 //蝉窝
 define('MY_URL', 'http://my.test.chofn.net/');
 //蝉检测
