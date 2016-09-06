@@ -264,6 +264,7 @@ class QuotationAction extends AppAction{
         
         $this->set('list',$res);
         $this->set('label',C('QUOTATION_LABEL'));
+        $this->set('isView',true);
         if($res['style']==1){ //判断报价单风格
             $this->display('quotation/quotation.index1.html');
         }else{

@@ -20,8 +20,10 @@
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico1.png"></i><a target="_blank" href="<?=SELLER_URL?>">出售者平台</a></p>
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico2.png"></i><a target="_blank" href="<?=CHECK_URL?>">商标质量检测工具</a></p>
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico3.png"></i><a target="_blank" href="<?=SELLER_URL?>">商品清单生成工具</a></p>
+        <? if(empty($isView)): ?>
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico4.png"></i><a id="share" href="javascript:;">分享</a></p>
         <p><i><img src="<?=StaticDir?>1.0/images/top-ico5.png"></i><a href="javascript:;" onclick="addFavorite('<?=$title?>')">收藏该清单</a></p>
+        <? endif; ?>
     </div>
 </div>
 <div class="trans-banner">
