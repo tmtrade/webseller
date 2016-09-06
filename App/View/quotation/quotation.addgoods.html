@@ -288,6 +288,12 @@
             });
             return false;
         }
+        if (desc.length>30) {
+            layer.msg('商品单描述请少于30个字!', {
+                time: 1500
+            });
+            return false;
+        }
 
         var avatar = $('.sell-lf-main input[name=avatar]:checked ').val();
         if (avatar == undefined) {
@@ -413,7 +419,13 @@
             });
             return false;
         }
-
+        if (desc.length>30) {
+            layer.msg('商品单描述请少于30个字!', {
+                time: 1500
+            });
+            return false;
+        }
+        
         var avatar = $('.sell-lf-main input[name=avatar]:checked ').val();
         if (avatar == undefined) {
             layer.msg('请选择头像设置风格!', {
