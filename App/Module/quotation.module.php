@@ -88,6 +88,13 @@ class quotationModule extends AppModule
             );
             $this->load('quotation')->editQuotation($tmp, $quotationId);
             $this->load('quotation')->delQuotationItems($quotationId);
+            
+            //删除已生成的图片
+            $path = './Data/'.UID.'/'.$quotationId.'.jpg';
+            if(is_file($path)){
+                $rst = unlink($path);
+                if(!$rst) return array('code'=>1,'msg'=>"图片删除失败!");
+            }
         }
         
         foreach($data['number'] as $k=>$v){

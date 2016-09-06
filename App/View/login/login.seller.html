@@ -1,0 +1,118 @@
+<? require(ViewDir.'/login/header.html'); ?>
+<div class="gen-ban-bg1 page_1">
+    <div class="gen-ban1 w1300">
+        <div class="gen-pic1 fadeInDown timer1">
+            <img src="../../../Static/1.0/images/gen-pic1.png">
+        </div>
+        <div class="gen-ban-des">
+            <h3 class="fadeInLeftBig timer2 ">告别繁琐的操作，极速生成报价单</h3>
+            <p class="fadeInRightBig timer2">
+                <label>零门槛：企业和个人均可免费使用 </label><label>易操作：输入商标号即可在线生成</label><label> 随时用：不占电脑内存家里也能用</label>
+            </p>
+            <a href="" class="pulse animated infinite timer5">登录免费使用</a>
+        </div>
+    </div>
+</div>
+<div class="gen-ban-bg2 page_2">
+    <div class="gen-ban2 timer1"></div>
+    <div class="gen-ban-des2">
+        <h3 class="timer2">报价单也可以很美观</h3>
+        <p class="timer3">
+            免费使用，无需安装任何插件<br/>
+            超简单，输入商标号即可直接生成<br/>
+            多种设计风格，美观大方，给买家最好的体验<br/>
+        </p>
+        <a class="yl-btn  pulse animated infinite timer5"><i><img src="../../../Static/1.0/images/pre-ico.png"></i>看看样例</a>
+    </div>
+</div>
+<div class="gen-ban-bg3 page_3">
+    <div class="gen-ban3  timer1"></div>
+    <div class="gen-ban-des3">
+        <h3 class="timer2">支持你的所有设备</h3>
+        <p class="timer2">
+            可在所有设备直接查看使用<br/>
+            iPhone / Mac / PC / Android 智能机全覆盖<br/>
+            随时随地，一“点”就看<br/>
+        </p>
+        <a class="yl-btn  pulse animated infinite timer5"><i><img src="../../../Static/1.0/images/pre-ico.png"></i>看看样例</a>
+    </div>
+</div>
+<div class="search-btm">
+    <label>ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016</label>
+    <p>
+        <a href="">一只蝉</a> | <a href="">出售者平台  </a> |<a href="">商标报价单工具  </a>| <a href="">商标安全检测工具</a>
+    </p>
+</div>
+<script type="text/javascript" src="../../../Static/1.0/js/jquery.mousewheel.js"></script>
+<script type="text/javascript">
+    var mouseTodo = false;
+    $(document).on("mousewheel", function(event, delta, deltaX, deltaY) {
+        if (mouseTodo) {
+            return false
+        }
+        var winStop = $(window).scrollTop();
+        var winH = $(window).height();
+        if (delta < 0) {
+            if (winStop < 956) {
+                $("html,body").animate({
+                    scrollTop: "956px"
+                }, 2000, function() {
+                    mouseTodo = false;
+
+                })
+                mouseTodo = true
+            }
+            if (winStop < 1828 && winStop >= 956) {
+                $("html,body").animate({
+                    scrollTop: $(".page_3").offset().top + "px"
+                }, 2000, function() {
+                    mouseTodo = false
+                })
+                mouseTodo = true
+            }
+
+
+        }
+    });
+
+    var scrollTop = $(window).scrollTop();
+    $(document).ready(function(){
+        if(scrollTop==0){
+            $(".gen-ban2,.gen-ban-des2").css({"opacity":"0"});
+            $(".gen-ban3,.gen-ban-des3").css({"opacity":"0"})
+        }
+    })
+
+    $(document).on("scroll", function(e) {
+        var scrollTop = $(window).scrollTop();
+        if (scrollTop< $(".page_2").offset().top-150) {
+            $(".gen-pic1").addClass("fadeInDown");
+            $(".gen-ban2").removeClass("fadeInLeftBig");
+            $(".gen-ban-des2 h3,.gen-ban-des2 p").removeClass("slideInRight");
+            $(".yl-btn").addClass("pulse");
+            $(".gen-ban3").removeClass("slideInRight");
+            $(".gen-ban3").removeClass("fadeInRightBig");
+            $(".gen-ban-des3 h3,.gen-ban-des3 p").removeClass("slideInLeft");
+            $(".gen-ban-des3 a").removeClass("slideInLeft");
+
+        }
+        if (scrollTop<$(".page_3").offset().top+200 && scrollTop>= $(".page_2").offset().top-200) {
+            $(".gen-ban2").addClass("fadeInLeftBig");
+            $(".gen-ban-des2 h3,.gen-ban-des2 p").addClass("slideInRight");
+            $(".gen-pic1").removeClass("fadeInDown");
+            $(".gen-ban2,.gen-ban-des2").css({"opacity":"1"});
+
+        }
+
+        if (scrollTop >= $(".page_3").offset().top - 100) {
+            $(".gen-ban3,.gen-ban-des3").css({"opacity":"1"});
+            $(".gen-ban3").addClass("fadeInRightBig");
+            $(".gen-ban-des3 h3,.gen-ban-des3 p").addClass("slideInLeft");
+//            $(".gen-ban2").removeClass("fadeInLeft");
+//            $(".gen-ban-des2 h3,.gen-ban-des2 p").removeClass("slideInRight");
+
+        }
+    });
+</script>
+</body>
+</html>
