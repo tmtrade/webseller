@@ -135,7 +135,7 @@
                     <a class="sub-btn cir" id="add_goods">
                         保存商品单
                     </a>
-                    <a class="cir qx-btn batch-del tr-yl" id="preview">
+                    <a class="cir qx-btn batch-del tr-yl" id="preview" addmsg="预览报价单" module='报价单编辑'>
                         <img src="<?=StaticDir?>1.0/images/tr-yl.png">预览
                     </a>
                 </div>
@@ -453,17 +453,7 @@
         //组装联系人信息
         data += ('&mobile=' + mobile + '&name=' + name + '&qq=' + qq);
         //提交数据
-        $.post('/quotation/preview', data, function(data) {
-            layer.open({
-                content: data.msg,
-                area: ['1200px', '700px'],
-                scrollbar: false,
-                closeBtn: 1, //不显示关闭按钮
-                shift: 2,
-                shadeClose: true, //开启遮罩关闭
-                title: "商品单预览"
-            });
-        }, 'json');
+        window.open('/quotation/preview/?'+data);
 
     });
 

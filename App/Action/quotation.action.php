@@ -265,11 +265,11 @@ class QuotationAction extends AppAction{
         $this->set('list',$res);
         $this->set('label',C('QUOTATION_LABEL'));
         if($res['style']==1){ //判断报价单风格
-            $tm = $this->fetch('quotation/quotation.index1.html');
+            $this->display('quotation/quotation.index1.html');
         }else{
-            $tm = $this->fetch('quotation/quotation.index2.html');
+            $this->display('quotation/quotation.index2.html');
         }
-        $this->returnAjax(array('code'=>0,'msg'=>$tm));
+        //$this->returnAjax(array('code'=>0,'msg'=>$tm));
     }
 
 }

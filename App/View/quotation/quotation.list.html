@@ -53,14 +53,15 @@
                         <td class="oper">
                             <input type="hidden" class="view_url" value="<?=$v['view_url']?>">
                             <input type="hidden" class="now_id" value="<?=$v['id']?>">
-                            <a href="/quotation/getImg/?id=<?=$v['id']?>" target="_blank" class="to_img"><i><img src="<?=StaticDir?>/1.0/images/dc-ico.png"></i>导出图片</a>
-                            <a href="<?=$v['view_url']?>" target="_blank" class="to_view"><i><img src="<?=StaticDir?>/1.0/images/list-tr-yl.png"></i>预览</a>
-                            <a href="javascript:;" class="to_copy" id="copy<?=$k?>">拷贝网址</a>
-                            <a href="javascript:;" class="to_sina">微博</a>
-                            <a href="javascript:;" class="to_weixn">朋友圈</a>
+                            <a href="/quotation/getImg/?id=<?=$v['id']?>" target="_blank" class="to_img" addmsg="导出图片" module='报价单列表页'><i><img src="<?=StaticDir?>/1.0/images/dc-ico.png"></i>导出图片</a>
+                            <a href="<?=$v['view_url']?>" target="_blank" class="to_view" addmsg="预览" module='报价单列表页'><i><img src="<?=StaticDir?>/1.0/images/list-tr-yl.png"></i>预览</a>
+                            <a href="javascript:;" class="to_copy" id="copy<?=$k?>" addmsg="拷贝网址" module='报价单列表页'>拷贝网址</a>
+                            <a href="javascript:;" class="to_sina" addmsg="分享微博" module='报价单列表页'>微博</a>
+                            <a href="javascript:;" class="to_weixn" addmsg="分享朋友圈" module='报价单列表页'>朋友圈</a>
+
                             <em></em>
-                            <a href="/quotation/editgoods/?id=<?=$v['id']?>">编辑</a>
-                            <a href="javascript:;" class="remove">删除</a>
+                            <a href="/quotation/editgoods/?id=<?=$v['id']?>" addmsg="编辑商品单" module='报价单列表页'>编辑</a>
+                            <a href="javascript:;" class="remove" addmsg="删除商品单<?=$v['title']?>" module='报价单列表页'>删除</a>
                         </td>
                     </tr>
                     <? endforeach; ?>
@@ -69,7 +70,7 @@
             </div>
             <div class="tras-list-btm f-clearfix ">
                 <div class="fl">
-                    <a class="sub-btn cir" href="/quotation/addgoods">
+                    <a class="sub-btn cir" href="/quotation/addgoods" addmsg="创建商品单" module='报价单列表页'>
                         创建商品单
                     </a>
                 </div>
