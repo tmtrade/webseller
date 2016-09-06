@@ -120,7 +120,11 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     display: inline-block;
     width: 100%;
     margin-top:8px;
-    line-height: 20px;
+    line-height: 22px;
+
+}
+.xq-ms{
+    display: inline-block;
     overflow : hidden;
     text-overflow: ellipsis;
     display:-webkit-box;
