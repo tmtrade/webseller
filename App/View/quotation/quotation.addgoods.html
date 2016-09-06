@@ -3,9 +3,10 @@
 <div class="yzc-sell-main">
     <!--公用左边导航-->
     <? require(ViewDir.'/left.html'); ?>
+    <div class="sell-lf-main" style="overflow: visible;">
     <form action='/quotation/addNumber/' method='post' id="submit_number">
         <input type="hidden" name="id"  value="<?=$id?$id:0;?>"/>
-        <div class="sell-lf-main" style="overflow: auto">
+
             <div class="comm-list-tit sell-by-brand w-cont">
                 <h3 class="fl">我的商品单 ><label>创建商品单</label></h3>
             </div>
@@ -140,8 +141,8 @@
                     </a>
                 </div>
             </div>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/quotation.js?v=<?=$static_version?>"></script>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.form.js"></script>
