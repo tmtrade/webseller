@@ -449,8 +449,11 @@ a:focus{
 /*公用底部*/
 .yzc-btm{
 	width: 100%;
-	height: 1.46rem;
+	text-align: center;
+    padding-bottom: 0.26rem;
+    padding-top:0.26rem;
     background: #4d4d4d;
+    font-size: 0.22rem;
     /*margin-top: 0.24rem;*/
     /*position: fixed;*/
     /*bottom: 0px;*/
@@ -477,7 +480,7 @@ a:focus{
 	height: 0.58rem;
 	line-height: 0.58rem;
 }
-.yzc-btm-main p a i{
+.yzc-btm p a i{
 	display: inline-block;
 	width: 0.21rem;
 	height: 0.18rem;

@@ -558,19 +558,23 @@
         obj.parent().slideUp();
         obj.parent().siblings("a.lb-tp-btn").attr("index","1");
         obj.parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+        obj.parent().siblings("a.lb-tp-btn").find("font").text(obj.text());
         obj.parents(".tras-bd-oper").find(".yj").css({"display": "block"});
         obj.parents(".tras-bd-oper").find(".pre").css({"display": "none"});
         obj.parent().parent().find("input").val(0);
         obj.parent().parent().find("input").data("type", 2);
+        obj.html('定价')
     }
     function dj(obj){
         obj.parent().slideUp();
         obj.parent().siblings("a.lb-tp-btn").attr("index","1");
         obj.parent().siblings("a.lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+        obj.parent().siblings("a.lb-tp-btn").find("font").text(obj.text());
         obj.parents(".tras-bd-oper").find(".yj").css({"display": "none"});
         obj.parents(".tras-bd-oper").find(".pre").css({"display": "block"});
         obj.parent().parent().parent().find(".pre input").val('');
         obj.parent().parent().parent().find(".pre input").data("type", 1);
+        obj.html('议价')
     }
 
 </script>

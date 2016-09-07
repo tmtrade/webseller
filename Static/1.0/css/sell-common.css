@@ -234,10 +234,11 @@ body,html{
 }
 .sea-head .fl a{
     border-right: 1px solid #e5e5e5;
+    cursor: pointer;
 }
 .sea-head .fl a  label{
     display: inline-block;
-
+    cursor: pointer;
 }
 .sea-head .fl a:hover label{
     text-decoration:none;
@@ -983,7 +984,6 @@ body,html{
 .layui-layer{
     min-width: 380px !important;
 }
-
 
 
 

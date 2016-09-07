@@ -301,7 +301,7 @@ body,html{font-family: "微软雅黑";}
 }
 .s-pic1{
     position: absolute;
-    right: 20%;
+    right:12%;
     top:70px;
     width: 798px;
     height: 766px;
@@ -401,4 +401,21 @@ body,html{font-family: "微软雅黑";}
 }
 .s-des3 a{
     border: 1px solid #999999;
+}
+@media screen and (max-width:1491px) {
+    .gen-ban2{
+        left: 0px !important;
+    }
+    .gen-ban-des2{
+        right: 25px !important;
+    }
+    .s-pic1{
+        right: 120px !important;
+    }
+    .lit-pic3{
+        left: 80px !important;
+    }
+    .s-pic3{
+        right: 95px !important;;
+    }
 }
