@@ -46,10 +46,13 @@ $("#yzc-port").hover(function(){
 },function(){
     $(".yzc-entr-list").fadeOut("2000");
 })
-
 function  select(cbtn){
         var dinx=cbtn.attr("index");
         if(dinx==1){
+            $(".all-tp-list").css({"display":"none"});
+            $(".pull-list").css({"zIndex":"9"});
+            $(".lb-tp-btn").find("i").css({"transform":"rotate(0deg)"})
+            $(".lb-tp-btn").attr("index","1");
             cbtn.siblings("ul").slideDown();
             cbtn.attr("index","2");
             cbtn.parent(".pull-list").css({"zIndex":"9999"})
@@ -90,6 +93,7 @@ $(document).bind('click',function(){
     $(".all-tp-list").slideUp();
     $(".lb-tp-btn,.all-tp-btn").attr("index","1");
     $(".lb-tp-btn,.all-tp-btn").find("i").css({"transform":"rotate(0deg)"});
+    $(".pull-list").css({"zIndex":"9"});
 });
 
 

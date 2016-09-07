@@ -31,7 +31,7 @@
    <div class="s-trade3 page_3">
        <div class="w1300 f-clearfix">
            <div class="s-des3 com-des">
-               <h3 class="timer2">商标·专利·版权</h3>
+               <h3 class="timer2">移动版支持</h3>
                <p class="timer4">
                    针对手机在线的用户，特意开发移动版<br/>
                    使得用户随时可查看，无需特意开启电脑和办公软件<br/>
@@ -91,19 +91,13 @@
        $(document).on("scroll", function(e) {
            var scrollTop = $(window).scrollTop();
            if (scrollTop< $(".page_2").offset().top-150){
-               $(".s-des2 h3").removeClass("bounceInLeft");
-               $(".s-des2 h6").removeClass("bounceInRight");
-               $(".s-pic2 span").removeClass("flipInY");
                $(".s-pic1").addClass("bounceInRight");
-               $(".s-pic3").removeClass("fadeInRightBig");
-               $(".s-trade3 h3,.s-des3 p").removeClass("fadeInLeft");
            }
            if (scrollTop<$(".page_3").offset().top+200 && scrollTop>= $(".page_2").offset().top-200) {
                $(".s-des2,.s-pic2").css({"opacity":"1"});
                $(".s-des2 h3").addClass("bounceInLeft");
                $(".s-des2 h6").addClass("bounceInRight");
                $(".s-pic2 span").addClass("flipInY");
-               $(".s-pic1").removeClass("bounceInRight");
            }
 
            if (scrollTop >= $(".page_3").offset().top - 200) {

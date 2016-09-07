@@ -412,8 +412,8 @@ a:focus{
 	margin-top: 0.22rem;
 }
 .list-head div.fr a img{
-	max-width:0.39rem;
-	max-height:0.39rem;
+	/*max-width:0.39rem;*/
+	/*max-height:0.39rem;*/
 	margin: auto;
 }
 /*公用弹话框*/

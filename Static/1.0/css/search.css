@@ -208,6 +208,7 @@ body,html{font-family: "微软雅黑";}
     color: #ff5656;
     font-size: 18px;
     margin-top: 25px;
+    cursor: pointer;
 }
 .yl-btn i img{
     display: inline-block;

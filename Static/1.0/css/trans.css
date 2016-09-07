@@ -1,10 +1,11 @@
 body{
     opacity:1;
 }
+
 .trans-head{
     display: inline-block;
     width: 1.1rem;
-    height: 1.2rem;
+    height: 0.5rem;
     margin-top: 10px;
 }
 .qu-ban{
@@ -32,7 +33,7 @@ body{
 }
 .qu-ban h4{
     color: #ffffff;
-    font-size: 0.3rem;
+    font-size: 0.36rem;
     text-align: center;
     line-height: 0.32rem;
     margin-top: 0.1rem;
@@ -40,14 +41,21 @@ body{
 .qu-ban h4 label{
     font-size:0.23rem;
 }
+.qu-ban h4 label em{
+    display: inline-block;
+    width: 1.8rem;
+    height: 1px;
+    background: #4d5561;
+    vertical-align: middle;
+}
 .qu-ban h3{
     color: #999999;
-    font-size:0.28rem;
+    font-size:0.3rem;
 }
 .qu-ban p{
     width: 80%;
     margin: auto;
-    margin-top: 0.2rem;
+    margin-top: 0.3rem;
 }
 .qu-ban p a{
     display: inline-block;
@@ -122,18 +130,18 @@ body{
 .trans-tj-pic span{
     display: inline-block;
     min-width: 1.9rem;
-    padding-right:26px;
+    padding-right: 26px;
     padding-left: 10px;
-    height: 0.51rem;
-    line-height: 0.51rem;
-    background: url("../images/trans-tj-bg.png") no-repeat  top center;
+    height: 0.61rem;
+    line-height: 0.6rem;
+    background: url("../images/trans-tj-bg.png") no-repeat top center;
     background-size: 100% 100%;
     color: #ffffff;
-    font-size:0.2rem;
-    text-indent:0rem;
+    font-size: 0.28rem;
+    text-indent: 0rem;
     position: absolute;
-    left:-0.2rem;
-    top:0.2rem;
+    left: -0.2rem;
+    top: 0.2rem;
 }
 .trans-tj-pic span label{
     font-size: 0.15rem;
@@ -148,19 +156,19 @@ body{
 }
 .trans-earth span{
     display: inline-block;
-    width: 1.2rem;
+    width: 2.4rem;
     text-align: center;
-    height: 0.26rem;
-    line-height: 0.26rem;
-    font-size: 0.18rem;
+    height: 0.46rem;
+    line-height: 0.46rem;
+    font-size: 0.28rem;
     border-radius: 100px;
     -webkit-border-radius: 100px;
     background: #cccccc;
     color: #ffffff;
     position: absolute;
     left: 50%;
-    margin-left: -0.6rem;
-    margin-top: -12px;
+    margin-left: -1.2rem;
+    margin-top: -20px;
 }
 .trans-tit{
     margin-top: 0.45rem;

@@ -4,7 +4,7 @@
         <?if($info['is_tminfo']){?>
                 <div class="add-form">
                     <span>
-                        <img src="<?=$info['img']?>" style="max-width: 90px;max-height: 60px;">
+                        <img src="<?=$info['img']?>">
                     </span>
                 </div>
         <?}else{?>
@@ -23,13 +23,13 @@
 
     </td>
     <td class="tras-bd-det">
-        <p>商标号：<label class="number"><?=$info['number']?> </label><label>商标名称:<?=$info['name']?></label><label title="<?=$info['class_str']?>">商标分类：<?=$info['thum']?>类</label> </p>
+        <p><label class="number">商标号：<?=$info['number']?> </label><label>商标名称:<?=$info['name']?></label><label title="<?=$info['class_str']?>">商标分类：<?=$info['thum']?>类</label> </p>
         <input type="hidden" name="number[]" value="<?=$info['number']?>">
         <em></em>
     </td>
     <td class="tras-bd-oper">
         <div class="pull-list paging">
-            <a class="cir lb-tp-btn cha-show" index="1" onclick="select($(this))"><font ><?if(!empty($itemInfo) && $itemInfo['price']==0)echo "议价";else echo "定价";?></font><i class="fa fa-chevron-down"></i></a>
+            <a class="cir lb-tp-btn cha-show" index="1" onclick="select($(this));price($(this))"><font ><?if(!empty($itemInfo) && $itemInfo['price']==0)echo "议价";else echo "定价";?></font><i class="fa fa-chevron-down"></i></a>
             <ul class="all-tp-list" style="display: none;">
                 <!--<li class="dj-btn" onclick="dj($(this))">定价</li>-->
                 <li class="yj-btn" onclick="yj($(this))">议价</li>
@@ -41,7 +41,7 @@
             价格:<input type="text" class="sell-ip-box" value="<?=$itemInfo['price']?>"/>元
         </p>
         <div class="pull-list paging">
-            <a class="cir lb-tp-btn cho-tag" index="1" onclick="select($(this))"><font><?if(!empty($itemInfo))echo $label[$itemInfo['label']];else echo "选择标签";?></font><i class="fa fa-chevron-down"></i></a>
+            <a class="cir lb-tp-btn cho-tag" index="1" onclick="select($(this));fa($(this))"><font><?if(!empty($itemInfo))echo $label[$itemInfo['label']];else echo "选择标签";?></font><i class="fa fa-chevron-down"></i></a>
             <ul class="all-tp-list x-label" style="display: none;">
             <? foreach($label as $k=>$v): ?>
                 <li data-type="<?=$k?>" onclick="hs($(this))"><?=$v?></li>
@@ -50,8 +50,8 @@
             <input type="hidden" name="label[]" class="label-list" value="<?=$itemInfo['label']?>"/>
         </div>
         <p class="down-up">
-            <a class="z-up">向上1</a>
-            <a class="z-down">向下1</a>
+            <a class="z-up">向上</a>
+            <a class="z-down">向下</a>
         </p>
         <em></em>
     </td>
