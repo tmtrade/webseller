@@ -362,8 +362,8 @@ img{
 /*公用列表头部*/
 .list-head{
 	width: 100%;
-	height: 0.96rem;
-	line-height:0.96rem;
+	height: 1rem;
+	line-height:1rem;
 	background: #FFFFFF;
 	position:fixed;
 	top:0px;
