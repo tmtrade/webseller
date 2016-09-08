@@ -148,6 +148,7 @@
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.form.js"></script>
 <script type="text/javascript">
     var qid = '<?=$id?>';
+    var flag=true;
     $(function() {
         //$(".add-form").wrap("<form action='/quotation/ajaxUploadPic/' method='post' enctype='multipart/form-data'></form>");
         //删除
@@ -232,6 +233,10 @@
 
     //提交商品事件
     $('#add_goods').click(function() {
+        //金额状态判断
+        if(flag==false){
+            return false;
+        }
         //商标数判断
         var num = $('#list_body tr').length;
         if (num <= 0) {
@@ -247,10 +252,10 @@
         var tmp = '';
         var msg_price = '';
         prices.each(function(i) {
-            var price_type = $(this).data("type");
+            var price_type = $(this).attr("types");
             tmp = parseInt($.trim($(this).val()));
-            if (!tmp && price_type == 1) {
-                msg_price = '第' + (i + 1) + '个商品没有填写定价价格!';
+            if ((!tmp || tmp.length>10) && price_type == 1) {
+                msg_price = '第' + (i + 1) + '个商品没有填写正确定价价格!';
                 return false;
             }
         });
@@ -384,9 +389,9 @@
         var tmp = '';
         var msg_price = '';
         prices.each(function(i) {
-            var price_type = $(this).data("type");
+            var price_type = $(this).attr("types");
             tmp = parseInt($.trim($(this).val()));
-            if (!tmp && price_type == 1) {
+            if ((!tmp || tmp.length>10) && price_type == 1) {
                 msg_price = '第' + (i + 1) + '个商品没有填写定价价格!';
                 return false;
             }
@@ -573,7 +578,7 @@
         obj.parents(".tras-bd-oper").find(".yj").css({"display": "block"});
         obj.parents(".tras-bd-oper").find(".pre").css({"display": "none"});
         obj.parent().parent().find("input").val(0);
-        obj.parent().parent().find("input").data("type", 2);
+        obj.parent().parent().find("input").attr("types", 2);
         if(obj.parent().siblings("a.lb-tp-btn").text()=="议价"){
             obj.parent().html('<li class="dj-btn" onclick="dj($(this))">定价</li>');
         }
@@ -592,7 +597,7 @@
         obj.parents(".tras-bd-oper").find(".yj").css({"display": "none"});
         obj.parents(".tras-bd-oper").find(".pre").css({"display": "block"});
         obj.parent().parent().parent().find(".pre input").val('');
-        obj.parent().parent().parent().find(".pre input").data("type", 1);
+        obj.parent().parent().find("input").attr("types", 1);
         if(obj.parent().siblings("a.lb-tp-btn").text()=="议价"){
             obj.parent().html('<li class="dj-btn" onclick="dj($(this))">定价</li>');
         }

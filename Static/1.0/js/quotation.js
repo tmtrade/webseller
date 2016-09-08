@@ -27,8 +27,18 @@ $(function() {
             layer.msg('请输入0以上的整数', {
                 time: 1500
             });
+            flag=false;
             return false;
         } else {
+            if (price.length>10) {
+                layer.msg('请输入正确的金额!', {
+                    time: 1500
+                });
+                $(this).val('');
+                flag=false;
+                return false;
+            }
+            flag=true;
             $(this).parent().parent().find(".price-list").val(price);
         }
 
