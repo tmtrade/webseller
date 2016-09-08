@@ -15,7 +15,7 @@ body{
     background: #1f1f1f url("../images/trans-ban-bg.png") no-repeat  top center;
     text-align: center;
     margin-top: 0.86rem;
-    padding-bottom: 0.24rem;
+    padding-bottom: 0.26rem;
     padding-top: 0.24rem;
     overflow: hidden;
 }
@@ -174,7 +174,7 @@ body{
     position: absolute;
     left: 50%;
     margin-left: -1.2rem;
-    margin-top: -9px;
+    margin-top: -14px;
 }
 .trans-tit{
     margin-top: 0.45rem;
