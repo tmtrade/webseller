@@ -36,8 +36,6 @@
                 <?}else{?>
                     <li class="yj-btn" onclick="yj($(this))">议价</li>
                 <?}?>
-                
-                
             </ul>
             <input type="hidden" name="price[]" class="price-list" types="<?if(!empty($itemInfo) && $itemInfo['price']==0)echo 2;else echo 1;?>" value="<?=$itemInfo['price']?>"/>
         </div>

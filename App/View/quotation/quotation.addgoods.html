@@ -579,14 +579,7 @@
         obj.parents(".tras-bd-oper").find(".pre").css({"display": "none"});
         obj.parent().parent().find("input").val(0);
         obj.parent().parent().find("input").attr("types", 2);
-        if(obj.parent().siblings("a.lb-tp-btn").text()=="议价"){
-            obj.parent().html('<li class="dj-btn" onclick="dj($(this))">定价</li>');
-        }
-        else{
-            obj.parent().html('<li class="dj-btn" onclick="yj($(this))">议价</li>');
-        }
-
-
+        obj.parent().html('<li class="dj-btn" onclick="dj($(this))">定价</li>');
     }
     //点击替换定价
     function dj(obj){
@@ -598,12 +591,7 @@
         obj.parents(".tras-bd-oper").find(".pre").css({"display": "block"});
         obj.parent().parent().parent().find(".pre input").val('');
         obj.parent().parent().find("input").attr("types", 1);
-        if(obj.parent().siblings("a.lb-tp-btn").text()=="议价"){
-            obj.parent().html('<li class="dj-btn" onclick="dj($(this))">定价</li>');
-        }
-        else{
-            obj.parent().html('<li class="dj-btn" onclick="yj($(this))">议价</li>');
-        }
+        obj.parent().html('<li class="dj-btn" onclick="yj($(this))">议价</li>');
     }
     //到底部的时候下拉框向上显示；
     var otp=$(".trans-bd-list").offset().top;
@@ -629,6 +617,7 @@
             obj.siblings(".paging ul").css({"top":"34px","borderTop":"none","borderRadius":"0px 0px 5px 5px"});
             obj.css({"borderTop":"none"});
         }
+
     }
 
 
