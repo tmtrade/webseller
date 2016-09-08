@@ -341,7 +341,7 @@ img{
     -webkit-border-radius: 10px;
     position: fixed;
     right: 0.10rem;
-    top: 0.85rem;
+    top: 0.95rem;
     display: none;
     z-index: 99;
 }
