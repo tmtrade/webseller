@@ -22,7 +22,7 @@ class SaleBi extends Bi
 		    'sign' => $this->sign($data),
 		    'data' => $data,
 		    );
-	    return $this->request("systemapi/addSale/", $params);
+	    return $this->request("systemapi/addSale/", $params, 5);
     }
     
     //修改联系人价格
