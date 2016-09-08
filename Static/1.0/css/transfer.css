@@ -209,17 +209,18 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .trans-xl-ban .user-head{
     position: absolute;
     left: 180px;
-    top:-11px;
+    top:-1px;
 }
 .trans-xl-ban .user-head img{
     display: inline-block;
     max-width: 119px;
     max-height: 102px;
+    margin-top: -10px;
 }
 .trans-xl-ban .user-head .mr-h{
     display:inline-block;
     width: 245px;
-    height: 91px;
+    height: 92px;
     background: url("../images/head-bg.png") no-repeat center;
     text-align: center;
 }
@@ -813,18 +814,17 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 
 .tras-pic-show{
-    min-width: 105px;
     text-align: center;
     vertical-align: middle;
     padding-right: 10px;
-    min-width: 140px;
+   width: 140px;
 
 }
 .tras-bd-oper{
     min-width: 512px;
 }
 .tras-bd-det{
-    min-width:375px;
+    min-width:295px;
 }
 .tras-pic-show div{
     display: inline-block;
@@ -835,6 +835,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     margin-left: 15px;
     padding-right: 10px;
     border-right:1px solid  #e8e8e8;
+    position: relative;
 }
 .tras-pic-show span{
     display:block;
@@ -858,7 +859,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     text-align: center;
     margin-top: 5px;
     cursor: pointer;
-    text-indent:20px;
+    text-indent: -33px;
 }
 .tras-pic-show  em{
     /*margin-top: 12px;*/
@@ -1053,4 +1054,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .layui-layer{
     border-radius: 15px !important;
     -webkit-border-radius: 15px !important;
+}
+.layui-layer-setwin{
+    right: 35px !important;
 }

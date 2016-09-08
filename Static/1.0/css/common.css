@@ -247,6 +247,9 @@ a:focus{
 .top-head{
     margin-top: 0.84rem;
 }
+img{
+    max-width: 100%;
+}
 
 /*公用组件*/
 
@@ -384,7 +387,11 @@ a:focus{
     margin-bottom: 4px;
 }
 .wap-head{
-    margin-top:27px;
+    margin-top:0.16rem;
+}
+.wap-head img{
+   max-width: 1.89rem;
+   max-height: 0.85rem;
 }
 .list-head div.fr {
 	height: 0.86rem;
@@ -412,8 +419,8 @@ a:focus{
 	margin-top: 0.22rem;
 }
 .list-head div.fr a img{
-	/*max-width:0.39rem;*/
-	/*max-height:0.39rem;*/
+	max-width:0.49rem;
+	max-height:0.49rem;
 	margin: auto;
 }
 /*公用弹话框*/
@@ -455,8 +462,9 @@ a:focus{
     background: #4d4d4d;
     font-size: 0.22rem;
     /*margin-top: 0.24rem;*/
-    /*position: fixed;*/
-    /*bottom: 0px;*/
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
 }
 .yzc-btm-main{
 	padding-left: 0.54rem;
@@ -513,10 +521,9 @@ a:focus{
 }
 .yzc-share-bg{
     width: 100%;
-    height: 1.87rem;
-    overflow: hidden;
+    height:2.4rem;
     background: url("../images/fx-bg.png") no-repeat top center;
-    /*background-size: 100% auto;*/
+    background-size: 100% auto;
     margin-top: -9px;
 }
 .yzc-share h3{
@@ -595,9 +602,9 @@ a:focus{
 }
 
 .layui-layer-setwin .layui-layer-close2{
-    width: 29px !important;
-    height: 29px !important;;
-    background-position: -152px -31px !important;
+    width: 24px !important;
+    height: 24px !important;
+    background-position: -152px -34px !important;
     border-radius: 100px;
     -webkit-border-radius: 100px;
 }
@@ -627,7 +634,7 @@ a:focus{
     margin: auto;
 }
 .layui-layer{
-    height: 605px !important;
+    /*height: 605px !important;*/
 }
 .layui-layer-setwin{
     right: 18px !important;

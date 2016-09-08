@@ -14,7 +14,7 @@ body{
     background: #1f1f1f url("../images/trans-ban-bg.png") no-repeat  top center;
     text-align: center;
     margin-top: 0.86rem;
-    padding-bottom: 0.28rem;
+    padding-bottom: 0.48rem;
 }
 .qu-ban span{
     display: inline-block;
@@ -59,7 +59,7 @@ body{
 }
 .qu-ban p a{
     display: inline-block;
-    width: 49.4688888%;
+    width: 49.1688888%;
     float: left;
     height: 0.75rem;
     line-height: 0.75rem;
@@ -70,15 +70,18 @@ body{
 .qu-ban p a img{
     display: inline-block;
     vertical-align: middle;
-    margin-bottom:11px;
+    margin-bottom:5px;
     margin-right: 4px;
     color: #ffffff;
     font-size:0.28rem;
     font-weight: bold;
+    max-width: 0.42rem;
+    max-height: 0.47rem;
 }
 .trans-detal{
     padding-left: 0.34rem;
     padding-right: 0.34rem;
+    padding-bottom: 0.96rem;
 }
 
 .trans-detal{
@@ -123,7 +126,7 @@ body{
 .trans-tj-pic img{
     display: inline-block;
     max-width:6rem;
-    max-height:4.1rem;
+    max-height:4rem;
     vertical-align: middle;
 
 }
@@ -168,7 +171,7 @@ body{
     position: absolute;
     left: 50%;
     margin-left: -1.2rem;
-    margin-top: -20px;
+    margin-top: -9px;
 }
 .trans-tit{
     margin-top: 0.45rem;
