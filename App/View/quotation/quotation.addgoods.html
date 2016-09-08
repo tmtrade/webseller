@@ -15,7 +15,7 @@
                     <label><em>*</em>商品单名称</label>
                     <div>
                         <input placeholder="如：为客户XX推荐的商品列表 " type="text" name="title" value="<?=$info['title']?>"/>
-                        <!--<span>用于您自行查看所用，比如“<font>为客户xx创建的推荐商品列表</font>”</span>-->
+                        <span>用于您自行查看所用，比如“<font>为客户xx创建的推荐商品列表</font>”</span>
                     </div>
                 </li>
                 <li>
@@ -281,6 +281,12 @@
             });
             return false;
         }
+        if (title.length>30) {
+            layer.msg('商品单名称太长啦!', {
+                time: 1500
+            });
+            return false;
+        }
 
         var desc = $('#desc').val();
         if (desc === "") {
@@ -408,6 +414,12 @@
         var title = $('.sell-lf-main input[name=title]').val();
         if (title === "") {
             layer.msg('请填写商品单名称!', {
+                time: 1500
+            });
+            return false;
+        }
+        if (title.length>30) {
+            layer.msg('商品单名称太长啦!', {
                 time: 1500
             });
             return false;
