@@ -337,15 +337,16 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .trans-brand-de li div textarea{
     display: block;
-    width: 450px;
-    height: 33px;
-    line-height: 33px;
-
+    width: 441px;
+    height:25px;
+    padding: 5px;
+    line-height: 22px;
     border: 1px solid #e8e8e8;
     border-radius: 5px;
     -webkit-border-radius: 5px;
-
-    text-indent: 12px;
+    font-size: 13px;
+    color: #666666;
+    text-indent: 7px;
 }
 .trans-brand-de li div span{
     display: inline-block;

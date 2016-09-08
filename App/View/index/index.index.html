@@ -126,7 +126,7 @@
                     <a href="/quotation/addgoods" class="cir sear-btn batch-pric fr" addmsg="立即创建" module='我的商品单'>立刻创建</a>
                 </div>
                 <? else: ?>
-                <ul class="">
+                <ul class="trans-catal">
                     <? foreach($quotation as $item): ?>
                     <li>
                         <p class="fl"><a target="_blank" href="<?=$item['view_url']?>" addmsg="<?=$item['title']?>" module='我的商品单'><?=$item['title']?></a></p>

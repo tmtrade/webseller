@@ -240,6 +240,9 @@
 .my-earn-top{
     overflow: hidden;
 }
+.trans-catal{
+   margin-bottom: 20px;
+}
 .my-earn-top p,.my-earn-top a{
     margin-top:3px;
     margin-right: 7px;
@@ -282,7 +285,7 @@
     left: 0;
 }
 .sell-earn-mess ul{
-    height: 183px;
+    /*height: 183px;*/
     background:#ffffff;
     border: 1px solid #ebebeb;
 
@@ -295,6 +298,9 @@
     border-bottom: 1px solid #eaeaea;
     margin: auto;
 
+}
+.sell-earn-mess ul li:last-child{
+    border-bottom:none;
 }
 .sell-earn-mess ul li p{
     max-width: 500px;
