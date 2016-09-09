@@ -209,9 +209,10 @@ $define = array(
     ),
     //报价单标签
     'QUOTATION_LABEL2'=>array(
-        1=>'推荐/Recommend',
-        2=>'热门/Hot',
-        3=>'性价比高/Cost-Effective',
+        1=>'推荐',
+        2=>'热门',
+        3=>'性价比高',
+        4=>'急售',
     ),
 );
 if (is_array($checkhost)) {
