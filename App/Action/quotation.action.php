@@ -57,6 +57,14 @@ class QuotationAction extends AppAction{
     
     //添加商品页面
     public function addgoods(){
+        $userinfo = $this->userinfo;
+        $res = $this->load('quotation')->getDetail('',UID);
+        if($res){
+            $userinfo['mobile'] = $res['phone'];
+            $userinfo['name'] = $res['contact'];
+            $userinfo['qq'] = $res['qq'];
+            $this->set('userInfo',$userinfo);
+        }
          $this->display();
         
     }

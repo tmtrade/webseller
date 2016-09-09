@@ -60,6 +60,8 @@ class quotationModule extends AppModule
         if(count($data['number'])>$num) return array('code'=>1,'msg'=>'提交数大于'.$num);
         $mobile = $data['mobile'];
         $name = $data['name'];
+        
+        $this->begin('quotation');
         if($quotationId==0){
             $tmp = array(
                 'title'         => $data['title'],
@@ -153,9 +155,11 @@ class quotationModule extends AppModule
                     $this->commit('quotationItems');
             }else{
                 $this->rollBack('quotationItems');
+                $this->rollBack('quotation');
                 return array('code'=>1,'msg'=>"写入数据库失败");
             }
         }
+        $this->commit('quotation');
         return array('code'=>$quotationId);
     }
 
@@ -341,8 +345,14 @@ class quotationModule extends AppModule
      */
     public function getDetail($id,$uid){
         $r = array();
-        $r['eq']['id'] = $id;
-        $r['col'] = array('desc','phone','qq','style','avatar','isLink');
+        if($id){
+            $r['eq']['id'] = $id;
+        }else{
+            $r['order'] = array('created'=>'desc');
+            $r['limit'] = 1;
+        }
+        $r['eq']['uid'] = $uid;
+        $r['col'] = array('desc','phone','qq','style','avatar','contact','isLink');
         $rst = $this->import('quotation')->find($r);
         if($rst){
             //得到头像地址

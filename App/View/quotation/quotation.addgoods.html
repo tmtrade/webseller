@@ -75,21 +75,21 @@
                     </div>
                     <div class="cir tran-set-head">
                         <label>头像设置：</label>
-                        <span><input type="radio" name="avatar" value="1" <?if($info['avatar']==1) echo 'checked="checked"';?>/>默认头像女</span>
+                        <span><input type="radio" name="avatar" value="1" <?if($info['avatar']=="") echo 'checked="checked"';?> <?if($info['avatar']==1) echo 'checked="checked"';?>/>默认头像女</span>
                         <span><input type="radio" name="avatar" value="2" <?if($info['avatar']==2) echo 'checked="checked"';?>/>默认头像男</span>
                         <span><input type="radio" name="avatar" value="3" <?if($info['avatar']==3) echo 'checked="checked"';?>/>无需头像</span>
                         <span><input type="radio" name="avatar" value="4" <?if($info['avatar']==4) echo 'checked="checked"';?>/>使用我当前头像</span>
                     </div>
                     <div class="cir tran-set-head">
                         <label>表单风格：</label>
-                        <span><input type="radio" name="style" value="1" <?if($info['style']==1) echo 'checked="checked"';?>/>商务风格</span>
-                        <span><input type="radio" name="style" value="2" <?if($info['style']==2) echo 'checked="checked"';?>/>现代风格</span>
+                            <span><input type="radio" name="style" value="2" <?if($info['style']=="") echo 'checked="checked"';?> <?if($info['style']==2) echo 'checked="checked"';?>/>现代风格</span>
+                            <span><input type="radio" name="style" value="1" <?if($info['style']==1) echo 'checked="checked"';?>/>商务风格</span>
                     </div>
-                    <div class="cir tran-set-head">
+<!--                    <div class="cir tran-set-head">
                         <label>链接设置：</label>
                         <span><input type="radio" name="isLink" value="1" <?if($info['isLink']==1) echo 'checked="checked"';?>/>内容有链接</span>
                         <span><input type="radio" name="isLink" value="2" <?if($info['isLink']==2) echo 'checked="checked"';?>/>内容无链接</span>
-                    </div>
+                    </div>-->
                 </div>
                 <div id="nicaicai" style="display: none">
                     <!--显示内容-->
@@ -169,30 +169,36 @@
     });
 
     //添加商标事件
-    $('#addSell').click(function() {
+    $('#addSell').live("click",function() {
         layer.load(1, {
             shade: [0.1, '#fff'] //0.1透明度的白色背景
         });
         var number = $.trim($('#add_number').val());
-        var arr=number.split(' ');//注split可以用字符或字符串分割
-        for(var i=0;i<arr.length;i++)
-        {
-            if (arr[i] == '') {
-                layer.msg('请输入商标号', {
+        var arr= number.split(' ');//注split可以用字符或字符串分割
+        var number_num = arr.length;
+        if(number==""){
+            layer.msg('请输入商标号', {
                     time: 1500
                 });
-                layer.closeAll('loading');
-                return false;
+            layer.closeAll('loading');
+        }
+        for(var i=0;i<number_num;i++)
+        {
+            if ($.trim(arr[i]) == '' || arr[i]=="") {
+                continue;
             }
             //商标数不能大于20
             var num = $('#list_body tr').length;
+            var num_str = false;
             if (num >= 12) {
-                layer.msg('单次提交商标数不能大于12', {
-                    time: 1500
-                });
+                num_str = true;
+            }
+            if (num_str) {
+                layer.msg('亲，最多只能添加12条商品哦！', {time: 1500});
                 layer.closeAll('loading');
                 return false;
             }
+        
             //检查列表中是否有此商标
             var numbers = $('#list_body .number');
             var tmp = '';
@@ -309,13 +315,6 @@
             return false;
         }
         
-        var style = $('.sell-lf-main input[name=isLink]:checked').val();
-        if (style == undefined) {
-            layer.msg('请选择链接设置!', {
-                time: 1500
-            });
-            return false;
-        }
         //序列化表单数据
         var data = $('#submit_number').serialize();
 
@@ -387,6 +386,7 @@
             return false;
         }
 
+
         //表单信息验证
         var title = $('.sell-lf-main input[name=title]').val();
         if (title === "") {
@@ -432,13 +432,6 @@
             return false;
         }
         
-        var style = $('.sell-lf-main input[name=isLink]:checked').val();
-        if (style == undefined) {
-            layer.msg('请选择链接设置!', {
-                time: 1500
-            });
-            return false;
-        }
         //序列化表单数据
         var data = $('#submit_number').serialize();
 
