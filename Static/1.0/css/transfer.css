@@ -207,7 +207,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .trans-xl-ban .user-head{
     position: absolute;
-    left: 180px;
+    left:210px;
     top:-1px;
 }
 .trans-xl-ban .user-head img{
@@ -238,7 +238,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .trans-xl-ban .tel-qq{
     float: right;
-    margin-right:168px;
+    margin-right: 131px;
     margin-top: 7px;
 }
 .trans-xl-ban .tel-qq h4{
@@ -722,6 +722,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     border-radius: 100px;
     -webkit-border-radius: 100px;
     margin-top:0px;
+    overflow: hidden;
 }
 .comm-lx-cet span img{
     max-width:83px;
