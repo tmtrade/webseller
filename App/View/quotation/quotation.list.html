@@ -51,8 +51,8 @@
                     <? foreach($list as $k=>$v): ?>
                     <tr>
                         <td><?=$v['title']?></td>
-                        <td style="width: 350px;"><?=($v['count']?:0)?></td>
-                        <td style="width: 350px;"><?=$v['created']?></td>
+                        <td><?=($v['count']?:0)?></td>
+                        <td><?=$v['created']?></td>
                         <td class="oper">
                             <input type="hidden" class="view_url" value="<?=$v['view_url']?>">
                             <input type="hidden" class="now_id" value="<?=$v['id']?>">
