@@ -640,3 +640,6 @@ img{
     right: 18px !important;
     top: -9px !important;
 }
+#newBridge{
+    display: none !important;
+}
