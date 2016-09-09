@@ -398,11 +398,11 @@ img{
     margin-right: -0.23rem;
 }
 .list-head div.fr a{
-    margin-left: 5px;
+    margin-left: 2px;
 }
 .list-head div.fr a#share,.list-head div.fr a#menu{
 	display: inline-block;
-	width:0.86rem;
+	width:0.96rem;
 	height: 0.96rem;
 	line-height: 0.96rem;
 	text-align: center;

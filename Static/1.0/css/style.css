@@ -1022,7 +1022,7 @@ table.list-mess-main tr .pri-num input{
     margin-top: 25px;
     position: relative;
     bottom:5%;
-    margin-bottom: 10%;
+    /*margin-bottom: 10%;*/
 }
 .amend-cont-all .sub-btn{
     float: left;

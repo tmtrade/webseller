@@ -401,19 +401,19 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     vertical-align: middle;
 }
 .add-brand-lf p a{
-    display: inline-block;
-    width:100px;
-    height: 35px;
-    line-height: 35px;
+    /*display: inline-block;*/
+    /*width:100px;*/
+    /*height: 35px;*/
+    /*line-height: 35px;*/
     margin-left: 12px;
     cursor: pointer;
 }
-.trans-btn{
-    background: url("../images/tj-btn.png") no-repeat top center;
-    background-size: 100% 100%;
-    color: #ffffff;
-    text-align:center;
-}
+/*.trans-btn{*/
+    /*background: url("../images/tj-btn.png") no-repeat top center;*/
+    /*background-size: 100% 100%;*/
+    /*color: #ffffff;*/
+    /*text-align:center;*/
+/*}*/
 .add-brand-lf span{
     display: inline-block;
     color:#999999;
@@ -1042,8 +1042,8 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .wx-tc img{
     display: inline-block;
-    width:300px;
-    height:300px;
+    width:255px;
+    height:255px;
     margin: auto;
 }
 .layui-layer-ico {
