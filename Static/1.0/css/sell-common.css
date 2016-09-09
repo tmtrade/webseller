@@ -244,11 +244,13 @@ body,html{
     text-decoration:none;
     border-bottom: 2px solid #ffa7a7;
     padding-bottom: 4px;
+    color:#ffa7a7;
 }
 .sea-head .fl a.cur label{
     text-decoration:none;
     border-bottom: 2px solid #ffa7a7;
     padding-bottom: 4px;
+    color:#ffa7a7;
 }
 .sea-head .fr img{
     vertical-align: middle;
@@ -288,7 +290,18 @@ body,html{
 .sea-head a:hover .s-tp4{
     background-image: url("../images/s-tp4.png");
 }
-
+.sea-head  a.cur .s-tp1{
+    background-image: url("../images/s-tp1.png");
+}
+.sea-head  a.cur .s-tp2{
+    background-image: url("../images/s-tp2.png");
+}
+.sea-head  a.cur .s-tp3{
+    background-image: url("../images/s-tp3.png");
+}
+.sea-head  a.cur .s-tp4{
+    background-image: url("../images/s-tp4.png");
+}
 .yzc-sell-head{
     width: 100%;
     border-bottom: 5px solid #f6555b;
