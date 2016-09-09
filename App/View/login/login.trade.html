@@ -10,7 +10,7 @@
                    <label><i class="s-num">30</i>家合作机构</label><br/>
                    <label><i class="s-num">15</i>倍资源高于其他平台</label><br/>
                </p>
-               <a href="" class="yl-btn pulse animated infinite timer5">去一只蝉看看</a>
+               <a href="<?=SITE_URL?>" target="_blank" class="yl-btn pulse animated infinite timer5">去一只蝉看看</a>
            </div>
        </div>
        <div class="s-pic1 bounceInRight  timer1"></div>
@@ -20,7 +20,7 @@
                <h3 class=" timer1"><a>免费推标</a>精准覆盖全网 48.91% 的买家，让您的商标早日售出</h3>
                <h6 class=" timer2">价值挖掘  ·  logo美化  ·  优惠促销</h6>
 
-               <a href="" class="yl-btn pulse animated infinite timer5">我要参加</a>
+               <a href="javascript:;" onclick="goChat()" class="yl-btn pulse animated infinite timer5">我要参加</a>
            </div>
            <div class="s-pic2">
                <span class="lit-pic1  timer4"></span>
@@ -37,17 +37,11 @@
                    使得用户随时可查看，无需特意开启电脑和办公软件<br/>
                    不受时间和设备限制<br/>
                </p>
-               <a href="" class="yl-btn pulse animated infinite timer5"><i><img src="<?=StaticDir?>1.0/images/pre-ico.png"></i>去一只蝉看看</a>
+               <a href="<?=WAP_URL?>" target="_blank" class="yl-btn pulse animated infinite timer5"><i><img src="<?=StaticDir?>1.0/images/pre-ico.png"></i>去一只蝉看看</a>
            </div>
        </div>
        <div class="s-pic3  timer3"></div>
    </div>
-<div class="search-btm">
-    <label>ICP证：蜀ICP备15035613号-1 违法和不良信息举报电话: 028-110 Copyright © 2002 - 2016</label>
-    <p>
-        <a href="">一只蝉</a> | <a href="">出售者平台  </a> |<a href="">商标报价单工具  </a>| <a href="">商标安全检测工具</a>
-    </p>
-</div>
    <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.mousewheel.js"></script>
    <script type="text/javascript">
        var mouseTodo = false;
@@ -107,5 +101,4 @@
            }
        });
    </script>
-</body>
-</html>
+<? require(ViewDir.'/login/footer.html'); ?>

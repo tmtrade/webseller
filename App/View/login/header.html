@@ -33,7 +33,7 @@
     <div class="w1300">
         <div class="fl">
             <a class="s-lg" href="<?=SELLER_URL?>"><img src="<?=StaticDir?>1.0/images/sell-lg-nw.png"></a>
-            <a href="/login/seller"  addmsg="商标出售" module='登录页'>
+            <a href="/login/trade"  addmsg="商标出售" module='登录页'>
                 <label>
                     <i class="ico s-tp1"></i>
                     商标出售
@@ -46,7 +46,7 @@
                 </label>
 
             </a>-->
-            <a href="/login/trade"  addmsg="商标报价单工具" module='登录页'>
+            <a href="/login/seller"  addmsg="商标报价单工具" module='登录页'>
                 <label>
                     <i class="ico s-tp3"></i>
                     商标报价单工具
@@ -65,3 +65,35 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/table-list.js?v=<?=$static_version?>"></script>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/tool.js?v=<?=$static_version?>"></script>
+<script type="text/javascript" src="<?=StaticDir?>1.0/js/login.js?v=<?=$static_version?>"></script>
+<!--<script type="text/jscript" src="<?=StaticDir?>1.0/js/jquery.lazyload.min.js"></script>-->
+<script type="text/javascript">
+    var ptype = '<?=$ptype?>';//页面标识
+    var _YZC_ONLINE_ = '';
+    $(document).ready(function(e) {
+        //获得登录相关的参数
+        $.ajax({
+            async: false,
+            type : 'post',
+            url  : '/login/getOnlineStatus/',
+            dataType : 'json',
+            success : function (data){
+                if (data.code){
+                    _YZC_ONLINE_ = data.msg;
+                }
+            }
+        });
+    });
+    //聊天函数
+    function goChat(){
+        var type = _YZC_ONLINE_ ? _YZC_ONLINE_ : '';
+        if ( type=='yzc' )
+        {
+            window.open("http://p.qiao.baidu.com/cps/chat?siteId=9503594&userId=21149642");
+        }else{
+            window.open("http://chat.looyu.com/chat/chat/p.do?c=46344&f=123997&g=51817");
+        }
+    }
+</script>

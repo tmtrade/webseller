@@ -23,7 +23,7 @@ class QuotationAction extends AppAction{
         $size = $this->input('size','int',$this->size);
         //得到分页数据
         $res = $this->load('quotation')->getList($params, $page, $size);
-        if($res['total']>0 || $params['name']){
+        if(!$res['total']>0 || $params['name']){
             //得到分页工具条
             $pager 	= $this->pagerNew($res['total'], $size);
             $pageBar 	= empty($res['rows']) ? '' : getPageBarNew($pager);
@@ -228,6 +228,7 @@ class QuotationAction extends AppAction{
     public function view(){
         $tag = $this->input('short', 'string', '');
         $pc = $this->input('pc', 'int');
+        $wap = $this->input('wap', 'int');
         //获取参数
         if ( strpos($tag, '-') === false ) exit('参数错误');
         list($id, $uid) = explode('-', $tag);
@@ -235,7 +236,7 @@ class QuotationAction extends AppAction{
         //得到详情数据
         $res = $this->load('quotation')->getDetail($id,$uid);
         $this->set('list',$res);
-        if(!$pc && is_mobile_request()){ //判断是否手机来源
+        if((!$pc && is_mobile_request()) || $wap){ //判断是否手机来源
             $this->set('label',C('QUOTATION_LABEL2'));
             $this->display('quotation/quotation.wap.html');
         }else{

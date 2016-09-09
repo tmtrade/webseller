@@ -355,13 +355,13 @@ class LoginAction extends AppAction
     //登录页商标出售页
     public function seller()
 	{
-		$this->display();
+		$this->display('');
 	}
     
     //登录页报价单工具页
     public function trade()
 	{
-		$this->display();
+		$this->display('');
 	}
     
     //登录页安全监测工具页
