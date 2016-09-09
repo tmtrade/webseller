@@ -3,6 +3,8 @@
 <head>
     <title><?=$title?></title>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
     <link rel="stylesheet" href="<?=StaticDir?>1.0/css/common.css">
     <link rel="stylesheet" href="<?=StaticDir?>1.0/css/trans.css">
     <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery-1.8.3.min.js?v=<?=$static_version?>"></script>
@@ -37,10 +39,10 @@
 <header class="list-head">
     <div class="main">
         <!--<a class="fl" module="顶部6" addmsg="返回" href="javascript:;" onclick="if(document.referrer){history.go(-1);}else{location.href='/'};"><i></i><?=$page_title?></a>-->
-        <a class="wap-head fl"  href="<?=SITE_URL?>"><img src="<?=StaticDir?>1.0/images/wap-lg.png" style="width: 1.78rem;height: 0.55rem"></a>
+        <a class="wap-head fl"  href="<?=SITE_URL?>"><img src="<?=StaticDir?>1.0/images/wap-lg.png"></a>
         <div class="fr">
-            <a id="share"><img src="<?=StaticDir?>1.0/images/arrw-ico1.png" style="width: 0.48rem;height: 0.48rem;"></a>
-            <a id="menu"><img src="<?=StaticDir?>1.0/images/arrw-ico2.png" style="width: 0.48rem;height: 0.16rem"></a>
+            <a id="share"><img src="<?=StaticDir?>1.0/images/arrw-ico1.png" ></a>
+            <a id="menu"><img src="<?=StaticDir?>1.0/images/arrw-ico2.png"></a>
             <!--点击菜单出现导航弹窗，默认影藏-->
             <div class="menu-box" id="menu-box">
                 <a target="_blank" href="<?=WAP_URL?>">一只蝉首页</a>

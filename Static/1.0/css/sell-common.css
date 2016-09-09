@@ -524,7 +524,7 @@ body,html{
 .yzc-sell-main{
     position: relative;
     padding-left: 200px;
-    /*padding-bottom: 15%;*/
+    padding-bottom:55px;
 }
 .sell-lf-main{
     overflow: hidden;

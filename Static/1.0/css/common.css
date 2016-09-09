@@ -341,7 +341,7 @@ img{
     -webkit-border-radius: 10px;
     position: fixed;
     right: 0.10rem;
-    top: 0.95rem;
+    top: 0.86rem;
     display: none;
     z-index: 99;
 }
@@ -362,8 +362,8 @@ img{
 /*公用列表头部*/
 .list-head{
 	width: 100%;
-	height: 1rem;
-	line-height:1rem;
+    height: 0.86rem;
+    line-height: 0.86rem;
 	background: #FFFFFF;
 	position:fixed;
 	top:0px;
@@ -390,8 +390,8 @@ img{
     margin-top:0.16rem;
 }
 .wap-head img{
-   /*max-width: 1.89rem;*/
-   /*max-height: 0.85rem;*/
+   max-width: 1.69rem;
+   max-height: 0.45rem;
 }
 .list-head div.fr {
 	height: 0.86rem;
@@ -419,8 +419,8 @@ img{
 	margin-top: 0.22rem;
 }
 .list-head div.fr a img{
-	/*max-width:0.49rem;*/
-	/*max-height:0.49rem;*/
+    max-width: 0.39rem;
+    max-height: 0.39rem;
 	margin: auto;
 }
 /*公用弹话框*/
@@ -521,10 +521,10 @@ img{
 }
 .yzc-share-bg{
     width: 100%;
-    height:2.4rem;
+    height: 2.4rem;
     background: url("../images/fx-bg.png") no-repeat top center;
     background-size: 100% auto;
-    margin-top: -9px;
+    margin-top: -15px;
 }
 .yzc-share h3{
     color: #666666;

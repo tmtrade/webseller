@@ -909,6 +909,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     margin-left: 12px;
     width: 155px;
     text-align: center;
+    margin-top: 27px;
     display: none;
 }
 .rad input[type="radio"]{
