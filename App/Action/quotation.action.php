@@ -23,7 +23,7 @@ class QuotationAction extends AppAction{
         $size = $this->input('size','int',$this->size);
         //得到分页数据
         $res = $this->load('quotation')->getList($params, $page, $size);
-        if(!$res['total']>0 || $params['name']){
+        if($res['total']>0 || $params['name']){
             //得到分页工具条
             $pager 	= $this->pagerNew($res['total'], $size);
             $pageBar 	= empty($res['rows']) ? '' : getPageBarNew($pager);
