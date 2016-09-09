@@ -450,6 +450,7 @@
 .pull-list  a.all-tp-btn{
     display: block;
     position: relative;
+    color: #666666;
 }
 .pull-list  a.lb-tp-btn{
     display: block;

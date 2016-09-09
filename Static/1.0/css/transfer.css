@@ -44,6 +44,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .trans-brand-list{
     width: 1040px;
+    min-height: 400px;
     margin: auto;
     /*overflow: hidden;*/
 }
@@ -73,15 +74,18 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .tj-hot{
     display: inline-block;
-    width: 51px;
+    min-width: 51px;
     height: 29px;
     line-height: 25px;
+    padding-right: 10px;
     background: url("../images/tj-ico.png") no-repeat top center;
+    background-size: 100% 100%;
     position: absolute;
     top: 6px;
     left: -8px;
     color: #ffffff;
-    text-align: center;
+    text-indent: 10px;
+
 }
 .trans-brand-list  div.pic-show{
     width: 280px;
@@ -183,12 +187,12 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 
 .trans-xl-ban{
-    width: 972px;
-    height: 102px;
+    width:1040px;
+    height:91px;
     margin-top:36px;
     background: url("../images/lx-ban.png") no-repeat top center;
+    background-size: 100% 100%;
     position: relative;
-
 }
 .trans-xl-ban h3{
     display: inline-block;
@@ -224,24 +228,25 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     display: inline-block;
     border: 4px solid #2d2d2d;
     margin-left: 108px;
-    margin-top: 16px;
+    margin-top:6px;
 }
 .trans-xl-ban .user-head .zdy img{
     display: inline-block;
     max-width:70px;
     max-height: 70px;
+    margin-top: 0px !important;
 }
 .trans-xl-ban .tel-qq{
     float: right;
-    width: 500px;
-    margin-right: 72px;
+    margin-right:168px;
     margin-top: 7px;
 }
 .trans-xl-ban .tel-qq h4{
+    display: inline-block;
     color: #feffff;
     font-size: 16px;
-    text-indent: 17px;
-    letter-spacing:25px;
+    text-indent: 35px;
+    letter-spacing: 25px;
 }
 .trans-xl-ban .tel-qq h4 em{
     display: inline-block;
@@ -249,16 +254,23 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     margin-bottom: 12px;
 }
 .trans-xl-ban .tel-qq p{
+    min-width: 400px;
+    padding-right: 10px;
+    padding-left: 10px;
+    height: 42px;
+    line-height: 42px;
+    background: url("../images/lx-ban-qq.png") no-repeat top center;
+    background-size: 100% 100%;
     color: #ffffff;
     font-size: 15px;
-    margin-top:9px;
     margin-left: 15px;
 }
 .trans-xl-ban .tel-qq p label{
     display: inline-block;
     color: #fff2b1;
     font-size: 22px;
-    margin-right:7px;
+    margin-right: 15px;
+    margin-left: 10px;
     vertical-align: middle;
     margin-bottom: 3px;
 }
@@ -553,6 +565,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .tras-tab tr td.oper a{
    margin-left: 12px;
    cursor: pointer;
+    color: #424b5a;
 
 }
 .tras-tab tr td.oper a:hover{
@@ -777,6 +790,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .merch-sce-share a{
     margin-left: 10px;
+    color: #424b5a;
 }
 .merch-sce-share a img{
     vertical-align: middle;
@@ -1036,8 +1050,9 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     margin-top: 35px;
 }
 .wx-tc p{
-    margin-top: 15px;
+
     font-size:18px;
+    font-family: "微软雅黑";
 }
 .wx-tc img{
     display: inline-block;

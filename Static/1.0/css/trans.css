@@ -135,7 +135,7 @@ body{
 }
 .trans-tj-pic span{
     display: inline-block;
-    min-width: 1.9rem;
+    min-width:0.9rem;
     padding-right: 26px;
     padding-left: 10px;
     height: 0.61rem;
