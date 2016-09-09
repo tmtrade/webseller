@@ -355,18 +355,21 @@ class LoginAction extends AppAction
     //登录页商标出售页
     public function seller()
 	{
+		$this->set('cur','seller');
 		$this->display('');
 	}
     
     //登录页报价单工具页
     public function trade()
 	{
+		$this->set('cur','trade');
 		$this->display('');
 	}
     
     //登录页安全监测工具页
     public function detection()
 	{
+		$this->set('cur','check');
 		$this->display();
 	}
     

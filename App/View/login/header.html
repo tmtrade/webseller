@@ -33,7 +33,7 @@
     <div class="w1300">
         <div class="fl">
             <a class="s-lg" href="<?=SELLER_URL?>"><img src="<?=StaticDir?>1.0/images/sell-lg-nw.png"></a>
-            <a href="/login/trade"  addmsg="商标出售" module='登录页'>
+            <a href="/login/trade" <?=($cur=='trade'?' class="cur" ':'')?>  addmsg="商标出售" module='登录页'>
                 <label>
                     <i class="ico s-tp1"></i>
                     商标出售
@@ -46,13 +46,13 @@
                 </label>
 
             </a>-->
-            <a href="/login/seller"  addmsg="商标报价单工具" module='登录页'>
+            <a href="/login/seller" <?=($cur=='seller'?' class="cur" ':'')?>  addmsg="商标报价单工具" module='登录页'>
                 <label>
                     <i class="ico s-tp3"></i>
                     商标报价单工具
                 </label>
             </a>
-            <a href="/login/detection"  addmsg="商标安全检测工具" module='登录页'>
+            <a href="/login/detection" <?=($cur=='check'?' class="cur" ':'')?>  addmsg="商标安全检测工具" module='登录页'>
                 <label>
                     <i class="ico s-tp4"></i>
                     商标安全检测工具
