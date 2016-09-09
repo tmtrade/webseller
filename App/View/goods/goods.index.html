@@ -151,10 +151,10 @@ $(function(){
 	
 	//每页大小改变
         $('.mess-top-dq li').click(function(){
-            var size = $.trim($('#size_income').text());
-	    $("input[name=size]").val(size);
-	    setEvent("选择分页条数","每页显示"+size);
-	    $("#seachForm").submit();
+            var size = $.trim($(this).text());
+            $("input[name=size]").val(size);
+            setEvent("选择分页条数","每页显示"+size);
+            $("#seachForm").submit();
         });
 });
 //table切换
