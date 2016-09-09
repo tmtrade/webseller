@@ -368,7 +368,9 @@ class quotationModule extends AppModule
             return StaticDir.'1.0/images/mr-m-head.png';//默认男
         }elseif($avatar==4){
             //用户头像
-            return SELLER_URL.$this->import('user')->get($uid,'photo');
+            if($rst = $this->import('user')->get($uid,'photo')){
+                return SELLER_URL.$rst;
+            }
         }
     }
 
