@@ -122,7 +122,7 @@ class quotationModule extends AppModule
                 'qid'           => $quotationId,
                 'number'        => $v,
                 'price'         => $data['price'][$k],
-                'label'         =>  $data['label'][$k],
+                'label'         =>  $data['label'][$k]?$data['label'][$k]:0,
                 'sort'          =>  ($k+1),
                 'imgId'         =>  $rstImg,
                 

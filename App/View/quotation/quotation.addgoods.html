@@ -264,20 +264,6 @@
             return false;
         }
 
-        //检查标签
-        var label = $('#list_body input[name*=label]');
-        var msg_label = '';
-        label.each(function(i) {
-            if ($(this).val() == 0) {
-                msg_label = '第' + (i + 1) + '个商品没有选择标签类别!';
-                return false;
-            }
-        });
-        if (msg_label) {
-            layer.msg(msg_label, {time: 1500});
-            return false;
-        }
-
         //表单信息验证
         var title = $('.sell-lf-main input[name=title]').val();
         if (title === "") {
@@ -398,20 +384,6 @@
         });
         if (msg_price) {
             layer.msg(msg_price, {time: 1500});
-            return false;
-        }
-
-        //检查标签
-        var label = $('#list_body input[name*=label]');
-        var msg_label = '';
-        label.each(function(i) {
-            if ($(this).val() == 0) {
-                msg_label = '第' + (i + 1) + '个商品没有选择标签类别!';
-                return false;
-            }
-        });
-        if (msg_label) {
-            layer.msg(msg_label, {time: 1500});
             return false;
         }
 
