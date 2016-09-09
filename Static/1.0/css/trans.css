@@ -26,11 +26,12 @@ body{
     border: 0.05rem solid #db8d8d;
     border-radius: 100px;
     -webkit-border-radius: 100px;
+    overflow: hidden;
     /*margin-top: 0.1rem;*/
 }
 .qu-ban span img{
     max-width: 1.1rem;
-    max-height: 1.1rem;
+    max-height: 1.2rem;
     border-radius: 100px;
     -webkit-border-radius: 100px;
 }
