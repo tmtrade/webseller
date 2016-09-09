@@ -245,6 +245,11 @@ body,html{
     border-bottom: 2px solid #ffa7a7;
     padding-bottom: 4px;
 }
+.sea-head .fl a.cur label{
+    text-decoration:none;
+    border-bottom: 2px solid #ffa7a7;
+    padding-bottom: 4px;
+}
 .sea-head .fr img{
     vertical-align: middle;
     margin-top:-7px;

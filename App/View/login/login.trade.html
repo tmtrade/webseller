@@ -37,7 +37,12 @@
                    使得用户随时可查看，无需特意开启电脑和办公软件<br/>
                    不受时间和设备限制<br/>
                </p>
-               <a href="<?=WAP_URL?>" target="_blank" class="yl-btn pulse animated infinite timer5"><i><img src="<?=StaticDir?>1.0/images/pre-ico.png"></i>去一只蝉看看</a>
+               <div class="ckys  animated  timer3">
+                   <a href="<?=WAP_URL?>" target="_blank"><i><img src="<?=StaticDir?>1.0/images/pre-ico.png"></i>看看样例</a>
+                   <span>
+                       <img src="<?=StaticDir?>1.0/images/s-wx.png">
+                   </span>
+               </div>
            </div>
        </div>
        <div class="s-pic3  timer3"></div>
@@ -87,17 +92,17 @@
            if (scrollTop< $(".page_2").offset().top-150){
                $(".s-pic1").addClass("bounceInRight");
            }
-           if (scrollTop<$(".page_3").offset().top+200 && scrollTop>= $(".page_2").offset().top-200) {
+           if (scrollTop<$(".page_3").offset().top+200 && scrollTop>= $(".page_2").offset().top-360) {
                $(".s-des2,.s-pic2").css({"opacity":"1"});
                $(".s-des2 h3").addClass("bounceInLeft");
                $(".s-des2 h6").addClass("bounceInRight");
                $(".s-pic2 span").addClass("flipInY");
            }
 
-           if (scrollTop >= $(".page_3").offset().top - 200) {
+           if (scrollTop >= $(".page_3").offset().top -300) {
                $(".s-des3,.s-pic3").css({"opacity":"1"})
                $(".s-pic3").addClass("fadeInRightBig");
-               $(".s-trade3 h3,.s-des3 p").addClass("fadeInLeft");
+               $(".s-trade3 h3,.s-des3 p,.ckys").addClass("fadeInLeft");
            }
        });
    </script>

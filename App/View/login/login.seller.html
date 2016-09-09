@@ -34,7 +34,13 @@
             iPhone / Mac / PC / Android 智能机全覆盖<br/>
             随时随地，一“点”就看<br/>
         </p>
-        <a target="_blank" href="<?=C('template_1')?>/?wap=1" class="yl-btn  pulse animated infinite timer5"><i><img src="<?=StaticDir?>1.0/images/pre-ico.png"></i>查看样例</a>
+
+        <div class="ckys  animated  timer3">
+           <a target="_blank" href="<?=C('template_1')?>/?wap=1"><i><img src="<?=StaticDir?>1.0/images/pre-ico.png"></i>查看样例</a>
+           <span>
+               <img src="<?=StaticDir?>1.0/images/s-wx.png">
+           </span>
+        </div>
     </div>
 </div>
 <script type="text/javascript" src="<?=StaticDir?>1.0/js/jquery.mousewheel.js"></script>
@@ -83,16 +89,16 @@
             $(".gen-pic1").addClass("fadeInDown");
             $(".yl-btn").addClass("pulse");
         }
-        if (scrollTop<$(".page_3").offset().top+200 && scrollTop>= $(".page_2").offset().top-200) {
+        if (scrollTop<$(".page_3").offset().top+200 && scrollTop>= $(".page_2").offset().top-360) {
             $(".gen-ban2").addClass("fadeInLeftBig");
             $(".gen-ban-des2 h3,.gen-ban-des2 p").addClass("slideInRight");
             $(".gen-ban2,.gen-ban-des2").css({"opacity":"1"});
         }
 
-        if (scrollTop >= $(".page_3").offset().top - 100) {
+        if (scrollTop >= $(".page_3").offset().top-300) {
             $(".gen-ban3,.gen-ban-des3").css({"opacity":"1"});
             $(".gen-ban3").addClass("fadeInRightBig");
-            $(".gen-ban-des3 h3,.gen-ban-des3 p").addClass("slideInLeft");
+            $(".gen-ban-des3 h3,.gen-ban-des3 p,.ckys").addClass("slideInLeft");
         }
     });
 </script>

@@ -119,20 +119,15 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .trans-brand-list  div.brand-ms label{
     display: inline-block;
     width: 100%;
-    margin-top:8px;
+    margin-top:6px;
     line-height: 22px;
-
 }
 .xq-ms{
-    display: inline-block;
-    overflow : hidden;
-    text-overflow: ellipsis;
-    display:-webkit-box;
-    -webkit-line-clamp:6;
-    -webkit-box-orient: vertical;
+    max-height:135px;
+    _height:expression(this.scrollHeight>100?'100px':'auto');
+    overflow:auto;
 }
 .trans-brand-list  div.brand-ms label a{
-
     display: inline-block;
     min-width: 48px;
     float: left;
@@ -190,7 +185,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .trans-xl-ban{
     width: 972px;
     height: 102px;
-    margin-top:26px;
+    margin-top:36px;
     background: url("../images/lx-ban.png") no-repeat top center;
     position: relative;
 
@@ -201,7 +196,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     color: #ffffff;
     line-height: 22px;
     margin-top: 25px;
-    margin-left: 124px;
+    margin-left:88px;
 }
 .trans-xl-ban h3 label{
     font-size:17px;
@@ -238,14 +233,14 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .trans-xl-ban .tel-qq{
     float: right;
-    width: 441px;
-    margin-right: 124px;
-    margin-top: 10px;
+    width: 500px;
+    margin-right: 72px;
+    margin-top: 7px;
 }
 .trans-xl-ban .tel-qq h4{
     color: #feffff;
     font-size: 16px;
-    text-align: center;
+    text-indent: 17px;
     letter-spacing:25px;
 }
 .trans-xl-ban .tel-qq h4 em{
@@ -256,14 +251,16 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .trans-xl-ban .tel-qq p{
     color: #ffffff;
     font-size: 15px;
-    margin-top:4px;
+    margin-top:9px;
     margin-left: 15px;
 }
 .trans-xl-ban .tel-qq p label{
     display: inline-block;
     color: #fff2b1;
     font-size: 22px;
-    margin-right: 5px;
+    margin-right:7px;
+    vertical-align: middle;
+    margin-bottom: 3px;
 }
 
 .trans-btm{
