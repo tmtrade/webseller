@@ -41,7 +41,7 @@
         <!--<a class="fl" module="顶部6" addmsg="返回" href="javascript:;" onclick="if(document.referrer){history.go(-1);}else{location.href='/'};"><i></i><?=$page_title?></a>-->
         <a class="wap-head fl"  href="<?=SITE_URL?>"><img src="<?=StaticDir?>1.0/images/wap-lg.png"></a>
         <div class="fr">
-            <a id="share" style="border: 1px solid red;width: 1.5rem"><img src="<?=StaticDir?>1.0/images/arrw-ico1.png" ></a>
+            <a id="share"><img src="<?=StaticDir?>1.0/images/arrw-ico1.png" ></a>
             <a id="menu"><img src="<?=StaticDir?>1.0/images/arrw-ico2.png"></a>
             <!--点击菜单出现导航弹窗，默认影藏-->
             <div class="menu-box" id="menu-box">
@@ -166,7 +166,7 @@
     }
     function tc(){
         layer.open({
-            area:["542px","415px"],
+            area:["80%","5.27rem"],
             type: 1,
             title: false,
             closeBtn:1,
@@ -177,7 +177,7 @@
     //分享
     $("#share").on("click",function(){
         layer.open({
-            area:["80%","6.27rem"],
+            area:["85%","6.47rem"],
             type: 1,
             title: false,
             closeBtn:1,

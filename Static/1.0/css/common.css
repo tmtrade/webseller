@@ -621,10 +621,10 @@ img{
 }
 .wx-tc span{
     display: inline-block;
-    margin-top: 35px;
+    margin-top:25px;
 }
 .wx-tc p{
-    margin-top: 15px;
+    margin-top: 10px;
     font-size: 0.28rem;
 }
 .wx-tc img{
