@@ -978,6 +978,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .yzc-share a{
     color: #666666;
+    font-family: "微软雅黑";
 }
 .yzc-share a span{
     display: inline-block;
@@ -1010,7 +1011,6 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     position:relative !important;
 }
 .yzc-share-main li a{
-    display: block;
     margin: 10px;
     /*padding-bottom: 1rem;*/
     /*line-height: 0.22rem;*/
