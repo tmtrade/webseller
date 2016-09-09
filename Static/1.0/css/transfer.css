@@ -761,6 +761,9 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     vertical-align: middle;
     margin-top: -4px;
 }
+.comm-lx-cet p  b a{
+    color: #ffdf99;
+}
 .trans-btm2{
     width: 100%;
     height:136px;
