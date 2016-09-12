@@ -148,8 +148,8 @@ class SellModule extends AppModule{
                 'contact'       => $params['name'],
                 'price'         => $params['price'],
                 'type'          => 1,
-                'source'        => 4,
-                'memo'		=> $params['memo'],
+                'source'        => $params['source']?$params['source']:4,
+                'memo'          => $params['memo'],
             );
             $rst = $this->importBi('sale')->addSale($tmp);
             

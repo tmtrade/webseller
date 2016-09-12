@@ -143,6 +143,7 @@ class quotationModule extends AppModule
                     'phone'         => $mobile,
                     'name'          => $name,
                     'price'         => $data['price'][$k],
+                    'source'        => 6,
                     'memo'          => "报价单添加商品",
                 );
                 $resSell = $this->load('sell')->documentAddSell($tmps);
