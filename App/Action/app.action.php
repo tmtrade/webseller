@@ -64,7 +64,7 @@ abstract class AppAction extends Action
 		//客服qq
 		$this->set('qq_num',C('qq_num'));
 		//静态文件版本号>>控制js,css缓存
-		$this->set('static_version', 12111);
+		$this->set('static_version', 12123);
 		$this->set('current_url', '/'.$this->mod .'/' . $this->action.'/');
 		$this->set('title',$this->pageTitle);
                 $this->set('ptype',$this->ptype);//设置页面标识
