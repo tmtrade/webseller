@@ -39,7 +39,7 @@
             </ul>
             <input type="hidden" name="price[]" class="price-list" types="<?if(!empty($itemInfo) && $itemInfo['price']==0)echo 2;else echo 1;?>" value="<?=$itemInfo['price']?>"/>
         </div>
-        <p class="yj" <?if(!empty($itemInfo) && $itemInfo['price']==0) echo 'style="display:block;"';?>>议价</p>
+        <p class="yj" <?if(!empty($itemInfo) && $itemInfo['price']==0) echo 'style="display:block;"';?></p>
         <p class="pre" <?if(!empty($itemInfo) && $itemInfo['price']==0) echo 'style="display:none;"';?>>
             价格:<input type="text" class="sell-ip-box" value="<?=$itemInfo['price']?>"/>元
         </p>
