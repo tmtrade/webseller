@@ -173,7 +173,7 @@ body,html{font-family: "微软雅黑";}
     height: 872px;
     background: url("../images/gen-pic2.png") no-repeat top center;
     position: absolute;
-    left: 5%;
+    left:0px;
     top:0px;
     -webkit-transform: perspective(2000px) rotateY(0);
     -moz-transform: perspective(2000px) rotateY(0);
@@ -432,11 +432,27 @@ body,html{font-family: "微软雅黑";}
     margin-top: 10px;
 }
 @media screen and (max-width:1491px) {
+    .s-des3{
+        margin-left: 80px !important;;
+    }
+    .s-des1{
+        padding-left:20px !important;
+    }
+    .s-pic2 span{
+        margin-right: -80px !important;
+    }
+    .gen-ban-bg2{
+        height: 741px !important;
+    }
     .gen-ban2{
         left: 0px !important;
+        width:1180px !important;
+        background-size: 100% auto;
+        background-position: top;
+        /*height:auto !important;*/
     }
     .gen-ban-des2{
-        right: 25px !important;
+        right: 65px !important;
     }
     .s-pic1{
         right: 120px !important;
@@ -445,6 +461,9 @@ body,html{font-family: "微软雅黑";}
         left: 80px !important;
     }
     .s-pic3{
-        right: 95px !important;;
+        right: 45px !important;;
+    }
+    .gen-ban3{
+        right:25px !important;
     }
 }
