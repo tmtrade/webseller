@@ -343,8 +343,10 @@
                 }, function() {
 //                        location.reload();
                     if (qid) {
+                        setEvent("报价单编辑","修改报价单");
                         location.href = '/quotation/index/';
                     } else {
+                        setEvent("报价单编辑","创建报价单");
                         location.href = '/quotation/addFinish/?id=' + dd.code;
                     }
                 });
