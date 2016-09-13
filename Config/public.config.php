@@ -214,6 +214,13 @@ $define = array(
         3=>'性价比高',
         4=>'急售',
     ),
+    //删除报价单的接口
+    'API_QUOTATION_USERS' => array(
+        'admin'  => '1',//一只蝉后台
+    ),
+    'API_QUOTATION_KEYS' => array(
+        '1' => 'wojiusuibianxiexie',//一只蝉后台
+    ),
 );
 if (is_array($checkhost)) {
     $define = array_merge($define, $checkhost);

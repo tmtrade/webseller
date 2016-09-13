@@ -195,11 +195,18 @@ class quotationModule extends AppModule
     /**
      * 删除商品单,当前登录用户
      * @param $id
+     * @param $uid
      * @return bool
      */
-    public function delete($id){
+    public function delete($id,$uid = 0){
+        if($uid==0){
+            $uid = UID;
+        }
+        if($uid==0){
+            return false;
+        }
         //删除报价pdf文件
-        $path = './Data/'.UID.'/'.$id.'.jpg';
+        $path = './Data/'.$uid.'/'.$id.'.jpg';
         if(is_file($path)){
             $rst = unlink($path);
             if(!$rst) return false;
@@ -209,7 +216,7 @@ class quotationModule extends AppModule
         $rst = $this->import('quotationItems')->remove(array('eq'=>array('qid'=>$id)));
         if($rst){
             //删除报价单表
-            $rst = $this->import('quotation')->remove(array('eq'=>array('uid'=>UID,'id'=>$id)));
+            $rst = $this->import('quotation')->remove(array('eq'=>array('uid'=>$uid,'id'=>$id)));
             if($rst){
                 return $this->commit('quotation');
             }
