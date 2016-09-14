@@ -2,6 +2,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 .trans-top{
     padding: 15px 20px 15px 20px;
     overflow: hidden;
+    background-color: #ffffff;
 }
 .top-nav p{
     display: inline-block;
@@ -300,7 +301,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .trans-btm p a.btn{
     display: inline-block;
-    padding: 8px 14px;
+    padding: 12px 14px;
     background: #83a7cb;
     border-radius:7px;
     -webkit-border-radius: 7px;
@@ -1081,4 +1082,54 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
 }
 .layui-layer-setwin{
     right: 35px !important;
+}
+/*删除*/
+.del-bg{
+   width: 100%;
+    height: 100%;
+    background: url("../images/del-main.jpg") center no-repeat;
+    background-size: cover;
+    -ms-behavior: url(../css/backgroundsize.min.htc);
+    behavior: url(../css/backgroundsize.min.htc);
+    overflow: hidden;
+    position: relative;
+}
+.del-main{
+    width: 420px;
+    height: 210px;
+    margin:245px auto;
+}
+.del-rg {
+    width: 165px;
+    color: #ffffff;
+    margin-top:30px;
+}
+.del-rg h3{
+    font-size: 45px;
+    color: #ffffff;
+}
+.del-rg p{
+    font-size:16px;
+    margin-top:15px;
+    font-family: "微软雅黑";
+}
+.del-rg a{
+    display: inline-block;
+    width: 98px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    font-size: 14px;
+    background: #647794;
+    border: 1px solid #97aac6;
+    border-radius:5px ;
+    -webkit-border-radius:5px ;
+    margin-top: 25px;
+
+}
+.del-btm{
+    position: absolute;
+    bottom: 0px;
+    border-top:1px solid #5c6f8a ;
+    background-color:rgba(255,255,255,0) !important; ;
 }
