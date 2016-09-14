@@ -26,17 +26,17 @@ class QuotationApiAction extends RpcServer
 
         //报价单id
         if ( empty($data['id']) ){
-            return array('code'=>'400','msg'=>'参数错误');
+            return array('code'=>400,'msg'=>'参数错误');
         }
         //用户id
         if ( empty($data['uid']) ){
-            return array('code'=>'400','msg'=>'参数错误');
+            return array('code'=>400,'msg'=>'参数错误');
         }
         $flag = $this->load('quotation')-> delete($data['id'],$data['uid']);
         if($flag){
-            return array('code'=>'200','msg'=>'操作成功');
+            return array('code'=>200,'msg'=>'操作成功');
         }else{
-            return array('code'=>'417','msg'=>'操作失败');
+            return array('code'=>417,'msg'=>'操作失败');
         }
     }
 
@@ -74,7 +74,7 @@ class QuotationApiAction extends RpcServer
         //判断签名是否正确
         if ( empty($sign) || $sign != $this->sign($data, $user) ) return array('code'=>403,'msg'=>'签名错误');
         //判断数据是否正确
-        if ( empty($data) ) return array('code'=>404,'msg'=>'参数不完整');
+        if ( empty($data) ) return array('code'=>400,'msg'=>'参数不完整');
         return true;
     }
 

@@ -243,6 +243,12 @@ class QuotationAction extends AppAction{
         if(!$id || !$uid) exit('参数不合法');
         //得到详情数据
         $res = $this->load('quotation')->getDetail($id,$uid);
+        if(!$res){
+            //空结果集
+            $this->set('isView',true);
+            $this->display('quotation/quotation.error.html');
+            exit;
+        }
         $this->set('list',$res);
         if((!$pc && is_mobile_request()) || $wap){ //判断是否手机来源
             $this->set('label',C('QUOTATION_LABEL2'));
