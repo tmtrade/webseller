@@ -67,6 +67,7 @@ h1,h2,h3,h4,h5,h6{color:#666666;}
     z-index:9;
 }
 .trans-brand-list ul li  .br-details{
+    width: 100%;
     min-height: 361px;
     position: absolute;
     top:0px;
