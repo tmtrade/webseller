@@ -1683,6 +1683,7 @@ cpm-pel-cent table tr td.com-name p{
     margin-left: 12px;
     float: left;
     padding-top: 10px;
+    text-indent: 10px;
 }
 .app-ad .app-ad-cont {
     border-bottom: 1px solid #bebebe;
