@@ -41,7 +41,7 @@ abstract class Bi extends RpcClient
 		if ( empty($response)) {
             if($i<2 ){
                 ++$i;
-                sleep(2);
+                usleep(100000);
                 return $this->request($name, $param, $i);
             }
 			return array('code' => '404', 'msg' => '系统异常', 'data' => '');
