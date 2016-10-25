@@ -35,13 +35,17 @@ abstract class Bi extends RpcClient
 	 * @param	string  $param	提交的参数
 	 * @return	array
 	 */
-	public function request($name, $param)
+	public function request($name, $param, $i=1)
 	{
 		$response = parent::request($name, $param);
-		if ( empty($response) ) {
+		if ( empty($response)) {
+            if($i<2 ){
+                ++$i;
+                sleep(2);
+                return $this->request($name, $param, $i);
+            }
 			return array('code' => '404', 'msg' => '系统异常', 'data' => '');
-		}
-		
+        }
 		return $response;
 	}
 
