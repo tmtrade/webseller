@@ -53,9 +53,12 @@ class LoginModule extends AppModule
         $uid        = 0;
         $array      = array();
         $usInfo		= $this->import('user')->getUserInfo($account,$cateId);
+        if ( empty($usInfo) ) {
+            return $this->returnUser($account, $password, 0, 2);
+        }
         $uid    = $usInfo['id'];
         $pword  = getPasswordMd5($password,$usInfo['salt']);
-        $code   = $usInfo['password'] != $pword ? 3 : 1;
+        $code   = $usInfo['password'] != $pword ? 3 : 1;        
         $array  = $this->returnUser($account,$password,$uid,$code);
         return $array;
     }
