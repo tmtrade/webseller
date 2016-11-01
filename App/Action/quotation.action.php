@@ -135,8 +135,8 @@ class QuotationAction extends AppAction{
      * 添加商标--通过商标号
      */
     public function addNumber(){
-        $data = $this->getFormData();	
-        $rst = $this->load('quotation')->insertQuotation($data,36,$data['id']);
+        $data = $this->getFormData();
+        $rst = $this->load('quotation')->insertQuotation($data,48,$data['id']);
         $this->returnAjax($rst);
     }
     

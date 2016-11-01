@@ -190,11 +190,11 @@
             //商标数不能大于20
             var num = $('#list_body tr').length;
             var num_str = false;
-            if (num >= 36) {
+            if (num >= 48) {
                 num_str = true;
             }
             if (num_str) {
-                layer.msg('亲，最多只能添加36条商品哦！', {time: 1500});
+                layer.msg('亲，最多只能添加48条商品哦！', {time: 1500});
                 layer.closeAll('loading');
                 return false;
             }
