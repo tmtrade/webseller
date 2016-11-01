@@ -52,30 +52,10 @@ class LoginModule extends AppModule
         $code       = 2;//账号不存在
         $uid        = 0;
         $array      = array();
-        $cfInfo     = $this->importBi('passport')->get($account,$cateId);
-        if( !empty($cfInfo['data']['id']) ){//登录账号在超凡存在
-        	//验证密码和账号是否相同
-        	$code	= $this->verifyChofn($cfInfo,$account,$password,$cateId);
-        	if( $code == 1 ){
-        		$uid	= $this->useChofnGetUcId($cfInfo);
-        		if( !empty($uid) ){
-        			$this->import('user')->updateChofn($cfInfo['data'],$uid);//修改用户中心里面的超凡账号
-        		}else{
-					$uid= $this->import('user')->addChofn($cfInfo['data']);//用超凡账号创建账号
-					$this->load('message')->pushMessage(array('tplId' => 1,'message'=>''), $uid);
-        		}
-        	}
-        }else{
-        	$usInfo		= $this->import('user')->getUserInfo($account,$cateId);
-        	if( !empty($usInfo['cfwId']) ){//超凡账号在用户中心注册过(超凡账号和用户中心账号不一样)
-				$cfInfo	= $this->importBi('passport')->get($usInfo['cfwId'],4);
-				$code	= $this->verifyChofn($cfInfo,$account,$password,$cateId);
-        	}elseif( !empty($usInfo['id']) ){
-                $uid    = $usInfo['id'];
-                $pword  = getPasswordMd5($password,$usInfo['salt']);
-                $code   = $usInfo['password'] != $pword ? 3 : 1;
-            }
-        }
+        $usInfo		= $this->import('user')->getUserInfo($account,$cateId);
+        $uid    = $usInfo['id'];
+        $pword  = getPasswordMd5($password,$usInfo['salt']);
+        $code   = $usInfo['password'] != $pword ? 3 : 1;
         $array  = $this->returnUser($account,$password,$uid,$code);
         return $array;
     }
