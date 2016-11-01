@@ -188,8 +188,7 @@ class SellAction extends AppAction {
                 $data['msg'] = '上传数量超过100条';
             } else {
                 foreach ($SBarr as $k => $item) {
-
-                    if ((!$item['phone']) || (!$item['name']) || (!$item['price'])) {
+                    if ( empty($item['phone']) || empty($item['name']) || empty($item['price']) ) {
                         $saleNotContact[] = $item;
                         continue;
                     }
