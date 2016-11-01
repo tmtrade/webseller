@@ -136,7 +136,7 @@ class QuotationAction extends AppAction{
      */
     public function addNumber(){
         $data = $this->getFormData();	
-        $rst = $this->load('quotation')->insertQuotation($data,12,$data['id']);
+        $rst = $this->load('quotation')->insertQuotation($data,36,$data['id']);
         $this->returnAjax($rst);
     }
     

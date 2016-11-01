@@ -75,7 +75,10 @@ class quotationModule extends AppModule
                 'isLink'        => $data['isLink'],
             );
             $quotationId = $this->addQuotation($tmp);
-            if(!$quotationId) return array('code'=>1,'msg'=>'报价单添加失败');
+            if(!$quotationId){
+                $this->rollBack('quotation');
+                return array('code'=>1,'msg'=>'报价单添加失败');
+            } 
         }else{
             //edit
             $tmp = array(
@@ -95,7 +98,10 @@ class quotationModule extends AppModule
             $path = './Data/'.UID.'/'.$quotationId.'.jpg';
             if(is_file($path)){
                 $rst = unlink($path);
-                if(!$rst) return array('code'=>1,'msg'=>"图片删除失败!");
+                if(!$rst){
+                    $this->rollBack('quotation');
+                    return array('code'=>1,'msg'=>"图片删除失败!");
+                } 
             }
         }
         
@@ -129,7 +135,6 @@ class quotationModule extends AppModule
                 'imgId'         =>  $rstImg,
                 
             );
-            $this->begin('quotationItems');
             $rst = $this->addQuotationItems($item);
             
             
@@ -152,12 +157,9 @@ class quotationModule extends AppModule
                 }
             }
             
-            if($resSell && $rst){
-                    $this->commit('quotationItems');
-            }else{
-                $this->rollBack('quotationItems');
-                $this->rollBack('quotation');
-                return array('code'=>1,'msg'=>"写入数据库失败");
+            if(!$resSell || !$rst){
+                    $this->rollBack('quotation');
+                    return array('code'=>1,'msg'=>"写入数据库失败");
             }
         }
         $this->commit('quotation');
