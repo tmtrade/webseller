@@ -360,8 +360,11 @@
     line-height: 24px;
     margin-top: 10px;
 }
-.colum-chart  li:hover span{
+.colum-chart  span:hover {
    cursor: pointer;
+    -webkit-transform: scale(1.2)
+    -ms-transform: scale(1.2)
+    transform: scale(1.2)
 }
 .colum1{
     height: 60px;
@@ -447,6 +450,6 @@
 }
 .container{
     width:490px;
-    height: 320px;
-    margin:-45px auto 0px;
+    height:260px;
+    margin: 0px auto;
 }

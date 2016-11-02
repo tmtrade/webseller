@@ -511,14 +511,14 @@
 }
 .comm-search-bg  div.type,div.desi {
     float: left;
-    margin-top: 13px;
+    margin-top: 14px;
 }
 div.desi a{
     margin-left:14px;
 }
-.comm-search-bg  div label{
+.by-brand-search label{
     float: left;
-    margin-top: 10px;
+    margin-top:10px;
 }
 .comm-search-bg  div.type div{
     float:left;
@@ -971,12 +971,11 @@ table.list-mess-main tr .pri-num input{
 
 .amend-cont{
     width: 730px;
-    padding-top: 8px;
+    padding-top:9px;
     padding-bottom: 8px;
-    overflow: hidden;
     background:#f5f5f5;
     border: 1px solid #e8e8e8;
-
+    overflow: hidden;
 }
 .cg-cont-tel,.cg-cont-name,.cg-cont-qq{
     float: left;
@@ -1018,14 +1017,14 @@ table.list-mess-main tr .pri-num input{
     vertical-align:middle;
     margin-right: 5px;
 }
-.amend-cont-all{
+.amend-cont-tj{
     margin-left: 24px;
     margin-top: 25px;
     position: relative;
     bottom:5%;
     /*margin-bottom: 10%;*/
 }
-.amend-cont-all .sub-btn{
+.amend-cont-tj .sub-btn{
     float: left;
 
 }
@@ -1997,11 +1996,83 @@ p .btn {
 }
 
 
+/*调整商品列表*/
+.Comm-Case-Leads{
+    display:inline-block;
+    width: 40%;
+    height:64px;
+    border-right: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    padding-left: 18px;
+    padding-right: 18px;
+}
+.Lea-sty{
+    display: inline-block;
+    width: 100% !important;
+    background-color: #ffffff !important;
+    margin-top: 15px !important;
+    position: relative;
+    overflow: visible !important;
+}
 
+.Comm-Case-tjBtn{
+    display: inline-block;
+    float: right;
+}
+.Comm-Case-tjBtn .sub-btn{
+    margin-right: 26px;
+    height: 35px !important;
+    line-height: 35px !important;
+    margin-top:14px !important;
 
+}
+.inc-ts-cg{
+    display: inline-block;
+    color: #ce0000;
+    width: 100%;
+    height: 32px;
+    line-height: 33px;
+    text-align: center;
+    border-radius: 0px 0px 5px 5px;
+    border: 1px solid #ffe4e4;
+    border-top:none ;
+    position: absolute;
+    background: #ffefef;
+    left: -1px;
+    top: 44px;
+    z-index: 99;
+}
+.us-icon-err {
+    display: inline-block;
+    vertical-align: middle;
+    width: 14px;
+    height: 14px;
+    background-image: url(../images/icon19-1.png);
+    margin: -3px 5px 0 0;
+    overflow: hidden;
+}
 
+@media screen and (max-width: 1560px){
+    .Comm-Case-Leads{
+        width:45%;
+    }
+   .add-sell-by  input{
+       width: 180px !important;
+       margin-left: 5px;
+       margin-right: 5px;
+   }
+    .add-sell-by  a{
+        padding: 10px 6px !important;
+        margin-left: 0px;
+    }
+    .amend-cont label{
+        margin-left: 10px ;
+    }
+    .Comm-Case-tjBtn .sub-btn{
+        width: 100px !important;
+    }
 
-
+}
 
 
 

@@ -12,12 +12,53 @@
             </p>
         </div>
         <div class="comm-search-bg">
-            <div class="desi by-brand-search w-cont">
+            <div class="desi by-brand-search add-sell-by w-cont">
                 <label>请输入商标号</label>
                 <input type="text" id="add_number" class="cir"/>
                 <a href="javascript:;" id="addSell" class="cir sear-btn">添加至出售列表</a>
                 <!--当该商标失效-->
                 <!--<a id="addTips" style="display: none" class="eff-brand hint-bg cir"><i></i>该商标已失效</a>-->
+            </div>
+            <div class="Comm-Case-Leads amend-cont-all">
+                <? if($userInfo['mobile']): ?>
+                <!--联系人信息完整可以修改-->
+                <div class="amend-cont Lea-sty cir">
+                    <label>联系电话：</label>
+                    <div class="cg-cont-tel">
+                        <span class="contact_mobile"><?=$userInfo['mobile']?></span>
+                    </div>
+                    <label>联系人：</label>
+                    <div class="cg-cont-name">
+                        <span class="contact_name"><?=$userInfo['name']?></span>
+                    </div>
+                    <div class="cg-tel">
+                        <a href="javascript:;" class="xg_mobile" addmsg="修改联系方式" module='根据商标号出售'>修改联系方式</a>
+                    </div>
+                </div>
+                <? else: ?>
+                <!--联系人信息不完整可以添加-->
+                <div class="amend-cont cir">
+                    <div class="incomp f-hidden">
+                        <label>联系电话：</label>
+                        <div class="cg-cont-tel">
+                            <input type="text" class="cir blk c_tel" />
+                        </div>
+                        <label>联系人：</label>
+                        <div class="cg-cont-name">
+                            <input type="text" class="cir blk c_name" value=""/>
+                        </div>
+                        <div class="cg-tel">
+                            <a class="cir sear-btn cg-sear">确定修改</a><a class="cir qx-btn cg-qx">取消</a>
+                        </div>
+                    </div>
+                    <p class="cir blk inc-ts">请至少添加一条商标数据</p>
+                </div>
+                <? endif; ?>
+            </div>
+            <div class="Comm-Case-tjBtn">
+                <a class="sub-btn cir">
+                    提交
+                </a>
             </div>
         </div>
         <div id="has-data" style="display: none" class="comm-list-mess">
@@ -43,41 +84,7 @@
             </div>
         </div>
 
-        <div class="amend-cont-all">
-            <? if($userInfo['mobile']): ?>
-            <!--联系人信息完整可以修改-->
-            <div class="amend-cont cir">
-                <label>联系电话：</label>
-                <div class="cg-cont-tel">
-                    <span class="contact_mobile"><?=$userInfo['mobile']?></span>
-                </div>
-                <label>联系人：</label>
-                <div class="cg-cont-name">
-                    <span class="contact_name"><?=$userInfo['name']?></span>
-                </div>
-                <div class="cg-tel">
-                    <a href="javascript:;" class="xg_mobile" addmsg="修改联系方式" module='根据商标号出售'>修改联系方式</a>
-                </div>
-            </div>
-            <? else: ?>
-            <!--联系人信息不完整可以添加-->
-            <div class="amend-cont cir">
-                <div class="incomp f-hidden">
-                    <label>联系电话：</label>
-                    <div class="cg-cont-tel">
-                        <input type="text" class="cir blk c_tel" />
-                    </div>
-                    <label>联系人：</label>
-                    <div class="cg-cont-name">
-                        <input type="text" class="cir blk c_name" value=""/>
-                    </div>
-                    <div class="cg-tel">
-                        <a class="cir sear-btn cg-sear">确定修改</a><a class="cir qx-btn cg-qx">取消</a>
-                    </div>
-                </div>
-                <p class="cir blk inc-ts">请至少添加一条商标数据</p>
-            </div>
-            <? endif; ?>
+        <div class="amend-cont-tj">
             <a class="sub-btn cir" id="add_goods">
                 提交当前页面商品
             </a>
@@ -112,7 +119,7 @@
                     <div class="cg-tel">
                         <a class="cir sear-btn cg-sear">确定修改</a><a class="cir qx-btn cg-qx">取消</a>
                     </div>
-                    <p class="cir blk inc-ts" style="display: none">请至少添加一条商标数据</p>
+                    <p class="inc-ts-cg" ><i class="us-icon us-icon-err"></i>请至少添加一条商标数据</p>
                 </div>
             </div>
         </div>

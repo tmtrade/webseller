@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../../../Static/1.0/css/sell-common.css">
     <link rel="stylesheet" href="../../../Static/1.0/css/dataPage.css">
     <link rel="stylesheet" href="../../../Static/1.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../../Static/1.0/css/animate.min.css">
     <script type="text/javascript" src="../../../Static/1.0/js/jquery-1.8.3.min.js"></script>
     <!--<link rel="stylesheet" href="css/style.css">-->
 </head>
@@ -179,14 +180,16 @@
     option = {
         tooltip : {
             trigger: 'item',
-            formatter: "{a} <br/>{b} : {c} ({d}%)",
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
         },
+
+        color: [ '#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980','#d87a80'],
         series : [
             {
                 name: '访问来源',
                 type: 'pie',
-                radius : '55%',
-                center: ['50%', '60%'],
+                radius : '70%',
+                center: ['50%', '52%'],
                 data:[
                     {value:335, name:'纯中文'},
                     {value:310, name:'纯英文'},
