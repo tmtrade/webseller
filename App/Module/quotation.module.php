@@ -292,7 +292,7 @@ class quotationModule extends AppModule
     public function getQuotationItemByQid($qid){
         $r = array();
         $r['eq'] = array('qid'=>$qid);
-        $r['limit'] = 12;
+        $r['limit'] = 48;
         $r['col'] = array('qid','number');
         $r['order'] = array('sort'=>'asc');
         $rst =  $this->import('quotationItems')->findAll($r);

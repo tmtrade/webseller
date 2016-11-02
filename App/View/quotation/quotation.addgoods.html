@@ -182,6 +182,7 @@
                 });
             layer.closeAll('loading');
         }
+        $.unique(arr);  //去重
         for(var i=0;i<number_num;i++)
         {
             if ($.trim(arr[i]) == '' || arr[i]=="") {
@@ -203,7 +204,7 @@
             var numbers = $('#list_body .number');
             var tmp = '';
             var flag = true;
-            numbers.each(function(i) {
+            numbers.each(function(j) {
                 tmp = $.trim($(this).text());
                 if (tmp == arr[i]) {
                     flag = false;
