@@ -56,7 +56,7 @@
                 <? endif; ?>
             </div>
             <div class="Comm-Case-tjBtn">
-                <a class="sub-btn cir" id="add_goods">
+                <a class="sub-btn cir" id="add_goods1">
                     提交
                 </a>
             </div>
@@ -85,7 +85,7 @@
         </div>
 
         <div class="amend-cont-tj">
-            <a class="sub-btn cir" id="add_goods">
+            <a class="sub-btn cir" id="add_goods2">
                 提交当前页面商品
             </a>
         </div>
@@ -202,7 +202,7 @@
             },'json');
         });
         //提交商品事件
-        $('#add_goods').click(function(){
+        $('#add_goods1,#add_goods2').click(function(){
             layer.load(1, {
                 shade: [0.1,'#fff'] //0.1透明度的白色背景
             });
