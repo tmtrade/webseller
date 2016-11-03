@@ -12,10 +12,12 @@ $(function(){
     $('.amend-cont-all').on('click','.xg_mobile',function(){
         edit_mobile(1);
         $(".amend-cont label").css({"marginTop":"6px"})
+        $('.Lea-sty').css({"marginTop":"8px"});
     });
     $('.amend-cont-all').on('click','.cg-qx',function(){
         edit_mobile(2);
         $(".amend-cont label").css({"marginTop":"0px"})
+
     });
     $('.amend-cont-all').on('click','.cg-sear',function(){
         edit_mobile(3);
@@ -52,6 +54,7 @@ function isMobile(mobile){
 function edit_mobile(type){
     var show1 = $('#nicaicai .cc1');
     var hide1 = $('#nicaicai .cc2');
+
     if(type==1){ //修改
         //保存原值
         p_tel = $('.amend-cont-all .contact_mobile').text();
@@ -60,13 +63,16 @@ function edit_mobile(type){
         hide1.find('.c_tel').attr('value',p_tel);
         hide1.find('.c_name').attr('value',p_name)
         $('.amend-cont').html(hide1.html());
+        $('.Lea-sty').css({"marginTop":"8px"});
     }else if(type==2){//还原
         show1.find('.contact_mobile').text(p_tel);
         show1.find('.contact_name').text(p_name);
         $('.amend-cont').html(show1.html());
+        $('.Lea-sty').css({"marginTop":"15px"});
     }else{//确定
         var now_tel = $('.amend-cont-all .cg-cont-tel input').val();
         var now_name = $('.amend-cont-all .cg-cont-name input').val();
+        $('.Lea-sty').css({"marginTop":"15px"});
         if(isMobile(now_tel)){
             if(isName(now_name)){
                 //到服务器去修改信息
@@ -82,9 +88,11 @@ function edit_mobile(type){
                 },'json');
             }else{
                 $('.inc-ts').html('请输入正确的联系人').css({"display":"inline-block"});
+                $('.Lea-sty').css({"marginTop":"8px"});
             }
         }else{
             $('.inc-ts').html('请输入正确的联系电话').css({"display":"inline-block"});
+            $('.Lea-sty').css({"marginTop":"8px"});
         }
     }
 }
