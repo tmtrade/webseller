@@ -65,6 +65,18 @@ $tbl['patentList'] = array(
 	'configFile'=> $configFile,
 );
 
+$tbl['saleAnalysis'] = array(
+	'name'		=> $prefix.'sale_analysis',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
+$tbl['saleAnalysisItems'] = array(
+	'name'		=> $prefix.'sale_analysis_items',
+	'dbId'		=> $dbId, 
+	'configFile'=> $configFile,
+);
+
 $tbl['messege'] = array(
 	'name'		=> $prefix2.'messege',
 	'dbId'		=> $dbId,
