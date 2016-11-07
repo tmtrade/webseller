@@ -1,37 +1,39 @@
 <?
-header("Content-type: text/html; charset=utf-8");
-
 /**
- * 广告管理
- *
- * @package    Action
- * @author     Far
- * @since      2016年6月7日10:29:46
+ * 数据分享
+ * Created by PhpStorm.
+ * User: dower
+ * Date: 2016/11/07 0021
+ * Time: 下午 14:10
  */
 class SaleAnalysisAction extends AppAction
 {
-    private $_num = 10;
     /**
-     * 出售数据分析
+     * 数据分享页
      */
     public function index()
     {
-        $id = $this->input('id', 'int', 201610);
-        if ( $id <= 0 ) {
-            exit('参数错误');
-        }
-
-        $analy  = $this->load('analysis')->getSaleAnalysisData($id);
-        $CLASS  = $this->load('analysis')->getClassGroup(0,0);
-        var_dump($analy);exit;
-        $this->set('info', $analy);
-        $this->set('CLASS', $CLASS[0]);//分类
+        $id = $this->input('id', 'int');
+        //得到分享详情
+        $data = $this->load('analysis')->getDate($id);
+        $this->set('data',$data);
+        //得到分享下拉选择
+        $select = $this->load('analysis')->select();
+        //得到分类信息
+        $class  = $this->load('analysis')->getClassName();
+        $this->set('data', $data);
+        $this->set('select', $select);
+        $this->set('class', $class);//分类
         $this->set('_NUMBER', C('SBNUMBER'));//商标字数
         $this->set('_TYPE', C('TYPES'));//组合类型
         $this->display();
     }
 
-       
-}
+    /**
+     * 下载报告
+     * @param $id
+     */
+    public function down($id){
 
-?>
+    }
+}

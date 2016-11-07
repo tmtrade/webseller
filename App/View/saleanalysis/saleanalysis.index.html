@@ -1,62 +1,65 @@
 <? require(ViewDir.'/header.html'); ?>
-
-    <link rel="stylesheet" href="../../../Static/1.0/css/dataPage.css">
-    <link rel="stylesheet" href="../../../Static/1.0/css/animate.min.css">
-
+<link rel="stylesheet" href="<?=StaticDir?>1.0/css/dataPage.css?v=<?=$static_version?>">
+<link rel="stylesheet" href="<?=StaticDir?>1.0/css/animate.min.css?v=<?=$static_version?>">
 <div class="yzc-sell-main">
 <!--公用左边导航-->
 <? require(ViewDir.'/left.html'); ?>
-
     <div class="sell-lf-main">
         <div class="comm-list-tit w-cont">
             <h3 class="fl">数据共享</h3>
             <div class="pull-list  fr">
-                <a class="cir all-tp-btn"><font>2016年10月</font><i class="fa fa-chevron-down"></i></a>
+                <a class="cir all-tp-btn"><font><?=$data['month_cn']?></font><i class="fa fa-chevron-down"></i></a>
                 <ul class="all-tp-list" style="display: none;">
+                    <? foreach($select as $item): ?>
                     <li>
-                        2016年09月
+                        <a href="/saleanalysis/index/?id=<?=$item['id']?>"><?=$item['month_cn']?></a>
                     </li>
-                    <li>
-                        2016年08月
-                    </li>
+                    <? endforeach; ?>
                 </ul>
             </div>
         </div>
         <div class="data-index-main">
             <div class="data-tit f-clearfix">
-                <h3>一只蝉 - 2016年09月数据分析报告</h3>
+                <h3>一只蝉 - <?=$data['month_cn']?>数据分析报告</h3>
                 <label>本报告由www.yizhchan.com (一只蝉知识产权交易平台)提供</label>
             </div>
             <h3 class="data-cont-title title-lis-sty  f-clearfix"><label class="tit-leb">销售数据分析</label></h3>
             <div class="data-cont-price cont-price-top  f-clearfix ">
                 <div class="data-cont-pMain ">
-                    <font>2016年10月出售的商品中，最易出售的定价范围为</font><br/>
+                    <font><?=$data['month_cn']?>出售的商品中，最易出售的定价范围为</font><br/>
                     <p class="data-cont-tj">
-                        <i>1 - 2</i>W元
+                        <i><?=$data['item'][1][0]['data1']?></i>W元
                     </p><br/>
-                    <label>占出售商品定价范围的 50%</label><br/>
+                    <label>占出售商品定价范围的 <?=$data['item'][1][0]['data2']?>%</label><br/>
                     <font>其余出售定价占比分别为</font><br/>
                     <p class="data-cont-Patio">
-                        <a>1w以下 20%    </a>   |<a>2-4w 15%   </a>   |<a>4-8W 10% </a>   |<a>8W以上 5%</a>
+                        <? foreach($data['item'][1] as $k=>$item): ?>
+                        <? if($k==0) continue; ?>
+                        <? if($k==1): ?>
+                        <a><?=$item['data1']?>w <?=$item['data2']?>%</a>
+                        <? else: ?>
+                        | <a><?=$item['data1']?>w <?=$item['data2']?>%</a>
+                        <? endif; ?>
+                        <? endforeach; ?>
                     </p>
                 </div>
             </div>
             <div class="data-cont-ratio f-clearfix">
                 <ul>
                     <li>
-                   <span>
-                       <b class="more">7</b>%
-                   </span>
+                        <span>
+                           <b class="more"><?=$data['item'][2][0]['data2']?></b>%
+                        </span>
                         <label>包装后商品出售几率</label>
                     </li>
                     <li>
-                   <span>
-                       <b class="less">0.025</b>%
-                   </span>
+                       <span>
+                           <b class="less"><?=$data['item'][2][1]['data2']?></b>%
+                       </span>
                         <label>未包装后商品出售几率</label>
                     </li>
                 </ul>
-                <p>商品包装后的出售几率是为包装商品的<em> 2545 </em>倍</p>
+                <p>商品包装后的出售几率是为包装商品的<em> <?=round($data['item'][2][0]['data2']/$data['item'][2][1]['data2'])?> </em>倍</p>
             </div>
             <h3 class="data-cont-title data-lis-sty f-clearfix "><label class="tit-leb">访客数据分析</label></h3>
             <div class="data-cont-analy f-clearfix f-hidden">
@@ -64,67 +67,23 @@
                     <div class="cont-analy-lf fl">
                         <p  class="analy-title"><label>热门分类前十名</label></p>
                         <ul class="colum-chart f-clearfix">
+                            <? foreach($data['item'][3] as $item): ?>
                             <li>
                                 <span class="colum1"></span>
                                 <label>
-                                    第三类<br/>
-                                    化工原料
+                                    第<?=$item['data1']?>类<br/>
+                                    <?=$class[$item['data1']]?>
                                 </label>
                             </li>
-                            <li>
-                                <span class="colum2"></span>
-                                <label>
-                                    第三类<br/>
-                                    化工原料
-                                </label>
-                            </li>
-                            <li>
-                                <span class="colum3"></span>
-                                <label>
-                                    第三类<br/>
-                                    化工原料
-                                </label>
-                            </li>
-
-                            <li>
-                                <span class="colum4"></span>
-                                <label>
-                                    第三类<br/>
-                                    化工原料
-                                </label>
-                            </li>
-
-                            <li>
-                                <span class="colum5"></span>
-                                <label>
-                                    第三类<br/>
-                                    化工原料
-                                </label>
-                            </li>
-
-                            <li>
-                                <span class="colum6"></span>
-                                <label>
-                                    第三类<br/>
-                                    化工原料
-                                </label>
-                            </li>
-
-                            <li>
-                                <span class="colum7"></span>
-                                <label>
-                                    第三类<br/>
-                                    化工原料
-                                </label>
-                            </li>
-
+                            <? endforeach; ?>
                         </ul>
                     </div>
-
                     <div class="cont-analy-rg fr">
                         <p  class="analy-title"><label>大家最爱搜索的关键字</label></p>
                         <div class="cont-analy-span f-clearfix">
-                            <span>人工智能</span><span>人工智能</span><span>人工智能</span><span>人工智能</span><span>人工智能</span><span>人工智能</span><span>人工智能</span><span>人工智能</span>
+                            <? foreach($data['item'][4] as $item): ?>
+                            <span><?=$item['data1']?></span>
+                            <? endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -133,16 +92,18 @@
                         <p  class="analy-title"><label>最受欢迎的组合类型</label></p>
                         <div id="container1" class="container"></div>
                         <label class="roun-chart-leb">
-                            <font>中+图  21.56% </font>   <font> 纯中文 18.48%</font>     <font>纯英文 17.54%</font>
-                            <font> 纯图形 16.11% </font>    <font>中+英  7.11%</font>
+                            <? foreach($data['item'][5] as $item): ?>
+                            <font><?=$_TYPE[$item['data1']]?>  <?=$item['data2']?>% </font>
+                            <? endforeach; ?>
                         </label>
                     </div>
                     <div class="cont-roun-chart fr">
                         <p  class="analy-title"><label>最受欢迎的商标字数</label></p>
                         <div id="container2"  class="container"></div>
                         <label class="roun-chart-leb">
-                            <font>中+图  21.56% </font>   <font> 纯中文 18.48%</font>     <font>纯英文 17.54%</font>
-                            <font> 纯图形 16.11% </font>    <font>中+英  7.11%</font>
+                            <? foreach($data['item'][6] as $item): ?>
+                            <font><?=$_NUMBER[$item['data1']]?>  <?=$item['data2']?>% </font>
+                            <? endforeach; ?>
                         </label>
                     </div>
                 </div>
@@ -152,7 +113,7 @@
                 <p>
                     本报告由www.yizhchan.com (一只蝉知识产权交易平台)提供
                 </p>
-                <a class="data-cont-btn">下载报告</a>
+                <a class="data-cont-btn" target="_blank" href="/saleanalysis/down/?id=<?=$data['id']?>">下载报告</a>
             </div>
         </div>
     </div>
@@ -170,8 +131,8 @@
     var myChart1 = echarts.init(dom1);
     var myChart2 = echarts.init(dom2);
     var app = {};
-    option = null;
-    option = {
+    option1 = option2 = null;
+    option1 = {
         tooltip : {
             trigger: 'item',
             formatter: "{a} <br/>{b} : {c} ({d}%)"
@@ -180,16 +141,14 @@
         color: [ '#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980','#d87a80'],
         series : [
             {
-                name: '访问来源',
+                name: '最受欢迎的组合类型',
                 type: 'pie',
                 radius : '70%',
                 center: ['50%', '52%'],
                 data:[
-                    {value:335, name:'纯中文'},
-                    {value:310, name:'纯英文'},
-                    {value:234, name:'纯图形'},
-                    {value:135, name:'中+英'},
-                    {value:1548, name:'中+图'}
+                    <? foreach($data['item'][5] as $item): ?>
+                    {value:<?=$item['data2']?>, name:'<?=$_TYPE[$item['data1']]?>'},
+                    <? endforeach; ?>
                 ],
                 itemStyle: {
                     emphasis: {
@@ -201,12 +160,36 @@
             }
         ]
     };
-    ;
-    if (option && typeof option === "object") {
-        myChart1.setOption(option, true);
-        myChart2.setOption(option, true);
-    }
+    option2 = {
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c} ({d}%)"
+        },
 
+        color: [ '#2ec7c9', '#b6a2de', '#5ab1ef', '#ffb980','#d87a80'],
+        series : [
+            {
+                name: '最受欢迎的商标字数',
+                type: 'pie',
+                radius : '70%',
+                center: ['50%', '52%'],
+                data:[
+                <? foreach($data['item'][6] as $item): ?>
+                    {value:<?=$item['data2']?>, name:'<?=$_NUMBER[$item['data1']]?>'},
+                    <? endforeach; ?>
+                    ],
+                itemStyle: {
+                    emphasis: {
+                        shadowBlur: 10,
+                                shadowOffsetX: 0,
+                                shadowColor: 'rgba(0, 0, 0, 0.5)'
+                    }
+                }
+             }
+        ]
+    };
+    myChart1.setOption(option1, true);
+    myChart2.setOption(option2, true);
     //下拉列表
     var cbtn=$(".all-tp-btn");
     var plist= $(".all-tp-list");
@@ -225,16 +208,17 @@
                 $(this).attr("index","1");
                 $(this).find("i").css({"transform":"rotate(0deg)"})
             }
-        })
+        });
         $(this).siblings("ul.all-tp-list").find("li").each(function(){
             $(this).click(function(){
+                var myindex = $(this).data('index');//传id到font中
                 $(this).parent().slideUp();
-                $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text());
+                $(this).parent().siblings("a.all-tp-btn").find("font").text($(this).text()).data('index',myindex);
                 $(this).parent().siblings("a.all-tp-btn").attr("index","1");
                 $(this).parent().siblings("a.all-tp-btn").find("i").css({"transform":"rotate(0deg)"})
             })
         })
-    })
+    });
 
     //下拉列表点空白的时候消失
     $(".pull-list").bind('click',function(e){

@@ -1,106 +1,121 @@
 <?
-/*
- * 数据分析模块
- *
- *autor     Xuni
- *date      2016-11-02
+/**
+ * 数据分享
+ * Created by PhpStorm.
+ * User: dower
+ * Date: 2016/11/7 0021
+ * Time: 下午 14:10
  */
 class AnalysisModule extends AppModule
 {
     public $models = array(
         'analy'         => 'saleAnalysis',
         'analyItems'    => 'saleAnalysisItems',
-        'sale'          => 'sale',
         'class'         => 'tmClass',
     );
 
     /**
-     * genuine月份获取页面数据
-     * @param type $month
-     * @return type
+     * 得到最新的分享报告
      */
-    public function getSaleAnalysisData($month)
-    {
-        $analy = $this->getSaleAnalyByMonth($month);
-        
-        var_dump($month);exit;
-        if ( empty($analy) ) return array();
+    public function getLast(){
+        $r = array(
+            'order'=>array('month'=>'desc'),
+        );
+        return $this->getDetail($r);
+    }
 
-        $items = $this->getSaleAnalyItems($analy['id']);
-        if ( empty($analy) ) return array();
+    /**
+     * 根据id得到分享信息
+     * @param $id
+     * @return array|bool
+     */
+    public function getDate($id){
+        if($id){
+            $r = array(
+                'eq'=>array('id'=>$id),
+            );
+            return $this->getDetail($r);
+        }else{ //无id取最新数据
+            return $this->getLast();
+        }
+    }
 
-        $_items= [];
-        foreach ($items as $v){
-            if ( in_array($v['type'], array(2,5,6)) ){
-                $_items[$v['type']][$v['data1']] = $v;
-            }else{
-                $_items[$v['type']][] = $v;
+    /**
+     * 根据查询条件,得到分享数据详情
+     * @param $r array 查询条件
+     * @return array|bool
+     */
+    private function getDetail($r){
+        $analy = $this->import('analy')->find($r);
+        if($analy){
+            //解析中文年月
+            $analy['month_cn'] = preg_replace('/(\d{4})/','$1年',$analy['month']).'月';
+            //得到具体项目
+            $r = array(
+                'eq'=>array('analyId'=>$analy['id']),
+                'order'=>array('data2'=>'desc'),
+                'limit'=>1000,
+                'col'=>array('type','data1','data2'),
+            );
+            $items = $this->import('analyItems')->find($r);
+            //处理结果
+            $analy['item'] = array();
+            foreach($items as $item){
+                switch($item['type']){
+                    case '1':
+                        $analy['item'][1][] = $item;break;
+                    case '2':
+                        $analy['item'][2][] = $item;break;
+                    case '3':
+                        $analy['item'][3][] = $item;break;
+                    case '4':
+                        $analy['item'][4][] = $item;break;
+                    case '5':
+                        $analy['item'][5][] = $item;break;
+                    case '6':
+                        $analy['item'][6][] = $item;break;
+                }
             }
         }
-        return $_items;
+        return $analy;
     }
 
     /**
-     * 获取选择的月份ID
-     * @param type $month
-     * @return type
+     * 得到分类名
+     * @return array
      */
-    public function getSaleAnalyByMonth($month)
+    public function getClassName()
     {
-        $r['eq']    = array('month'=>month);
-        $r['limit'] = 1;
-        return $this->import('analy')->find($r);
-    }
-
-    /**
-     * 获取详细信息
-     * @param type $analyId
-     * @return type
-     */
-    public function getSaleAnalyItems($analyId)
-    {
-        $r['eq']    = array('analyId'=>$analyId);
-        $r['order'] = array('data2'=>'desc');
-        $r['limit'] = 200;
-        return $this->import('analyItems')->find($r);
-    }
-
-   /**
-     * 获取商标分类与群组相关标题
-     *
-     * 获取商标分类与群组相关标题
-     * 
-     * @author  Xuni
-     * @since   2016-03-08
-     *
-     * @return  array
-     */
-    public function getClassGroup($class=0, $group=1)
-    {
-        if ( $class == 0 && $group != 1 ){
-            $r['eq'] = array('parent'=>0);
-        }elseif ( $class != 0 && $group == 1 ){
-            //$r['eq'] = array('parent'=>$class);
-            $r['raw'] = " (`parent` = '$class' OR `number` = '$class') ";
-        }elseif ( $class != 0 ){
-            $r['eq'] = array('number'=>$class);
-        }
-        //$r['order'] = array('parent'=>'asc','number'=>'asc');
+        $r['eq'] = array('parent'=>0);
         $r['limit'] = 1000;
-
-        $_class = $_group = array();
         $res    = $this->import('class')->find($r);
         if ( empty($res) ) return array();
-
+        $_class = array();
         foreach ($res as $k => $v) {
-            if ( $v['parent'] == '0' ){
-                $_class[$v['number']] = empty($v['title']) ? $v['name'] : $v['title'];
-            }elseif ( $v['parent'] != 0 ){
-                $_group[$v['parent']][$v['number']] = empty($v['title']) ? $v['name'] : $v['title'];
-            }
+            $_class[$v['number']] = empty($v['title']) ? $v['name'] : $v['title'];
         }
         ksort($_class);
-        return array($_class, $_group);
+        return $_class;
     }
+
+    /**
+     * 得到的月份选择下拉框
+     * @return array
+     */
+    public function select(){
+        $r['col'] = array('id','month');
+        $r['limit'] = 10000;
+        $r['order'] = array('month'=>'desc');
+        $data = $this->import('analy')->find($r);
+        //处理数据
+        if(!$data) return array();
+        foreach($data as &$item){
+            //解析中文年月
+            $item['month_cn'] = preg_replace('/(\d{4})/','$1年',$item['month']).'月';
+        }
+        unset($item);
+        return $data;
+    }
+
 }
 ?>

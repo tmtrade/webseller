@@ -372,6 +372,18 @@ class LoginAction extends AppAction
 		$this->set('cur','check');
 		$this->display();
 	}
+
+	/**
+	 * 数据分享页
+	 */
+	public function share(){
+		//得到最新的分享数据
+		$data = $this->load('analysis')->getLast();
+		$this->set('data',$data);
+		//设置状态栏
+		$this->set('cur','share');
+		$this->display();
+	}
     
 }
 ?>
